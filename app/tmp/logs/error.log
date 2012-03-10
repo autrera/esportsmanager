@@ -1,0 +1,8 @@
+2012-03-10 18:38:30 Error: [MissingActionException] Action UsersController::index() could not be found.
+#0 /home/mx051123/public_html/cake/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /home/mx051123/public_html/cake/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /home/mx051123/public_html/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-10 19:10:27 Error: [MissingControllerException] Controller class UsersController could not be found.
+#0 /home/mx051123/public_html/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

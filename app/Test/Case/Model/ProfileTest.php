@@ -1,5 +1,5 @@
 <?php
-/* Profile Test cases generated on: 2012-03-13 19:09:38 : 1331662178*/
+/* Profile Test cases generated on: 2012-03-14 01:12:55 : 1331683975*/
 App::uses('Profile', 'Model');
 
 /**

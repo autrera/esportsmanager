@@ -1,5 +1,5 @@
 <?php
-/* Sponsor Test cases generated on: 2012-03-13 19:09:44 : 1331662184*/
+/* Sponsor Test cases generated on: 2012-03-14 01:13:01 : 1331683981*/
 App::uses('Sponsor', 'Model');
 
 /**
@@ -12,7 +12,7 @@ class SponsorTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.sponsor', 'app.tournament', 'app.tournaments_sponsor');
+	public $fixtures = array('app.sponsor', 'app.tournament', 'app.countries', 'app.game', 'app.games_tournament', 'app.user', 'app.avatars', 'app.teams', 'app.flags', 'app.roles', 'app.games_user', 'app.match', 'app.tournaments', 'app.comment', 'app.matches_comment', 'app.team', 'app.games', 'app.group', 'app.group_team', 'app.matches_team', 'app.tournaments_place', 'app.teams_tournaments_place', 'app.matches_user', 'app.ments_place', 'app.tournaments_sponsor');
 
 /**
  * setUp method

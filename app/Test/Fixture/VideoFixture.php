@@ -1,5 +1,5 @@
 <?php
-/* Video Fixture generated on: 2012-03-13 19:09:51 : 1331662191 */
+/* Video Fixture generated on: 2012-03-14 01:13:08 : 1331683988 */
 
 /**
  * VideoFixture
@@ -31,7 +31,7 @@ class VideoFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
-			'uploaded' => 1331662191,
+			'uploaded' => 1331683988,
 			'url' => 'Lorem ipsum dolor sit amet',
 			'users_id' => 1
 		),

@@ -1,5 +1,5 @@
 <?php
-/* MatchesComment Fixture generated on: 2012-03-13 19:09:26 : 1331662166 */
+/* MatchesComment Fixture generated on: 2012-03-14 01:12:42 : 1331683962 */
 
 /**
  * MatchesCommentFixture
@@ -31,7 +31,7 @@ class MatchesCommentFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'comment' => 'Lorem ipsum dolor sit amet',
-			'created' => 1331662166,
+			'created' => 1331683962,
 			'matches_id' => 1,
 			'users_id' => 1
 		),

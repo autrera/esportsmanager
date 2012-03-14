@@ -1,5 +1,5 @@
 <?php
-/* GamesUser Test cases generated on: 2012-03-13 19:09:19 : 1331662159*/
+/* GamesUser Test cases generated on: 2012-03-14 01:12:35 : 1331683955*/
 App::uses('GamesUser', 'Model');
 
 /**

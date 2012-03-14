@@ -1,5 +1,5 @@
 <?php
-/* PostComment Test cases generated on: 2012-03-13 19:09:34 : 1331662174*/
+/* PostComment Test cases generated on: 2012-03-14 01:12:51 : 1331683971*/
 App::uses('PostComment', 'Model');
 
 /**

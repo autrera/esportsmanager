@@ -1,5 +1,5 @@
 <?php
-/* Day Fixture generated on: 2012-03-13 19:09:13 : 1331662153 */
+/* Day Fixture generated on: 2012-03-14 01:12:28 : 1331683948 */
 
 /**
  * DayFixture
@@ -28,7 +28,7 @@ class DayFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'day' => '2012-03-13',
+			'day' => '2012-03-14',
 			'tournaments_id' => 1
 		),
 	);

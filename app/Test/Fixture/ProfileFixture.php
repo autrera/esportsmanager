@@ -1,5 +1,5 @@
 <?php
-/* Profile Fixture generated on: 2012-03-13 19:09:38 : 1331662178 */
+/* Profile Fixture generated on: 2012-03-14 01:12:55 : 1331683975 */
 
 /**
  * ProfileFixture
@@ -41,7 +41,7 @@ class ProfileFixture extends CakeTestFixture {
 			'first_name' => 'Lorem ipsum dolor sit amet',
 			'last_name' => 'Lorem ipsum dolor sit amet',
 			'nickname' => 'Lorem ipsum dolor sit amet',
-			'birthdate' => '2012-03-13',
+			'birthdate' => '2012-03-14',
 			'description' => 'Lorem ipsum dolor sit amet',
 			'picture' => 'Lorem ipsum dolor sit amet',
 			'gender' => 'Lorem ipsum dolor sit amet',

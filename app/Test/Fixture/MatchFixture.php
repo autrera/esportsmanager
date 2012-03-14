@@ -1,5 +1,5 @@
 <?php
-/* Match Fixture generated on: 2012-03-13 19:09:25 : 1331662165 */
+/* Match Fixture generated on: 2012-03-14 01:12:41 : 1331683961 */
 
 /**
  * MatchFixture
@@ -34,7 +34,7 @@ class MatchFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'home_score' => 'Lorem ipsum dolor sit amet',
 			'visit_score' => 'Lorem ipsum dolor sit amet',
-			'created' => 1331662165,
+			'created' => 1331683961,
 			'tournaments_id' => 1
 		),
 	);

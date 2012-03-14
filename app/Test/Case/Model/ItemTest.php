@@ -1,5 +1,5 @@
 <?php
-/* Item Test cases generated on: 2012-03-13 19:09:23 : 1331662163*/
+/* Item Test cases generated on: 2012-03-14 01:12:39 : 1331683959*/
 App::uses('Item', 'Model');
 
 /**
@@ -12,7 +12,7 @@ class ItemTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.item', 'app.category', 'app.categories_item', 'app.order', 'app.items_order');
+	public $fixtures = array('app.item', 'app.category', 'app.categories_item', 'app.order', 'app.users', 'app.items_order');
 
 /**
  * setUp method

@@ -1,5 +1,5 @@
 <?php
-/* Gallery Fixture generated on: 2012-03-13 19:09:16 : 1331662156 */
+/* Gallery Fixture generated on: 2012-03-14 01:12:32 : 1331683952 */
 
 /**
  * GalleryFixture
@@ -30,7 +30,7 @@ class GalleryFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
-			'created' => 1331662156,
+			'created' => 1331683952,
 			'users_id' => 1
 		),
 	);

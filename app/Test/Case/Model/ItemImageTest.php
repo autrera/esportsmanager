@@ -1,5 +1,5 @@
 <?php
-/* ItemImage Test cases generated on: 2012-03-13 19:09:22 : 1331662162*/
+/* ItemImage Test cases generated on: 2012-03-14 01:12:38 : 1331683958*/
 App::uses('ItemImage', 'Model');
 
 /**

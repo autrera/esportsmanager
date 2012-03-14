@@ -1,5 +1,5 @@
 <?php
-/* PostComment Fixture generated on: 2012-03-13 19:09:34 : 1331662174 */
+/* PostComment Fixture generated on: 2012-03-14 01:12:51 : 1331683971 */
 
 /**
  * PostCommentFixture
@@ -31,7 +31,7 @@ class PostCommentFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'comment' => 'Lorem ipsum dolor sit amet',
-			'created' => 1331662174,
+			'created' => 1331683971,
 			'posts_id' => 1,
 			'users_id' => 1
 		),

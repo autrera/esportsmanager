@@ -1,5 +1,5 @@
 <?php
-/* Photo Test cases generated on: 2012-03-13 19:09:32 : 1331662172*/
+/* Photo Test cases generated on: 2012-03-14 01:12:49 : 1331683969*/
 App::uses('Photo', 'Model');
 
 /**

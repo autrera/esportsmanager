@@ -1,5 +1,5 @@
 <?php
-/* NewsComment Fixture generated on: 2012-03-13 19:09:29 : 1331662169 */
+/* NewsComment Fixture generated on: 2012-03-14 01:12:46 : 1331683966 */
 
 /**
  * NewsCommentFixture

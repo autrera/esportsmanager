@@ -1,5 +1,5 @@
 <?php
-/* Prize Test cases generated on: 2012-03-13 19:09:37 : 1331662177*/
+/* Prize Test cases generated on: 2012-03-14 01:12:54 : 1331683974*/
 App::uses('Prize', 'Model');
 
 /**

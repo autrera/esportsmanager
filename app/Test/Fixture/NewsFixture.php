@@ -1,5 +1,5 @@
 <?php
-/* News Fixture generated on: 2012-03-13 19:09:28 : 1331662168 */
+/* News Fixture generated on: 2012-03-14 01:12:45 : 1331683965 */
 
 /**
  * NewsFixture
@@ -36,7 +36,7 @@ class NewsFixture extends CakeTestFixture {
 			'featured' => 1,
 			'banner' => 'Lorem ipsum dolor sit amet',
 			'content' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-			'created' => 1331662168,
+			'created' => 1331683965,
 			'users_id' => 1
 		),
 	);

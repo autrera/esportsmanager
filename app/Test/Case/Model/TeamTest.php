@@ -1,5 +1,5 @@
 <?php
-/* Team Test cases generated on: 2012-03-13 19:09:46 : 1331662186*/
+/* Team Test cases generated on: 2012-03-14 01:13:02 : 1331683982*/
 App::uses('Team', 'Model');
 
 /**
@@ -12,7 +12,7 @@ class TeamTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.team', 'app.games', 'app.group', 'app.tournaments', 'app.group_team', 'app.match', 'app.comment', 'app.matches_comment', 'app.matches_team', 'app.user', 'app.matches_user', 'app.tournaments_place', 'app.teams_tournaments_place');
+	public $fixtures = array('app.team', 'app.games', 'app.group', 'app.tournaments', 'app.group_team', 'app.match', 'app.comment', 'app.matches_comment', 'app.matches_team', 'app.user', 'app.avatars', 'app.teams', 'app.flags', 'app.roles', 'app.game', 'app.tournament', 'app.countries', 'app.games_tournament', 'app.ments_place', 'app.teams_tournaments_place', 'app.sponsor', 'app.tournaments_sponsor', 'app.games_user', 'app.matches_user', 'app.tournaments_place');
 
 /**
  * setUp method

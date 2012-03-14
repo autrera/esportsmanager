@@ -1,5 +1,5 @@
 <?php
-/* MatchesUser Test cases generated on: 2012-03-13 19:09:27 : 1331662167*/
+/* MatchesUser Test cases generated on: 2012-03-14 01:12:44 : 1331683964*/
 App::uses('MatchesUser', 'Model');
 
 /**

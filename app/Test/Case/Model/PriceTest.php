@@ -1,5 +1,5 @@
 <?php
-/* Price Test cases generated on: 2012-03-13 19:09:36 : 1331662176*/
+/* Price Test cases generated on: 2012-03-14 01:12:53 : 1331683973*/
 App::uses('Price', 'Model');
 
 /**

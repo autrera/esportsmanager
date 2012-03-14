@@ -1,0 +1,105 @@
+2012-03-10 18:38:30 Error: [MissingActionException] Action UsersController::index() could not be found.
+#0 /home/mx051123/public_html/cake/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /home/mx051123/public_html/cake/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 /home/mx051123/public_html/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-10 19:10:27 Error: [MissingControllerException] Controller class UsersController could not be found.
+#0 /home/mx051123/public_html/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-14 01:15:06 Error: [MissingActionException] Action AppController::Test() could not be found.
+#0 /home/mx051123/public_html/cake/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /home/mx051123/public_html/cake/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(AppController), Object(CakeRequest), Object(CakeResponse))
+#2 /home/mx051123/public_html/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-14 01:37:43 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'findAll' at line 1
+#0 /home/mx051123/public_html/cake/lib/Cake/Model/Datasource/DboSource.php(436): PDOStatement->execute(Array)
+#1 /home/mx051123/public_html/cake/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('findAll', Array)
+#2 /home/mx051123/public_html/cake/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('findAll', Array, Array)
+#3 /home/mx051123/public_html/cake/lib/Cake/Model/Datasource/DboSource.php(589): DboSource->fetchAll('findAll', Array, Array)
+#4 /home/mx051123/public_html/cake/lib/Cake/Model/Model.php(720): DboSource->query('findAll', Array, Object(Country))
+#5 /home/mx051123/public_html/esportsmanager/app/Controller/UsersController.php(77): Model->__call('findAll', Array)
+#6 /home/mx051123/public_html/esportsmanager/app/Controller/UsersController.php(77): Country->findAll()
+#7 [internal function]: UsersController->add()
+#8 /home/mx051123/public_html/cake/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 /home/mx051123/public_html/cake/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#10 /home/mx051123/public_html/cake/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#11 /home/mx051123/public_html/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2012-03-14 03:42:17 Error: [MissingControllerException] Controller class UserController could not be found.
+#0 /home/aldo/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-14 03:42:18 Error: [MissingControllerException] Controller class UserController could not be found.
+#0 /home/aldo/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-14 03:42:18 Error: [MissingControllerException] Controller class UserController could not be found.
+#0 /home/aldo/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-14 03:42:18 Error: [MissingControllerException] Controller class UserController could not be found.
+#0 /home/aldo/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-14 03:42:19 Error: [MissingControllerException] Controller class UserController could not be found.
+#0 /home/aldo/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-14 03:42:19 Error: [MissingControllerException] Controller class UserController could not be found.
+#0 /home/aldo/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-14 04:09:20 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mydb`.`users`, CONSTRAINT `fk_users_avatars1` FOREIGN KEY (`avatars_id`) REFERENCES `avatars` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+#0 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(436): PDOStatement->execute(Array)
+#1 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('INSERT INTO `us...', Array)
+#2 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(967): DboSource->execute('INSERT INTO `us...')
+#3 /home/aldo/esportsmanager/lib/Cake/Model/Model.php(1646): DboSource->create(Object(User), Array, Array)
+#4 /home/aldo/esportsmanager/app/Controller/UsersController.php(62): Model->save(Array)
+#5 [internal function]: UsersController->add()
+#6 /home/aldo/esportsmanager/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 /home/aldo/esportsmanager/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#8 /home/aldo/esportsmanager/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 /home/aldo/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2012-03-14 04:20:48 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mydb`.`users`, CONSTRAINT `fk_users_avatars1` FOREIGN KEY (`avatars_id`) REFERENCES `avatars` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+#0 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(436): PDOStatement->execute(Array)
+#1 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('INSERT INTO `us...', Array)
+#2 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(967): DboSource->execute('INSERT INTO `us...')
+#3 /home/aldo/esportsmanager/lib/Cake/Model/Model.php(1646): DboSource->create(Object(User), Array, Array)
+#4 /home/aldo/esportsmanager/app/Controller/UsersController.php(62): Model->save(Array)
+#5 [internal function]: UsersController->add()
+#6 /home/aldo/esportsmanager/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 /home/aldo/esportsmanager/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#8 /home/aldo/esportsmanager/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 /home/aldo/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2012-03-14 04:36:33 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mydb`.`users`, CONSTRAINT `fk_users_avatars1` FOREIGN KEY (`avatars_id`) REFERENCES `avatars` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+#0 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(436): PDOStatement->execute(Array)
+#1 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('INSERT INTO `us...', Array)
+#2 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(967): DboSource->execute('INSERT INTO `us...')
+#3 /home/aldo/esportsmanager/lib/Cake/Model/Model.php(1646): DboSource->create(Object(User), Array, Array)
+#4 /home/aldo/esportsmanager/app/Controller/UsersController.php(62): Model->save(Array)
+#5 [internal function]: UsersController->add()
+#6 /home/aldo/esportsmanager/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 /home/aldo/esportsmanager/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#8 /home/aldo/esportsmanager/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 /home/aldo/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2012-03-14 04:39:30 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mydb`.`users`, CONSTRAINT `fk_users_avatars1` FOREIGN KEY (`avatars_id`) REFERENCES `avatars` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+#0 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(436): PDOStatement->execute(Array)
+#1 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('INSERT INTO `us...', Array)
+#2 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(967): DboSource->execute('INSERT INTO `us...')
+#3 /home/aldo/esportsmanager/lib/Cake/Model/Model.php(1646): DboSource->create(Object(User), Array, Array)
+#4 /home/aldo/esportsmanager/app/Controller/UsersController.php(65): Model->save(Array)
+#5 [internal function]: UsersController->add()
+#6 /home/aldo/esportsmanager/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 /home/aldo/esportsmanager/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#8 /home/aldo/esportsmanager/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 /home/aldo/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2012-03-14 04:42:26 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mydb`.`users`, CONSTRAINT `fk_users_roles1` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+#0 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(436): PDOStatement->execute(Array)
+#1 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('INSERT INTO `us...', Array)
+#2 /home/aldo/esportsmanager/lib/Cake/Model/Datasource/DboSource.php(967): DboSource->execute('INSERT INTO `us...')
+#3 /home/aldo/esportsmanager/lib/Cake/Model/Model.php(1646): DboSource->create(Object(User), Array, Array)
+#4 /home/aldo/esportsmanager/app/Controller/UsersController.php(65): Model->save(Array)
+#5 [internal function]: UsersController->add()
+#6 /home/aldo/esportsmanager/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 /home/aldo/esportsmanager/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#8 /home/aldo/esportsmanager/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 /home/aldo/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}

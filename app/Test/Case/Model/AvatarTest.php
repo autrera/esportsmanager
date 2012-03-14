@@ -1,5 +1,5 @@
 <?php
-/* Avatar Test cases generated on: 2012-03-14 01:12:24 : 1331683944*/
+/* Avatar Test cases generated on: 2012-03-14 04:33:03 : 1331695983*/
 App::uses('Avatar', 'Model');
 
 /**
@@ -12,7 +12,7 @@ class AvatarTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.avatar', 'app.games', 'app.profile', 'app.nation', 'app.users');
+	public $fixtures = array('app.avatar', 'app.games');
 
 /**
  * setUp method

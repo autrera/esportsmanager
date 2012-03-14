@@ -1,5 +1,5 @@
 <?php
-/* Setting Test cases generated on: 2012-03-14 01:12:59 : 1331683979*/
+/* Setting Test cases generated on: 2012-03-14 04:34:14 : 1331696054*/
 App::uses('Setting', 'Model');
 
 /**

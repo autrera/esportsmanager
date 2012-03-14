@@ -1,5 +1,5 @@
 <?php
-/* Day Test cases generated on: 2012-03-14 01:12:28 : 1331683948*/
+/* Day Test cases generated on: 2012-03-14 04:33:11 : 1331695991*/
 App::uses('Day', 'Model');
 
 /**

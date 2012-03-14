@@ -1,5 +1,5 @@
 <?php
-/* Prize Fixture generated on: 2012-03-14 01:12:54 : 1331683974 */
+/* Prize Fixture generated on: 2012-03-14 04:34:04 : 1331696044 */
 
 /**
  * PrizeFixture

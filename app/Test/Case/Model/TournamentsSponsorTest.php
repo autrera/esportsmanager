@@ -1,5 +1,5 @@
 <?php
-/* TournamentsSponsor Test cases generated on: 2012-03-14 01:13:05 : 1331683985*/
+/* TournamentsSponsor Test cases generated on: 2012-03-14 04:34:28 : 1331696068*/
 App::uses('TournamentsSponsor', 'Model');
 
 /**

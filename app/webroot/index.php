@@ -58,7 +58,7 @@
  *
  * Leaving this constant undefined will result in it being defined in Cake/bootstrap.php
  */
-	define('CAKE_CORE_INCLUDE_PATH',  DS . 'home' . DS . 'mx051123' . DS . 'public_html' . DS . 'cake' . DS . 'lib');
+	define('CAKE_CORE_INCLUDE_PATH',  DS . 'home' . DS . 'aldo' . DS . 'esportsmanager' . DS . 'lib');
 
 /**
  * Editing below this line should NOT be necessary.

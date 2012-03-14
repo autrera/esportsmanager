@@ -55,6 +55,9 @@ class UsersController extends AppController {
  * @param mixed What page to display
  */
 	public function add() {
+		$paises  = $this->Country->find('list');
+		$avatars = $this->Avatar->find('list');
+    	$this->set(compact('paises', 'avatars'));
 	    if (!empty($this->request->data)) {
 	        // We can save the User data:
 	        // it should be in $this->request->data['User']
@@ -67,16 +70,15 @@ class UsersController extends AppController {
 	        if (!empty($user)) {
 	            // The ID of the newly created user has been set
 	            // as $this->User->id.
-	            $this->request->data['Profile']['user_id'] = $this->User->id;
+	            $this->request->data['Profile']['users_id'] = $this->User->id;
+		    	echo "<pre>";
+		    	print_r($this->request->data);
+		    	echo "</pre>";
 
 	            // Because our User hasOne Profile, we can access
 	            // the Profile model through the User model:
-	            $this->User->Profile->save($this->request->data);
+	            $this->Profile->save($this->request->data);
 	        }
-	    } else {
-	    	$paises = $this->Country->find('list');
-	    	$this->set(compact('paises'));
-	    	// $this->set('paises', $this->Country->find('all'));
 	    }
 	}
 }

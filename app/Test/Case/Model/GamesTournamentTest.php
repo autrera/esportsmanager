@@ -1,5 +1,5 @@
 <?php
-/* GamesTournament Test cases generated on: 2012-03-14 01:12:34 : 1331683954*/
+/* GamesTournament Test cases generated on: 2012-03-14 04:33:23 : 1331696003*/
 App::uses('GamesTournament', 'Model');
 
 /**

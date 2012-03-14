@@ -1,5 +1,5 @@
 <?php
-/* VideoComment Test cases generated on: 2012-03-14 01:13:07 : 1331683987*/
+/* VideoComment Test cases generated on: 2012-03-14 04:34:33 : 1331696073*/
 App::uses('VideoComment', 'Model');
 
 /**

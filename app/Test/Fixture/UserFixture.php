@@ -1,5 +1,5 @@
 <?php
-/* User Fixture generated on: 2012-03-14 01:13:06 : 1331683986 */
+/* User Fixture generated on: 2012-03-14 04:34:31 : 1331696071 */
 
 /**
  * UserFixture
@@ -18,9 +18,8 @@ class UserFixture extends CakeTestFixture {
 		'created' => array('type' => 'timestamp', 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'collate' => NULL, 'comment' => ''),
 		'avatars_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index', 'collate' => NULL, 'comment' => ''),
 		'teams_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'key' => 'index', 'collate' => NULL, 'comment' => ''),
-		'flags_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index', 'collate' => NULL, 'comment' => ''),
 		'roles_id' => array('type' => 'integer', 'null' => false, 'default' => '1', 'key' => 'index', 'collate' => NULL, 'comment' => ''),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'fk_users_avatars1' => array('column' => 'avatars_id', 'unique' => 0), 'fk_users_teams1' => array('column' => 'teams_id', 'unique' => 0), 'fk_users_flags1' => array('column' => 'flags_id', 'unique' => 0), 'fk_users_roles1' => array('column' => 'roles_id', 'unique' => 0)),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'fk_users_avatars1' => array('column' => 'avatars_id', 'unique' => 0), 'fk_users_teams1' => array('column' => 'teams_id', 'unique' => 0), 'fk_users_roles1' => array('column' => 'roles_id', 'unique' => 0)),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_spanish_ci', 'engine' => 'InnoDB')
 	);
 
@@ -33,10 +32,9 @@ class UserFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'valid' => 1,
-			'created' => 1331683986,
+			'created' => 1331696071,
 			'avatars_id' => 1,
 			'teams_id' => 1,
-			'flags_id' => 1,
 			'roles_id' => 1
 		),
 	);

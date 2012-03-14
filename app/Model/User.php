@@ -5,7 +5,6 @@ App::uses('AppModel', 'Model');
  *
  * @property Avatars $Avatars
  * @property Teams $Teams
- * @property Flags $Flags
  * @property Roles $Roles
  * @property Game $Game
  * @property Match $Match
@@ -17,37 +16,7 @@ class User extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'valid' => array(
-			'boolean' => array(
-				'rule' => array('boolean'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'avatars_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'flags_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'roles_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -77,13 +46,6 @@ class User extends AppModel {
 		'Teams' => array(
 			'className' => 'Teams',
 			'foreignKey' => 'teams_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Flags' => array(
-			'className' => 'Flags',
-			'foreignKey' => 'flags_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

@@ -1,5 +1,5 @@
 <?php
-/* News Test cases generated on: 2012-03-14 01:12:45 : 1331683965*/
+/* News Test cases generated on: 2012-03-14 04:33:45 : 1331696025*/
 App::uses('News', 'Model');
 
 /**

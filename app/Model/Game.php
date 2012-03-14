@@ -13,7 +13,7 @@ class Game extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'gamescol' => array(
+		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',

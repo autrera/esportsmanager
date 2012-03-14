@@ -1,5 +1,5 @@
 <?php
-/* Profile Test cases generated on: 2012-03-14 01:12:55 : 1331683975*/
+/* Profile Test cases generated on: 2012-03-14 04:34:06 : 1331696046*/
 App::uses('Profile', 'Model');
 
 /**
@@ -12,7 +12,7 @@ class ProfileTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.profile', 'app.avatar', 'app.games', 'app.nation', 'app.users');
+	public $fixtures = array('app.profile', 'app.users', 'app.countries');
 
 /**
  * setUp method

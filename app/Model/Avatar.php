@@ -4,7 +4,6 @@ App::uses('AppModel', 'Model');
  * Avatar Model
  *
  * @property Games $Games
- * @property Profile $Profile
  */
 class Avatar extends AppModel {
 /**
@@ -51,26 +50,4 @@ class Avatar extends AppModel {
 			'order' => ''
 		)
 	);
-
-/**
- * hasMany associations
- *
- * @var array
- */
-	public $hasMany = array(
-		'Profile' => array(
-			'className' => 'Profile',
-			'foreignKey' => 'avatar_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
-
 }

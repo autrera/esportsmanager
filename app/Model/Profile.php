@@ -3,9 +3,8 @@ App::uses('AppModel', 'Model');
 /**
  * Profile Model
  *
- * @property Avatar $Avatar
- * @property Nation $Nation
  * @property Users $Users
+ * @property Countries $Countries
  */
 class Profile extends AppModel {
 /**
@@ -14,26 +13,6 @@ class Profile extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'avatar_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'nation_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'first_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -84,6 +63,16 @@ class Profile extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'countries_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -94,23 +83,16 @@ class Profile extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Avatar' => array(
-			'className' => 'Avatar',
-			'foreignKey' => 'avatar_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Nation' => array(
-			'className' => 'Nation',
-			'foreignKey' => 'nation_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'Users' => array(
 			'className' => 'Users',
 			'foreignKey' => 'users_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Countries' => array(
+			'className' => 'Countries',
+			'foreignKey' => 'countries_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

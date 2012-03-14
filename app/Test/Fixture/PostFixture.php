@@ -1,5 +1,5 @@
 <?php
-/* Post Fixture generated on: 2012-03-14 01:12:52 : 1331683972 */
+/* Post Fixture generated on: 2012-03-14 04:34:00 : 1331696040 */
 
 /**
  * PostFixture
@@ -32,7 +32,7 @@ class PostFixture extends CakeTestFixture {
 			'id' => 1,
 			'title' => 'Lorem ipsum dolor sit amet',
 			'content' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-			'created' => 1331683972,
+			'created' => 1331696040,
 			'users_id' => 1
 		),
 	);

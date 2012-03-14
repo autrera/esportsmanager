@@ -1,5 +1,5 @@
 <?php
-/* Feature Test cases generated on: 2012-03-14 01:12:29 : 1331683949*/
+/* Feature Test cases generated on: 2012-03-14 04:33:12 : 1331695992*/
 App::uses('Feature', 'Model');
 
 /**

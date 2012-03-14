@@ -1,5 +1,5 @@
 <?php
-/* Post Test cases generated on: 2012-03-14 01:12:52 : 1331683972*/
+/* Post Test cases generated on: 2012-03-14 04:34:00 : 1331696040*/
 App::uses('Post', 'Model');
 
 /**

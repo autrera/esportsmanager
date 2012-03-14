@@ -1,5 +1,5 @@
 <?php
-/* Tournament Fixture generated on: 2012-03-14 01:13:04 : 1331683984 */
+/* Tournament Fixture generated on: 2012-03-14 04:34:26 : 1331696066 */
 
 /**
  * TournamentFixture
@@ -42,7 +42,7 @@ class TournamentFixture extends CakeTestFixture {
 			'state' => 'Lorem ipsum dolor sit amet',
 			'city' => 'Lorem ipsum dolor sit amet',
 			'location' => 'Lorem ipsum dolor sit amet',
-			'created' => 1331683984,
+			'created' => 1331696066,
 			'countries_id' => 1
 		),
 	);

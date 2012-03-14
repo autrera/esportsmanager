@@ -47,7 +47,7 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $uses = array();
+	public $uses = array('User', 'Profile', 'Avatar', 'Country');
 
 /**
  * Agrega usuarios
@@ -73,6 +73,10 @@ class UsersController extends AppController {
 	            // the Profile model through the User model:
 	            $this->User->Profile->save($this->request->data);
 	        }
+	    } else {
+	    	$paises = $this->Country->find('list');
+	    	$this->set(compact('paises'));
+	    	// $this->set('paises', $this->Country->find('all'));
 	    }
 	}
 }

@@ -11,3 +11,17 @@
 #1 /home/mx051123/public_html/cake/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(AppController), Object(CakeRequest), Object(CakeResponse))
 #2 /home/mx051123/public_html/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2012-03-14 01:37:43 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'findAll' at line 1
+#0 /home/mx051123/public_html/cake/lib/Cake/Model/Datasource/DboSource.php(436): PDOStatement->execute(Array)
+#1 /home/mx051123/public_html/cake/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('findAll', Array)
+#2 /home/mx051123/public_html/cake/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('findAll', Array, Array)
+#3 /home/mx051123/public_html/cake/lib/Cake/Model/Datasource/DboSource.php(589): DboSource->fetchAll('findAll', Array, Array)
+#4 /home/mx051123/public_html/cake/lib/Cake/Model/Model.php(720): DboSource->query('findAll', Array, Object(Country))
+#5 /home/mx051123/public_html/esportsmanager/app/Controller/UsersController.php(77): Model->__call('findAll', Array)
+#6 /home/mx051123/public_html/esportsmanager/app/Controller/UsersController.php(77): Country->findAll()
+#7 [internal function]: UsersController->add()
+#8 /home/mx051123/public_html/cake/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 /home/mx051123/public_html/cake/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#10 /home/mx051123/public_html/cake/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#11 /home/mx051123/public_html/esportsmanager/app/webroot/index.php(98): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}

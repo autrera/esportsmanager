@@ -26,14 +26,14 @@
  *
  * @package       app.Controller
  */
-class UsersController extends AppController {
+class PostsController extends AppController {
 
 /**
  * Controller name
  *
  * @var string
  */
-	public $name = 'Users';
+	public $name = 'Posts';
 
 /**
  * Default helper
@@ -47,60 +47,33 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	// public $uses = array('User');
+	// public $uses = array();
 
 /**
- * Permitimos a los usuarios agregarse a si mismos y desloguearse
+ * Displays a all the posts
  *
  * @param none
- * @return void
  */
-	public function beforeFilter() {
-	    parent::beforeFilter();
-	    $this->Auth->allow('add', 'login'); 
+	public function index() {
+		$this->set('posts', $this->Post->find('all'));
 	}
 
 /**
- * Agrega usuarios
+ * Agregamos posts
  *
- * @param mixed What page to display
+ * @param none
  */
 	public function add() {
 		if ($this->request->is('post')) {
-            $this->User->create();
-			if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
-                // $this->redirect(array('action' => 'index'));
+            $this->Post->create();
+            $this->request->data['Post']['users_id'] = $this->Auth->user('id');
+			if ($this->Post->save($this->request->data)) {
+                $this->Session->setFlash(__('The post has been saved'));
+                $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The post could not be saved. Please, try again.'));
             }
         }
-	}
-
-/**
- * Logueamos a los usuarios
- *
- * @param none
- * @return void
- */
-	public function login() {
-		if ($this->request->is('post')){
-		    if ($this->Auth->login()) {
-		        $this->redirect($this->Auth->redirect());
-		    } else {
-		        $this->Session->setFlash(__('Invalid username or password, try again'));
-		    }
-		}
-	}
-
-/**
- * Deslogueamos a los usuarios
- *
- * @param none
- * @return void
- */
-	public function logout() {
-	    $this->redirect($this->Auth->logout());
 	}
 
 }

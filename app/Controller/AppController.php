@@ -31,4 +31,30 @@ App::uses('Controller', 'Controller');
  * @package       app.Controller
  */
 class AppController extends Controller {
+
+    // Los componentes que usaremos en todos los controladores
+    public $components = array(
+        'Session',
+        'Auth' => array(
+            'loginRedirect' => array(
+                'controller' => 'posts',
+                'action' => 'index'
+            ),
+            'logoutRedirect' => array(
+                'controller' => 'pages',
+                'action' => 'display', 'home'
+            ),
+            'authenticate' => array(
+                'Form' => array(
+                    'fields' => array('username' => 'email')
+                )
+            )
+        )
+    );
+
+    // Le permitimos a todos ver el listado y un elemento en particular
+    public function beforeFilter() {
+        $this->Auth->allow('index', 'view');
+    }
+
 }

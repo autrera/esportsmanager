@@ -26,14 +26,14 @@
  *
  * @package       app.Controller
  */
-class UsersController extends AppController {
+class ProfilesController extends AppController {
 
 /**
  * Controller name
  *
  * @var string
  */
-	public $name = 'Users';
+	public $name = 'Profiles';
 
 /**
  * Default helper
@@ -50,7 +50,7 @@ class UsersController extends AppController {
 	// public $uses = array('User');
 
 /**
- * Agrega usuarios
+ * Agrega un perfil al usuario
  *
  * @param mixed What page to display
  */

@@ -35,6 +35,10 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'passwordequal' => array(
+				'rule' =>'checkpasswords',
+				'message' => 'Passwords muest be equal'
+			),
 		),
 		'password_check' => array(
 			'notempty' => array(
@@ -44,6 +48,10 @@ class User extends AppModel {
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'passwordequal' => array(
+				'rule' =>'checkpasswords',
+				'message' => 'Passwords muest be equal'
 			),
 		),
 	);
@@ -114,7 +122,14 @@ class User extends AppModel {
 	    if (isset($this->data[$this->alias]['password'])) {
 	        $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
 	    }
+	    if (isset($this->data[$this->alias]['created'])) {
+	        $this->data[$this->alias]['created'] = date('c');
+	    }
 	    return true;
+	}
+
+	public function checkpasswords(){
+		return ($this->data['User']['password'] == $this->data['User']['password_check']);
 	}
 
 }

@@ -47,7 +47,7 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $uses = array('User', 'Profile', 'Avatar', 'Country');
+	// public $uses = array('User');
 
 /**
  * Agrega usuarios
@@ -55,30 +55,17 @@ class UsersController extends AppController {
  * @param mixed What page to display
  */
 	public function add() {
-		$paises  = $this->Country->find('list');
-		$avatars = $this->Avatar->find('list');
-    	$this->set(compact('paises', 'avatars'));
-	    if (!empty($this->request->data)) {
-	        // We can save the User data:
-	        // it should be in $this->request->data['User']
-
-	        $user = $this->User->save($this->request->data);
-
-	        // If the user was saved, Now we add this information to the data
-	        // and save the Profile.
-
-	        if (!empty($user)) {
-	            // The ID of the newly created user has been set
-	            // as $this->User->id.
-	            $this->request->data['Profile']['users_id'] = $this->User->id;
-		    	echo "<pre>";
-		    	print_r($this->request->data);
-		    	echo "</pre>";
-
-	            // Because our User hasOne Profile, we can access
-	            // the Profile model through the User model:
-	            $this->Profile->save($this->request->data);
-	        }
-	    }
+		if ($this->request->is('post')) {
+            $this->User->create();
+			if ($this->request->data['User']['password']
+				!= $this->request->data['User']['password_check']){
+                $this->Session->setFlash(__('Passwords need to be the same.'));
+			} else if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('The user has been saved'));
+                // $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+            }
+        }
 	}
 }

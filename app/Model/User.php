@@ -1,9 +1,9 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('AuthComponent', 'Controller/Component');
 /**
  * User Model
  *
- * @property Avatars $Avatars
  * @property Teams $Teams
  * @property Roles $Roles
  * @property Game $Game
@@ -16,9 +16,29 @@ class User extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'avatars_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'email' => array(
+			'email' => array(
+				'rule' => array('email'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'password' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'password_check' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -36,13 +56,6 @@ class User extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Avatars' => array(
-			'className' => 'Avatars',
-			'foreignKey' => 'avatars_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'Teams' => array(
 			'className' => 'Teams',
 			'foreignKey' => 'teams_id',
@@ -96,5 +109,12 @@ class User extends AppModel {
 			'insertQuery' => ''
 		)
 	);
+
+	public function beforeSave() {
+	    if (isset($this->data[$this->alias]['password'])) {
+	        $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
+	    }
+	    return true;
+	}
 
 }

@@ -23,6 +23,16 @@ class News extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'content' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'users_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
@@ -53,26 +63,19 @@ class News extends AppModel {
 	);
 
 /**
- * hasAndBelongsToMany associations
+ * hasMany associations
  *
  * @var array
  */
-	public $hasAndBelongsToMany = array(
-		'Comment' => array(
-			'className' => 'Comment',
-			'joinTable' => 'news_comments',
-			'foreignKey' => 'news_id',
-			'associationForeignKey' => 'comment_id',
-			'unique' => true,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-			'deleteQuery' => '',
-			'insertQuery' => ''
-		)
-	);
+	public $hasMany = array(
+        'Comment' => array(
+            'className'     => 'NewsComment',
+            'foreignKey'    => 'news_id',
+            // 'conditions'    => array('Comment.status' => '1'),
+            // 'order'         => 'Comment.created DESC',
+            // 'limit'         => '5',
+            // 'dependent'     => true
+        )
+    );
 
 }

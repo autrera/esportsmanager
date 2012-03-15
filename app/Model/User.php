@@ -119,11 +119,9 @@ class User extends AppModel {
 	);
 
 	public function beforeSave() {
+		parent::beforeSave();
 	    if (isset($this->data[$this->alias]['password'])) {
 	        $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
-	    }
-	    if (isset($this->data[$this->alias]['created'])) {
-	        $this->data[$this->alias]['created'] = date('c');
 	    }
 	    return true;
 	}

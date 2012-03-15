@@ -61,11 +61,4 @@ class Post extends AppModel {
 		)
 	);
 
-	public function beforeSave() {
-	    if (isset($this->data[$this->alias]['created'])) {
-	        $this->data[$this->alias]['created'] = date('c');
-	    }
-	    return true;
-	}
-
 }

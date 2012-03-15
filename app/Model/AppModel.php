@@ -31,4 +31,12 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+    public function beforeSave() {
+        if (isset($this->data[$this->alias]['created'])) {
+            $this->data[$this->alias]['created'] = date('c');
+        }
+        return true;
+    }
+    
 }

@@ -59,6 +59,13 @@ class News extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Profiles' => array(
+			'className' => 'Profiles',
+			'foreignKey' => 'users_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
@@ -68,7 +75,7 @@ class News extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-        'Comment' => array(
+        'Comments' => array(
             'className'     => 'NewsComment',
             'foreignKey'    => 'news_id',
             // 'conditions'    => array('Comment.status' => '1'),

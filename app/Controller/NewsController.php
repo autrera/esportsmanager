@@ -47,7 +47,7 @@ class NewsController extends AppController {
  *
  * @var array
  */
-	// public $uses = array();
+	// public $uses = array('News', 'Profile');
 
 /**
  * Displays a all the posts

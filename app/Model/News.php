@@ -59,13 +59,6 @@ class News extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		),
-		'Profiles' => array(
-			'className' => 'Profiles',
-			'foreignKey' => 'users_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
 		)
 	);
 

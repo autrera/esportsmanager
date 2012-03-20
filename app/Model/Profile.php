@@ -17,7 +17,7 @@ class Profile extends AppModel {
 		'first_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				// 'message' => 'Please, enter your first name',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -53,6 +53,10 @@ class Profile extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'allowedChoice' => array(
+             'rule'    => array('inList', array('M', 'F')),
+             'message' => 'Choose "M" for Male or "F" for Female.'
+        	),
 		),
 		'users_id' => array(
 			'numeric' => array(

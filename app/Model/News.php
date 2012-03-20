@@ -7,6 +7,7 @@ App::uses('AppModel', 'Model');
  * @property Comment $Comment
  */
 class News extends AppModel {
+
 /**
  * Validation rules
  *
@@ -58,7 +59,7 @@ class News extends AppModel {
 			'foreignKey' => 'users_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
 		)
 	);
 

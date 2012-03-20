@@ -61,6 +61,15 @@ class UsersController extends AppController {
 	}
 
 /**
+ * Displays a all the users
+ *
+ * @param none
+ */
+    public function index() {
+        $this->set('users', $this->User->find('all'));
+    }
+
+/**
  * Agrega usuarios
  *
  * @param mixed What page to display

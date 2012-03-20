@@ -47,7 +47,7 @@ class ProfilesController extends AppController {
  *
  * @var array
  */
-	// public $uses = array('User');
+	public $uses = array('User', 'Avatar', 'Profile', 'Country');
 
 /**
  * Agrega un perfil al usuario
@@ -55,13 +55,18 @@ class ProfilesController extends AppController {
  * @param mixed What page to display
  */
 	public function add() {
-		if ($this->request->is('post')) {
-            $this->User->create();
-			if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
-                // $this->redirect(array('action' => 'index'));
-            } else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+        if ($this->Auth->user('id')){
+            $this->set('avatars',   $this->Avatar->find('list'));
+            $this->set('countries', $this->Country->find('list'));
+    		if ($this->request->is('post')) {
+                $this->Profile->create();
+                $this->request->data['Profile']['users_id'] = $this->Auth->user('id');
+    			if ($this->Profile->save($this->request->data)) {
+                    $this->Session->setFlash(__('The profile has been saved'));
+                    // $this->redirect(array('action' => 'index'));
+                } else {
+                    $this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
+                }
             }
         }
 	}

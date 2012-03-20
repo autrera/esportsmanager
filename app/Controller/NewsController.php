@@ -47,7 +47,7 @@ class NewsController extends AppController {
  *
  * @var array
  */
-	// public $uses = array('News', 'Profile');
+	// public $uses = array('News', 'Profile', 'User');
 
 /**
  * Displays a all the posts
@@ -55,7 +55,21 @@ class NewsController extends AppController {
  * @param none
  */
 	public function index() {
-		$this->set('news', $this->News->find('all'));
+        $this->set('news', 
+            $this->News->find('all', array(
+                'fields' => array(
+                    'Users.*', 'Profiles.*', 'News.*'
+                ),
+                'joins' => array(
+                    array(
+                        'alias' => 'Profiles',
+                        'table' => 'profiles',
+                        'type' => 'LEFT',
+                        'conditions' => '`Profiles`.`users_id` = `News`.`users_id`'
+                    )
+                ),
+            )
+        ));
 	}
 
 /**

@@ -77,6 +77,21 @@ class User extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
+ * hasOne associations
+ *
+ * @var array
+ */
+	public $hasOne = array(
+		'Profile' => array(
+			'className' => 'Profile',
+			'foreignKey' => 'users_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+	);
+
+/**
  * belongsTo associations
  *
  * @var array
@@ -103,38 +118,38 @@ class User extends AppModel {
  *
  * @var array
  */
-	public $hasAndBelongsToMany = array(
-		'Game' => array(
-			'className' => 'Game',
-			'joinTable' => 'games_users',
-			'foreignKey' => 'user_id',
-			'associationForeignKey' => 'game_id',
-			'unique' => true,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-			'deleteQuery' => '',
-			'insertQuery' => ''
-		),
-		'Match' => array(
-			'className' => 'Match',
-			'joinTable' => 'matches_users',
-			'foreignKey' => 'user_id',
-			'associationForeignKey' => 'match_id',
-			'unique' => true,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-			'deleteQuery' => '',
-			'insertQuery' => ''
-		)
-	);
+	// public $hasAndBelongsToMany = array(
+	// 	'Game' => array(
+	// 		'className' => 'Game',
+	// 		'joinTable' => 'games_users',
+	// 		'foreignKey' => 'user_id',
+	// 		'associationForeignKey' => 'game_id',
+	// 		'unique' => true,
+	// 		'conditions' => '',
+	// 		'fields' => '',
+	// 		'order' => '',
+	// 		'limit' => '',
+	// 		'offset' => '',
+	// 		'finderQuery' => '',
+	// 		'deleteQuery' => '',
+	// 		'insertQuery' => ''
+	// 	),
+	// 	'Match' => array(
+	// 		'className' => 'Match',
+	// 		'joinTable' => 'matches_users',
+	// 		'foreignKey' => 'user_id',
+	// 		'associationForeignKey' => 'match_id',
+	// 		'unique' => true,
+	// 		'conditions' => '',
+	// 		'fields' => '',
+	// 		'order' => '',
+	// 		'limit' => '',
+	// 		'offset' => '',
+	// 		'finderQuery' => '',
+	// 		'deleteQuery' => '',
+	// 		'insertQuery' => ''
+	// 	)
+	// );
 
 	public function beforeSave() {
 		parent::beforeSave();

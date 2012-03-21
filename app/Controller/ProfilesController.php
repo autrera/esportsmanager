@@ -55,18 +55,34 @@ class ProfilesController extends AppController {
  * @param mixed What page to display
  */
 	public function add() {
+        // Checamos que esté logueado
         if ($this->Auth->user('id')){
-            $this->set('avatars',   $this->Avatar->find('list'));
-            $this->set('countries', $this->Country->find('list'));
-    		if ($this->request->is('post')) {
-                $this->Profile->create();
-                $this->request->data['Profile']['users_id'] = $this->Auth->user('id');
-    			if ($this->Profile->save($this->request->data)) {
-                    $this->Session->setFlash(__('The profile has been saved'));
-                    // $this->redirect(array('action' => 'index'));
-                } else {
-                    $this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
+            // Consultamos si el usuario tiene ya un perfil
+            $datos = $this->Profile->find('first', array(
+                'conditions' => array(
+                    'Profile.users_id' => $this->Auth->user('id')
+                ) 
+            ));
+            // Checamos que no tenga un perfil
+            if (empty($datos['Profile']['id'])){
+                $this->set('avatars',   $this->Avatar->find('list'));
+                $this->set('countries', $this->Country->find('list'));
+        		if ($this->request->is('post')) {
+                    $this->Profile->create();
+                    $this->request->data['Profile']['users_id'] = $this->Auth->user('id');
+        			if ($this->Profile->save($this->request->data)) {
+                        $this->Session->setFlash(__('The profile has been saved'));
+                    } else {
+                        $this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
+                    }
                 }
+            } else {
+                // Como ya tiene un perfil, no puede agregar otro
+                // Lo enviamos a editar su perfil
+                $this->redirect(array(
+                    'action' => 'view',
+                    $datos['Profile']['id']
+                ));
             }
         }
 	}

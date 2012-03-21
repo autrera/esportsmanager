@@ -86,4 +86,18 @@ class ProfilesController extends AppController {
             }
         }
 	}
+
+/**
+ * Visualiza el perfil dado
+ *
+ * @param int El id del Perfil a mostrar
+ */
+    public function view($id = null){
+        $this->Profile->id = $id;
+        if (!$this->Profile->exists()) {
+            throw new NotFoundException(__('Invalid profile'));
+        }
+        $this->set('perfil', $this->Profile->read(null, $id));
+    }
+
 }

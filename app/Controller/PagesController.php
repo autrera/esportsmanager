@@ -75,4 +75,16 @@ class PagesController extends AppController {
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));
 	}
+
+/**
+ * Permitimos a los usuarios ver el home
+ *
+ * @param none
+ * @return void
+ */
+	public function beforeFilter() {
+	    parent::beforeFilter();
+	    $this->Auth->allow('display'); 
+	}
+
 }

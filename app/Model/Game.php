@@ -75,4 +75,13 @@ class Game extends AppModel {
 		)
 	);
 
+	public function isUploadedFile($params) {
+	    if ((isset($params['error']) && $params['error'] == 0) ||
+	        (!empty( $params['tmp_name']) && $params['tmp_name'] != 'none')
+	    ) {
+	        return is_uploaded_file($params['tmp_name']);
+	    }
+	    return false;
+	}
+
 }

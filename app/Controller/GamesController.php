@@ -50,29 +50,47 @@ class GamesController extends AppController {
 	public $uses = array();
 
 /**
+ * Damos de alta los juegos
  *
- *
- *
+ * @param none
  */
 	public function add(){
+        // TODO
+        // Validar que sea imagen
+        // Cambiar el nombre del archivo subido
+        // Validar que solo admins puedan mover esto
+
         // Checamos que esté logueado
         if ($this->Auth->user('id')){
+            // Verificamos que sea un envio por POST
     		if ($this->request->is('post')) {
                 $this->Game->create();
+                // Pasamos los datos de la imagen a variables
                 extract($this->request->data['Game']['thumbnail']);
+                // Checamos que haya sido subida
                 if ($this->Game->isUploadedFile(
                     $this->request->data['Game']['thumbnail'])
                 ) {
-                    $fileFolder = ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS . 'uploads' . DS . 'games' . DS . $name;
-                    if (move_uploaded_file($tmp_name, $fileFolder)){
-                        $this->request->data['Game']['thumbnail'] = 
-                            $fileFolder;
-            			if ($this->Game->save($this->request->data)) {
+                    // Seteamos la ruta del archivo
+                    $fileFolder = $this->Game->getStorageDir() . $name;
+                    // Cambiamos el array de data, el campo thumbnail
+                    // es un varchar en la BD, no podemos dejar el tipo
+                    // file, seteamos la ruta de donde quedó el fichero
+                    $this->request->data['Game']['thumbnail'] = $fileFolder;
+                    // Guardamos
+        			if ($this->Game->save($this->request->data)) {
+                        // Movemos el archivo a su carpeta final
+                        if (move_uploaded_file($tmp_name, $fileFolder)){
                             $this->Session->setFlash(__('The game has been saved'));
                         } else {
-                            $this->Session->setFlash(__('The game could not be saved. Please, try again.'));
+                            $this->Session->setFlash(__('The game has been saved but the image could not, upload the image again'));
                         }
+                    } else {
+                        $this->Session->setFlash(__('The game could not be saved. Please, try again.'));
                     }
+                } else {
+                    // No se subió la imagen
+                    $this->Session->setFlash(__('There was an error trying to upload the file, please try again'));
                 }
             }
         }

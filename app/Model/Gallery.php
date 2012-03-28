@@ -50,4 +50,20 @@ class Gallery extends AppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Photos' => array(
+			'className' => 'Photos',
+			'foreignKey' => 'galleries_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
 }

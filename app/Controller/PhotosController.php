@@ -110,16 +110,16 @@ class PhotosController extends AppController {
 	}
 
 /**
- * Visualiza el perfil dado
+ * Visualiza la foto dada
  *
- * @param int El id del Perfil a mostrar
+ * @param int El id de la foto a mostrar
  */
     public function view($id = null){
-        $this->Gallery->id = $id;
-        if (!$this->Gallery->exists()) {
-            throw new NotFoundException(__('Invalid gallery'));
+        $this->Photo->id = $id;
+        if (!$this->Photo->exists()) {
+            throw new NotFoundException(__('Invalid Photo'));
         }
-        $this->set('galeria', $this->Gallery->read(null, $id));
+        $this->set('foto', $this->Photo->read(null, $id));
     }
 
 }

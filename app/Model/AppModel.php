@@ -32,11 +32,44 @@ App::uses('Model', 'Model');
  */
 class AppModel extends Model {
 
+/**
+ * Operaciones a realizar antes de guardar en cualquier modelo que herede
+ * de AppModel
+ *
+ * @param none
+ * @return void
+ */
     public function beforeSave() {
         if (isset($this->data[$this->alias]['created'])) {
             $this->data[$this->alias]['created'] = date('c');
         }
         return true;
     }
-    
+
+/**
+ * Verifica que el archivo haya sido subido exitosamente
+ *
+ * @param array El array que forma el html helper del archivo subido
+ * @return boolean true, si fue exitoso. Falso si no se subió el archivo
+ */
+    public function isUploadedFile($params) {
+        if ((isset($params['error']) && $params['error'] == 0) ||
+            (!empty( $params['tmp_name']) && $params['tmp_name'] != 'none')
+        ) {
+            return is_uploaded_file($params['tmp_name']);
+        }
+        return false;
+    }
+
+/**
+ * Obtenemos la extension del archivo enviado
+ *
+ * @param $name String El nombre del archivo con su extensión
+ * @return $ext String La extensión del archivo
+ */
+    public function getExtension($name){
+        $array = explode(".", $name);
+        return array_pop($array);
+    }
+
 }

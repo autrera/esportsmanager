@@ -57,7 +57,6 @@ class GamesController extends AppController {
 	public function add(){
         // TODO
         // Validar que sea imagen
-        // Cambiar el nombre del archivo subido
         // Validar que solo admins puedan mover esto
 
         // Checamos que esté logueado
@@ -71,8 +70,10 @@ class GamesController extends AppController {
                 if ($this->Game->isUploadedFile(
                     $this->request->data['Game']['thumbnail'])
                 ) {
+                    // Obtenemos extension de la imagen
+                    $ext = $this->Game->getExtension($name);
                     // Seteamos la ruta del archivo
-                    $fileFolder = $this->Game->getStorageDir() . $name;
+                    $fileFolder = $this->Game->getStorageDir() . uniqid() . "." .$ext;
                     // Cambiamos el array de data, el campo thumbnail
                     // es un varchar en la BD, no podemos dejar el tipo
                     // file, seteamos la ruta de donde quedó el fichero

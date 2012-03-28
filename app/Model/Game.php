@@ -80,21 +80,6 @@ class Game extends AppModel {
 	);
 
 /**
- * Verifica que el archivo haya sido subido exitosamente
- *
- * @param array El array que forma el html helper del archivo subido
- * @return boolean true, si fue exitoso. Falso si no se subió el archivo
- */
-	public function isUploadedFile($params) {
-	    if ((isset($params['error']) && $params['error'] == 0) ||
-	        (!empty( $params['tmp_name']) && $params['tmp_name'] != 'none')
-	    ) {
-	        return is_uploaded_file($params['tmp_name']);
-	    }
-	    return false;
-	}
-
-/**
  * Retornamos el path explicito de donde almacenaremos las imagenes
  *
  * @param none

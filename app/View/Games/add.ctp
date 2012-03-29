@@ -1,4 +1,4 @@
-<div class="posts form">
+<div class="games form">
 <?php echo $this->Form->create('Game',
     array('type' => 'file')
 ); ?>

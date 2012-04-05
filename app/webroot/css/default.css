@@ -1,7 +1,30 @@
+#header, #background {
+    height: 100%;
+    top: 100%;
+}
+
 #header {
-    margin-top: 9px;
+    padding-top: 9px;
+    background: url('../img/ios-linen.jpg') no-repeat;
+}
+
+#background {
+    padding-top: 8px;
 }
 
 .cont-login-header {
     padding-top: 3px;
+}
+
+.latest-videos {
+    padding: 8px;
+}
+
+.latest-matches {
+    border: 1px solid #DDD;
+    padding: 8px;
+}
+
+.thumbnail {
+    background: white;
 }

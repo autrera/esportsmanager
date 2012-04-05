@@ -12,8 +12,8 @@
             src = "js/bootstrap.js" >
         </script>
 
-        <div class = "container">
-            <div id = "header">
+        <div id = "header">
+            <div class = "container">
                 <div class = "row">
                     <div class = "span7">
                         <div class = "alert alert-info">
@@ -26,11 +26,11 @@
                                 placeholder = "Email">
                             <input type = "password" class = "input-small" 
                                 placeholder = "Password">
-                            <label class="checkbox">
-                                <input type="checkbox"> Remember me
-                            </label>
                             <button type = "submit" class = "btn">
                                 Sign in
+                            </button>
+                            <button type = "submit" class = "btn">
+                                Register
                             </button>
                         </form>
                     </div>
@@ -85,7 +85,9 @@
                     </div>
                 </div>
             </div>
-            <div id = "background">
+        </div>
+        <div id = "background">
+            <div class = "container">
                 <div class = "row">
                     <div class = "span8">
                         <ul class = "thumbnails">
@@ -100,19 +102,29 @@
                     <div class = "span4">
                         <ul class = "thumbnails">
                             <li class = "span4">
-                                <a href = "#" class = "thumbnail">
-                                  <img src = "http://placehold.it/360x140" 
-                                    alt = "">
-                                </a>
-                                <p>Nombre del video de arriba</p>
+                                <div class = "thumbnail">
+                                    <img src = "http://placehold.it/360x180" alt = "">
+                                    <h5>Thumbnail label</h5>
+                                    <div class = "caption">
+                                        <h4>> Thumbnail label</h4>
+                                        <h4>> Thumbnail label</h4>
+                                        <h4>> Thumbnail label</h4>
+                                        <h4>> Thumbnail label</h4>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
-                        <ul>
-                            <li>Nombre de otro video</li>
-                            <li>Nombre de otro video</li>
-                            <li>Nombre de otro video</li>
-                            <li>Nombre de otro video</li>
-                        </ul>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class = "span4 latest-matches">
+                        
+                    </div>
+                    <div class = "span4">
+                        
+                    </div>
+                    <div class = "span4">
+                        
                     </div>
                 </div>
             </div>

@@ -90,4 +90,18 @@ class NewsController extends AppController {
         }
 	}
 
+/**
+ * Visualiza la noticia dada
+ *
+ * @param int El id de la noticia a mostrar
+ */
+    public function view($id = null){
+        $this->News->id = $id;
+        if (!$this->News->exists()) {
+            throw new NotFoundException(__('Invalid news'));
+        }
+        $this->set('noticia', $this->News->read(null, $id));
+    }
+
+
 }

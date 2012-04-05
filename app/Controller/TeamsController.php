@@ -98,4 +98,27 @@ class TeamsController extends AppController {
         }
 	}
 
+/**
+ * Visualiza el team dado
+ *
+ * @param int El id del team a mostrar
+ */
+    public function view($id = null){
+        $this->Team->id = $id;
+        if (!$this->Team->exists()) {
+            throw new NotFoundException(__('Invalid team'));
+        }
+        $this->set('team', $this->Team->read(null, $id));
+    }
+
+/**
+ * Displays a all the teams
+ *
+ * @param none
+ */
+    public function index() {
+        $this->set('teams', $this->Team->find('all'));
+    }
+
+
 }

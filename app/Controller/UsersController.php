@@ -87,6 +87,20 @@ class UsersController extends AppController {
 	}
 
 /**
+ * Visualiza el usuario dado
+ *
+ * @param int El id del usuario a mostrar
+ */
+    public function view($id = null){
+        $this->User->id = $id;
+        if (!$this->User->exists()) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        $this->set('usuario', $this->User->read(null, $id));
+    }
+
+
+/**
  * Logueamos a los usuarios
  *
  * @param none

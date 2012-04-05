@@ -26,14 +26,14 @@
  *
  * @package       app.Controller
  */
-class VideosController extends AppController {
+class MatchesController extends AppController {
 
 /**
  * Controller name
  *
  * @var string
  */
-	public $name = 'Videos';
+	public $name = 'Matches';
 
 /**
  * Default helper
@@ -47,48 +47,33 @@ class VideosController extends AppController {
  *
  * @var array
  */
-	// public $uses = array('News', 'Profile', 'User');
+	public $uses = array('Match', 'Team');
 
 /**
- * Displays a all the videos
+ * Displays all the matches
  *
  * @param none
  */
 	public function index() {
-        $this->set('videos', $this->Video->find('all'));
+		$this->set('matches', $this->Match->find('all'));
 	}
 
 /**
- * Agregamos videos
+ * Agregamos matches
  *
  * @param none
  */
 	public function add() {
+        $this->set('teams', $this->Team->find('list'));
 		if ($this->request->is('post')) {
-            $this->Video->create();
-            $this->request->data['Video']['users_id'] 
-                = $this->Auth->user('id');
-			if ($this->Video->save($this->request->data)) {
-                $this->Session->setFlash(__('The post has been saved'));
+            $this->Match->create();
+			if ($this->Match->save($this->request->data)) {
+                $this->Session->setFlash(__('The match has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The video could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The match could not be saved. Please, try again.'));
             }
         }
 	}
-
-/**
- * Visualiza el video dado
- *
- * @param int El id del Perfil a mostrar
- */
-    public function view($id = null){
-        $this->Video->id = $id;
-        if (!$this->Video->exists()) {
-            throw new NotFoundException(__('Invalid video'));
-        }
-        $this->set('video', $this->Video->read(null, $id));
-    }
-
 
 }

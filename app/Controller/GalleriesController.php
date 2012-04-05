@@ -85,4 +85,14 @@ class GalleriesController extends AppController {
         $this->set('galeria', $this->Gallery->read(null, $id));
     }
 
+/**
+ * Displays a all the galleries
+ *
+ * @param none
+ */
+    public function index() {
+        $this->set('galleries', $this->Gallery->find('all'));
+    }
+
+
 }

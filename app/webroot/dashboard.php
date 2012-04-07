@@ -16,20 +16,20 @@
             <div class = "container">
                 <div class = "row">
                     <div class = "span7">
-                        <div class = "alert alert-info">
+                        <p id = "welcome-message">
                             <strong>Welcome to Team Quetzal!</strong>
-                        </div>
+                        </p>
                     </div>
                     <div class = "cont-login-header span5">
-                        <form class = "form-inline">
+                        <form class = "form-inline pull-right">
                             <input type = "text" class = "input-small" 
                                 placeholder = "Email">
                             <input type = "password" class = "input-small" 
                                 placeholder = "Password">
-                            <button type = "submit" class = "btn">
+                            <button type = "submit" class = "btn btn-primary">
                                 Sign in
                             </button>
-                            <button type = "submit" class = "btn">
+                            <button type = "submit" class = "btn btn-warning">
                                 Register
                             </button>
                         </form>
@@ -87,7 +87,7 @@
             </div>
         </div>
         <div id = "background">
-            <div class = "container">
+            <div id = "main-container" class = "container">
                 <div class = "row">
                     <div class = "span8">
                         <ul class = "thumbnails">
@@ -117,14 +117,17 @@
                     </div>
                 </div>
                 <div class = "row">
-                    <div class = "span4 latest-matches">
-                        
+                    <div class = "span4">
+                        <div class = "alert alert-danger">
+                        </div>
                     </div>
                     <div class = "span4">
-                        
+                        <div class = "alert alert-success">
+                        </div>
                     </div>
                     <div class = "span4">
-                        
+                        <div class = "alert alert-info">
+                        </div>
                     </div>
                 </div>
             </div>

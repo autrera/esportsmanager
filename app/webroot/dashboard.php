@@ -87,46 +87,48 @@
             </div>
         </div>
         <div id = "background">
-            <div id = "main-container" class = "container">
-                <div class = "row">
-                    <div class = "span8">
-                        <ul class = "thumbnails">
-                            <li class = "span8">
-                                <a href = "#" class = "thumbnail">
-                                  <img src = "http://placehold.it/770x300" 
-                                    alt = "">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class = "span4">
-                        <ul class = "thumbnails">
-                            <li class = "span4">
-                                <div class = "thumbnail">
-                                    <img src = "http://placehold.it/360x180" alt = "">
-                                    <h5>Thumbnail label</h5>
-                                    <div class = "caption">
-                                        <h4>> Thumbnail label</h4>
-                                        <h4>> Thumbnail label</h4>
-                                        <h4>> Thumbnail label</h4>
-                                        <h4>> Thumbnail label</h4>
+            <div id = "main-container-border" class = "container">
+                <div id = "main-container" class = "container">
+                    <div class = "row">
+                        <div class = "span8">
+                            <ul class = "thumbnails">
+                                <li class = "span8">
+                                    <a href = "#" class = "thumbnail">
+                                      <img src = "http://placehold.it/770x300" 
+                                        alt = "">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class = "span4">
+                            <ul class = "thumbnails">
+                                <li class = "span4">
+                                    <div class = "thumbnail">
+                                        <img src = "http://placehold.it/360x180" alt = "">
+                                        <h5>Thumbnail label</h5>
+                                        <div class = "caption">
+                                            <h4>> Thumbnail label</h4>
+                                            <h4>> Thumbnail label</h4>
+                                            <h4>> Thumbnail label</h4>
+                                            <h4>> Thumbnail label</h4>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class = "row">
-                    <div class = "span4">
-                        <div class = "alert alert-danger">
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class = "span4">
-                        <div class = "alert alert-success">
+                    <div class = "row">
+                        <div class = "span4">
+                            <div class = "alert alert-danger">
+                            </div>
                         </div>
-                    </div>
-                    <div class = "span4">
-                        <div class = "alert alert-info">
+                        <div class = "span4">
+                            <div class = "alert alert-success">
+                            </div>
+                        </div>
+                        <div class = "span4">
+                            <div class = "alert alert-info">
+                            </div>
                         </div>
                     </div>
                 </div>

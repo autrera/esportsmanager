@@ -13,13 +13,9 @@
     background: #496e91;
 }
 
-#main-container-border,
-#main-container {
+#main-container-border {
     padding: 8px 24px 8px 8px;
     background: #1D1D1D;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
 }
 
 #welcome-message {
@@ -42,10 +38,19 @@
 }
 
 .latest-matches {
-    border: 1px solid #DDD;
     padding: 8px;
+    background: #1D1D1D;
 }
 
 .thumbnail {
     background: white;
+}
+
+.module-header {
+}
+
+.border-radius-4 {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }

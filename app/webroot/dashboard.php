@@ -87,8 +87,9 @@
             </div>
         </div>
         <div id = "background">
-            <div id = "main-container-border" class = "container">
-                <div id = "main-container" class = "container">
+            <div id = "main-container-border" class = "container 
+                border-radius-4">
+                <div id = "main-container" class = "container border-radius-4">
                     <div class = "row">
                         <div class = "span8">
                             <ul class = "thumbnails">
@@ -119,15 +120,10 @@
                     </div>
                     <div class = "row">
                         <div class = "span4">
-                            <div class = "alert alert-danger">
-                            </div>
-                        </div>
-                        <div class = "span4">
-                            <div class = "alert alert-success">
-                            </div>
-                        </div>
-                        <div class = "span4">
-                            <div class = "alert alert-info">
+                            <div class = "latest-matches border-radius-4">
+                                <div class="module-header">
+                                    <h1>Example page header</h1>
+                                </div>
                             </div>
                         </div>
                     </div>

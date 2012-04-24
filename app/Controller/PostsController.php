@@ -76,4 +76,17 @@ class PostsController extends AppController {
         }
 	}
 
+/**
+ * Visualiza el post solicitado
+ *
+ * @param int El id del post a mostrar
+ */
+    public function view($id = null){
+        $this->Post = $id;
+        if (!$this->Post->exists()) {
+            throw new NotFoundException(__('Invalid post'));
+        }
+        $this->set('post', $this->Post->read(null, $id));
+    }
+
 }

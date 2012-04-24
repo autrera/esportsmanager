@@ -103,5 +103,23 @@ class NewsController extends AppController {
         $this->set('noticia', $this->News->read(null, $id));
     }
 
+/**
+ * Edita la noticia
+ *
+ * @param int El id de la noticia a editar
+ */
+    public function edit($id = null) {
+        $this->News->id = $id;
+        if ($this->request->is('get')) {
+            $this->request->data = $this->News->read();
+        } else {
+            if ($this->News->save($this->request->data)) {
+                $this->Session->setFlash('Your news have been updated.');
+                $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash('Unable to update your news.');
+            }
+        }
+    }
 
 }

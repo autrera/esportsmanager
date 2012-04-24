@@ -48,6 +48,9 @@ class AppController extends Controller {
                 'Form' => array(
                     'fields' => array('username' => 'email')
                 )
+            ),
+            'authorize' => array(
+                'Controller'
             )
         )
     );
@@ -55,6 +58,29 @@ class AppController extends Controller {
     // Le permitimos a todos ver el listado y un elemento en particular
     public function beforeFilter() {
         $this->Auth->allow('index', 'view');
+    }
+
+/**
+ * Autorizamos a los administradores y denegamos acceso a todos los
+ * demás, el acceso a usuarios, se hará a nivel de controlador
+ *
+ * @param $user El usuario a verificar que tenga el rol admin
+ */
+    public function isAuthorized($user) {
+        // Sólo el dueño y los admins pueden editar y eliminar
+        $accion = $this->request->params['action'];
+        if (in_array($accion, array('delete', 'edit'))){
+            $elemento = $this->request->params['pass'][0];
+            if ($this->{$this->modelClass}->isOwnedBy($elemento, $user['id'])){
+                return true;
+            }
+        }
+
+        // Debemos buscar en la BD si el rol o el id del usuario
+        // permiten la acción solicitada
+
+        // Default deny
+        return false;
     }
 
 }

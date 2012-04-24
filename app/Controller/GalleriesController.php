@@ -94,5 +94,48 @@ class GalleriesController extends AppController {
         $this->set('galleries', $this->Gallery->find('all'));
     }
 
+/**
+ * Edita la galeria
+ *
+ * @param int El id de la galeria a editar
+ */
+    public function edit($id = null) {
+        // Seteamos le id de la galeria
+        $this->Gallery->id = $id;
+        // Si la petición es get, buscamos en la base y lo enviamos
+        if ($this->request->is('get')) {
+            $this->request->data = $this->Gallery->read();
+        } else {
+            // Intentamos guardar el registro
+            if ($this->Gallery->save($this->request->data)) {
+                // Guardado exitoso
+                $this->Session->setFlash(
+                    'Your gallery have been updated.'
+                );
+                $this->redirect(array('action' => 'index'));
+            } else {
+                // Guardado fallido
+                $this->Session->setFlash(
+                    'Unable to update your gallery.'
+                );
+            }
+        }
+    }
+
+/**
+ * Elimina la noticia
+ *
+ * @param int El id de la galeria a eliminar
+ */
+    public function delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Gallery->delete($id)) {
+            $this->Session->setFlash('The gallery with id: ' . $id . ' has been deleted.');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
+
 
 }

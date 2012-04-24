@@ -90,5 +90,49 @@ class VideosController extends AppController {
         $this->set('video', $this->Video->read(null, $id));
     }
 
+/**
+ * Edita el video
+ *
+ * @param int El id del video a editar
+ */
+    public function edit($id = null) {
+        // Seteamos le id de las news
+        $this->Video->id = $id;
+        // Si la petición es get, buscamos en la base y lo enviamos
+        if ($this->request->is('get')) {
+            $this->request->data = $this->Video->read();
+        } else {
+            // Intentamos guardar el registro
+            if ($this->Video->save($this->request->data)) {
+                // Guardado exitoso
+                $this->Session->setFlash(
+                    'Your video have been updated.'
+                );
+                $this->redirect(array('action' => 'index'));
+            } else {
+                // Guardado fallido
+                $this->Session->setFlash(
+                    'Unable to update your video.'
+                );
+            }
+        }
+    }
+
+/**
+ * Elimina el video
+ *
+ * @param int El id del video a eliminar
+ */
+    public function delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Video->delete($id)) {
+            $this->Session->setFlash('The video with id: ' . $id . ' has been deleted.');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
+
+
 
 }

@@ -72,4 +72,14 @@ class AppModel extends Model {
         return array_pop($array);
     }
 
+/**
+ * Verificamos que el usuario sea dueño del elemento
+ *
+ * @param $user     El usuario a verificar
+ * @param $elemento El elemento a verificar
+ */
+    public function isOwnedBy($elemento, $user) {
+        return $this->field('id', array('id' => $elemento, 'users_id' => $user)) === $elemento;
+    }
+
 }

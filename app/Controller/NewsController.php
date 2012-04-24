@@ -73,18 +73,23 @@ class NewsController extends AppController {
 	}
 
 /**
- * Agregamos posts
+ * Agregamos news
  *
  * @param none
  */
 	public function add() {
+        // Verificamos que el request sea un post
 		if ($this->request->is('post')) {
             $this->News->create();
+            // Seteamos el id del usuario, será dueño de la new
             $this->request->data['News']['users_id'] = $this->Auth->user('id');
+            // Guardamos la new
 			if ($this->News->save($this->request->data)) {
+                // Todo salió bien asi que lo informamos
                 $this->Session->setFlash(__('The post has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
+                // Algo falló y no se guardó
                 $this->Session->setFlash(__('The post could not be saved. Please, try again.'));
             }
         }
@@ -109,15 +114,24 @@ class NewsController extends AppController {
  * @param int El id de la noticia a editar
  */
     public function edit($id = null) {
+        // Seteamos le id de las news
         $this->News->id = $id;
+        // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {
             $this->request->data = $this->News->read();
         } else {
+            // Intentamos guardar el registro
             if ($this->News->save($this->request->data)) {
-                $this->Session->setFlash('Your news have been updated.');
+                // Guardado exitoso
+                $this->Session->setFlash(
+                    'Your news have been updated.'
+                );
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash('Unable to update your news.');
+                // Guardado fallido
+                $this->Session->setFlash(
+                    'Unable to update your news.'
+                );
             }
         }
     }

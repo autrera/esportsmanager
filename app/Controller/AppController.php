@@ -80,6 +80,9 @@ class AppController extends Controller {
         // permiten la acción solicitada
 
         // Default deny
+        $this->Session->setFlash(
+            'You are not authorized to do that.'
+        );
         return false;
     }
 

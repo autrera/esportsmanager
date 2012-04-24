@@ -4,6 +4,7 @@
         <legend><?php echo __('Add some News'); ?></legend>
     <?php
         echo $this->Form->input('title');
+        echo $this->Form->input('featured');
         echo $this->Form->input('content');
     ?>
     </fieldset>

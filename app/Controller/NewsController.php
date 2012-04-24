@@ -122,4 +122,19 @@ class NewsController extends AppController {
         }
     }
 
+/**
+ * Elimina la noticia
+ *
+ * @param int El id de la noticia a eliminar
+ */
+    public function delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->News->delete($id)) {
+            $this->Session->setFlash('The news with id: ' . $id . ' has been deleted.');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
+
 }

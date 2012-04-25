@@ -3,19 +3,24 @@ App::uses('AppModel', 'Model');
 /**
  * Stream Model
  *
- * @property Service $Service
- * @property Users $Users
+ * @property User $User
  */
 class Stream extends AppModel {
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'name';
 /**
  * Validation rules
  *
  * @var array
  */
 	public $validate = array(
-		'service_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -23,9 +28,9 @@ class Stream extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'users_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'prefix_url' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -38,24 +43,36 @@ class Stream extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * belongsTo associations
+ * hasAndBelongsToMany associations
  *
  * @var array
  */
-	public $belongsTo = array(
-		'Service' => array(
-			'className' => 'Service',
-			'foreignKey' => 'service_id',
+	public $hasAndBelongsToMany = array(
+		'User' => array(
+			'className' => 'User',
+			'joinTable' => 'streams_users',
+			'foreignKey' => 'streams_id',
+			'associationForeignKey' => 'users_id',
+			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
-		),
-		'Users' => array(
-			'className' => 'Users',
-			'foreignKey' => 'users_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
 		)
 	);
+
+/**
+ * Retornamos el path explicito de donde almacenaremos las imagenes
+ *
+ * @param none
+ * @return String El path a la carpeta de alamacenamiento
+ */
+	public function getStorageDir(){
+		return ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS . 'uploads' . DS . 'streams' . DS;
+	}
+
 }

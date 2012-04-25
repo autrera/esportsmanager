@@ -82,4 +82,73 @@ class AppModel extends Model {
         return $this->field('id', array('id' => $elemento, 'users_id' => $user)) === $elemento;
     }
 
+/**
+ *
+ *
+ *
+ */
+    public function saveWithOptionalFile($request, $session, 
+        $optionsArray = array()
+    ){
+        // Seteamos los defaults
+        $defaults = array(
+            'fileInputName' => 'upload',
+            'fileColumnName' => 'url',
+            'fileOptional' => true,
+        );
+        // Sobreescribimos los defaults con los enviado por el user
+        extract(array_merge($defaults, $optionsArray));
+        // Pasamos los datos de la imagen a variables
+        extract($request->data[$this->alias][$fileInputName]);
+        // Checamos que haya sido subida
+        if ($this->isUploadedFile(
+            $request->data[$this->alias][$fileInputName])
+        ) {
+            // Obtenemos extension de la imagen
+            $ext = $this->getExtension($name);
+            // Seteamos la ruta del archivo
+            $fileFolder = $this->getStorageDir() . uniqid() . "." .$ext;
+            // Cambiamos el array de data, el campo thumbnail
+            // es un varchar en la BD, no podemos dejar el tipo
+            // file, seteamos la ruta de donde quedó el fichero
+            $request->data[$this->alias][$fileColumnName] = $fileFolder;
+            // Antes de hacer el guardado, debemos checar si es edicion
+            if ($request->params['action'] == 'edit'){
+                // Es edición, debemos tomar el archivo previo y eliminarlo
+                $previousFile = $this->read($fileColumnName);
+                $previousFile = $previousFile[$this->alias][$fileColumnName];
+                // Ya tenemos el archivo, pero lo borraremos sólo si se sube
+                // otro archivo exitosamente
+            }
+            // Guardamos
+            if ($this->save($request->data)) {
+                // Movemos el archivo a su carpeta final
+                if (move_uploaded_file($tmp_name, $fileFolder)){
+                    // Archivo nuevo subido con éxito, borramos el anterior
+                    $this->eraseFile($previousFile);
+                    $session->setFlash(__('The ' . $this->alias . ' has been saved'));
+                } else {
+                    $session->setFlash(__('The ' . $this->alias . ' has been saved but the uploaded file could not, upload the image again'));
+                }
+            } else {
+                $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'));
+            }
+        } else if ($fileOptional) {
+            // No se subió la imagen, pero es opcional, así que guardamos
+            if ($this->save($request->data)) {
+                $session->setFlash(__('The ' . $this->alias . ' has been saved'));
+            } else {
+                $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'));
+            }
+        } else {
+            $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'));
+        }
+    }
+
+    public function eraseFile($file){
+        if (is_file($file)){
+            unlink($file);
+        }
+    }
+
 }

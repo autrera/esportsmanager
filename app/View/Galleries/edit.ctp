@@ -7,5 +7,5 @@
         echo $this->Form->input('id', array('type' => 'hidden'));
     ?>
     </fieldset>
-<?php echo $this->Form->end('Save Post'); ?>
+<?php echo $this->Form->end(__('Update')); ?>
 </div>

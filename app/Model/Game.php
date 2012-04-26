@@ -34,7 +34,7 @@ class Game extends AppModel {
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 	);
@@ -50,8 +50,8 @@ class Game extends AppModel {
 		'Tournament' => array(
 			'className' => 'Tournament',
 			'joinTable' => 'games_tournaments',
-			'foreignKey' => 'game_id',
-			'associationForeignKey' => 'tournament_id',
+			'foreignKey' => 'games_id',
+			'associationForeignKey' => 'tournaments_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
@@ -65,8 +65,8 @@ class Game extends AppModel {
 		'User' => array(
 			'className' => 'User',
 			'joinTable' => 'games_users',
-			'foreignKey' => 'game_id',
-			'associationForeignKey' => 'user_id',
+			'foreignKey' => 'games_id',
+			'associationForeignKey' => 'users_id',
 			'unique' => true,
 			'conditions' => '',
 			'fields' => '',

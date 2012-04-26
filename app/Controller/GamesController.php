@@ -50,6 +50,15 @@ class GamesController extends AppController {
 	public $uses = array();
 
 /**
+ * Displays a all the games
+ *
+ * @param none
+ */
+    public function index() {
+        $this->set('games', $this->Game->find('all'));
+    }
+
+/**
  * Damos de alta los juegos
  *
  * @param none
@@ -59,42 +68,67 @@ class GamesController extends AppController {
         // Validar que sea imagen
         // Validar que solo admins puedan mover esto
 
-        // Checamos que esté logueado
-        if ($this->Auth->user('id')){
-            // Verificamos que sea un envio por POST
-    		if ($this->request->is('post')) {
-                $this->Game->create();
-                // Pasamos los datos de la imagen a variables
-                extract($this->request->data['Game']['thumbnail']);
-                // Checamos que haya sido subida
-                if ($this->Game->isUploadedFile(
-                    $this->request->data['Game']['thumbnail'])
-                ) {
-                    // Obtenemos extension de la imagen
-                    $ext = $this->Game->getExtension($name);
-                    // Seteamos la ruta del archivo
-                    $fileFolder = $this->Game->getStorageDir() . uniqid() . "." .$ext;
-                    // Cambiamos el array de data, el campo thumbnail
-                    // es un varchar en la BD, no podemos dejar el tipo
-                    // file, seteamos la ruta de donde quedó el fichero
-                    $this->request->data['Game']['thumbnail'] = $fileFolder;
-                    // Guardamos
-        			if ($this->Game->save($this->request->data)) {
-                        // Movemos el archivo a su carpeta final
-                        if (move_uploaded_file($tmp_name, $fileFolder)){
-                            $this->Session->setFlash(__('The game has been saved'));
-                        } else {
-                            $this->Session->setFlash(__('The game has been saved but the image could not, upload the image again'));
-                        }
-                    } else {
-                        $this->Session->setFlash(__('The game could not be saved. Please, try again.'));
-                    }
-                } else {
-                    // No se subió la imagen
-                    $this->Session->setFlash(__('There was an error trying to upload the file, please try again'));
-                }
-            }
+        // Verificamos que sea un envio por POST
+		if ($this->request->is('post')) {
+            $this->Game->create();
+            $this->Game->saveWithOptionalFile($this->request, $this->Session,
+                array(
+                    'fileColumnName' => 'thumbnail',
+                    'fileInputName' => 'upload',
+                    'fileOptional' => false,
+                )
+            );
         }
 	}
+
+/**
+ * Visualiza el juego dado
+ *
+ * @param int El id del juego a mostrar
+ */
+    public function view($id = null){
+        $this->Game->id = $id;
+        if (!$this->Game->exists()) {
+            throw new NotFoundException(__('Invalid game'));
+        }
+        $this->set('game', $this->Game->read(null, $id));
+    }
+
+/**
+ * Edita el juego
+ *
+ * @param int El id del juego a editar
+ */
+    public function edit($id = null) {
+        // Seteamos le id del juego
+        $this->Game->id = $id;
+        // Si la petición es get, buscamos en la base y lo enviamos
+        if ($this->request->is('get')) {
+            $this->request->data = $this->Game->read();
+        } else {
+            // Intentamos guardar el registro
+            $this->Game->saveWithOptionalFile($this->request, $this->Session,
+                array(
+                    'fileColumnName' => 'thumbnail',
+                    'fileInputName' => 'upload',
+                )
+            );
+        }
+    }
+
+/**
+ * Elimina el juego
+ *
+ * @param int El id del juego a eliminar
+ */
+    public function delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Game->delete($id)) {
+            $this->Session->setFlash('The game with id: ' . $id . ' has been deleted.');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
 
 }

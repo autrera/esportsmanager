@@ -50,6 +50,15 @@ class AvatarsController extends AppController {
 	public $uses = array('Avatar', 'Game');
 
 /**
+ * Muestra todos los avatares disponibles
+ *
+ * @param none
+ */
+    public function index() {
+        $this->set('avatars', $this->Avatar->find('all'));
+    }
+
+/**
  * Damos de alta los juegos
  *
  * @param none
@@ -104,5 +113,52 @@ class AvatarsController extends AppController {
             }
         }
 	}
+
+/**
+ * Visualiza el avatar dado
+ *
+ * @param int El id del Avatar a mostrar
+ */
+    public function view($id = null){
+        $this->Avatar->id = $id;
+        if (!$this->Avatar->exists()) {
+            throw new NotFoundException(__('Invalid avatar'));
+        }
+        $this->set('avatar', $this->Avatar->read(null, $id));
+    }
+
+/**
+ * Edita el avatar
+ *
+ * @param int El id del avatar a editar
+ */
+    public function edit($id = null) {
+        // Seteamos le id del avatar
+        $this->Avatar->id = $id;
+        // Si la petición es get, buscamos en la base y lo enviamos
+        if ($this->request->is('get')) {
+            $this->request->data = $this->Avatar->read();
+        } else {
+            // Intentamos guardar el registro
+            $this->Avatar->saveWithOptionalFile($this->request, $this->Session,
+                array('fileColumnName' => 'icon')
+            );
+        }
+    }
+
+/**
+ * Elimina el video
+ *
+ * @param int El id del video a eliminar
+ */
+    public function delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Avatar->delete($id)) {
+            $this->Session->setFlash('The avatar with id: ' . $id . ' has been deleted.');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
 
 }

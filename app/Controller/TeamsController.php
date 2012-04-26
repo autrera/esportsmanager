@@ -59,42 +59,16 @@ class TeamsController extends AppController {
         // Validar que sea imagen
         // Validar que solo admins puedan mover esto
 
-        // Checamos que esté logueado
-        if ($this->Auth->user('id')){
-            $this->set('games', $this->Game->find('list'));
-            // Verificamos que sea un envio por POST
-    		if ($this->request->is('post')) {
-                $this->Team->create();
-                // Pasamos los datos de la imagen a variables
-                extract($this->request->data['Team']['photo']);
-                // Checamos que haya sido subida
-                if ($this->Team->isUploadedFile(
-                    $this->request->data['Team']['photo'])
-                ) {
-                    // Obtenemos extension de la imagen
-                    $ext = $this->Team->getExtension($name);
-                    // Seteamos la ruta del archivo
-                    $fileFolder = $this->Team->getStorageDir() . uniqid() . "." .$ext;
-                    // Cambiamos el array de data, el campo thumbnail
-                    // es un varchar en la BD, no podemos dejar el tipo
-                    // file, seteamos la ruta de donde quedó el fichero
-                    $this->request->data['Team']['photo'] = $fileFolder;
-                    // Guardamos
-        			if ($this->Team->save($this->request->data)) {
-                        // Movemos el archivo a su carpeta final
-                        if (move_uploaded_file($tmp_name, $fileFolder)){
-                            $this->Session->setFlash(__('The team has been saved'));
-                        } else {
-                            $this->Session->setFlash(__('The team has been saved but the image could not, upload the image again'));
-                        }
-                    } else {
-                        $this->Session->setFlash(__('The team could not be saved. Please, try again.'));
-                    }
-                } else {
-                    // No se subió la imagen
-                    $this->Session->setFlash(__('There was an error trying to upload the file, please try again'));
-                }
-            }
+        $this->set('games', $this->Game->find('list'));
+        // Verificamos que sea un envio por POST
+		if ($this->request->is('post')) {
+            $this->Team->create();
+            $this->Team->saveWithOptionalFile($this->request, $this->Session,
+                array(
+                    'fileColumnName' => 'photo',
+                    'fileInputName' => 'upload',
+                )
+            );
         }
 	}
 
@@ -119,6 +93,45 @@ class TeamsController extends AppController {
     public function index() {
         $this->set('teams', $this->Team->find('all'));
     }
+
+/**
+ * Edita el equipo
+ *
+ * @param int El id del equipo a editar
+ */
+    public function edit($id = null) {
+        // Seteamos le id del equipo
+        $this->Team->id = $id;
+        $this->set('games', $this->Game->find('list'));
+        // Si la petición es get, buscamos en la base y lo enviamos
+        if ($this->request->is('get')) {
+            $this->request->data = $this->Team->read();
+        } else {
+            // Intentamos guardar el registro
+            $this->Team->saveWithOptionalFile($this->request, $this->Session,
+                array(
+                    'fileColumnName' => 'photo',
+                    'fileInputName' => 'upload',
+                )
+            );
+        }
+    }
+
+/**
+ * Elimina el video
+ *
+ * @param int El id del video a eliminar
+ */
+    public function delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Stream->delete($id)) {
+            $this->Session->setFlash('The stream with id: ' . $id . ' has been deleted.');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
+
 
 
 }

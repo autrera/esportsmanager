@@ -50,6 +50,15 @@ class CountriesController extends AppController {
 	// public $uses = array();
 
 /**
+ * Displays a all the countries
+ *
+ * @param none
+ */
+    public function index() {
+        $this->set('countries', $this->Country->find('all'));
+    }
+
+/**
  * Damos de alta los paises
  *
  * @param none
@@ -59,46 +68,66 @@ class CountriesController extends AppController {
         // Validar que sea imagen
         // Validar que solo admins puedan mover esto
 
-        // Checamos que esté logueado
-        if ($this->Auth->user('id')){
-            // Verificamos que sea un envio por POST
-    		if ($this->request->is('post')) {
-                $this->Country->create();
-                // Pasamos los datos de la imagen a variables
-                extract($this->request->data['Country']['flag']);
-                // Checamos que haya sido subida
-                if ($this->Country->isUploadedFile(
-                    $this->request->data['Country']['flag'])
-                ) {
-                    // Obtenemos extension de la imagen
-                    $ext = $this->Country->getExtension($name);
-                    // Seteamos la ruta del archivo
-                    $fileFolder = $this->Country->getStorageDir() . uniqid() . "." .$ext;
-                    // Cambiamos el array de data, el campo thumbnail
-                    // es un varchar en la BD, no podemos dejar el tipo
-                    // file, seteamos la ruta de donde quedó el fichero
-                    $this->request->data['Country']['flag'] = $fileFolder;
-                    // Guardamos
-        			if ($this->Country->save($this->request->data)) {
-                        // Movemos el archivo a su carpeta final
-                        if (move_uploaded_file($tmp_name, $fileFolder)){
-                            $this->Session->setFlash(__('The country has been saved'));
-                        } else {
-                            $this->Session->setFlash(__('The country has been saved but the flag could not, upload the image again'));
-                        }
-                    } else {
-                        $this->Session->setFlash(__('The game could not be saved. Please, try again.'));
-                    }
-                } else {
-                    // No se subió la imagen
-                    if ($this->Country->save($this->request->data)) {
-                        $this->Session->setFlash(__('The country has been saved without flag'));
-                    } else {
-                        $this->Session->setFlash(__('The country could not be saved. Please, try again.'));
-                    }
-                }
-            }
+        // Verificamos que sea un envio por POST
+		if ($this->request->is('post')) {
+            $this->Country->create();
+            $this->Country->saveWithOptionalFile($this->request, 
+                $this->Session, array(
+                    'fileColumnName' => 'flag',
+                    'fileInputName' => 'upload',
+                )
+            );
         }
 	}
+
+/**
+ * Visualiza el pais dado
+ *
+ * @param int El id del País a mostrar
+ */
+    public function view($id = null){
+        $this->Country->id = $id;
+        if (!$this->Country->exists()) {
+            throw new NotFoundException(__('Invalid country'));
+        }
+        $this->set('country', $this->Country->read(null, $id));
+    }
+
+/**
+ * Edita el pais
+ *
+ * @param int El id del pais a editar
+ */
+    public function edit($id = null) {
+        // Seteamos le id del pais
+        $this->Country->id = $id;
+        // Si la petición es get, buscamos en la base y lo enviamos
+        if ($this->request->is('get')) {
+            $this->request->data = $this->Country->read();
+        } else {
+            // Intentamos guardar el registro
+            $this->Country->saveWithOptionalFile($this->request, 
+                $this->Session, array(
+                    'fileColumnName' => 'flag',
+                    'fileInputName' => 'upload',
+                )
+            );
+        }
+    }
+
+/**
+ * Elimina el pais
+ *
+ * @param int El id del pais a eliminar
+ */
+    public function delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Country->delete($id)) {
+            $this->Session->setFlash('The country with id: ' . $id . ' has been deleted.');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
 
 }

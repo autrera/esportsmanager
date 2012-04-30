@@ -6,7 +6,7 @@
         <legend><?php echo __('Edit the Game'); ?></legend>
     <?php
         echo $this->Form->input('name');
-        echo $this->Form->file('thumbnail');
+        echo $this->Form->file('upload');
         echo $this->Form->input('id', array('type' => 'hidden'));
     ?>
     </fieldset>

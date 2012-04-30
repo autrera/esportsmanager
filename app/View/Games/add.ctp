@@ -6,7 +6,7 @@
         <legend><?php echo __('Add a Game'); ?></legend>
     <?php
         echo $this->Form->input('name');
-        echo $this->Form->file('thumbnail');
+        echo $this->Form->file('upload');
     ?>
     </fieldset>
 <?php echo $this->Form->end(__('Submit'));?>

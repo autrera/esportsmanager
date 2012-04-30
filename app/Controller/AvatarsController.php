@@ -141,15 +141,18 @@ class AvatarsController extends AppController {
         } else {
             // Intentamos guardar el registro
             $this->Avatar->saveWithOptionalFile($this->request, $this->Session,
-                array('fileColumnName' => 'icon')
+                array(
+                    'fileColumnName' => 'url',
+                    'fileInputName' => 'upload',
+                )
             );
         }
     }
 
 /**
- * Elimina el video
+ * Elimina el avatar
  *
- * @param int El id del video a eliminar
+ * @param int El id del avatar a eliminar
  */
     public function delete($id) {
         if ($this->request->is('get')) {

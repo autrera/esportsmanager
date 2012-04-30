@@ -37,7 +37,7 @@ class AppController extends Controller {
         'Session',
         'Auth' => array(
             'loginRedirect' => array(
-                'controller' => 'posts',
+                'controller' => 'news',
                 'action' => 'index'
             ),
             'logoutRedirect' => array(
@@ -67,23 +67,53 @@ class AppController extends Controller {
  * @param $user El usuario a verificar que tenga el rol admin
  */
     public function isAuthorized($user) {
-        return true;
-        // Sólo el dueño y los admins pueden editar y eliminar
-        $accion = $this->request->params['action'];
-        if (in_array($accion, array('delete', 'edit'))){
-            $elemento = $this->request->params['pass'][0];
-            if ($this->{$this->modelClass}->isOwnedBy($elemento, $user['id'])){
-                return true;
-            }
+        /* Obtenemos los datos con los que vamos a validar */
+        
+        // La acción que se está realizando
+        $action_name = $this->request->params['action'];
+
+        // El controlador
+        $module_name = $this->name;
+
+        // El id del rol del usuario
+        $role_id = $user['roles_id'];
+
+        // El id del usuario
+        $user_id = $user['id'];
+
+        // El id del resource
+        $resource_id = ($this->request->params['pass'])
+            ? $this->request->params['pass'][0]
+            : false;
+
+        // Cargamos el modelo para realizar la búsqueda
+        $this->loadModel('ModulesActionsRole');
+        
+        // Cargamos el modelo para realizar la búsqueda
+        $this->loadModel('ModulesActionsUser');
+
+        // Verificamos si el usuario está permitido
+        if (
+                $this->{$this->modelClass}->isResourceOwner(
+                    $action_name, $resource_id, $user_id
+                )
+            ||  $this->ModulesActionsRole->isRoleAllowed(
+                    $role_id, $action_name, $module_name
+                )
+            ||  $this->ModulesActionsUser->isUserAllowed(
+                    $user_id, $action_name, $module_name
+                )
+        ){
+            return true;
+        } else {
+            // Seteamos un aviso de que no pueden hacer esto
+            $this->Session->setFlash(
+                'You are not authorized to do that.'
+            );
+            // Regresamos un false, lo cual significa acceso fallido
+            return false;
         }
 
-        // Debemos buscar en la BD si el rol o el id del usuario
-        // permiten la acción solicitada
-
-        // Default deny
-        $this->Session->setFlash(
-            'You are not authorized to do that.'
-        );
     }
 
 }

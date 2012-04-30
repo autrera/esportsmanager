@@ -151,4 +151,35 @@ class AppModel extends Model {
         }
     }
 
+    // {{{ isResourceOwner()
+
+    /**
+     * Validación de si el usuario es dueño del recurso
+     *
+     * Checamos que sea dueño del recurso para editarlo o borrarlo
+     *
+     * @param String    $action_name      La acción realizada
+     * @param String    $resource_id      El id del recurso
+     * @param String    $user_id          El id del usuario
+     *
+     * @return boolean  true si el usuario es dueño del recurso
+     *                  y la acción realizada es borrar o editar
+     *                  false si no lo es
+     */
+    public function isResourceOwner($action_name, $resource_id, $user_id){
+        // Verificamos que el model tenga campo de usuarios
+        if ($this->hasField('users_id')){
+            // Verificamos que sea una edicion, borrado o que exista el recurso
+            if (in_array($action_name, array('delete', 'edit')) && $resource_id
+            ){
+                if ($this->isOwnedBy($resource_id, $user_id)){
+                    return true;
+                }
+            }
+        }
+    }
+
+    // }}}
+
+
 }

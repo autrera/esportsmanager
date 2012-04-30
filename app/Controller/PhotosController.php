@@ -122,4 +122,54 @@ class PhotosController extends AppController {
         $this->set('foto', $this->Photo->read(null, $id));
     }
 
+/**
+ * Redirige hacia el index de galerias
+ *
+ * @param none
+ * @return void
+ */
+    public function index(){
+        $this->redirect(array(
+            'controller' => 'galleries',
+            'action' => 'index'
+        ));
+    }
+
+/**
+ * Edita la foto
+ *
+ * @param int El id de la foto a editar
+ */
+    public function edit($id = null) {
+        // Seteamos le id de la foto
+        $this->Photo->id = $id;
+        // Si la petición es get, buscamos en la base y lo enviamos
+        if ($this->request->is('get')) {
+            $this->request->data = $this->Photo->read();
+        } else {
+            // Intentamos guardar el registro
+            $this->Photo->saveWithOptionalFile($this->request, $this->Session,
+                array(
+                    'fileColumnName' => 'url',
+                    'fileInputName' => 'upload',
+                )
+            );
+        }
+    }
+
+/**
+ * Elimina la foto
+ *
+ * @param int El id de la foto a eliminar
+ */
+    public function delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Photo->delete($id)) {
+            $this->Session->setFlash('The photo with id: ' . $id . ' has been deleted.');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
+
 }

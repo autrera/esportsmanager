@@ -181,5 +181,19 @@ class AppModel extends Model {
 
     // }}}
 
+    // {{{ getStorageDir()
+
+    /**
+     * Retornamos el path explicito de donde almacenaremos los archivos
+     *
+     * @param none
+     * @return String El path a la carpeta de alamacenamiento
+     */
+    public function getStorageDir(){
+        return ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS . 'uploads' . DS . $this->table . DS;
+    }
+
+    // }}}
+
 
 }

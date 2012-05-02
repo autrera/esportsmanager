@@ -65,14 +65,4 @@ class Stream extends AppModel {
 		)
 	);
 
-/**
- * Retornamos el path explicito de donde almacenaremos las imagenes
- *
- * @param none
- * @return String El path a la carpeta de alamacenamiento
- */
-	public function getStorageDir(){
-		return ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS . 'uploads' . DS . 'streams' . DS;
-	}
-
 }

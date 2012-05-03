@@ -126,22 +126,22 @@ class AppModel extends Model {
                 if (move_uploaded_file($tmp_name, $fileFolder)){
                     // Archivo nuevo subido con éxito, borramos el anterior
                     $this->eraseFile($previousFile);
-                    $session->setFlash(__('The ' . $this->alias . ' has been saved'));
+                    $session->setFlash(__('The ' . $this->alias . ' has been saved'), 'flash-success');
                 } else {
-                    $session->setFlash(__('The ' . $this->alias . ' has been saved but the uploaded file could not, upload the image again'));
+                    $session->setFlash(__('The ' . $this->alias . ' has been saved but the uploaded file could not, upload the image again'), 'flash-warning');
                 }
             } else {
-                $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'));
+                $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
             }
         } else if ($fileOptional) {
             // No se subió la imagen, pero es opcional, así que guardamos
             if ($this->save($request->data)) {
-                $session->setFlash(__('The ' . $this->alias . ' has been saved'));
+                $session->setFlash(__('The ' . $this->alias . ' has been saved'), 'flash-success');
             } else {
-                $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'));
+                $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
             }
         } else {
-            $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'));
+            $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
         }
     }
 

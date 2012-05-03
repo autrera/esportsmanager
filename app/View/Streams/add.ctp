@@ -7,7 +7,7 @@
         <?php echo $this->Form->create('Stream', array(
             'type' => 'file',
             'class' => 'form-horizontal',
-            'inputDefaults' =>customFormOptions::getOptionsDefault()
+            'inputDefaults' => customFormOptions::getOptionsDefault()
         ));?>
             <fieldset>
                 <legend><?php echo __('Add a Stream Provider'); ?></legend>

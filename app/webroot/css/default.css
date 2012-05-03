@@ -5,23 +5,30 @@
 
 #header {
     padding-top: 9px;
-    border-bottom: 1px solid #0099BB;
+    border-bottom: 3px solid #3A87AD;
+    background: url('../img/backgrounds/subtle-pattern-1.jpg') repeat;
 }
 
 #background {
-    padding-top: 8px;
+    padding: 8px 0;
     background: #496e91;
+    background: url('../img/backgrounds/header_bg_default.jpg') repeat;
 }
 
 #main-container-border {
     padding: 8px 24px 8px 8px;
-    background: #1D1D1D;
+    /*background: #1D1D1D;*/
+    background: #1A1F26;
+    border: 1px solid #343D4B;
 }
 
 #welcome-message {
     font-size: 16px;
     padding-top: 6px;
-    color: #3A87AD;
+    /*color: #3A87AD;*/
+    color: #08C;
+    text-shadow: white 0px 1px 1px;
+    /*color: #EE7544;*/
 }
 
 .cont-login-header {
@@ -30,16 +37,89 @@
 
 #main-container {
     padding: 8px 8px 8px 8px;
-    background: white;
+    /*background: white;*/
+    background: url('../img/backgrounds/subtle-pattern-1.jpg') repeat;
 }
 
 .latest-videos {
     padding: 8px;
 }
 
-.latest-matches {
+.latest-matches,
+.latest-blogs,
+.live-streams {
     padding: 8px;
     background: #1D1D1D;
+    background: url('../img/backgrounds/fondo-modulo.jpg') repeat;
+}
+
+.match-row,
+.blog-row {
+    background: #3A3A3A;
+    color: #959595;
+    padding: 8px;
+    margin-top: 8px;
+}
+
+.stream-row {
+    margin-top: 8px;
+}
+
+.match-row.even,
+.blog-row.even {
+    background: #2B2B2B;
+}
+
+.match-row:hover {
+    /*background: #FF7200;*/
+}
+
+span.game-logo {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #343D4B;
+    float: left;
+    margin-right: 8px;
+} 
+
+span.game-logo img {
+    vertical-align: top;
+}
+
+.stream-row span.game-logo {
+    margin-top: 4px;
+}
+
+.match-row span.score {
+    font-weight: bold;
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+.match-row span.winner-score {
+    color: #C3E82F;
+}
+
+.match-row span.loser-score {
+    color: #B94A48;
+}
+
+.blog-row h3.blog-title,
+.stream-row h3.stream-title {
+    /*color: #3A87AD;*/
+    color: #08C;
+    text-shadow: black 1px 1px 0px;
+}
+
+.blog-row .blog-info,
+.stream-row .stream-info {
+    font-style: italic;
+}
+
+.blog-row .blog-views,
+.stream-row .stream-views {
+    color: #C3E82F;
 }
 
 .thumbnail {
@@ -49,8 +129,17 @@
 .module-header {
 }
 
+.module-header h1 {
+    color: #F1EEE5;
+    text-shadow: #3A3A3A 1px 1px 0px;
+}
+
 .border-radius-4 {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
+}
+
+.sponsor {
+    background: black;
 }

@@ -86,11 +86,11 @@ class NewsController extends AppController {
             // Guardamos la new
 			if ($this->News->save($this->request->data)) {
                 // Todo salió bien asi que lo informamos
-                $this->Session->setFlash(__('The post has been saved'));
+                $this->Session->setFlash(__('The post has been saved'), 'flash-success');
                 $this->redirect(array('action' => 'index'));
             } else {
                 // Algo falló y no se guardó
-                $this->Session->setFlash(__('The post could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The post could not be saved. Please, try again.'), 'flash-failure');
             }
         }
 	}
@@ -124,13 +124,15 @@ class NewsController extends AppController {
             if ($this->News->save($this->request->data)) {
                 // Guardado exitoso
                 $this->Session->setFlash(
-                    'Your news have been updated.'
+                    'Your news have been updated.',
+                    'flash-success'
                 );
                 $this->redirect(array('action' => 'index'));
             } else {
                 // Guardado fallido
                 $this->Session->setFlash(
-                    'Unable to update your news.'
+                    'Unable to update your news.',
+                    'flash-failure'
                 );
             }
         }
@@ -146,7 +148,16 @@ class NewsController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->News->delete($id)) {
-            $this->Session->setFlash('The news with id: ' . $id . ' has been deleted.');
+            $this->Session->setFlash(
+                'The news with id: ' . $id . ' has been deleted.',
+                'flash-sucess'
+            );
+            $this->redirect(array('action' => 'index'));
+        } else {
+            $this->Session->setFlash(
+                'Unable to delete de element.',
+                'flash-failure'
+            );
             $this->redirect(array('action' => 'index'));
         }
     }

@@ -68,7 +68,10 @@ class StreamsController extends AppController {
         if ($this->request->is('post')) {
             $this->Stream->create();
             $this->Stream->saveWithOptionalFile($this->request, $this->Session,
-                array('fileColumnName' => 'icon')
+                array(
+                    'fileColumnName' => 'icon',
+                    'fileInputName' => 'logo'
+                )
             );
         }
 	}
@@ -115,16 +118,9 @@ class StreamsController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->Stream->delete($id)) {
-            $this->Session->setFlash('The stream with id: ' . $id . ' has been deleted.');
+            $this->Session->setFlash('The stream with id: ' . $id . ' has been deleted.', 'flash-success');
             $this->redirect(array('action' => 'index'));
         }
     }
-
-    public function isAuthorized($user){
-        // Aqui debemos checar que el rol sea admin
-        return true;
-        parent::isAuthorized($user);
-    }
-
 
 }

@@ -108,7 +108,8 @@ class AppController extends Controller {
         } else {
             // Seteamos un aviso de que no pueden hacer esto
             $this->Session->setFlash(
-                'You are not authorized to do that.'
+                'You are not authorized to do that.',
+                'flash-failure'
             );
             // Regresamos un false, lo cual significa acceso fallido
             return false;

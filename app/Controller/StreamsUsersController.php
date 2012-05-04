@@ -73,10 +73,13 @@ class StreamsUsersController extends AppController {
             $this->request->data['StreamsUser']['users_id'] 
                 = $this->Auth->user('id');
             if ($this->StreamsUser->save($this->request->data)) {
-                $this->Session->setFlash(__('Your stream has been saved'));
+                $this->Session->setFlash(__('Your stream has been saved'),
+                    'flash-success'
+                );
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Your stream could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Your stream could not be saved. Please, try again.'), 'flash-failure'
+                );
             }
         }
 	}
@@ -114,10 +117,12 @@ class StreamsUsersController extends AppController {
             $this->request->data['StreamsUser']['users_id'] 
                 = $this->Auth->user('id');
             if ($this->StreamsUser->save($this->request->data)) {
-                $this->Session->setFlash(__('Your stream has been saved'));
+                $this->Session->setFlash(__('Your stream has been saved'),
+                    'flash-success'
+                );
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('Your stream could not be saved. Try again.'));
+                $this->Session->setFlash(__('Your stream could not be saved. Try again.'), 'flash-failure');
             }
         }
     }
@@ -132,7 +137,7 @@ class StreamsUsersController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->StreamsUser->delete($id)) {
-            $this->Session->setFlash('The stream with id: ' . $id . ' has been deleted.');
+            $this->Session->setFlash('The stream with id: ' . $id . ' has been deleted.', 'flash-success');
             $this->redirect(array('action' => 'index'));
         }
     }

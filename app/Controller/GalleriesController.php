@@ -64,9 +64,11 @@ class GalleriesController extends AppController {
                 $this->request->data['Gallery']['users_id'] = $this->Auth->user('id');
                 // Guardamos
     			if ($this->Gallery->save($this->request->data)) {
-                    $this->Session->setFlash(__('The gallery has been saved'));
+                    $this->Session->setFlash(__('The gallery has been saved'),
+                        'flash-sucess'
+                    );
                 } else {
-                    $this->Session->setFlash(__('The gallery could not be saved. Please, try again.'));
+                    $this->Session->setFlash(__('The gallery could not be saved. Please, try again.'), 'flash-failure');
                 }
             }
         }
@@ -110,13 +112,15 @@ class GalleriesController extends AppController {
             if ($this->Gallery->save($this->request->data)) {
                 // Guardado exitoso
                 $this->Session->setFlash(
-                    'Your gallery have been updated.'
+                    'Your gallery have been updated.',
+                    'flash-sucess'
                 );
                 $this->redirect(array('action' => 'index'));
             } else {
                 // Guardado fallido
                 $this->Session->setFlash(
-                    'Unable to update your gallery.'
+                    'Unable to update your gallery.',
+                    'flash-failure'
                 );
             }
         }
@@ -132,7 +136,7 @@ class GalleriesController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->Gallery->delete($id)) {
-            $this->Session->setFlash('The gallery with id: ' . $id . ' has been deleted.');
+            $this->Session->setFlash('The gallery with id: ' . $id . ' has been deleted.', 'flash-sucess');
             $this->redirect(array('action' => 'index'));
         }
     }

@@ -98,16 +98,16 @@ class AvatarsController extends AppController {
                         if ($this->Avatar->save($row)) {
                             // Movemos el archivo a su carpeta final
                             if (move_uploaded_file($tmp_name, $fileFolder)){
-                                // $this->Session->setFlash(__('The game has been saved'));
+                                $this->Session->setFlash(__('The game has been saved'), 'flash-success');
                             } else {
-                                // $this->Session->setFlash(__('The game has been saved but the image could not, upload the image again'));
+                                $this->Session->setFlash(__('The game has been saved but the image could not, upload the image again'), 'flash-warning');
                             }
                         } else {
-                            // $this->Session->setFlash(__('The game could not be saved. Please, try again.'));
+                            $this->Session->setFlash(__('The game could not be saved. Please, try again.'), 'flash-failure');
                         }
                     } else {
                         // No se subió la imagen
-                        // $this->Session->setFlash(__('There was an error trying to upload the file, please try again'));
+                        $this->Session->setFlash(__('There was an error trying to upload the file, please try again'), 'flash-failure');
                     }
                 }
             }
@@ -135,6 +135,8 @@ class AvatarsController extends AppController {
     public function edit($id = null) {
         // Seteamos le id del avatar
         $this->Avatar->id = $id;
+        // Obtenemos los juegos de la BD
+        $this->set('games', $this->Game->find('list'));
         // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {
             $this->request->data = $this->Avatar->read();
@@ -159,7 +161,7 @@ class AvatarsController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->Avatar->delete($id)) {
-            $this->Session->setFlash('The avatar with id: ' . $id . ' has been deleted.');
+            $this->Session->setFlash('The avatar with id: ' . $id . ' has been deleted.', 'flash-success');
             $this->redirect(array('action' => 'index'));
         }
     }

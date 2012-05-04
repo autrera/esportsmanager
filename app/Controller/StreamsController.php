@@ -103,7 +103,10 @@ class StreamsController extends AppController {
         } else {
             // Intentamos guardar el registro
             $this->Stream->saveWithOptionalFile($this->request, $this->Session,
-                array('fileColumnName' => 'icon')
+                array(
+                    'fileColumnName' => 'icon',
+                    'fileInputName' => 'logo'
+                )
             );
         }
     }

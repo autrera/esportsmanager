@@ -74,7 +74,7 @@ class CountriesController extends AppController {
             $this->Country->saveWithOptionalFile($this->request, 
                 $this->Session, array(
                     'fileColumnName' => 'flag',
-                    'fileInputName' => 'upload',
+                    'fileInputName' => 'icon',
                 )
             );
         }
@@ -109,7 +109,7 @@ class CountriesController extends AppController {
             $this->Country->saveWithOptionalFile($this->request, 
                 $this->Session, array(
                     'fileColumnName' => 'flag',
-                    'fileInputName' => 'upload',
+                    'fileInputName' => 'icon',
                 )
             );
         }
@@ -125,7 +125,7 @@ class CountriesController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->Country->delete($id)) {
-            $this->Session->setFlash('The country with id: ' . $id . ' has been deleted.');
+            $this->Session->setFlash('The country with id: ' . $id . ' has been deleted.', 'flash-success');
             $this->redirect(array('action' => 'index'));
         }
     }

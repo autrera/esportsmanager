@@ -69,10 +69,12 @@ class VideosController extends AppController {
             $this->request->data['Video']['users_id'] 
                 = $this->Auth->user('id');
 			if ($this->Video->save($this->request->data)) {
-                $this->Session->setFlash(__('The post has been saved'));
+                $this->Session->setFlash(__('The post has been saved'),
+                    'flash-success'
+                );
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The video could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The video could not be saved. Please, try again.'), 'flash-failure');
             }
         }
 	}
@@ -106,13 +108,15 @@ class VideosController extends AppController {
             if ($this->Video->save($this->request->data)) {
                 // Guardado exitoso
                 $this->Session->setFlash(
-                    'Your video have been updated.'
+                    'Your video have been updated.',
+                    'flash-success'
                 );
                 $this->redirect(array('action' => 'index'));
             } else {
                 // Guardado fallido
                 $this->Session->setFlash(
-                    'Unable to update your video.'
+                    'Unable to update your video.',
+                    'flash-failure'
                 );
             }
         }
@@ -128,7 +132,7 @@ class VideosController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->Video->delete($id)) {
-            $this->Session->setFlash('The video with id: ' . $id . ' has been deleted.');
+            $this->Session->setFlash('The video with id: ' . $id . ' has been deleted.', 'flash-success');
             $this->redirect(array('action' => 'index'));
         }
     }

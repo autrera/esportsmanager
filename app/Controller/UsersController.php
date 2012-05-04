@@ -78,10 +78,13 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
             $this->User->create();
 			if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
+                $this->Session->setFlash(__('The user has been saved'),
+                    'flash-success'
+                );
                 // $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash-failure'
+                );
             }
         }
 	}
@@ -111,7 +114,7 @@ class UsersController extends AppController {
 		    if ($this->Auth->login()) {
 		        $this->redirect($this->Auth->redirect());
 		    } else {
-		        $this->Session->setFlash(__('Invalid username or password, try again'));
+		        $this->Session->setFlash(__('Invalid username or password, try again'), 'flash-failure');
 		    }
 		}
 	}

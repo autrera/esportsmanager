@@ -2,7 +2,7 @@
     App::uses('customFormOptions', 'Lib');
 ?>
 <div class = "row">
-    <div class = "span8">
+    <div class = "span8 offset2">
         <div class="users form">
         <?php echo $this->Session->flash('auth'); ?>
         <?php echo $this->Form->create('User', array(
@@ -16,10 +16,12 @@
                 echo $this->Form->input('password');
             ?>
             </fieldset>
-        <?php echo $this->Form->end(customFormOptions::getOptionsBtnSubmit());?>
+            <div class = "form-actions">
+                <input type = "submit" value = "Login" 
+                    class = "btn btn-primary">
+                <a href = "add" class = "btn btn-warning ">Register</a>
+            </div>
+            <?php echo $this->Form->end();?>
         </div>
-    </div>
-    <div class = "span4">
-        <?php include_once(ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS . 'sidebar.php'); ?>
     </div>
 </div>

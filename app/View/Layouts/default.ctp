@@ -100,25 +100,25 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="/news">
                                             <i class="icon-folder-open icon-white"></i> 
                                             News
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="/videos">
                                             <i class="icon-film icon-white"></i> 
                                             Videos
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="/streams">
                                             <i class="icon-facetime-video icon-white"></i> 
                                             Streams
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="/galleries">
                                             <i class = "icon-th icon-white"></i> 
                                             Galleries
                                         </a>

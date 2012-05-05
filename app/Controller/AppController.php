@@ -118,4 +118,92 @@ class AppController extends Controller {
 
     }
 
+    // {{{ getModuleId()
+
+    /**
+     * Obtenemos el id del modulo que invoque la función
+     *
+     * @param none
+     *
+     * @return Int $id El id del modulo en la tabla de modulos
+     */
+    public function getModuleId(){
+        // Cargamos el modelo para realizar la búsqueda
+        $this->loadModel('Modules');
+        $data = $this->Modules->find('first', array(
+            'conditions' => array(
+                'Modules.name' => $this->name
+            )
+        ));
+        $id = $data['Modules']['id'];
+        return $id;
+    }
+
+    // }}}
+
+    // {{{ getAuthorizedActions()
+
+    /** 
+     * Obtiene los permisos del modulo para el usuario
+     *
+     * Busca los permisos en base a su rol y en base a su id
+     * de usuario
+     *
+     * @param none
+     *
+     * @return Array El merge de la lista de acciones por rol y usuario
+     */
+    public function getAuthorizedActions(){
+        // Obtenemos el id del modulo
+        $module_id = $this->getModuleId();
+
+        // Cargamos el modelo para realizar la búsqueda
+        $this->loadModel('ModulesActionsRole');
+
+        // Realizamos la busqueda de las acciones del rol
+        $actionsPerRole = $this->ModulesActionsRole->find('all', array(
+                'fields' => array(
+                    '`Actions`.`name`',
+                ),
+                'conditions' => array(
+                    'roles_id' => $this->Auth->user('roles_id'),
+                    'modules_id' => $module_id,
+                ),
+            )
+        );
+
+        // Volvemos la matriz un vector, es mas trabajable
+        $roleActionsList = array();
+        foreach ($actionsPerRole as $action){
+            array_push($roleActionsList, $action['Actions']['name']);
+        }
+
+        // Cargamos el modelo para realizar la búsqueda
+        $this->loadModel('ModulesActionsUser');
+
+        // Realizamos la busqueda de las acciones del user
+        $actionsPerUser = $this->ModulesActionsUser->find('all', array(
+                'fields' => array(
+                    '`Actions`.`name`',
+                ),
+                'conditions' => array(
+                    'users_id' => $this->Auth->user('id'),
+                    'modules_id' => $module_id,
+                ),
+            )
+        );
+
+        // Volvemos la matriz un vector, es mas trabajable
+        $userActionsList = array();
+        foreach ($actionsPerUser as $action){
+            array_push($userActionsList, $action['Actions']['name']);
+        }
+
+        // Mezclamos los permisos de rol y usuarios, y lo regresamos
+        return array_merge($roleActionsList, $userActionsList);
+
+    }
+
+    // }}}
+
 }

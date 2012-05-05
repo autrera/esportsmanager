@@ -177,6 +177,7 @@ class AppModel extends Model {
                 }
             }
         }
+        return false;
     }
 
     // }}}

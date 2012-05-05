@@ -55,6 +55,8 @@ class NewsController extends AppController {
  * @param none
  */
 	public function index() {
+        $this->set('actions', $this->getAuthorizedActions());
+        // Seteamos las news a mostrar
         $this->set('news', 
             $this->News->find('all', array(
                 'fields' => array(
@@ -105,7 +107,12 @@ class NewsController extends AppController {
         if (!$this->News->exists()) {
             throw new NotFoundException(__('Invalid news'));
         }
+        $this->set('actions', $this->getAuthorizedActions());
+        $this->set('isOwner', $this->News->isOwnedBy(
+            $id, $this->Auth->user('id')
+        ));
         $this->set('noticia', $this->News->read(null, $id));
+        $this->set('id', $id);
     }
 
 /**
@@ -150,7 +157,7 @@ class NewsController extends AppController {
         if ($this->News->delete($id)) {
             $this->Session->setFlash(
                 'The news with id: ' . $id . ' has been deleted.',
-                'flash-sucess'
+                'flash-success'
             );
             $this->redirect(array('action' => 'index'));
         } else {

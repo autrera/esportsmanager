@@ -154,6 +154,11 @@ class AppController extends Controller {
      * @return Array El merge de la lista de acciones por rol y usuario
      */
     public function getAuthorizedActions(){
+        // Si el usuario no está logueado retornamos un array vacio
+        if (! $this->Auth->user('id')){
+            return array();
+        }
+
         // Obtenemos el id del modulo
         $module_id = $this->getModuleId();
 

@@ -117,6 +117,13 @@ class UsersController extends AppController {
 		        $this->Session->setFlash(__('Invalid username or password, try again'), 'flash-failure');
 		    }
 		}
+        // Si el usuario entra aquí y ya está logueado lo mandamos al index
+        if ($this->Auth->user('id')){
+            $this->redirect(array(
+                'controller' => 'pages',
+                'action' => 'display'
+            ));
+        }
 	}
 
 /**

@@ -76,10 +76,10 @@ class PhotosController extends AppController {
                 foreach ($this->request->data as $row){
                     $this->Photo->create();
                     // Pasamos los datos de la imagen a variables
-                    extract($row['Photo']['upload']);
+                    extract($row['Photo']['photo']);
                     // Checamos que haya sido subida
                     if ($this->Photo->isUploadedFile(
-                        $row['Photo']['upload'])
+                        $row['Photo']['photo'])
                     ) {
                         // Obtenemos extension de la imagen
                         $ext = $this->Photo->getExtension($name);
@@ -93,16 +93,16 @@ class PhotosController extends AppController {
                         if ($this->Photo->save($row)) {
                             // Movemos el archivo a su carpeta final
                             if (move_uploaded_file($tmp_name, $fileFolder)){
-                                // $this->Session->setFlash(__('The game has been saved'));
+                                $this->Session->setFlash(__('The game has been saved'), 'flash-success');
                             } else {
-                                // $this->Session->setFlash(__('The game has been saved but the image could not, upload the image again'));
+                                $this->Session->setFlash(__('The game has been saved but the image could not, upload the image again'), 'flash-warning');
                             }
                         } else {
-                            // $this->Session->setFlash(__('The game could not be saved. Please, try again.'));
+                            $this->Session->setFlash(__('The game could not be saved. Please, try again.'), 'flash-failure');
                         }
                     } else {
                         // No se subió la imagen
-                        // $this->Session->setFlash(__('There was an error trying to upload the file, please try again'));
+                        $this->Session->setFlash(__('There was an error trying to upload the file, please try again'), 'flash-failure');
                     }
                 }
             }
@@ -151,7 +151,7 @@ class PhotosController extends AppController {
             $this->Photo->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'url',
-                    'fileInputName' => 'upload',
+                    'fileInputName' => 'photo',
                 )
             );
         }

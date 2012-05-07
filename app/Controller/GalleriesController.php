@@ -65,8 +65,13 @@ class GalleriesController extends AppController {
                 // Guardamos
     			if ($this->Gallery->save($this->request->data)) {
                     $this->Session->setFlash(__('The gallery has been saved'),
-                        'flash-sucess'
+                        'flash-success'
                     );
+                    $this->redirect(array(
+                        'controller' => 'photos',
+                        'action' => 'add',
+                        $this->Gallery->id
+                    ));
                 } else {
                     $this->Session->setFlash(__('The gallery could not be saved. Please, try again.'), 'flash-failure');
                 }

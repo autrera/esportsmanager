@@ -16,7 +16,7 @@
                 echo $this->Form->input('games_id', array(
                     'options' => $games 
                 ));
-                echo $this->Form->input('upload', 
+                echo $this->Form->input('avatar', 
                     customFormOptions::getOptionsFile(
                         __('Leave it alone, unless you want to overwrite the current flag.')
                     )

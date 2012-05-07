@@ -22,7 +22,7 @@
                         )
                 ));
                 for ($i = 0; $i < 3; $i++){
-                    echo $this->Form->input('Avatar' . $i . 'upload', 
+                    echo $this->Form->input('Avatar.' . $i . '.avatar', 
                         customFormOptions::getOptionsFile()
                     );
                 }

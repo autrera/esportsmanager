@@ -81,10 +81,10 @@ class AvatarsController extends AppController {
                 foreach ($this->request->data as $row){
                     $this->Avatar->create();
                     // Pasamos los datos de la imagen a variables
-                    extract($row['Avatar']['upload']);
+                    extract($row['Avatar']['avatar']);
                     // Checamos que haya sido subida
                     if ($this->Avatar->isUploadedFile(
-                        $row['Avatar']['upload'])
+                        $row['Avatar']['avatar'])
                     ) {
                         // Obtenemos extension de la imagen
                         $ext = $this->Avatar->getExtension($name);
@@ -145,7 +145,7 @@ class AvatarsController extends AppController {
             $this->Avatar->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'url',
-                    'fileInputName' => 'upload',
+                    'fileInputName' => 'avatar',
                 )
             );
         }

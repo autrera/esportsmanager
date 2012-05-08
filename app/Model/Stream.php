@@ -6,9 +6,8 @@ App::uses('AppModel', 'Model');
  * @property User $User
  */
 class Stream extends AppModel {
-/**
- * Display field
- *
+/** 
+ * Display field *
  * @var string
  */
 	public $displayField = 'name';

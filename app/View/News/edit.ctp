@@ -13,6 +13,16 @@
                 <legend><?php echo __('Edit your news'); ?></legend>
             <?php
                 echo $this->Form->input('title');
+                echo $this->Form->input('games_id', 
+                    customFormOptions::getOptionsDefault(
+                        __(
+                            ''
+                        ),
+                        array(
+                            'options' => $games 
+                        )
+                    )
+                );
                 echo $this->Form->input('featured',
                     customFormOptions::getOptionsCheckBox()
                 );

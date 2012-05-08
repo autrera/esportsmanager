@@ -11,7 +11,23 @@
             <fieldset>
                 <legend><?php echo __('Add some News'); ?></legend>
             <?php
-                echo $this->Form->input('title');
+                echo $this->Form->input('title',
+                    customFormOptions::getOptionsDefault(
+                        __(
+                            'Crazy kick-ass title here, please.'
+                        )
+                    )
+                );
+                echo $this->Form->input('games_id', 
+                    customFormOptions::getOptionsDefault(
+                        __(
+                            'Select the game that better relates to this new.'
+                        ),
+                        array(
+                            'options' => $games 
+                        )
+                    )
+                );
                 echo $this->Form->input('featured', 
                     customFormOptions::getOptionsCheckBox()
                 );

@@ -47,7 +47,7 @@ class NewsController extends AppController {
  *
  * @var array
  */
-	// public $uses = array('News', 'Profile', 'User');
+	public $uses = array('News', 'Game');
 
 /**
  * Displays a all the posts
@@ -80,6 +80,9 @@ class NewsController extends AppController {
  * @param none
  */
 	public function add() {
+        // Consultamos los games a los que puede relacionarse la new
+        $this->set('games', $this->Game->find('list'));
+
         // Verificamos que el request sea un post
 		if ($this->request->is('post')) {
             $this->News->create();
@@ -121,8 +124,12 @@ class NewsController extends AppController {
  * @param int El id de la noticia a editar
  */
     public function edit($id = null) {
+        // Consultamos los games a los que puede relacionarse la new
+        $this->set('games', $this->Game->find('list'));
+
         // Seteamos le id de las news
         $this->News->id = $id;
+        
         // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {
             $this->request->data = $this->News->read();

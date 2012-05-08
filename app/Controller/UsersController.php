@@ -98,6 +98,9 @@ class UsersController extends AppController {
         // Seteamos le id del usuario
         $this->User->id = $id;
 
+        // Seteamos las acciones permitidas de este usurio
+        $this->set('actions', $this->getAuthorizedActions());
+        
         // Seteamos los posibles roles del usuario
         $this->set('roles', $this->Role->find('list'));
 

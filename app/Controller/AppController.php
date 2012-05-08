@@ -104,6 +104,9 @@ class AppController extends Controller {
             ||  $this->ModulesActionsUser->isUserAllowed(
                     $user_id, $action_name, $module_name
                 )
+            ||  $this->isUserSelfEdit(
+                    $user_id, $action_name, $module_name, $resource_id
+                )
         ){
             return true;
         } else {
@@ -117,6 +120,33 @@ class AppController extends Controller {
         }
 
     }
+
+    // {{{ isUserSelfEdit()
+
+    /**
+     * Esta función verifica que un usuario trate de editarse a si mismo
+     *
+     * @param Int   $user_id    El id del usuario que realiza la acción
+     * @param String $action_name   El nombre de la acción realizada
+     * @param String $module_name   El nombre del modulo
+     * @param Int   $resource_id    El id del recurso a editar
+     */
+    public function isUserSelfEdit($user_id, $action_name, $module_name, 
+            $resource_id
+    ){
+        // Checamos que cumpla las condiciones
+        if (   $module_name == 'Users'
+            && $action_name == 'edit'
+            && $user_id == $resource_id
+        ){
+            // El usuario trata de editarse, lo dejaremos pasar
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // }}}
 
     // {{{ getModuleId()
 

@@ -10,6 +10,11 @@ App::uses('AuthComponent', 'Controller/Component');
  * @property Match $Match
  */
 class User extends AppModel {
+/** 
+ * Display field *
+ * @var string
+ */
+	public $displayField = 'nickname';
 /**
  * Validation rules
  *

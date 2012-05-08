@@ -47,7 +47,7 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	// public $uses = array('User');
+	public $uses = array('User', 'Team', 'Role');
 
 /**
  * Permitimos a los usuarios agregarse a si mismos y desloguearse
@@ -88,6 +88,43 @@ class UsersController extends AppController {
             }
         }
 	}
+
+/**
+ * Edita el usuario
+ *
+ * @param int El id del usuario a editar
+ */
+    public function edit($id = null) {
+        // Seteamos le id del usuario
+        $this->User->id = $id;
+
+        // Seteamos los posibles roles del usuario
+        $this->set('roles', $this->Role->find('list'));
+
+        // Seteamos los posibles teams del usuario
+        $this->set('teams', $this->Team->find('list'));
+
+        // Si la petición es get, buscamos en la base y lo enviamos
+        if ($this->request->is('get')) {
+            $this->request->data = $this->User->read();
+        } else {
+            // Intentamos guardar el registro
+            if ($this->User->save($this->request->data)) {
+                // Guardado exitoso
+                $this->Session->setFlash(
+                    'The user have been updated.',
+                    'flash-success'
+                );
+                $this->redirect(array('action' => 'index'));
+            } else {
+                // Guardado fallido
+                $this->Session->setFlash(
+                    'Unable to update the user.',
+                    'flash-failure'
+                );
+            }
+        }
+    }
 
 /**
  * Visualiza el usuario dado

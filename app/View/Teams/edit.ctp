@@ -24,10 +24,10 @@
                     customformoptions::getoptionsdefault(
                         __(
                             'The game these guys will be doomed to play forever and never have fun at it again.'
+                        ),
+                        array(
+                            'options' => $games
                         )
-                    ),
-                    array(
-                        'options' => $games
                     )
                 );
                 echo $this->Form->input('picture', 

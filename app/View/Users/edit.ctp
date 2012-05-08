@@ -23,26 +23,33 @@
                         __('Valid email please. We will not spamm you, we are good guys :)')
                     )
                 );
-                echo $this->Form->input('roles_id',
-                    customformoptions::getoptionsdefault(
-                        __(
-                            'The role this user will perform.'
+
+                // Si tiene permisos de edición tiene acceso a cosas 
+                // mas avanzadas
+                // if (in_array('edit', $actions)){
+                    echo $this->Form->input('roles_id',
+                        customformoptions::getoptionsdefault(
+                            __(
+                                'The role this user will perform.'
+                            ),
+                            array(
+                                'options' => $roles
+                            )
                         )
-                    ),
-                    array(
-                        'options' => $roles
-                    )
-                );
-                echo $this->Form->input('teams_id',
-                    customformoptions::getoptionsdefault(
-                        __(
-                            'The team this user will be produly representing.'
+                    );
+                    echo $this->Form->input('teams_id',
+                        customformoptions::getoptionsdefault(
+                            __(
+                                'The team this user will be produly representing.'
+                            ),
+                            array(
+                                'empty' => 'Choose a Team',
+                                'options' => $teams
+                            )
                         )
-                    ),
-                    array(
-                        'options' => $teams
-                    )
-                );
+                    );
+                // }
+
                 echo $this->Form->input('id', array('type' => 'hidden'));
             ?>
             </fieldset>

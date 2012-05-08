@@ -50,7 +50,7 @@ class TeamsController extends AppController {
 	public $uses = array('Team', 'Game');
 
 /**
- * Damos de alta los juegos
+ * Damos de alta los teams
  *
  * @param none
  */
@@ -66,7 +66,7 @@ class TeamsController extends AppController {
             $this->Team->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'photo',
-                    'fileInputName' => 'upload',
+                    'fileInputName' => 'picture',
                 )
             );
         }
@@ -111,23 +111,23 @@ class TeamsController extends AppController {
             $this->Team->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'photo',
-                    'fileInputName' => 'upload',
+                    'fileInputName' => 'picture',
                 )
             );
         }
     }
 
 /**
- * Elimina el video
+ * Elimina el team
  *
- * @param int El id del video a eliminar
+ * @param int El id del team a eliminar
  */
     public function delete($id) {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
-        if ($this->Stream->delete($id)) {
-            $this->Session->setFlash('The stream with id: ' . $id . ' has been deleted.');
+        if ($this->Video->delete($id)) {
+            $this->Session->setFlash('The video with id: ' . $id . ' has been deleted.');
             $this->redirect(array('action' => 'index'));
         }
     }

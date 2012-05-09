@@ -1,18 +1,62 @@
+<?php
+    App::uses('utilities', 'Lib');
+?>
 <div class = "row">
     <div class = "span8">
-        <?php if (in_array('add', $actions)): ?>
-            <div class = "well">
-                <a href = "/news/add" class = "btn btn-primary btn-large">
-                    <i class="icon-plus icon-white"></i>
-                    Add
+    <?php if (in_array('add', $actions)): ?>
+        <div class = "well">
+            <a href = "/news/add" class = "btn btn-primary btn-large">
+                <i class="icon-plus icon-white"></i>
+                Add
+            </a>
+        </div>
+    <?php endif; ?>
+    <div class="page-header">
+        <h1>.: News <small>enjoyable and accurate info</small></h1>
+    </div>
+    <?php foreach ($news as $new): ?>
+        <div class = "news-row">
+            <div class = "news-image pull-left">
+                <a href = "/news/view/<?php echo $new['News']['id'] ?>" 
+                    title = "Click to read it">
+                    <img src = "<?php echo $new['Games']['thumbnail'] ?>" >
                 </a>
             </div>
-        <?php endif; ?>
-    <?php
-        echo "<pre>";
-        print_r($news);
-        echo "</pre>";
-    ?>
+            <div class = "news-title">
+                <h3>
+                    <a href = "/news/view/<?php echo $new['News']['id'] ?>"
+                        title = "Click to read it">
+                        <?php echo $new['News']['title'] ?>
+                    </a>
+                </h3>
+            </div>
+            <div class = "news-details">
+                <span class="label label-inverse">
+                    <i class="icon-asterisk icon-white"></i>
+                    <?php echo $new['Games']['name'] ?>
+                </span>
+                <span class="label label-inverse">
+                    <i class="icon-calendar icon-white"></i>
+                    <?php 
+                        echo utilities::formatDate($new['News']['created']); 
+                    ?>
+                </span>
+                <span class="label label-info">
+                    <i class="icon-user icon-white"></i>
+                    <?php echo $new['Users']['nickname'] ?>
+                </span>
+            </div>
+            <div class = "news-content">
+                <p>
+                    <?php
+                        echo utilities::tokenTruncate($new['News']['content'], 300
+                        );
+                    ?>
+                </p>
+            </div>
+            <div class = "clear"></div>
+        </div>
+        <?php endforeach; ?>
     </div>
     <div class = "span4">
         <?php include_once(ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS . 'sidebar.php'); ?>

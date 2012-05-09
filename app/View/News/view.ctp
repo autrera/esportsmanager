@@ -1,31 +1,54 @@
+<?php
+    App::uses('utilities', 'Lib');
+?>
 <div class = "row">
     <div class = "span8">
 <?php
-        // Si tiene permitido editar
-        echo '<div class = "btn_group">';
-        if (in_array('edit', $actions) || $isOwner){
-            echo $this->Html->link('Edit', '/news/edit/'.$id, array(
-                'class' => array('btn', 'btn-warning', 'btn-large')
-            ));
-        }
-
-        // Si tiene permitido borrar
-        if (in_array('delete', $actions) || $isOwner){
-            echo $this->Form->postLink(
-                '<i class="icon-trash icon-white"></i>Delete',
-                array('action' => 'delete', $noticia['News']['id']),
-                array('class' => array('btn', 'btn-danger', 'btn-large')),
-                'Are you sure?'
-            );
-        }
-        echo "</div>";
-
-        echo "<pre>";
-        print_r($noticia);
-        echo "</pre>";
+        echo $this->element('indexActionsTop', array(
+            'actions' => $actions,
+            'isOwner' => $isOwner,
+        ));
 ?>
+        <div class = "row">
+            <div class = "new-view">
+                <div class = "span2 new-author">
+                    <div class = "author-picture">
+                        <img src = "<?php echo $noticia['Games']['thumbnail'] ?>" >
+                    </div>
+                    <div class = "author-info">
+                        <span class="label label-info">
+                            <i class="icon-user icon-white"></i>
+                            <?php echo $noticia['Users']['nickname'] ?>
+                        </span>
+                    </div>
+                </div>
+                <div class = "span6 new-main">
+                    <div class = "page-header new-title">
+                        <h1><?php echo $noticia['News']['title'] ?></h1>
+                    </div>
+                    <div class = "new-details">
+                        <span class="label label-inverse">
+                            <i class="icon-asterisk icon-white"></i>
+                            <?php echo $noticia['Games']['name'] ?>
+                        </span>
+                        <span class="label label-inverse">
+                            <i class="icon-calendar icon-white"></i>
+                            <?php 
+                                echo utilities::formatDate(
+                                    $noticia['News']['created'], 'd/m/Y - H:i'
+                                ); 
+                            ?>
+                        </span>
+                    </div>
+                    <div class = "new-social">
+                        Twitter - Facebook
+                    </div>
+                    <div class = "new-content">
+                        <?php echo $noticia['News']['content']; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class = "span4">
-        <?php include_once(ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS . 'sidebar.php'); ?>
-    </div>
+    <?php echo $this->element('sidebar'); ?>
 </div>

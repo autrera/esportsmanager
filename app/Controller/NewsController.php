@@ -60,7 +60,7 @@ class NewsController extends AppController {
         $this->set('news', 
             $this->News->find('all', array(
                 'fields' => array(
-                    'Users.*', 'Profiles.*', 'News.*'
+                    'Users.*', 'Profiles.*', 'News.*', 'Games.*'
                 ),
                 'joins' => array(
                     array(

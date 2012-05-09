@@ -106,17 +106,20 @@ class AppModel extends Model {
         ) {
             // Obtenemos extension de la imagen
             $ext = $this->getExtension($name);
+            // Creamos un nuevo nombre unico para el archivo
+            $newName = uniqid() . '.' . $ext;
             // Seteamos la ruta del archivo
-            $fileFolder = $this->getStorageDir() . uniqid() . "." .$ext;
+            $fileURL    = $this->getStorageURL()  . $newName;
+            $fileFolder = $this->getWebrootPath() . $fileURL;
             // Cambiamos el array de data, el campo thumbnail
             // es un varchar en la BD, no podemos dejar el tipo
             // file, seteamos la ruta de donde quedó el fichero
-            $request->data[$this->alias][$fileColumnName] = $fileFolder;
+            $request->data[$this->alias][$fileColumnName] = $fileURL;
             // Antes de hacer el guardado, debemos checar si es edicion
             if ($request->params['action'] == 'edit'){
                 // Es edición, debemos tomar el archivo previo y eliminarlo
                 $previousFile = $this->read($fileColumnName);
-                $previousFile = $previousFile[$this->alias][$fileColumnName];
+                $previousFile = $this->getWebrootPath . $previousFile[$this->alias][$fileColumnName];
                 // Ya tenemos el archivo, pero lo borraremos sólo si se sube
                 // otro archivo exitosamente
             }
@@ -139,6 +142,66 @@ class AppModel extends Model {
                 $session->setFlash(__('The ' . $this->alias . ' has been saved'), 'flash-success');
             } else {
                 $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
+            }
+        } else {
+            $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
+        }
+    }
+
+    public function saveWithFiles($request, $session, 
+        $optionsArray = array()
+    ){
+        // Seteamos los defaults
+        $defaults = array(
+            'files' => array(
+                'fileOptional' => true,
+            ),
+        );
+        // Sobreescribimos los defaults con los enviado por el user
+        extract(array_merge($defaults, $optionsArray));
+
+        foreach ($files as $file){
+            // Extraemos los datos del archivo
+            extract($file);
+            // Pasamos los datos de la imagen a variables
+            extract($request->data[$this->alias][$fileInputName]);
+            // Obtenemos extension de la imagen
+            $ext = $this->getExtension($name);
+            // Seteamos la ruta del archivo
+            $fileFolder = $this->getStorageDir() . uniqid() . "." .$ext;
+            // Cambiamos el array de data, el campo thumbnail
+            // es un varchar en la BD, no podemos dejar el tipo
+            // file, seteamos la ruta de donde quedó el fichero
+            $request->data[$this->alias][$fileColumnName] = $fileFolder;
+            // Antes de hacer el guardado, debemos checar si es edicion
+            if ($request->params['action'] == 'edit'){
+                // Es edición, debemos tomar el archivo previo y eliminarlo
+                $previousFile = $this->read($fileColumnName);
+                $previousFile = $previousFile[$this->alias][$fileColumnName];
+                // Ya tenemos el archivo, pero lo borraremos sólo si se sube
+                // otro archivo exitosamente
+            }
+            // Checamos que haya sido subida
+            if ($this->isUploadedFile(
+                $request->data[$this->alias][$fileInputName])
+            ) {
+                // Todova bien
+            } else if ($fileOptional) {
+                // No se subió la imagen, pero es opcional, así que guardamos
+            } else {
+                $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
+                return false;
+            }
+        }
+        // Guardamos
+        if ($this->save($request->data)) {
+            // Movemos el archivo a su carpeta final
+            if (move_uploaded_file($tmp_name, $fileFolder)){
+                // Archivo nuevo subido con éxito, borramos el anterior
+                $this->eraseFile($previousFile);
+                $session->setFlash(__('The ' . $this->alias . ' has been saved'), 'flash-success');
+            } else {
+                $session->setFlash(__('The ' . $this->alias . ' has been saved but the uploaded file could not, upload the image again'), 'flash-warning');
             }
         } else {
             $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
@@ -185,13 +248,27 @@ class AppModel extends Model {
     // {{{ getStorageDir()
 
     /**
-     * Retornamos el path explicito de donde almacenaremos los archivos
+     * Retornamos el path explicito hacia nuestro webroot 
+     *
+     * @param none
+     * @return String El path a la carpeta de webroot
+     */
+    public function getWebrootPath(){
+        return ROOT . DS . APP_DIR . DS . WEBROOT_DIR;
+    }
+
+    // }}}
+
+    // {{{ getStorageURL()
+
+    /**
+     * Retornamos el path de la URL del archivo
      *
      * @param none
      * @return String El path a la carpeta de alamacenamiento
      */
-    public function getStorageDir(){
-        return ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS . 'uploads' . DS . $this->table . DS;
+    public function getStorageURL(){
+        return DS . 'uploads' . DS . $this->table . DS;
     }
 
     // }}}

@@ -12,7 +12,13 @@
             <fieldset>
                 <legend><?php echo __('Edit your news'); ?></legend>
             <?php
-                echo $this->Form->input('title');
+                echo $this->Form->input('title',
+                    customFormOptions::getOptionsDefault(
+                        __(
+                            'Do not use accents and weird characters in here, those will break the friendly url, behave please.'
+                        )
+                    )
+                );
                 echo $this->Form->input('games_id', 
                     customFormOptions::getOptionsDefault(
                         __(
@@ -25,6 +31,16 @@
                 );
                 echo $this->Form->input('featured',
                     customFormOptions::getOptionsCheckBox()
+                );
+                echo $this->Form->input('description',
+                    customFormOptions::getOptionsDefault(
+                        __(
+                            'Short text, that describes the new as a whole. This will be shown on the news list, and on the slider when the new is featured.'
+                        ),
+                        array(
+                            'type' => 'textarea'
+                        )
+                    )
                 );
                 echo $this->Form->input('content');
                 echo $this->Form->input('id', array('type' => 'hidden'));

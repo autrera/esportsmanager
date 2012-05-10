@@ -14,7 +14,7 @@
                 echo $this->Form->input('title',
                     customFormOptions::getOptionsDefault(
                         __(
-                            'Crazy kick-ass title here, please.'
+                            'Do not use accents and weird characters in here, those will break the friendly url, behave please.'
                         )
                     )
                 );
@@ -30,6 +30,16 @@
                 );
                 echo $this->Form->input('featured', 
                     customFormOptions::getOptionsCheckBox()
+                );
+                echo $this->Form->input('description',
+                    customFormOptions::getOptionsDefault(
+                        __(
+                            'Short text, that describes the new as a whole. This will be shown on the news list, and on the slider when the new is featured.'
+                        ),
+                        array(
+                            'type' => 'textarea'
+                        )
+                    )
                 );
                 echo $this->Form->input('content');
             ?>

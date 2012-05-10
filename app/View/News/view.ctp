@@ -1,6 +1,3 @@
-<?php
-    App::uses('utilities', 'Lib');
-?>
 <div class = "row">
     <div class = "span8">
 <?php
@@ -36,14 +33,10 @@
                             <i class="icon-asterisk icon-white"></i>
                             <?php echo $noticia['Games']['name'] ?>
                         </span>
-                        <span class="label label-inverse">
-                            <i class="icon-calendar icon-white"></i>
-                            <?php 
-                                echo utilities::formatDate(
-                                    $noticia['News']['created'], 'd/m/Y - H:i'
-                                ); 
-                            ?>
-                        </span>
+                        <?php echo $this->element('timeStampLabel', array(
+                            'timestamp' => $noticia['News']['created'],
+                            'format' => 'd/m/Y - H:i'
+                        )); ?>
                     </div>
                     <div class = "new-social">
                         Twitter - Facebook

@@ -13,7 +13,7 @@
             <div class = "new-view">
                 <div class = "span2 new-author">
                     <div class = "author-picture">
-                        <img src = "<?php echo $noticia['Profiles']['picture'] ?>" >
+                        <img src = "<?php echo $profile['Profile']['picture']; ?>" >
                     </div>
                     <div class = "author-info">
                         <?php 
@@ -21,6 +21,9 @@
                                 'nickname' => $noticia['Users']['nickname'],
                                 'user_id'  => $noticia['Users']['id'],
                             )); 
+                            echo $this->element('userNation', array(
+                                'country' => $profile['Countries']
+                            ));
                         ?>
                     </div>
                 </div>

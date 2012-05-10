@@ -17,14 +17,14 @@
     <?php foreach ($news as $new): ?>
         <div class = "news-row">
             <div class = "news-image pull-left">
-                <a href = "/news/view/<?php echo $new['News']['id'] ?>" 
+                <a href = "/news/view/<?php echo $new['News']['slug'] ?>" 
                     title = "Click to read it">
                     <img src = "<?php echo $new['Games']['thumbnail'] ?>" >
                 </a>
             </div>
             <div class = "news-title">
                 <h3>
-                    <a href = "/news/view/<?php echo $new['News']['id'] ?>"
+                    <a href = "/news/view/<?php echo $new['News']['slug'] ?>"
                         title = "Click to read it">
                         <?php echo $new['News']['title'] ?>
                     </a>
@@ -51,7 +51,7 @@
             <div class = "news-content">
                 <p>
                     <?php
-                        echo utilities::tokenTruncate($new['News']['content'], 300
+                        echo utilities::tokenTruncate($new['News']['description'], 300
                         );
                     ?>
                 </p>

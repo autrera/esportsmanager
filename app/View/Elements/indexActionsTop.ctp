@@ -1,7 +1,7 @@
 <?php
     // Si tiene permitido editar
     if (! empty($actions) || $isOwner){
-        echo '<div class = "well">';
+        echo '<div class = "well userActions">';
         if (in_array('edit', $actions) || $isOwner){
             echo $this->Html->link(
                 '<i class="icon-pencil icon-white"></i> Edit',

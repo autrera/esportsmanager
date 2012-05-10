@@ -35,7 +35,7 @@
 		echo $scripts_for_layout;
 	?>
 </head>
-<body>
+<body onload="prettyPrint()">
 	<?php
 		echo $this->Html->script('jquery');
 		echo $this->Html->script('bootstrap');

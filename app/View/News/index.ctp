@@ -41,10 +41,12 @@
                         echo utilities::formatDate($new['News']['created']); 
                     ?>
                 </span>
-                <span class="label label-info">
-                    <i class="icon-user icon-white"></i>
-                    <?php echo $new['Users']['nickname'] ?>
-                </span>
+                <?php 
+                    echo $this->element('userLink', array(
+                        'nickname' => $new['Users']['nickname'],
+                        'user_id'  => $new['Users']['id'],
+                    )); 
+                ?>
             </div>
             <div class = "news-content">
                 <p>
@@ -58,7 +60,5 @@
         </div>
         <?php endforeach; ?>
     </div>
-    <div class = "span4">
-        <?php include_once(ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS . 'sidebar.php'); ?>
-    </div>
+    <?php echo $this->element('sidebar'); ?>
 </div>

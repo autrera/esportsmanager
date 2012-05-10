@@ -17,7 +17,7 @@
                     </div>
                     <div class = "author-info">
                         <?php 
-                            echo $this->element('userProfileLink', array(
+                            echo $this->element('userLink', array(
                                 'nickname' => $noticia['Users']['nickname'],
                                 'user_id'  => $noticia['Users']['id'],
                             )); 

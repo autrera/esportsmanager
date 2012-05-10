@@ -14,7 +14,13 @@
             <?php
                 echo $this->Form->input('first_name');
                 echo $this->Form->input('last_name');
-                echo $this->Form->input('birthdate');
+                echo $this->Form->input('birthdate',
+                    customFormOptions::getOptionsDefault(
+                        '',
+                        'minYear' => date('Y'),
+                        'maxYear' => date('Y') - 100,
+                    )
+                );
                 echo $this->Form->input('description');
                 echo $this->Form->input('image', 
                     customFormOptions::getOptionsFile(

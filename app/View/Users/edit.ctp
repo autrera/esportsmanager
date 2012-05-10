@@ -23,10 +23,28 @@
                         __('Valid email please. We will not spamm you, we are good guys :)')
                     )
                 );
+                echo $this->Form->input('old_password',
+                    customFormOptions::getOptionsDefault(
+                        __('Leave this blank, unless you want to change your current password.'),
+                        array('type'=>'password')
+                    )
+                );
+                echo $this->Form->input('new_password',
+                    customFormOptions::getOptionsDefault(
+                        __('Type your new password here, remember to type your current password in the field above.'),
+                        array('type'=>'password')
+                    )
+                );
+                echo $this->Form->input('new_password_check', 
+                    customFormOptions::getOptionsDefault(
+                        __('Has to be the same as above. You can do it.'),
+                        array('type'=>'password')
+                    )
+                );
 
                 // Si tiene permisos de edición tiene acceso a cosas 
                 // mas avanzadas
-                // if (in_array('edit', $actions)){
+                if (in_array('edit', $actions)){
                     echo $this->Form->input('roles_id',
                         customformoptions::getoptionsdefault(
                             __(
@@ -48,7 +66,7 @@
                             )
                         )
                     );
-                // }
+                }
 
                 echo $this->Form->input('id', array('type' => 'hidden'));
             ?>

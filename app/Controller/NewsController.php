@@ -47,7 +47,7 @@ class NewsController extends AppController {
  *
  * @var array
  */
-	public $uses = array('News', 'Game');
+	public $uses = array('News', 'Game', 'Profile');
 
 /**
  * Displays a all the posts
@@ -88,6 +88,10 @@ class NewsController extends AppController {
             $this->News->create();
             // Seteamos el id del usuario, será dueño de la new
             $this->request->data['News']['users_id'] = $this->Auth->user('id');
+            // Seteamos el slug
+            $this->request->data['News']['slug'] = Inflector::slug(
+                utf8_encode($this->request->data['News']['title'])
+            );
             // Guardamos la new
 			if ($this->News->save($this->request->data)) {
                 // Todo salió bien asi que lo informamos
@@ -105,17 +109,37 @@ class NewsController extends AppController {
  *
  * @param int El id de la noticia a mostrar
  */
-    public function view($id = null){
-        $this->News->id = $id;
-        if (!$this->News->exists()) {
+    public function view($slug){
+        $noticia = $this->News->find('first', array(
+            'conditions' => array(
+                'slug' => $slug
+            )
+        ));
+
+        $this->News->id = $noticia['News']['id'];
+        $user_id = $noticia['Users']['id'];
+
+        if (!$this->News->id) {
             throw new NotFoundException(__('Invalid news'));
         }
+
         $this->set('actions', $this->getAuthorizedActions());
         $this->set('isOwner', $this->News->isOwnedBy(
-            $id, $this->Auth->user('id')
+            $this->News->id, $this->Auth->user('id')
         ));
-        $this->set('noticia', $this->News->read(null, $id));
-        $this->set('id', $id);
+
+        // Buscamos el perfil del usario
+        $this->set('profile',
+            $this->Profile->find('first', array(
+                'conditions' => array(
+                    'users_id' => $user_id
+                )
+            ))
+        );
+
+        // Leemos la noticia y la mandamos a la vista
+        $this->set('noticia', $this->News->read(null, $this->News->id));
+        $this->set('id', $this->News->id);
     }
 
 /**
@@ -134,6 +158,10 @@ class NewsController extends AppController {
         if ($this->request->is('get')) {
             $this->request->data = $this->News->read();
         } else {
+            // Seteamos el slug
+            $this->request->data['News']['slug'] = Inflector::slug(
+                utf8_encode($this->request->data['News']['title'])
+            );
             // Intentamos guardar el registro
             if ($this->News->save($this->request->data)) {
                 // Guardado exitoso

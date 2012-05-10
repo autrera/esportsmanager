@@ -13,13 +13,15 @@
             <div class = "new-view">
                 <div class = "span2 new-author">
                     <div class = "author-picture">
-                        <img src = "<?php echo $noticia['Games']['thumbnail'] ?>" >
+                        <img src = "<?php echo $noticia['Profiles']['picture'] ?>" >
                     </div>
                     <div class = "author-info">
-                        <span class="label label-info">
-                            <i class="icon-user icon-white"></i>
-                            <?php echo $noticia['Users']['nickname'] ?>
-                        </span>
+                        <?php 
+                            echo $this->element('userProfileLink', array(
+                                'nickname' => $noticia['Users']['nickname'],
+                                'user_id'  => $noticia['Users']['id'],
+                            )); 
+                        ?>
                     </div>
                 </div>
                 <div class = "span6 new-main">

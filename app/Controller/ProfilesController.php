@@ -55,37 +55,68 @@ class ProfilesController extends AppController {
  * @param mixed What page to display
  */
 	public function add() {
-        // Checamos que esté logueado
-        if ($this->Auth->user('id')){
-            // Consultamos si el usuario tiene ya un perfil
-            $datos = $this->Profile->find('first', array(
-                'conditions' => array(
-                    'Profile.users_id' => $this->Auth->user('id')
-                ) 
-            ));
-            // Checamos que no tenga un perfil
-            if (empty($datos['Profile']['id'])){
-                $this->set('avatars',   $this->Avatar->find('list'));
-                $this->set('countries', $this->Country->find('list'));
-        		if ($this->request->is('post')) {
-                    $this->Profile->create();
-                    $this->request->data['Profile']['users_id'] = $this->Auth->user('id');
-        			if ($this->Profile->save($this->request->data)) {
-                        $this->Session->setFlash(__('The profile has been saved'));
-                    } else {
-                        $this->Session->setFlash(__('The profile could not be saved. Please, try again.'));
-                    }
-                }
-            } else {
-                // Como ya tiene un perfil, no puede agregar otro
-                // Lo enviamos a editar su perfil
+        // Consultamos si el usuario tiene ya un perfil
+        $datos = $this->Profile->find('first', array(
+            'conditions' => array(
+                'Profile.users_id' => $this->Auth->user('id')
+            ) 
+        ));
+        // Checamos que no tenga un perfil
+        if (empty($datos['Profile']['id'])){
+            $this->set('countries', $this->Country->find('list'));
+    		if ($this->request->is('post')) {
+                $this->Profile->create();
+                $this->request->data['Profile']['users_id'] = $this->Auth->user('id');
+                $this->Profile->saveWithOptionalFile($this->request, $this->Session, array(
+                        'fileColumnName' => 'picture',
+                        'fileInputName' => 'image',
+                ));
                 $this->redirect(array(
+                    'controller' => 'users',
                     'action' => 'view',
-                    $datos['Profile']['id']
+                    $this->Auth->user('id')
                 ));
             }
+        } else {
+            // Como ya tiene un perfil, no puede agregar otro
+            // Lo enviamos a editar su perfil
+            $this->redirect(array(
+                'controller' => 'users',
+                'action' => 'view',
+                $this->Auth->user('id')
+            ));
         }
 	}
+
+/**
+ * Edita el perfil
+ *
+ * @param int El id del perfil a editar
+ */
+    public function edit($id = null) {
+        // Seteamos le id del perfil
+        $this->Profile->id = $id;
+        // Seteamos los paises para llenar el select
+        $this->set('countries', $this->Country->find('list'));
+        // Si la petición es get, buscamos en la base y lo enviamos
+        if ($this->request->is('get')) {
+            $this->request->data = $this->Profile->read();
+        } else {
+            // Intentamos guardar el registro
+            $this->Profile->saveWithOptionalFile($this->request, 
+                $this->Session, array(
+                    'fileColumnName' => 'picture',
+                    'fileInputName' => 'image'
+                )
+            );
+            $this->redirect(array(
+                'controller' => 'users',
+                'action' => 'view',
+                $this->Auth->user('id')
+            ));
+        }
+    }
+
 
 /**
  * Visualiza el perfil dado
@@ -97,7 +128,12 @@ class ProfilesController extends AppController {
         if (!$this->Profile->exists()) {
             throw new NotFoundException(__('Invalid profile'));
         }
-        $this->set('perfil', $this->Profile->read(null, $id));
+        $data = $this->Profile->read(null, $id);
+        $this->redirect(array(
+            'controller' => 'users',
+            'action' => 'view',
+            $data['Users']['id']
+        ));
     }
 
 }

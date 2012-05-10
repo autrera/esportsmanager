@@ -6,11 +6,12 @@
         <div class="profiles form">
             <?php echo $this->Form->create('Profile', array(
                 'type' => 'file',
+                'action' => 'edit',
                 'class' => 'form-horizontal',
                 'inputDefaults' => customFormOptions::getOptionsDefault()
             ));?>
             <fieldset>
-                <legend><?php echo __('Add your Profile'); ?></legend>
+                <legend><?php echo __('Edit your Profile'); ?></legend>
             <?php
                 echo $this->Form->input('first_name');
                 echo $this->Form->input('last_name');
@@ -19,7 +20,7 @@
                 echo $this->Form->input('image', 
                     customFormOptions::getOptionsFile(
                         __(
-                            'Show us how you look like, we won\'t make fun of you... well, maybe.'
+                            'Leave this alone, unless you want to overwrite the current profile picture, if any.'
                         )
                     )
                 );
@@ -32,7 +33,7 @@
                 echo $this->Form->input('countries_id', array(
                     'options' => $countries 
                 ));
-
+                echo $this->Form->input('id', array('type' => 'hidden'));
             ?>
             </fieldset>
             <?php echo $this->Form->end(

@@ -56,7 +56,7 @@ class User extends AppModel {
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'passwordequal' => array(
 				'rule' =>'checkpasswords',
@@ -70,13 +70,34 @@ class User extends AppModel {
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'passwordequal' => array(
 				'rule' =>'checkpasswords',
 				'message' => 'Passwords muest be equal'
 			),
 		),
+		'old_password' => array(
+			'valid' => array(
+				'rule' => 'verifyPassword',
+				'message' => 'Wrong Password',
+				'on' => 'update',
+			)
+		),
+		'new_password' => array(
+			'passwordequal' => array(
+				'rule' => 'checkpasswords',
+				'message' => 'Passwords muest be equal',
+				'on' => 'update',
+			)
+		),
+		'new_password_check' => array(
+			'passwordequal' => array(
+				'rule' => 'checkpasswords',
+				'message' => 'Passwords muest be equal',
+				'on' => 'update',
+			)
+		)
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -161,11 +182,41 @@ class User extends AppModel {
 	    if (isset($this->data[$this->alias]['password'])) {
 	        $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
 	    }
+	    if (     isset($this->data[$this->alias]['new_password'])
+	    	&& ! empty($this->data[$this->alias]['new_password'])
+	    ) {
+	        $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['new_password']);
+	    }
 	    return true;
 	}
 
 	public function checkpasswords(){
-		return ($this->data['User']['password'] == $this->data['User']['password_check']);
+		if (isset($this->data['User']['password'])){
+			return ($this->data['User']['password'] == $this->data['User']['password_check']);
+		}
+		if (isset($this->data['User']['new_password'])){
+			return ($this->data['User']['new_password'] == $this->data['User']['new_password_check']);
+		}
 	}
+
+	// {{{ verifyPassword()
+
+	/**
+	 * Verifica que el password viejo sea el password actual
+	 *
+	 *
+	 *
+	 */
+	public function verifyPassword(){
+		if (   empty ($this->data[$this->alias]['old_password'])
+			&& empty ($this->data[$this->alias]['new_password'])
+			&& empty ($this->data[$this->alias]['new_password_check'])
+		){
+			return true;
+		}
+		return $this->field('password') === AuthComponent::password($this->data[$this->alias]['old_password']);
+	}
+
+	// }}}
 
 }

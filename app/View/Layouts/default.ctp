@@ -35,10 +35,11 @@
 		echo $scripts_for_layout;
 	?>
 </head>
-<body onload="prettyPrint()">
+<body>
 	<?php
 		echo $this->Html->script('jquery');
 		echo $this->Html->script('bootstrap');
+        echo $this->Html->script('initializers');
 	?>
 	<div id="container">
         <div id = "background">

@@ -56,6 +56,7 @@ class RolesController extends AppController {
  */
 	public function index() {
         $this->set('roles', $this->Role->find('all'));
+        $this->set('actions', $this->getAuthorizedActions());
 	}
 
 /**
@@ -83,6 +84,9 @@ class RolesController extends AppController {
  * @param int El id del Rol a mostrar
  */
     public function view($id = null){
+        // De momento deshabilitaremos la vista de roles
+        // Dirigimos al index
+        $this->redirect(array('action' => 'index'));
         $this->Role->id = $id;
         if (!$this->Role->exists()) {
             throw new NotFoundException(__('Invalid role'));

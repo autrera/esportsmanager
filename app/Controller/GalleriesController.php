@@ -89,7 +89,14 @@ class GalleriesController extends AppController {
         if (!$this->Gallery->exists()) {
             throw new NotFoundException(__('Invalid gallery'));
         }
+
+        $this->set('actions', $this->getAuthorizedActions());
+        $this->set('isOwner', $this->Gallery->isOwnedBy(
+            $this->Gallery->id, $this->Auth->user('id')
+        ));
+
         $this->set('galeria', $this->Gallery->read(null, $id));
+        $this->set('id', $this->Gallery->id);
     }
 
 /**
@@ -99,6 +106,7 @@ class GalleriesController extends AppController {
  */
     public function index() {
         $this->set('galleries', $this->Gallery->find('all'));
+        $this->set('actions', $this->getAuthorizedActions());
     }
 
 /**

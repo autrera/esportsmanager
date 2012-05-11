@@ -47,7 +47,7 @@ class VideosController extends AppController {
  *
  * @var array
  */
-	// public $uses = array('News', 'Profile', 'User');
+	public $uses = array('Video', 'Profile', 'User');
 
 /**
  * Displays a all the videos
@@ -56,6 +56,7 @@ class VideosController extends AppController {
  */
 	public function index() {
         $this->set('videos', $this->Video->find('all'));
+        $this->set('actions', $this->getAuthorizedActions());
 	}
 
 /**
@@ -89,7 +90,25 @@ class VideosController extends AppController {
         if (!$this->Video->exists()) {
             throw new NotFoundException(__('Invalid video'));
         }
-        $this->set('video', $this->Video->read(null, $id));
+
+        $video = $this->Video->read(null, $id);
+        
+        $this->set('actions', $this->getAuthorizedActions());
+        $this->set('isOwner', $this->Video->isOwnedBy(
+            $this->Video->id, $this->Auth->user('id')
+        ));
+
+        // Buscamos el perfil del usario
+        $this->set('profile',
+            $this->Profile->find('first', array(
+                'conditions' => array(
+                    'users_id' => $video['Users']['id']
+                )
+            ))
+        );
+
+        $this->set('id', $this->Video->id);
+        $this->set('video', $video);
     }
 
 /**

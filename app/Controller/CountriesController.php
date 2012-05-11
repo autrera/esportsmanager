@@ -56,6 +56,7 @@ class CountriesController extends AppController {
  */
     public function index() {
         $this->set('countries', $this->Country->find('all'));
+        $this->set('actions', $this->getAuthorizedActions());
     }
 
 /**

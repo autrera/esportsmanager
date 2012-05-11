@@ -83,22 +83,25 @@ class PhotosController extends AppController {
                     ) {
                         // Obtenemos extension de la imagen
                         $ext = $this->Photo->getExtension($name);
+                        // Creamos un nuevo nombre unico para el archivo
+                        $newName = uniqid() . '.' . $ext;
                         // Seteamos la ruta del archivo
-                        $fileFolder = $this->Photo->getStorageDir() . uniqid() . "." .$ext;
+                        $fileURL    = $this->Photo->getStorageURL() . $newName;
+                        $fileFolder = $this->Photo->getWebrootPath(). $fileURL;
                         // Cambiamos el array de data, el campo thumbnail
                         // es un varchar en la BD, no podemos dejar el tipo
                         // file, seteamos la ruta de donde quedó el fichero
-                        $row['Photo']['url'] = $fileFolder;
+                        $row['Photo']['url'] = $fileURL;
                         // Guardamos
                         if ($this->Photo->save($row)) {
                             // Movemos el archivo a su carpeta final
                             if (move_uploaded_file($tmp_name, $fileFolder)){
-                                $this->Session->setFlash(__('The game has been saved'), 'flash-success');
+                                $this->Session->setFlash(__('The photo has been saved'), 'flash-success');
                             } else {
-                                $this->Session->setFlash(__('The game has been saved but the image could not, upload the image again'), 'flash-warning');
+                                $this->Session->setFlash(__('The photo has been saved but the image could not, upload the image again'), 'flash-warning');
                             }
                         } else {
-                            $this->Session->setFlash(__('The game could not be saved. Please, try again.'), 'flash-failure');
+                            $this->Session->setFlash(__('The photo could not be saved. Please, try again.'), 'flash-failure');
                         }
                     } else {
                         // No se subió la imagen
@@ -119,7 +122,23 @@ class PhotosController extends AppController {
         if (!$this->Photo->exists()) {
             throw new NotFoundException(__('Invalid Photo'));
         }
-        $this->set('foto', $this->Photo->read(null, $id));
+
+        $foto = $this->Photo->read(null, $id);
+
+        $this->set('actions', $this->getAuthorizedActions());
+        $this->set('isOwner', $this->Photo->isOwnedBy(
+            $this->Photo->id, $this->Auth->user('id')
+        ));
+
+        $neighbors = $this->Photo->find('neighbors', array(
+            'field' => 'id', 
+            'value' => $this->Photo->id,
+            'galleries_id' => $foto['Photo']['galleries_id']
+        ));
+
+        $this->set('vecinos', $neighbors);
+        $this->set('id', $this->Photo->id);
+        $this->set('foto', $foto);
     }
 
 /**

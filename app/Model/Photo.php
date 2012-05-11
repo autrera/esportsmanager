@@ -91,11 +91,13 @@ class Photo extends AppModel {
 		if (! empty($data)){
 			$newData = array();	
 			foreach ($data['Photo'] as $key => $photo){
-				$newData[$key] = array($this->alias => $photo);
-				$newData[$key][$this->alias]['users_id'] = 
-					$data['users_id'];
-				$newData[$key][$this->alias]['galleries_id'] = 
-					$data['galleries_id'];
+				if ($photo['photo']['error'] == 0){
+					$newData[$key] = array($this->alias => $photo);
+					$newData[$key][$this->alias]['users_id'] = 
+						$data['users_id'];
+					$newData[$key][$this->alias]['galleries_id'] = 
+						$data['galleries_id'];
+				}
 			}
 			return $newData;
 		}

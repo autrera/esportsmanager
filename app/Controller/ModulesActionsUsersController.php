@@ -56,6 +56,7 @@ class ModulesActionsUsersController extends AppController {
  */
     public function index() {
         $this->set('permisos', $this->ModulesActionsUser->find('all'));
+        $this->set('actions', $this->getAuthorizedActions());
     }
 
 /**
@@ -97,7 +98,14 @@ class ModulesActionsUsersController extends AppController {
         if (!$this->ModulesActionsUser->exists()) {
             throw new NotFoundException(__('Invalid id'));
         }
-        $this->set('permiso', $this->ModulesActionsUser->read(null, $id));
+
+        $permiso = $this->ModulesActionsUser->read(null, $id);
+
+        $this->set('actions', $this->getAuthorizedActions());
+        $this->set('isOwner', false);
+
+        $this->set('id', $this->ModulesActionsUser->id);
+        $this->set('permiso', $permiso);
     }
 
 /**

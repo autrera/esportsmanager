@@ -55,6 +55,21 @@ class Team extends AppModel {
 	);
 
 /**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Users' => array(
+			'className' => 'Users',
+			'foreignKey' => 'teams_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
+/**
  * hasAndBelongsToMany associations
  *
  * @var array

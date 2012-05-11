@@ -3,17 +3,13 @@
 ?>
 <div class = "row">
     <div class = "span8">
-    <?php if (in_array('add', $actions)): ?>
-        <div class = "well">
-            <a href = "/news/add" class = "btn btn-primary btn-large">
-                <i class="icon-plus icon-white"></i>
-                Add
-            </a>
+        <?php echo $this->element('addButton', array(
+            'actions' => $actions,
+            'controller' => 'news'
+        )) ?>
+        <div class="page-header">
+            <h1>.: News <small>enjoyable and accurate info</small></h1>
         </div>
-    <?php endif; ?>
-    <div class="page-header">
-        <h1>.: News <small>enjoyable and accurate info</small></h1>
-    </div>
     <?php foreach ($news as $new): ?>
         <div class = "news-row">
             <div class = "news-image pull-left">

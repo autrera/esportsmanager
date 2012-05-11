@@ -8,7 +8,7 @@
 ?>
         <div class = "row">
             <div class = "new-view">
-                <div class = "span2 new-author">
+                <div class = "span2 author-block">
                     <div class = "author-picture">
                         <img src = "<?php echo $profile['Profile']['picture']; ?>" >
                     </div>

@@ -1,5 +1,9 @@
 <div class = "row">
     <div class = "span8">
+        <?php echo $this->element('addButton', array(
+            'actions' => $actions,
+            'controller' => 'countries'
+        )) ?>
         <div class = "page-header">
             <h1>Countries List</h1>
         </div>

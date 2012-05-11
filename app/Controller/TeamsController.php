@@ -47,7 +47,7 @@ class TeamsController extends AppController {
  *
  * @var array
  */
-	public $uses = array('Team', 'Game');
+	public $uses = array('Team', 'Game', 'Profile');
 
 /**
  * Damos de alta los teams
@@ -91,7 +91,24 @@ class TeamsController extends AppController {
  * @param none
  */
     public function index() {
-        $this->set('teams', $this->Team->find('all'));
+        $this->set('actions', $this->getAuthorizedActions());
+        // Buscamos todos los teams
+        $teams = $this->Team->find('all');
+
+        // Buscamos el perfil de cada usuario y lo anexamos a la matriz
+        foreach ($teams as $teamkey => $team){
+            foreach ($team['Users'] as $userkey => $user){
+                $teams[$teamkey]['Users'][$userkey]
+                    = $this->Profile->find('first', array(
+                        'conditions' => array(
+                            'users_id' => $user['id']
+                        ),
+                    ));
+            }
+        }
+
+        // Enviamos la matriz a la vista
+        $this->set('teams', $teams);
     }
 
 /**

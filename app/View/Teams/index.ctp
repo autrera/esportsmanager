@@ -1,8 +1,3 @@
-<?php
-        echo "<pre>";
-        print_r($teams);
-        echo "</pre>";
-?>
 <div class = "row">
     <div class = "span8">
         <?php echo $this->element('addButton', array(
@@ -14,11 +9,6 @@
         </div>
         <?php foreach ($teams as $team): ?>
         <div class = "teams-index">
-            <h2>
-                <a href = "teams/view/<?php echo $team['Team']['id']; ?>">
-                    <?php echo $team['Team']['name']; ?>
-                </a>
-            </h2>
             <div class = "team-content">
             <?php if (! empty($team['Team']['photo'])): ?>
                 <div class = "row team-picture">
@@ -30,10 +20,10 @@
                 </div>
             <?php endif;?>
             <?php if (! empty($team['Users'])): ?>
-                <?php foreach ($team['Users'] as $player): ?>
                 <div class = "row user-content">
                     <div class = "span8">
                         <ul class = "thumbnails">
+                        <?php foreach ($team['Users'] as $player): ?>
                             <li class = "span1">
                                 <div class = "thumbnail">
                                     <a href = "/users/view/<?php echo $player['Users']['id'] ?>" rel="popover" 
@@ -44,10 +34,10 @@
                                     </a>
                                 </div>
                             </li>
+                        <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
-                <?php endforeach; ?>
             <?php endif; ?>
             </div>
         </div>

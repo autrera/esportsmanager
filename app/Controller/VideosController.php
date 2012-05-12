@@ -88,7 +88,7 @@ class VideosController extends AppController {
     public function view($id = null){
         $this->Video->id = $id;
         if (!$this->Video->exists()) {
-            throw new NotFoundException(__('Invalid video'));
+            $this->invalidParameter();
         }
 
         $video = $this->Video->read(null, $id);

@@ -241,4 +241,25 @@ class AppController extends Controller {
 
     // }}}
 
+    // {{{ invalidParameter()
+
+    /**
+     * Esta función se debe de llamar cuando el recurso a buscar
+     * sea erróneo, redirige al index y setea un flash de no encontrado
+     *
+     * @param none
+     * @return void
+     */
+
+    // }}}
+    public function invalidParameter(){
+        $this->Session->setFlash(
+            'We couldn\'t find the resource you were trying to access',
+            'flash-failure'
+        );
+        $this->redirect(array(
+            'action' => 'index'
+        ));
+    }
+
 }

@@ -17,8 +17,10 @@
                 echo $this->Form->input('birthdate',
                     customFormOptions::getOptionsDefault(
                         '',
-                        'minYear' => date('Y'),
-                        'maxYear' => date('Y') - 100,
+                        array(
+                            'minYear' => date('Y'),
+                            'maxYear' => date('Y') - 100,
+                        )
                     )
                 );
                 echo $this->Form->input('description');

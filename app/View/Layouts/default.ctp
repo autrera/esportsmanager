@@ -75,30 +75,17 @@
                         <div class="navbar-inner">
                             <div class="container">
                                 <ul class = "nav">
-                                    <li class="active">
-                                        <a href="#">
+                                    <li>
+                                        <a href="/">
                                             <i class="icon-home icon-white"></i> 
                                             Home
                                         </a>
                                     </li>
-                                    <li class="dropdown" id="menu1">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
-                                            <i class = "icon-list-alt icon-white"></i> 
-                                            Team
-                                            <b class="caret"></b>
+                                    <li>
+                                        <a href="/teams">
+                                            <i class="icon-home icon-white"></i> 
+                                            Teams
                                         </a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="#">
-                                                    <span>
-                                                        <img src = "/img/game-icons/cs.png">
-                                                    </span>
-                                                    CSS
-                                                </a>
-                                            </li>
-                                            <li><a href="#">SC2</a></li>
-                                            <li><a href="#">DOTA2</a></li>
-                                        </ul>
                                     </li>
                                     <li>
                                         <a href="/news">

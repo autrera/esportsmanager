@@ -82,7 +82,26 @@ class TeamsController extends AppController {
         if (!$this->Team->exists()) {
             throw new NotFoundException(__('Invalid team'));
         }
-        $this->set('team', $this->Team->read(null, $id));
+        // Buscamos el team
+        $team = $this->Team->find('first', array(
+            'conditions' => array(
+                'Team.id' => $this->Team->id
+            )
+        ));
+
+        foreach ($team['Users'] as $userkey => $user){
+            $team['Users'][$userkey]
+                = $this->Profile->find('first', array(
+                    'conditions' => array(
+                        'users_id' => $user['id']
+                    ),
+                ));
+        }
+
+        $this->set('actions', $this->getAuthorizedActions());
+        $this->set('isOwner', false);
+        $this->set('id', $this->Team->id);
+        $this->set('team', $team);
     }
 
 /**
@@ -92,6 +111,7 @@ class TeamsController extends AppController {
  */
     public function index() {
         $this->set('actions', $this->getAuthorizedActions());
+
         // Buscamos todos los teams
         $teams = $this->Team->find('all');
 

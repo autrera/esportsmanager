@@ -7,6 +7,7 @@
         <?php echo $this->Form->create('News', array(
             'class' => 'form-horizontal',
             'action' => 'edit',
+            'type' => 'file',
             'inputDefaults' => customFormOptions::getOptionsDefault(),
         ));?>
             <fieldset>
@@ -31,6 +32,13 @@
                 );
                 echo $this->Form->input('featured',
                     customFormOptions::getOptionsCheckBox()
+                );
+                echo $this->Form->input('image', 
+                    customFormOptions::getOptionsFile(
+                        __(
+                            'The image to display on the slider when the new is featured. Optional, but required if the new is featured.'
+                        )
+                    )
                 );
                 echo $this->Form->input('description',
                     customFormOptions::getOptionsDefault(

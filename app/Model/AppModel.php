@@ -31,7 +31,6 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
-
 /**
  * Operaciones a realizar antes de guardar en cualquier modelo que herede
  * de AppModel

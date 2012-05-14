@@ -17,7 +17,7 @@ class ModulesActionsRole extends AppModel {
 		'modules_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
+				'message' => 'Only numbers are allowed on this field',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -27,7 +27,7 @@ class ModulesActionsRole extends AppModel {
 		'actions_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
+                'message' => 'Only numbers are allowed on this field',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -37,7 +37,7 @@ class ModulesActionsRole extends AppModel {
 		'roles_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
+                'message' => 'Only numbers are allowed on this field',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

@@ -94,14 +94,20 @@ class NewsController extends AppController {
                 utf8_encode($this->request->data['News']['title'])
             );
             // Guardamos la new
-			if ($this->News->save($this->request->data)) {
-                // Todo salió bien asi que lo informamos
-                $this->Session->setFlash(__('The post has been saved'), 'flash-success');
-                $this->redirect(array('action' => 'index'));
-            } else {
-                // Algo falló y no se guardó
-                $this->Session->setFlash(__('The post could not be saved. Please, try again.'), 'flash-failure');
-            }
+            $this->News->saveWithOptionalFile($this->request, $this->Session,
+                array(
+                    'fileColumnName' => 'banner',
+                    'fileInputName' => 'image'
+                )
+            );
+			// if ($this->News->save($this->request->data)) {
+   //              // Todo salió bien asi que lo informamos
+   //              $this->Session->setFlash(__('The post has been saved'), 'flash-success');
+   //              $this->redirect(array('action' => 'index'));
+   //          } else {
+   //              // Algo falló y no se guardó
+   //              $this->Session->setFlash(__('The post could not be saved. Please, try again.'), 'flash-failure');
+   //          }
         }
 	}
 
@@ -170,20 +176,26 @@ class NewsController extends AppController {
                 utf8_encode($this->request->data['News']['title'])
             );
             // Intentamos guardar el registro
-            if ($this->News->save($this->request->data)) {
-                // Guardado exitoso
-                $this->Session->setFlash(
-                    'Your news have been updated.',
-                    'flash-success'
-                );
-                $this->redirect(array('action' => 'index'));
-            } else {
-                // Guardado fallido
-                $this->Session->setFlash(
-                    'Unable to update your news.',
-                    'flash-failure'
-                );
-            }
+            $this->News->saveWithOptionalFile($this->request, $this->Session,
+                array(
+                    'fileColumnName' => 'banner',
+                    'fileInputName' => 'image'
+                )
+            );
+            // if ($this->News->save($this->request->data)) {
+            //     // Guardado exitoso
+            //     $this->Session->setFlash(
+            //         'Your news have been updated.',
+            //         'flash-success'
+            //     );
+            //     $this->redirect(array('action' => 'index'));
+            // } else {
+            //     // Guardado fallido
+            //     $this->Session->setFlash(
+            //         'Unable to update your news.',
+            //         'flash-failure'
+            //     );
+            // }
         }
     }
 

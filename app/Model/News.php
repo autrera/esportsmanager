@@ -49,7 +49,17 @@ class News extends AppModel {
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				// 'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'banner' => array(
+			'notempty' => array(
+				'rule' => 'whenFeatured',
+				'message' => 'This field can\'t be empty when the featured option is checked',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'content' => array(
@@ -123,5 +133,18 @@ class News extends AppModel {
             // 'dependent'     => true
         )
     );
+
+    public function whenFeatured(){
+    	if (   isset($this->data['News']['featured'])
+    		&& $this->data['News']['featured'] == 1
+    	) {
+    		if (! empty($this->data['News']['banner'])){
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	}
+    	return true;
+    }
 
 }

@@ -124,10 +124,6 @@ class NewsController extends AppController {
             $this->invalidParameter();
         }
 
-        if (!$this->News->id) {
-            $this->invalidParameter();
-        }
-
         $this->set('actions', $this->getAuthorizedActions());
         $this->set('isOwner', $this->News->isOwnedBy(
             $this->News->id, $this->Auth->user('id')
@@ -158,6 +154,11 @@ class NewsController extends AppController {
 
         // Seteamos le id de las news
         $this->News->id = $id;
+
+        // Verificamos que el recurso exista
+        if (!$this->News->exists()) {
+            $this->invalidParameter();
+        }
         
         // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {

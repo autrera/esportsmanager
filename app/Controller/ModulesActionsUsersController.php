@@ -80,7 +80,7 @@ class ModulesActionsUsersController extends AppController {
                 $this->Session->setFlash(__('The permission has been saved'),
                     'flash-success'
                 );
-                // $this->redirect(array('action' => 'index'));
+                $this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash(__('The permission could not be saved. Please, try again.'), 'flash-failure'
                 );

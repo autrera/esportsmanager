@@ -102,6 +102,7 @@ class AvatarsController extends AppController {
                             } else {
                                 $this->Session->setFlash(__('The game has been saved but the image could not, upload the image again'), 'flash-warning');
                             }
+                            $this->redirect(array('action' => 'index'));
                         } else {
                             $this->Session->setFlash(__('The game could not be saved. Please, try again.'), 'flash-failure');
                         }

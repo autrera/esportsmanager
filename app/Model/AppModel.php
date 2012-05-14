@@ -132,6 +132,7 @@ class AppModel extends Model {
                 } else {
                     $session->setFlash(__('The ' . $this->alias . ' has been saved but the uploaded file could not, upload the image again'), 'flash-warning');
                 }
+                $this->redirect(array('action' => 'index'));
             } else {
                 $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
             }
@@ -139,6 +140,7 @@ class AppModel extends Model {
             // No se subió la imagen, pero es opcional, así que guardamos
             if ($this->save($request->data)) {
                 $session->setFlash(__('The ' . $this->alias . ' has been saved'), 'flash-success');
+                $this->redirect(array('action' => 'index'));
             } else {
                 $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
             }

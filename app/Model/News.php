@@ -61,6 +61,14 @@ class News extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'notempty2' => array(
+				'rule' => 'whenFeaturedUpdate',
+				'message' => 'This field can\'t be empty when the featured option is checked',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				'on' => 'update', // Limit validation to 'create' or 'update' operations
+			),
 		),
 		'content' => array(
 			'notempty' => array(
@@ -145,6 +153,21 @@ class News extends AppModel {
     		}
     	}
     	return true;
+    }
+
+    public function whenFeaturedUpdate(){
+    	$banner = $this->field('banner');
+    	if (!empty ($banner)){
+    		return true;
+    	} else {
+	    	if (   isset($this->data['News']['featured'])
+	    		&& $this->data['News']['featured'] == 1
+	    	) {
+	    		return false;
+		    } else {
+		    	return true;
+		    }
+    	}
     }
 
 }

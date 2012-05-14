@@ -1,13 +1,3 @@
-@font-face {
-  font-family: OpenSansRegular;
-  src: url("fonts/OpenSans-Regular-webfont.ttf");
-}
-
-@font-face {
-  font-family: OpenSansExtraBold;
-  src: url("fonts/OpenSans-Bold-webfont.ttf");
-}
-
 /* Variables */
 @funkyGreen: #C3E82F;
 @blacky: #3D3D3D;
@@ -36,12 +26,13 @@
 
 body {
     background: url('../img/backgrounds/fondo-modulo.jpg') repeat;
-    font-family: 'OpenSansRegular', sans-serif;
-    p {
-        font-family: 'OpenSansRegular', sans-serif;
+    font: 13px/18px 'TitilliumText22LRegular', Arial, sans-serif;
+    b,
+    strong {
+        font: 13px/18px 'TitilliumText22LBold', Arial, sans-serif;
     }
     h1, h2, h3, h4, h5, h6 {
-        font-family: 'OpenSansExtraBold', sans-serif;
+        font-family: 'LeagueGothicRegular', Arial, sans-serif;
     }
 }
 
@@ -327,6 +318,94 @@ div.form {
         }
         .help-block {
             font-size: 10px;
+        }
+    }
+}
+
+.page-header {
+    border-bottom: 1px solid @white;
+}
+
+/* Estilos del pozo de acciones de usuario */
+
+.well.userActions {
+    .btn {
+        margin-right: 10px;
+    }
+}
+
+/* Estilos del bloque de autores */
+
+.author-block {
+    .author-picture {
+        margin-bottom: 8px;
+    }
+    .author-info {
+        span.label {
+            margin-right: 4px;
+        }
+    }
+}
+
+/*  Estilos del view de news */
+
+.new-view {
+    .new-main {
+        .new-title {
+        }
+        .new-details {
+            span {
+                margin-right: 6px;
+            }
+        }
+        .new-social {
+            margin-bottom: 8px;
+            margin-top   : 8px;
+        }
+        .new-content {
+            background: @white;
+        }
+    }
+}
+
+/* Estilos del index de Videos */
+
+.videos-index {
+    .video-container {
+        .thumbnail {
+            iframe {
+            }
+            .video-title {
+            }
+            .video-info {
+                margin: 4px 0;
+                span.label {
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
+}
+
+/* Estilos de view de Videos */
+
+.video-view {
+    .video-author {
+        .author-picture {
+        }
+        .author-info {
+        }
+    }
+}
+
+/* Estilos del index de la galeria */
+
+.galleries-index {
+    .gallery-content {
+        border-bottom: 1px solid @white;
+        .gallery-name {
+        }
+        .thumbnails {
         }
     }
 }

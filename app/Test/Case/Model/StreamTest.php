@@ -1,5 +1,5 @@
 <?php
-/* Stream Test cases generated on: 2012-03-14 04:34:21 : 1331696061*/
+/* Stream Test cases generated on: 2012-04-25 17:37:49 : 1335368269*/
 App::uses('Stream', 'Model');
 
 /**
@@ -12,7 +12,7 @@ class StreamTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.stream', 'app.service', 'app.users');
+	public $fixtures = array('app.stream', 'app.user', 'app.teams', 'app.roles', 'app.profile', 'app.users', 'app.countries', 'app.avatars', 'app.streams_user');
 
 /**
  * setUp method

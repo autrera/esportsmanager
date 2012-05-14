@@ -96,7 +96,7 @@ class ModulesActionsUsersController extends AppController {
     public function view($id = null){
         $this->ModulesActionsUser->id = $id;
         if (!$this->ModulesActionsUser->exists()) {
-            throw new NotFoundException(__('Invalid id'));
+            $this->invalidParameter();
         }
 
         $permiso = $this->ModulesActionsUser->read(null, $id);

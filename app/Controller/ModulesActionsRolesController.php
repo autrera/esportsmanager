@@ -96,7 +96,7 @@ class ModulesActionsRolesController extends AppController {
     public function view($id = null){
         $this->ModulesActionsRole->id = $id;
         if (!$this->ModulesActionsRole->exists()) {
-            throw new NotFoundException(__('Invalid id'));
+            $this->invalidParameter();
         }
 
         $permiso = $this->ModulesActionsRole->read(null, $id);

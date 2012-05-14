@@ -87,7 +87,7 @@ class GalleriesController extends AppController {
     public function view($id = null){
         $this->Gallery->id = $id;
         if (!$this->Gallery->exists()) {
-            throw new NotFoundException(__('Invalid gallery'));
+            $this->invalidParameter();
         }
 
         $this->set('actions', $this->getAuthorizedActions());

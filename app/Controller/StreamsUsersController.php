@@ -92,7 +92,7 @@ class StreamsUsersController extends AppController {
     public function view($id = null){
         $this->StreamsUser->id = $id;
         if (!$this->StreamsUser->exists()) {
-            throw new NotFoundException(__('Invalid id'));
+            $this->invalidParameter();
         }
         $this->set('Stream', $this->StreamsUser->read(null, $id));
     }

@@ -89,7 +89,7 @@ class CountriesController extends AppController {
     public function view($id = null){
         $this->Country->id = $id;
         if (!$this->Country->exists()) {
-            throw new NotFoundException(__('Invalid country'));
+            $this->invalidParameter();
         }
         $this->set('country', $this->Country->read(null, $id));
     }

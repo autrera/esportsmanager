@@ -122,7 +122,7 @@ class AvatarsController extends AppController {
     public function view($id = null){
         $this->Avatar->id = $id;
         if (!$this->Avatar->exists()) {
-            throw new NotFoundException(__('Invalid avatar'));
+            $this->invalidParameter();
         }
         $this->set('avatar', $this->Avatar->read(null, $id));
     }

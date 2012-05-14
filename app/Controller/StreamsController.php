@@ -84,7 +84,7 @@ class StreamsController extends AppController {
     public function view($id = null){
         $this->Stream->id = $id;
         if (!$this->Stream->exists()) {
-            throw new NotFoundException(__('Invalid stream'));
+            $this->invalidParameter();
         }
         $this->set('stream', $this->Stream->read(null, $id));
     }

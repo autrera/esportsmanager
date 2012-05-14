@@ -89,7 +89,7 @@ class RolesController extends AppController {
         $this->redirect(array('action' => 'index'));
         $this->Role->id = $id;
         if (!$this->Role->exists()) {
-            throw new NotFoundException(__('Invalid role'));
+            $this->invalidParameter();
         }
         $this->set('rol', $this->Role->read(null, $id));
     }

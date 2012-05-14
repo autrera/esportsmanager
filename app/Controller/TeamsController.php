@@ -80,7 +80,7 @@ class TeamsController extends AppController {
     public function view($id = null){
         $this->Team->id = $id;
         if (!$this->Team->exists()) {
-            throw new NotFoundException(__('Invalid team'));
+            $this->invalidParameter();
         }
         // Buscamos el team
         $team = $this->Team->find('first', array(

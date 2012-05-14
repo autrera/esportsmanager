@@ -126,7 +126,7 @@ class ProfilesController extends AppController {
     public function view($id = null){
         $this->Profile->id = $id;
         if (!$this->Profile->exists()) {
-            throw new NotFoundException(__('Invalid profile'));
+            $this->invalidParameter();
         }
         $data = $this->Profile->read(null, $id);
         $this->redirect(array(

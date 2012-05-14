@@ -120,7 +120,7 @@ class NewsController extends AppController {
         $user_id = $noticia['Users']['id'];
 
         if (!$this->News->id) {
-            throw new NotFoundException(__('Invalid news'));
+            $this->invalidParameter();
         }
 
         $this->set('actions', $this->getAuthorizedActions());

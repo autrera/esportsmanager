@@ -120,7 +120,7 @@ class PhotosController extends AppController {
     public function view($id = null){
         $this->Photo->id = $id;
         if (!$this->Photo->exists()) {
-            throw new NotFoundException(__('Invalid Photo'));
+            $this->invalidParameter();
         }
 
         $foto = $this->Photo->read(null, $id);

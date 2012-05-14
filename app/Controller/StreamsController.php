@@ -97,6 +97,12 @@ class StreamsController extends AppController {
     public function edit($id = null) {
         // Seteamos le id de las news
         $this->Stream->id = $id;
+
+        // Verificamos que el recurso exista
+        if (!$this->Stream->exists()) {
+            $this->invalidParameter();
+        }
+        
         // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {
             $this->request->data = $this->Stream->read();

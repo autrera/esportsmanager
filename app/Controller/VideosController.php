@@ -87,10 +87,12 @@ class VideosController extends AppController {
  */
     public function view($id = null){
         $this->Video->id = $id;
+
+        // Verificamos que el recurso exista
         if (!$this->Video->exists()) {
             $this->invalidParameter();
         }
-
+        
         $video = $this->Video->read(null, $id);
         
         $this->set('actions', $this->getAuthorizedActions());
@@ -119,6 +121,10 @@ class VideosController extends AppController {
     public function edit($id = null) {
         // Seteamos le id de las news
         $this->Video->id = $id;
+        // Verificamos que el recurso exista
+        if (!$this->Video->exists()) {
+            $this->invalidParameter();
+        }
         // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {
             $this->request->data = $this->Video->read();

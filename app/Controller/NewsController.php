@@ -119,6 +119,11 @@ class NewsController extends AppController {
         $this->News->id = $noticia['News']['id'];
         $user_id = $noticia['Users']['id'];
 
+        // Verificamos que el recurso exista
+        if (!$this->News->exists()) {
+            $this->invalidParameter();
+        }
+
         if (!$this->News->id) {
             $this->invalidParameter();
         }

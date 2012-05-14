@@ -105,6 +105,12 @@ class StreamsUsersController extends AppController {
     public function edit($id = null) {
         // Seteamos le id del avatar
         $this->StreamsUser->id = $id;
+
+        // Verificamos que el recurso exista
+        if (!$this->StreamsUser->exists()) {
+            $this->invalidParameter();
+        }
+        
         // Obtenemos los juegos de la BD
         $this->set('games', $this->Game->find('list'));
         // Obtenemos los servicios de streaming de la BD

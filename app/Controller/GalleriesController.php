@@ -117,6 +117,12 @@ class GalleriesController extends AppController {
     public function edit($id = null) {
         // Seteamos le id de la galeria
         $this->Gallery->id = $id;
+
+        // Verificamos que el recurso exista
+        if (!$this->Gallery->exists()) {
+            $this->invalidParameter();
+        }
+
         // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {
             $this->request->data = $this->Gallery->read();

@@ -98,6 +98,11 @@ class UsersController extends AppController {
         // Seteamos le id del usuario
         $this->User->id = $id;
 
+        // Verificamos que el recurso exista
+        if (!$this->User->exists()) {
+            $this->invalidParameter();
+        }
+        
         // Seteamos las acciones permitidas de este usurio
         $this->set('actions', $this->getAuthorizedActions());
         

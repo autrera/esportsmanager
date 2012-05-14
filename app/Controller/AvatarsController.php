@@ -135,6 +135,12 @@ class AvatarsController extends AppController {
     public function edit($id = null) {
         // Seteamos le id del avatar
         $this->Avatar->id = $id;
+
+        // Verificamos que el recurso exista
+        if (!$this->Avatar->exists()) {
+            $this->invalidParameter();
+        }
+
         // Obtenemos los juegos de la BD
         $this->set('games', $this->Game->find('list'));
         // Si la petición es get, buscamos en la base y lo enviamos

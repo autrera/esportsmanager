@@ -139,6 +139,12 @@ class TeamsController extends AppController {
     public function edit($id = null) {
         // Seteamos le id del equipo
         $this->Team->id = $id;
+
+        // Verificamos que el recurso exista
+        if (!$this->Team->exists()) {
+            $this->invalidParameter();
+        }
+        
         $this->set('games', $this->Game->find('list'));
         // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {

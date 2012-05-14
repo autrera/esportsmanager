@@ -96,6 +96,12 @@ class ProfilesController extends AppController {
     public function edit($id = null) {
         // Seteamos le id del perfil
         $this->Profile->id = $id;
+
+        // Verificamos que el recurso exista
+        if (!$this->Profile->exists()) {
+            $this->invalidParameter();
+        }
+
         // Seteamos los paises para llenar el select
         $this->set('countries', $this->Country->find('list'));
         // Si la petición es get, buscamos en la base y lo enviamos

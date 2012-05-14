@@ -102,6 +102,12 @@ class RolesController extends AppController {
     public function edit($id = null) {
         // Seteamos le id del rol
         $this->Role->id = $id;
+
+        // Verificamos que el recurso exista
+        if (!$this->Role->exists()) {
+            $this->invalidParameter();
+        }
+
         // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {
             $this->request->data = $this->Role->read();

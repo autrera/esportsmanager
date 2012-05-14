@@ -117,6 +117,11 @@ class ModulesActionsRolesController extends AppController {
         // Seteamos le id del permiso
         $this->ModulesActionsRole->id = $id;
 
+        // Verificamos que el recurso exista
+        if (!$this->ModulesActionsRole->exists()) {
+            $this->invalidParameter();
+        }
+
         // Obtenemos los modulos de la BD
         $this->set('modules', $this->Module->find('list'));
 

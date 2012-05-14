@@ -88,9 +88,12 @@ class GamesController extends AppController {
  */
     public function view($id = null){
         $this->Game->id = $id;
+
+        // Verificamos que el recurso exista
         if (!$this->Game->exists()) {
-            throw new NotFoundException(__('Invalid game'));
+            $this->invalidParameter();
         }
+
         $this->set('game', $this->Game->read(null, $id));
     }
 
@@ -102,6 +105,12 @@ class GamesController extends AppController {
     public function edit($id = null) {
         // Seteamos le id del juego
         $this->Game->id = $id;
+
+        // Verificamos que el recurso exista
+        if (!$this->Game->exists()) {
+            $this->invalidParameter();
+        }
+
         // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {
             $this->request->data = $this->Game->read();

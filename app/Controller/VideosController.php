@@ -55,7 +55,9 @@ class VideosController extends AppController {
  * @param none
  */
 	public function index() {
-        $this->set('videos', $this->Video->find('all'));
+        $this->set('videos', $this->Video->find('all', array(
+            'order' => 'Video.id DESC'
+        )));
         $this->set('actions', $this->getAuthorizedActions());
 	}
 

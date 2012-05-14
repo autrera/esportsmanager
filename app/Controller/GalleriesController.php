@@ -105,7 +105,9 @@ class GalleriesController extends AppController {
  * @param none
  */
     public function index() {
-        $this->set('galleries', $this->Gallery->find('all'));
+        $this->set('galleries', $this->Gallery->find('all', array(
+            'order' => 'Gallery.id DESC'
+        )));
         $this->set('actions', $this->getAuthorizedActions());
     }
 

@@ -70,6 +70,7 @@ class NewsController extends AppController {
                         'conditions' => '`Profiles`.`users_id` = `News`.`users_id`'
                     )
                 ),
+                'order' => 'News.id DESC'
             )
         ));
 	}

@@ -40,7 +40,7 @@
         		</ul>
         	</div>
 	    <?php endforeach; ?>
-		</div>
+	</div>
     </div>
     <?php echo $this->element('sidebar'); ?>
 </div>

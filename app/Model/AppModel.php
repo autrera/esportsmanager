@@ -295,22 +295,22 @@ class AppModel extends Model {
                     unlink($filePath);
                     $session->setFlash('The resource and file were deleted', 
                         'flash-success'
-                    )
+                    );
                     return true;
                 }
                 $session->setFlash('The delete, was successful', 
                     'flash-success'
-                )
+                );
                 return true;
             }
             $session->setFlash('Unable to delete the resource', 
                 'flash-failure'
-            )
+            );
             return false;
         }
         $session->setFlash('Unable to find the resource to delete.', 
             'flash-failure'
-        )
+        );
         return false;
     }
 

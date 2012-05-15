@@ -61,36 +61,74 @@
 <hr>
 <div class = "row">
     <div class = "span8">
-        <?php foreach($latestNews as $new): ?>
-        <div class = "news-row">
-            <div class = "news-image pull-left">
-                <img src = "<?php echo $new['Games']['thumbnail'] ?>" >
+        <div class = "row">
+            <div class = "span8">
+                <?php foreach($latestNews as $new): ?>
+                <div class = "news-row">
+                    <div class = "news-image pull-left">
+                        <img src = "<?php echo $new['Games']['thumbnail'] ?>" >
+                    </div>
+                    <div class = "news-title">
+                        <h3>
+                            <?php echo $new['News']['title']; ?>
+                        </h3>
+                    </div>
+                    <div class = "news-details">
+                        <?php echo $this->element('timeStampLabel', array(
+                            'timestamp' => $new['News']['created'],
+                            'format' => 'd/m/Y - H:i'
+                        )); ?>
+                        <?php
+                            echo $this->element('userLink', array(
+                                'nickname' => $new['Users']['nickname'],
+                                'user_id'  => $new['Users']['id'],
+                            )); 
+                        ?>
+                    </div>
+                    <div class = "news-content">
+                        <p>
+                            <?php echo $new['News']['description']; ?>
+                        </p>
+                    </div>
+                    <div class = "clear"></div>
+                </div>
+                <?php endforeach; ?>
             </div>
-            <div class = "news-title">
-                <h3>
-                    <?php echo $new['News']['title']; ?>
-                </h3>
-            </div>
-            <div class = "news-details">
-                <?php echo $this->element('timeStampLabel', array(
-                    'timestamp' => $new['News']['created'],
-                    'format' => 'd/m/Y - H:i'
-                )); ?>
-                <?php
-                    echo $this->element('userLink', array(
-                        'nickname' => $new['Users']['nickname'],
-                        'user_id'  => $new['Users']['id'],
-                    )); 
-                ?>
-            </div>
-            <div class = "news-content">
-                <p>
-                    <?php echo $new['News']['description']; ?>
-                </p>
-            </div>
-            <div class = "clear"></div>
         </div>
-        <?php endforeach; ?>
+        <div class = "row">
+            <div class = "span8">
+            <?php foreach ($latestGalleries as $gallery): ?>
+                <div class = "gallery-content">
+                    <h2 class = "gallery-name">
+                        <a href = "/galleries/view/<?php echo $gallery['Gallery']['id']; ?>">
+                            <?php echo $gallery['Gallery']['name'] ?>
+                        </a>
+                    </h2>
+                    <ul class ="thumbnails">
+                        <?php foreach($gallery['Photos'] as $key => $photo): ?>
+                        <?php
+                            if ($key == 8){
+                                break;
+                            }
+                        ?>
+                        <li class = "span1">
+                            <div class = "thumbnail">
+                                <a href = "/photos/view/<?php echo $photo['id']; ?>" title = "<?php echo $photo['name']; ?>">
+                                    <img src = "<?php echo $photo['url'] ?>" >
+                                </a>
+                                <h5>
+                                    <a href = "/photos/view/<?php echo $photo['id']; ?>">
+                                        <?php echo $photo['name']; ?>
+                                    </a>
+                                </h5>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endforeach; ?>
+            </div>
+        </div>
     </div>
     <?php echo $this->element('sidebar'); ?>
 </div>

@@ -49,7 +49,7 @@
                     <div class = "row">
                         <div class = "span3 header-logo">
                             <div class = "header-logo">
-                                Team Quetzal
+                                <h1>Team Quetzal</h1>
                             </div>
                         </div>
                         <div class = "span3 header-main-sponsor">

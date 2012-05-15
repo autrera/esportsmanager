@@ -63,6 +63,9 @@
     <div class = "span8">
         <div class = "row">
             <div class = "span8">
+                <div class = "page-header">
+                    <h1>.: Latest News</h1>
+                </div>
                 <?php foreach($latestNews as $new): ?>
                 <div class = "news-row">
                     <div class = "news-image pull-left">
@@ -97,7 +100,10 @@
         </div>
         <div class = "row">
             <div class = "span8">
-            <?php foreach ($latestGalleries as $gallery): ?>
+                <div class = "page-header">
+                    <h1>.: Latest Galleries</h1>
+                </div>
+                <?php foreach ($latestGalleries as $gallery): ?>
                 <div class = "gallery-content">
                     <h2 class = "gallery-name">
                         <a href = "/galleries/view/<?php echo $gallery['Gallery']['id']; ?>">
@@ -126,7 +132,7 @@
                         <?php endforeach; ?>
                     </ul>
                 </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

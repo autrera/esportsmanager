@@ -37,6 +37,7 @@
 </head>
 <body>
 	<?php
+        echo $this->Html->script('facebook');
 		echo $this->Html->script('jquery');
 		echo $this->Html->script('bootstrap');
         echo $this->Html->script('initializers');

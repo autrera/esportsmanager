@@ -36,6 +36,7 @@
 				</a>
 			</div>
 		</div>
+        <?php echo $this->element('facebook-comments'); ?>
 	</div>
     <?php echo $this->element('sidebar'); ?>
 </div>

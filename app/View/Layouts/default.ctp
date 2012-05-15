@@ -1,4 +1,7 @@
 <?php
+echo "<pre>";
+print_r($authUser);
+echo "</pre>";
 /**
  *
  * PHP 5
@@ -57,6 +60,18 @@
                                 <img src = "/img/sponsors/logo_acteck.png">
                             </div>
                         </div>
+                        <?php if ($authUser): ?>
+                        <div class = "span2">
+                            <h3>
+                                Welcome! 
+                                <strong>
+                                    <?php echo $authUser['nickname']; ?>
+                                </strong>
+                            </h3>
+                            <a href = "/users/view/<?php echo $authUser['id']; ?>" class = "btn btn-primary"
+                            >Panel</a>
+                        </div>
+                        <?php else: ?>
                         <div class = "cont-login-header span2 pull-right">
                             <a href = "/users/login"
                                 class = "btn btn-primary"
@@ -65,6 +80,7 @@
                                 class = "btn btn-warning"
                             >Register</a>
                         </div>
+                        <?php endif; ?>
                     </div>
                     <div class="navbar">
                         <div class="navbar-inner">

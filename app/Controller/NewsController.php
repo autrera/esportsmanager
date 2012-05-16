@@ -91,7 +91,7 @@ class NewsController extends AppController {
             $this->request->data['News']['users_id'] = $this->Auth->user('id');
             // Seteamos el slug
             $this->request->data['News']['slug'] = Inflector::slug(
-                utf8_encode($this->request->data['News']['title'])
+                $this->request->data['News']['title']
             );
             // Guardamos la new
             if ($this->News->saveWithOptionalFile($this->request, $this->Session,
@@ -102,14 +102,6 @@ class NewsController extends AppController {
             )){
                 $this->redirect(array('action' => 'index'));
             }
-			// if ($this->News->save($this->request->data)) {
-   //              // Todo salió bien asi que lo informamos
-   //              $this->Session->setFlash(__('The post has been saved'), 'flash-success');
-   //              $this->redirect(array('action' => 'index'));
-   //          } else {
-   //              // Algo falló y no se guardó
-   //              $this->Session->setFlash(__('The post could not be saved. Please, try again.'), 'flash-failure');
-   //          }
         }
 	}
 
@@ -175,7 +167,7 @@ class NewsController extends AppController {
         } else {
             // Seteamos el slug
             $this->request->data['News']['slug'] = Inflector::slug(
-                utf8_encode($this->request->data['News']['title'])
+                $this->request->data['News']['title']
             );
             // Intentamos guardar el registro
             if ($this->News->saveWithOptionalFile($this->request, $this->Session,

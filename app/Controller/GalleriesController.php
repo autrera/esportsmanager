@@ -55,26 +55,27 @@ class GalleriesController extends AppController {
  * @param none
  */
 	public function add() {
-        // Checamos que esté logueado
-        if ($this->Auth->user('id')){
-            // Checamos que venga de un post
-    		if ($this->request->is('post')) {
-                $this->Gallery->create();
-                // Seteamos el usuario que está haciendo el guardado
-                $this->request->data['Gallery']['users_id'] = $this->Auth->user('id');
-                // Guardamos
-    			if ($this->Gallery->save($this->request->data)) {
-                    $this->Session->setFlash(__('The gallery has been saved'),
-                        'flash-success'
-                    );
-                    $this->redirect(array(
-                        'controller' => 'photos',
-                        'action' => 'add',
-                        $this->Gallery->id
-                    ));
-                } else {
-                    $this->Session->setFlash(__('The gallery could not be saved. Please, try again.'), 'flash-failure');
-                }
+        // Checamos que venga de un post
+		if ($this->request->is('post')) {
+            $this->Gallery->create();
+            // Seteamos el usuario que está haciendo el guardado
+            $this->request->data['Gallery']['users_id'] = $this->Auth->user('id');
+            // Seteamos el slug
+            $this->request->data['Gallery']['slug'] = Inflector::slug(
+                $this->request->data['Gallery']['name']
+            );
+            // Guardamos
+			if ($this->Gallery->save($this->request->data)) {
+                $this->Session->setFlash(__('The gallery has been saved'),
+                    'flash-success'
+                );
+                $this->redirect(array(
+                    'controller' => 'photos',
+                    'action' => 'add',
+                    $this->Gallery->id
+                ));
+            } else {
+                $this->Session->setFlash(__('The gallery could not be saved. Please, try again.'), 'flash-failure');
             }
         }
 	}
@@ -84,8 +85,15 @@ class GalleriesController extends AppController {
  *
  * @param int El id del Perfil a mostrar
  */
-    public function view($id = null){
-        $this->Gallery->id = $id;
+    public function view($slug){
+        $galeria = $this->Gallery->find('first', array(
+            'conditions' => array(
+                'slug' => $slug
+            )
+        ));
+
+        $this->Gallery->id = $galeria['Gallery']['id'];
+
         if (!$this->Gallery->exists()) {
             $this->invalidParameter();
         }
@@ -95,7 +103,7 @@ class GalleriesController extends AppController {
             $this->Gallery->id, $this->Auth->user('id')
         ));
 
-        $this->set('galeria', $this->Gallery->read(null, $id));
+        $this->set('galeria', $galeria);
         $this->set('id', $this->Gallery->id);
     }
 
@@ -129,6 +137,10 @@ class GalleriesController extends AppController {
         if ($this->request->is('get')) {
             $this->request->data = $this->Gallery->read();
         } else {
+            // Seteamos el slug
+            $this->request->data['Gallery']['slug'] = Inflector::slug(
+                $this->request->data['Gallery']['name']
+            );
             // Intentamos guardar el registro
             if ($this->Gallery->save($this->request->data)) {
                 // Guardado exitoso

@@ -71,6 +71,10 @@ class VideosController extends AppController {
             $this->Video->create();
             $this->request->data['Video']['users_id'] 
                 = $this->Auth->user('id');
+            // Seteamos el slug
+            $this->request->data['Video']['slug'] = Inflector::slug(
+                $this->request->data['Video']['name']
+            );
 			if ($this->Video->save($this->request->data)) {
                 $this->Session->setFlash(__('The post has been saved'),
                     'flash-success'
@@ -87,15 +91,19 @@ class VideosController extends AppController {
  *
  * @param int El id del Perfil a mostrar
  */
-    public function view($id = null){
-        $this->Video->id = $id;
+    public function view($slug){
+        $video = $this->Video->find('first', array(
+            'conditions' => array(
+                'slug' => $slug
+            )
+        ));
+
+        $this->Video->id = $video['Video']['id'];
 
         // Verificamos que el recurso exista
         if (!$this->Video->exists()) {
             $this->invalidParameter();
         }
-        
-        $video = $this->Video->read(null, $id);
         
         $this->set('actions', $this->getAuthorizedActions());
         $this->set('isOwner', $this->Video->isOwnedBy(
@@ -131,6 +139,10 @@ class VideosController extends AppController {
         if ($this->request->is('get')) {
             $this->request->data = $this->Video->read();
         } else {
+            // Seteamos el slug
+            $this->request->data['Video']['slug'] = Inflector::slug(
+                $this->request->data['Video']['name']
+            );
             // Intentamos guardar el registro
             if ($this->Video->save($this->request->data)) {
                 // Guardado exitoso

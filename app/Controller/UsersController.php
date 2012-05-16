@@ -144,6 +144,9 @@ class UsersController extends AppController {
         if (!$this->User->exists()) {
             $this->invalidParameter();
         }
+        $this->set('actions', $this->getAuthorizedActions());
+        $this->set('isOwner', false);
+        $this->set('id', $this->User->id);
         $this->set('usuario', $this->User->read(null, $id));
     }
 

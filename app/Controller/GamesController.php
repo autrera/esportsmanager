@@ -71,13 +71,15 @@ class GamesController extends AppController {
         // Verificamos que sea un envio por POST
 		if ($this->request->is('post')) {
             $this->Game->create();
-            $this->Game->saveWithOptionalFile($this->request, $this->Session,
+            if ($this->Game->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'thumbnail',
                     'fileInputName' => 'upload',
                     'fileOptional' => false,
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
         }
 	}
 
@@ -116,12 +118,14 @@ class GamesController extends AppController {
             $this->request->data = $this->Game->read();
         } else {
             // Intentamos guardar el registro
-            $this->Game->saveWithOptionalFile($this->request, $this->Session,
+            if ($this->Game->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'thumbnail',
                     'fileInputName' => 'upload',
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
         }
     }
 

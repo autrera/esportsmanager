@@ -174,12 +174,14 @@ class PhotosController extends AppController {
             $this->request->data = $this->Photo->read();
         } else {
             // Intentamos guardar el registro
-            $this->Photo->saveWithOptionalFile($this->request, $this->Session,
+            if ($this->Photo->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'url',
                     'fileInputName' => 'photo',
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
         }
     }
 

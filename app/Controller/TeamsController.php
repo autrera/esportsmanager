@@ -63,12 +63,14 @@ class TeamsController extends AppController {
         // Verificamos que sea un envio por POST
 		if ($this->request->is('post')) {
             $this->Team->create();
-            $this->Team->saveWithOptionalFile($this->request, $this->Session,
+            if ($this->Team->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'photo',
                     'fileInputName' => 'picture',
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
         }
 	}
 
@@ -151,12 +153,14 @@ class TeamsController extends AppController {
             $this->request->data = $this->Team->read();
         } else {
             // Intentamos guardar el registro
-            $this->Team->saveWithOptionalFile($this->request, $this->Session,
+            if ($this->Team->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'photo',
                     'fileInputName' => 'picture',
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
         }
     }
 

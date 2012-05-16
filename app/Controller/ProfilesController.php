@@ -67,15 +67,24 @@ class ProfilesController extends AppController {
     		if ($this->request->is('post')) {
                 $this->Profile->create();
                 $this->request->data['Profile']['users_id'] = $this->Auth->user('id');
-                $this->Profile->saveWithOptionalFile($this->request, $this->Session, array(
+                if ($this->Profile->saveWithOptionalFile(
+                    $this->request, $this->Session, array(
                         'fileColumnName' => 'picture',
                         'fileInputName' => 'image',
-                ));
-                $this->redirect(array(
-                    'controller' => 'users',
-                    'action' => 'view',
-                    $this->Auth->user('id')
-                ));
+                    )
+                )){
+                    $this->redirect(array(
+                        'controller' => 'users',
+                        'action' => 'view',
+                        $this->Auth->user('id')
+                    ));
+                } else {
+                    $this->redirect(array(
+                        'controller' => 'users',
+                        'action' => 'edit',
+                        $this->Auth->user('id')
+                    ));
+                }
             }
         } else {
             // Como ya tiene un perfil, no puede agregar otro
@@ -109,17 +118,24 @@ class ProfilesController extends AppController {
             $this->request->data = $this->Profile->read();
         } else {
             // Intentamos guardar el registro
-            $this->Profile->saveWithOptionalFile($this->request, 
-                $this->Session, array(
+            if ($this->Profile->saveWithOptionalFile(
+                $this->request, $this->Session, array(
                     'fileColumnName' => 'picture',
                     'fileInputName' => 'image'
                 )
-            );
-            $this->redirect(array(
-                'controller' => 'users',
-                'action' => 'view',
-                $this->Auth->user('id')
-            ));
+            )){
+                $this->redirect(array(
+                    'controller' => 'users',
+                    'action' => 'view',
+                    $this->Auth->user('id')
+                ));
+            } else {
+                $this->redirect(array(
+                    'controller' => 'users',
+                    'action' => 'edit',
+                    $this->Auth->user('id')
+                ));
+            }
         }
     }
 

@@ -94,12 +94,14 @@ class NewsController extends AppController {
                 utf8_encode($this->request->data['News']['title'])
             );
             // Guardamos la new
-            $this->News->saveWithOptionalFile($this->request, $this->Session,
+            if ($this->News->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'banner',
                     'fileInputName' => 'image'
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
 			// if ($this->News->save($this->request->data)) {
    //              // Todo salió bien asi que lo informamos
    //              $this->Session->setFlash(__('The post has been saved'), 'flash-success');
@@ -176,12 +178,14 @@ class NewsController extends AppController {
                 utf8_encode($this->request->data['News']['title'])
             );
             // Intentamos guardar el registro
-            $this->News->saveWithOptionalFile($this->request, $this->Session,
+            if ($this->News->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'banner',
                     'fileInputName' => 'image'
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
             // if ($this->News->save($this->request->data)) {
             //     // Guardado exitoso
             //     $this->Session->setFlash(

@@ -67,12 +67,14 @@ class StreamsController extends AppController {
         // Verificamos que sea un envio por POST
         if ($this->request->is('post')) {
             $this->Stream->create();
-            $this->Stream->saveWithOptionalFile($this->request, $this->Session,
+            if ($this->Stream->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'icon',
                     'fileInputName' => 'logo'
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
         }
 	}
 
@@ -108,12 +110,14 @@ class StreamsController extends AppController {
             $this->request->data = $this->Stream->read();
         } else {
             // Intentamos guardar el registro
-            $this->Stream->saveWithOptionalFile($this->request, $this->Session,
+            if ($this->Stream->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'icon',
                     'fileInputName' => 'logo'
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
         }
     }
 

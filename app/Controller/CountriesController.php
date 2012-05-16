@@ -72,12 +72,14 @@ class CountriesController extends AppController {
         // Verificamos que sea un envio por POST
 		if ($this->request->is('post')) {
             $this->Country->create();
-            $this->Country->saveWithOptionalFile($this->request, 
+            if ($this->Country->saveWithOptionalFile($this->request, 
                 $this->Session, array(
                     'fileColumnName' => 'flag',
                     'fileInputName' => 'icon',
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
         }
 	}
 
@@ -113,12 +115,14 @@ class CountriesController extends AppController {
             $this->request->data = $this->Country->read();
         } else {
             // Intentamos guardar el registro
-            $this->Country->saveWithOptionalFile($this->request, 
+            if ($this->Country->saveWithOptionalFile($this->request, 
                 $this->Session, array(
                     'fileColumnName' => 'flag',
                     'fileInputName' => 'icon',
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
         }
     }
 

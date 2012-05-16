@@ -149,12 +149,14 @@ class AvatarsController extends AppController {
             $this->request->data = $this->Avatar->read();
         } else {
             // Intentamos guardar el registro
-            $this->Avatar->saveWithOptionalFile($this->request, $this->Session,
+            if ($this->Avatar->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'url',
                     'fileInputName' => 'avatar',
                 )
-            );
+            )){
+                $this->redirect(array('action' => 'index'));
+            }
         }
     }
 

@@ -24,8 +24,12 @@
     );
 }
 
+html {
+    background: url('../img/backgrounds/scbg.jpg') no-repeat fixed;
+}
+
 body {
-    background: url('../img/backgrounds/fondo-modulo.jpg') repeat;
+    background: none;
 }
 
 img {
@@ -33,22 +37,14 @@ img {
     .border-radius(4px);
 }
 
-#header, #background {
-    height: 100%;
-    top: 100%;
-}
-
 #header {
-    padding-top: 9px;
+    padding-top: 2px;
     border-bottom: 3px solid #3A87AD;
     background: url('../img/backgrounds/subtle-pattern-1.jpg') repeat;
 }
 
 #background {
     padding: 8px 0;
-    background: #496E91;
-    /*background: url('../img/backgrounds/header_bg_default.jpg') repeat;*/
-    background: url('../img/backgrounds/scbg.jpg') no-repeat fixed;
 }
 
 #main-container-border {
@@ -98,6 +94,9 @@ img {
         border: none;
         background: none;
         .opacity(100);
+    }
+    .carousel-caption {
+        color: white;
     }
 }
 
@@ -213,14 +212,12 @@ span.game-logo {
         overflow: hidden;
     }
     .news-title {
-        h3 {
-            .brightText;
-            color: @linkColor;
-            span {
-                font-weight: normal;
-                font-size: 10px;
-                font-style: italic;
-            }
+        .brightText;
+        color: @linkColor;
+        span {
+            font-weight: normal;
+            font-size: 10px;
+            font-style: italic;
         }
     }
     .news-details {
@@ -259,7 +256,6 @@ span.game-logo {
 }
 
 .header-logo {
-    margin-top: 6px;
     font-weight: bold;
     font-size: 32px;
     .brightText;
@@ -399,4 +395,10 @@ div.form {
         .thumbnails {
         }
     }
+}
+
+/* Estilos de los comentarios del facebook */
+
+.fb-comments {
+    margin-top: 10px;
 }

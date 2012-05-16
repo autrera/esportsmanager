@@ -25,15 +25,23 @@
 		</div>
 		<div class = "row">
 			<div class = "span2">
+				<?php if (! empty($vecinos['prev'])): ?>
 				<a class = "btn btn-primary btn-large" href = "/photos/view/<?php echo $vecinos['prev']['Photo']['id']; ?>">
 					<i class="icon-chevron-left icon-white"></i> Back
 				</a>
+				<?php else: ?>
+				&nbsp;
+				<?php endif; ?>
 			</div>
 			<div class = "span4">&nbsp;</div>
 			<div class = "span2">
+				<?php if (! empty($vecinos['next'])): ?>
 				<a class = "btn btn-primary btn-large pull-right" href = "/photos/view/<?php echo $vecinos['next']['Photo']['id']; ?>">
 					<i class="icon-chevron-right icon-white"></i> Next
 				</a>
+				<?php else: ?>
+				&nbsp;
+				<?php endif; ?>
 			</div>
 		</div>
         <?php echo $this->element('facebook-comments'); ?>

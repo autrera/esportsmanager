@@ -19,7 +19,6 @@
             <div class = "form-actions">
                 <input type = "submit" value = "Login" 
                     class = "btn btn-primary">
-                <a href = "add" class = "btn btn-warning ">Register</a>
             </div>
             <?php echo $this->Form->end();?>
         </div>

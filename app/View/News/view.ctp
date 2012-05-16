@@ -25,6 +25,13 @@
                     </div>
                 </div>
                 <div class = "span6 new-main">
+                    <?php if (!empty ($noticia['News']['banner'])): ?>
+                    <div class = "row">
+                        <div class = "span6">
+                            <img src = "<?php echo $noticia['News']['banner'] ?>" >
+                        </div>
+                    </div>
+                    <?php endif; ?>
                     <div class = "page-header new-title">
                         <h1><?php echo $noticia['News']['title'] ?></h1>
                     </div>

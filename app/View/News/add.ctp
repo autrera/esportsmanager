@@ -58,6 +58,3 @@
         </div>
     </div>
 </div>
-<?php 
-    include_once ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS . 'examples.php'; 
-?>

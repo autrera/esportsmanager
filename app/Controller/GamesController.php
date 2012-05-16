@@ -55,6 +55,7 @@ class GamesController extends AppController {
  * @param none
  */
     public function index() {
+        $this->set('actions', $this->getAuthorizedActions());
         $this->set('games', $this->Game->find('all'));
     }
 
@@ -96,7 +97,11 @@ class GamesController extends AppController {
             $this->invalidParameter();
         }
 
+        $this->set('actions', $this->getAuthorizedActions());
+        $this->set('isOwner', false);
+
         $this->set('game', $this->Game->read(null, $id));
+        $this->set('id', $this->Game->id);
     }
 
 /**

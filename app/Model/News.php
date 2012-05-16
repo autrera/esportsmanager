@@ -41,6 +41,14 @@ class News extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+            'unique' => array(
+                'rule' => array('isUnique'),
+                'message' => 'The title you choosed is already taken, please, choose another.',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
 		),
 		'description' => array(
 			'notempty' => array(

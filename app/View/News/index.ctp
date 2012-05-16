@@ -19,12 +19,12 @@
                 </a>
             </div>
             <div class = "news-title">
-                <h3>
+                <h2>
                     <a href = "/news/view/<?php echo $new['News']['slug'] ?>"
                         title = "Click to read it">
                         <?php echo $new['News']['title'] ?>
                     </a>
-                </h3>
+                </h2>
             </div>
             <div class = "news-details">
                 <span class="label label-inverse">

@@ -11,7 +11,7 @@
         <?php foreach ($galleries as $gallery): ?>
         	<div class = "gallery-content">
         		<h2 class = "gallery-name">
-        			<a href = "/galleries/view/<?php echo $gallery['Gallery']['id']; ?>">
+        			<a href = "/galleries/view/<?php echo $gallery['Gallery']['slug']; ?>">
 	        			<?php echo $gallery['Gallery']['name'] ?>
 	        		</a>
         		</h2>

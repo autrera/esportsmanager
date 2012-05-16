@@ -8,7 +8,7 @@
 	?>
 		<div class = "page-header">
 			<h1>
-				<a href = "/galleries/view/<?php echo $foto['Galleries']['id'] ?>">
+				<a href = "/galleries/view/<?php echo $foto['Galleries']['slug'] ?>">
 					<?php echo $foto['Galleries']['name'] ?>
 				</a>
 			</h1>

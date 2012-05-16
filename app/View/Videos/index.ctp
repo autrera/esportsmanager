@@ -14,7 +14,7 @@
                     <iframe width="290" height="190" src="<?php echo $video['Video']['url']; ?>" frameborder="0" allowfullscreen=""></iframe>
                     <h2 class = "video-title">
                         <a href = "/videos/view/<?php echo 
-                            $video['Video']['id']; ?>">
+                            $video['Video']['slug']; ?>">
                             <?php echo $video['Video']['name'] ?>
                         </a>
                     </h2>

@@ -279,5 +279,47 @@ class AppModel extends Model {
 
     // }}}
 
+    // {{{ deleteWithFile()
+
+    /**
+     * Borra registros de la BD y el archivo respectivo
+     *
+     * @param Int $id El id del recurso a eliminar
+     * @param String $fileField El nombre del campo que contiene al archivoo
+     * @param Object $session El objeto de sesión para setear mensajes
+     *
+     * @return boolean
+     */
+    public function deleteWithFile($id, $fileField, $session){
+        $this->id = $id;
+        if ($this->exists()){
+            $file = $this->field($fileField);
+            $filePath = $this->getWebrootPath() . $file;
+            if ($this->delete($id)){
+                if (is_file($filePath)){
+                    unlink($filePath);
+                    $session->setFlash('The resource and file were deleted', 
+                        'flash-success'
+                    );
+                    return true;
+                }
+                $session->setFlash('The delete, was successful', 
+                    'flash-success'
+                );
+                return true;
+            }
+            $session->setFlash('Unable to delete the resource', 
+                'flash-failure'
+            );
+            return false;
+        }
+        $session->setFlash('Unable to find the resource to delete.', 
+            'flash-failure'
+        );
+        return false;
+    }
+
+    // }}}
+
 
 }

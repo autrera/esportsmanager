@@ -1,4 +1,7 @@
 <?php
+echo "<pre>";
+print_r($authUser);
+echo "</pre>";
 /**
  *
  * PHP 5
@@ -37,6 +40,7 @@
 </head>
 <body>
 	<?php
+        echo $this->Html->script('facebook');
 		echo $this->Html->script('jquery');
 		echo $this->Html->script('bootstrap');
         echo $this->Html->script('initializers');
@@ -46,30 +50,37 @@
             <div id = "main-container-border" class = "container">
                 <div id = "main-container" class = "container">
                     <div class = "row">
-                        <div class = "span3 header-logo">
+                        <div class = "span5 header-logo">
                             <div class = "header-logo">
-                                Team Quetzal
+                                <h1>Team Quetzal</h1>
                             </div>
                         </div>
-                        <div class = "span3 header-main-sponsor">
+                        <div class = "span5 header-main-sponsor">
                             <div class = "main-sponsor">
                                 <img src = "/img/sponsors/logo_acteck.png">
                             </div>
                         </div>
-                        <div class = "cont-login-header span5 pull-right">
-                            <form class = "form-inline pull-right">
-                                <input type = "text" class = "input-small" 
-                                    placeholder = "Email">
-                                <input type = "password" class = "input-small" 
-                                    placeholder = "Password">
-                                <button type = "submit" class = "btn btn-primary">
-                                    Sign in
-                                </button>
-                                <button type = "submit" class = "btn btn-warning">
-                                    Register
-                                </button>
-                            </form>
+                        <?php if ($authUser): ?>
+                        <div class = "span2">
+                            <h3>
+                                Welcome! 
+                                <strong>
+                                    <?php echo $authUser['nickname']; ?>
+                                </strong>
+                            </h3>
+                            <a href = "/users/view/<?php echo $authUser['id']; ?>" class = "btn btn-primary"
+                            >Panel</a>
                         </div>
+                        <?php else: ?>
+                        <div class = "cont-login-header span2 pull-right">
+                            <a href = "/users/login"
+                                class = "btn btn-primary"
+                            >Login</a>
+                            <a href = "/users/add"
+                                class = "btn btn-warning"
+                            >Register</a>
+                        </div>
+                        <?php endif; ?>
                     </div>
                     <div class="navbar">
                         <div class="navbar-inner">
@@ -100,7 +111,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/streams">
+                                        <a href="/streamsUsers">
                                             <i class="icon-facetime-video icon-white"></i> 
                                             Streams
                                         </a>
@@ -111,20 +122,7 @@
                                             Galleries
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class = "icon-exclamation-sign icon-white"></i> 
-                                            About
-                                        </a>
-                                    </li>
                                 </ul>
-                                <form class = "navbar-search pull-right" 
-                                    action = "">
-                                    <input type = "text" class = "search-query span2" placeholder = "Search">
-                                    <span class="add-on">
-                                        <i class="icon-search icon-white"></i>
-                                    </span>
-                                </form>
                             </div>
                         </div>
                     </div>

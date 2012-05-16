@@ -58,6 +58,7 @@ class AppController extends Controller {
     // Le permitimos a todos ver el listado y un elemento en particular
     public function beforeFilter() {
         $this->Auth->allow('index', 'view');
+        $this->set('authUser', $this->Auth->user());
     }
 
 /**

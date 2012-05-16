@@ -1,3 +1,4 @@
 /app/tmp
+/app/webroot/uploads/news/
 /lib/Cake/Console/Templates/skel/tmp/
 .DS_Store

@@ -1,7 +1,4 @@
 <?php
-echo "<pre>";
-print_r($authUser);
-echo "</pre>";
 /**
  *
  * PHP 5
@@ -46,42 +43,61 @@ echo "</pre>";
         echo $this->Html->script('initializers');
 	?>
 	<div id="container">
-        <div id = "background">
-            <div id = "main-container-border" class = "container">
-                <div id = "main-container" class = "container">
-                    <div class = "row">
-                        <div class = "span5 header-logo">
-                            <div class = "header-logo">
-                                <h1>Team Quetzal</h1>
-                            </div>
+        <div id = "header">
+            <div class = "container">
+                <div class = "row">
+                    <div class = "span4 header-logo">
+                        <div class = "header-logo">
+                            <h1>Team Quetzal</h1>
                         </div>
-                        <div class = "span5 header-main-sponsor">
-                            <div class = "main-sponsor">
-                                <img src = "/img/sponsors/logo_acteck.png">
-                            </div>
+                    </div>
+                    <div class = "span4 header-main-sponsor">
+                        <div class = "main-sponsor">
                         </div>
-                        <?php if ($authUser): ?>
-                        <div class = "span2">
-                            <h3>
+                    </div>
+                    <?php if ($authUser): ?>
+                    <div class = "span4">
+                        <div class = "pull-right">
+                            <h2>
                                 Welcome! 
                                 <strong>
                                     <?php echo $authUser['nickname']; ?>
                                 </strong>
-                            </h3>
-                            <a href = "/users/view/<?php echo $authUser['id']; ?>" class = "btn btn-primary"
-                            >Panel</a>
+                                <small>
+                                    <a href = "/users/view/<?php echo $authUser['id']; ?>" 
+                                       class = "btn btn-primary btn-mini"
+                                    >Panel</a>
+                                    <a href = "/users/logout" 
+                                       class = "btn btn-danger btn-mini"
+                                    >Logout</a>
+                                </small>
+                            </h2>
                         </div>
-                        <?php else: ?>
-                        <div class = "cont-login-header span2 pull-right">
+                    </div>
+                    <?php else: ?>
+                    <div class = "cont-login-header span4 pull-right">
+                        <div class = "pull-right">
                             <a href = "/users/login"
                                 class = "btn btn-primary"
-                            >Login</a>
+                            >
+                                <i class="icon-user icon-white"></i>
+                                Login
+                            </a>
                             <a href = "/users/add"
                                 class = "btn btn-warning"
-                            >Register</a>
+                            >
+                                <i class="icon-plus icon-white"></i>
+                                Register
+                            </a>
                         </div>
-                        <?php endif; ?>
                     </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <div id = "background">
+            <div id = "main-container-border" class = "container">
+                <div id = "main-container" class = "container">
                     <div class="navbar">
                         <div class="navbar-inner">
                             <div class="container">

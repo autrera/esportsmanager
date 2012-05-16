@@ -98,6 +98,7 @@ class GalleriesController extends AppController {
             $this->invalidParameter();
         }
 
+        $this->set('actionsPhotos', $this->getAuthorizedActions('Photos'));
         $this->set('actions', $this->getAuthorizedActions());
         $this->set('isOwner', $this->Gallery->isOwnedBy(
             $this->Gallery->id, $this->Auth->user('id')

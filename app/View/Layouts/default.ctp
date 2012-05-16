@@ -138,6 +138,19 @@
                                             Galleries
                                         </a>
                                     </li>
+                                    <?php 
+                                        if (in_array('view', 
+                                                $actionsConfig
+                                            )
+                                        ): 
+                                    ?>
+                                    <li>
+                                        <a href="/config">
+                                            <i class = "icon-cog icon-white"></i> 
+                                            Config
+                                        </a>
+                                    </li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>

@@ -87,7 +87,8 @@ class customFormOptions
     ){
         return array_merge(
             array(
-                'value' => $btnText,
+                'label' => $btnText,
+                'text' => $btnText,
                 'class' => array('btn', 'btn-primary'),
                 'div' => array(
                     'class' => 'form-actions',

@@ -115,6 +115,7 @@ class AppModel extends Model {
             // file, seteamos la ruta de donde quedó el fichero
             $request->data[$this->alias][$fileColumnName] = $fileURL;
             // Antes de hacer el guardado, debemos checar si es edicion
+            $previousFile = '';
             if ($request->params['action'] == 'edit'){
                 // Es edición, debemos tomar el archivo previo y eliminarlo
                 $previousFile = $this->read($fileColumnName);
@@ -129,23 +130,27 @@ class AppModel extends Model {
                     // Archivo nuevo subido con éxito, borramos el anterior
                     $this->eraseFile($previousFile);
                     $session->setFlash(__('The ' . $this->alias . ' has been saved'), 'flash-success');
+                    return true;
                 } else {
                     $session->setFlash(__('The ' . $this->alias . ' has been saved but the uploaded file could not, upload the image again'), 'flash-warning');
+                    return true;
                 }
-                $this->redirect(array('action' => 'index'));
             } else {
                 $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
+                return false;
             }
         } else if ($fileOptional) {
             // No se subió la imagen, pero es opcional, así que guardamos
             if ($this->save($request->data)) {
                 $session->setFlash(__('The ' . $this->alias . ' has been saved'), 'flash-success');
-                $this->redirect(array('action' => 'index'));
+                return true;
             } else {
                 $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
+                return false;
             }
         } else {
             $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
+            return false;
         }
     }
 

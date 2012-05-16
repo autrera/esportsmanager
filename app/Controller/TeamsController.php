@@ -173,8 +173,7 @@ class TeamsController extends AppController {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
-        if ($this->Video->delete($id)) {
-            $this->Session->setFlash('The video with id: ' . $id . ' has been deleted.');
+        if ($this->Video->deleteWithFile($id, 'photo', $this->Session)) {
             $this->redirect(array('action' => 'index'));
         }
     }

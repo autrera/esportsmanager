@@ -135,8 +135,7 @@ class CountriesController extends AppController {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
-        if ($this->Country->delete($id)) {
-            $this->Session->setFlash('The country with id: ' . $id . ' has been deleted.', 'flash-success');
+        if ($this->Country->deleteWithFile($id, 'flag', $this->Session)) {
             $this->redirect(array('action' => 'index'));
         }
     }

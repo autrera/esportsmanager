@@ -194,8 +194,7 @@ class PhotosController extends AppController {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
-        if ($this->Photo->delete($id)) {
-            $this->Session->setFlash('The photo with id: ' . $id . ' has been deleted.');
+        if ($this->Photo->deleteWithFile($id, 'url', $this->Session)) {
             $this->redirect(array('action' => 'index'));
         }
     }

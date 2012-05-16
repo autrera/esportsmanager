@@ -88,12 +88,17 @@ class AvatarsController extends AppController {
                     ) {
                         // Obtenemos extension de la imagen
                         $ext = $this->Avatar->getExtension($name);
+                        // Creamos un nuevo nombre unico para el archivo
+                        $newName = uniqid() . '.' . $ext;
                         // Seteamos la ruta del archivo
-                        $fileFolder = $this->Avatar->getStorageDir() . uniqid() . "." .$ext;
+                        $fileURL 
+                            = $this->Avatar->getStorageURL() . $newName;
+                        $fileFolder 
+                            = $this->Avatar->getWebrootPath(). $fileURL;
                         // Cambiamos el array de data, el campo thumbnail
                         // es un varchar en la BD, no podemos dejar el tipo
                         // file, seteamos la ruta de donde quedó el fichero
-                        $row['Avatar']['url'] = $fileFolder;
+                        $row['Avatar']['url'] = $fileURL;
                         // Guardamos
                         if ($this->Avatar->save($row)) {
                             // Movemos el archivo a su carpeta final
@@ -169,8 +174,7 @@ class AvatarsController extends AppController {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
-        if ($this->Avatar->delete($id)) {
-            $this->Session->setFlash('The avatar with id: ' . $id . ' has been deleted.', 'flash-success');
+        if ($this->Avatar->deleteWithFile($id, 'url', $this->Session)) {
             $this->redirect(array('action' => 'index'));
         }
     }

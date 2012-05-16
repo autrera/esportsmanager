@@ -212,17 +212,7 @@ class NewsController extends AppController {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
-        if ($this->News->delete($id)) {
-            $this->Session->setFlash(
-                'The news with id: ' . $id . ' has been deleted.',
-                'flash-success'
-            );
-            $this->redirect(array('action' => 'index'));
-        } else {
-            $this->Session->setFlash(
-                'Unable to delete de element.',
-                'flash-failure'
-            );
+        if ($this->News->deleteWithFile($id, 'banner', $this->Session)) {
             $this->redirect(array('action' => 'index'));
         }
     }

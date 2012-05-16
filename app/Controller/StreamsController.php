@@ -130,8 +130,7 @@ class StreamsController extends AppController {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
-        if ($this->Stream->delete($id)) {
-            $this->Session->setFlash('The stream with id: ' . $id . ' has been deleted.', 'flash-success');
+        if ($this->Stream->deleteWithFile($id, 'icon', $this->Session)) {
             $this->redirect(array('action' => 'index'));
         }
     }

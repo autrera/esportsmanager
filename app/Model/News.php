@@ -53,16 +53,16 @@ class News extends AppModel {
 			),
 		),
 		'banner' => array(
-			'notempty' => array(
-				'rule' => 'whenFeatured',
+			'checkfeatured' => array(
+				'rule' => 'whenfeatured',
 				'message' => 'This field can\'t be empty when the featured option is checked',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'notempty2' => array(
-				'rule' => 'whenFeaturedUpdate',
+			'checkfeatured2' => array(
+				'rule' => 'whenfeaturedupdate',
 				'message' => 'This field can\'t be empty when the featured option is checked',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -142,7 +142,11 @@ class News extends AppModel {
         )
     );
 
-    public function whenFeatured(){
+    public function whenfeatured(){
+    	echo "<pre>";
+    	echo "1";
+    	print_r($this->data);
+    	echo "</pre>";
     	if (   isset($this->data['News']['featured'])
     		&& $this->data['News']['featured'] == 1
     	) {
@@ -155,7 +159,7 @@ class News extends AppModel {
     	return true;
     }
 
-    public function whenFeaturedUpdate(){
+    public function whenfeaturedupdate(){
     	$banner = $this->field('banner');
     	if (!empty ($banner)){
     		return true;

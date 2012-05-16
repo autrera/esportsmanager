@@ -1,4 +1,11 @@
 /app/tmp
+/app/webroot/uploads/avatars/
+/app/webroot/uploads/countries/
+/app/webroot/uploads/games/
 /app/webroot/uploads/news/
+/app/webroot/uploads/photos/
+/app/webroot/uploads/profiles/
+/app/webroot/uploads/streams/
+/app/webroot/uploads/teams/
 /lib/Cake/Console/Templates/skel/tmp/
 .DS_Store

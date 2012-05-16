@@ -12,9 +12,9 @@
                         <img src = "<?php echo $new['News']['banner']; ?>" >
                     </a>
                     <div class = "carousel-caption">
-                        <h4><?php echo $featuredNew['News']['title']; ?></h4>
+                        <h2><?php echo $new['News']['title']; ?></h2>
                         <p>
-                            <?php echo $featuredNew['News']['description']; ?>
+                            <?php echo $new['News']['description']; ?>
                         </p>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
             <li class = "span4">
                 <div class = "latest-videos">
                     <div class="module-header">
-                        <h3>Latest Videos</h3>
+                        <h2>Latest Videos</h2>
                     </div>
                     <a class = "view-more btn btn-mini btn-primary"
                         href = "/videos" >
@@ -42,7 +42,7 @@
                         <i class="icon-chevron-right icon-white"></i>
                     </a>
                     <iframe width="290" height="190" src="<?php echo $featuredVideo['Video']['url'] ; ?>" frameborder="0" allowfullscreen></iframe>
-                    <h5><?php echo $featuredVideo['Video']['name']; ?></h5>
+                    <h3><?php echo $featuredVideo['Video']['name']; ?></h3>
                     <div class = "caption">
                         <?php foreach($latestVideos as $video): ?>
                         <h4>
@@ -72,9 +72,9 @@
                         <img src = "<?php echo $new['Games']['thumbnail'] ?>" >
                     </div>
                     <div class = "news-title">
-                        <h3>
+                        <h2>
                             <?php echo $new['News']['title']; ?>
-                        </h3>
+                        </h2>
                     </div>
                     <div class = "news-details">
                         <?php echo $this->element('timeStampLabel', array(

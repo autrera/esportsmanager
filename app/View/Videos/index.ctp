@@ -12,12 +12,12 @@
             <li class="span4 video-container">
                 <div class="thumbnail">
                     <iframe width="290" height="190" src="<?php echo $video['Video']['url']; ?>" frameborder="0" allowfullscreen=""></iframe>
-                    <h5 class = "video-title">
+                    <h2 class = "video-title">
                         <a href = "/videos/view/<?php echo 
                             $video['Video']['id']; ?>">
                             <?php echo $video['Video']['name'] ?>
                         </a>
-                    </h5>
+                    </h2>
                     <div class = "video-info">
                         <?php echo $this->element('timeStampLabel', array(
                             'timestamp' => $video['Video']['created'],

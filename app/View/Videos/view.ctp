@@ -27,13 +27,13 @@
 		        <ul class="thumbnails videos-index">
 		            <li class="span6 video-container">
 		                <div class="thumbnail">
-		                    <iframe width="100%" height="100%" src="<?php echo $video['Video']['url']; ?>" frameborder="0" allowfullscreen=""></iframe>
-		                    <h5 class = "video-title">
+		                    <iframe width="100%" height="600" src="<?php echo $video['Video']['url']; ?>" frameborder="0" allowfullscreen=""></iframe>
+		                    <h2 class = "video-title">
 		                        <a href = "/videos/view/<?php echo 
 		                            $video['Video']['id']; ?>">
 		                            <?php echo $video['Video']['name'] ?>
 		                        </a>
-		                    </h5>
+		                    </h2>
 		                    <div class = "video-info">
 		                        <?php echo $this->element('timeStampLabel', array(
 		                            'timestamp' => $video['Video']['created'],
@@ -49,6 +49,7 @@
 		        </ul>
             </div>
         </div>
+        <?php echo $this->element('facebook-comments'); ?>
     </div>
     <?php echo $this->element('sidebar'); ?>
 </div>

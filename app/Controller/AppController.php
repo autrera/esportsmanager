@@ -158,12 +158,15 @@ class AppController extends Controller {
      *
      * @return Int $id El id del modulo en la tabla de modulos
      */
-    public function getModuleId(){
+    public function getModuleId($moduleName){
+        // Si el modulo a buscar no viene seteado, usamos el nombre
+        // de la clase que lo invoca
+        $moduleName = (! empty($moduleName)) ? $moduleName : $this->name;
         // Cargamos el modelo para realizar la búsqueda
         $this->loadModel('Modules');
         $data = $this->Modules->find('first', array(
             'conditions' => array(
-                'Modules.name' => $this->name
+                'Modules.name' => $moduleName
             )
         ));
         $id = $data['Modules']['id'];
@@ -184,14 +187,14 @@ class AppController extends Controller {
      *
      * @return Array El merge de la lista de acciones por rol y usuario
      */
-    public function getAuthorizedActions(){
+    public function getAuthorizedActions($moduleName = ''){
         // Si el usuario no está logueado retornamos un array vacio
         if (! $this->Auth->user('id')){
             return array();
         }
 
         // Obtenemos el id del modulo
-        $module_id = $this->getModuleId();
+        $module_id = $this->getModuleId($moduleName);
 
         // Cargamos el modelo para realizar la búsqueda
         $this->loadModel('ModulesActionsRole');

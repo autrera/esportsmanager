@@ -75,16 +75,27 @@ class UsersController extends AppController {
  * @param mixed What page to display
  */
 	public function add() {
+        App::uses('utilities', 'Lib');
+        $captcha = utilities::validateCaptcha();
 		if ($this->request->is('post')) {
-            $this->User->create();
-			if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'),
-                    'flash-success'
-                );
-                $this->redirect(array('action' => 'index'));
+            if ($captcha->is_valid){
+                $this->User->create();
+    			if ($this->User->save($this->request->data)) {
+                    $this->Session->setFlash(__('The user has been saved'),
+                        'flash-success'
+                    );
+                    $this->redirect(array('action' => 'index'));
+                } else {
+                    $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash-failure'
+                    );
+                }
             } else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash-failure'
-                );
+                if ($captcha->error){
+                    $this->Session->setFlash(
+                        __($captcha->error.'. Please, try again.'), 
+                        'flash-failure'
+                    );
+                }
             }
         }
 	}

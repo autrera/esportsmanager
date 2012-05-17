@@ -36,6 +36,17 @@
                     )
                 );
             ?>
+                <div class = "control-group">
+                    <label class = "control-label">
+                        Captcha
+                    </label>
+                    <div class = "controls">
+                        <?php echo $this->element('captcha'); ?>
+                        <div class="help-block">
+                            Fill this up correctly, please. Make love, no spam.
+                        </div>
+                    </div>
+                </div>
             </fieldset>
         <?php echo $this->Form->end(
             customFormOptions::getOptionsBtnSubmit('Register')

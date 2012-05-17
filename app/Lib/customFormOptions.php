@@ -68,6 +68,7 @@ class customFormOptions
                 'div' => array(
                     'class' => 'control-group'
                 ),
+                'type' => 'checkbox', 
                 'label' => array(
                     'class' => 'control-label'
                 ),

@@ -183,6 +183,11 @@ class UsersController extends AppController {
                 'action' => 'display'
             ));
         }
+        if ($this->User->validates()) {
+            if ($this->Auth->user()) {
+                $this->redirect($this->Auth->redirect());
+            }
+        }
 	}
 
 /**

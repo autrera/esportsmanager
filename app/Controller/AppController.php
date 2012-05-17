@@ -34,6 +34,7 @@ class AppController extends Controller {
 
     // Los componentes que usaremos en todos los controladores
     public $components = array(
+        'AutoLogin',
         'Session',
         'Auth' => array(
             'loginRedirect' => array(

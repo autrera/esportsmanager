@@ -14,6 +14,16 @@
             <?php
                 echo $this->Form->input('email');
                 echo $this->Form->input('password');
+                echo $this->Form->input('auto_login', 
+                    customFormOptions::getOptionsCheckbox('', 
+                        array(
+                            'label' => array(
+                                'text' => 'Remember me',
+                                'class' => 'control-label'
+                            )
+                        )
+                    )
+                );
             ?>
             </fieldset>
             <div class = "form-actions">

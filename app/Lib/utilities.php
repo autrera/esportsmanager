@@ -25,6 +25,23 @@ class utilities
         return $protocol. '//' . $_SERVER['HTTP_HOST'] . 
             $_SERVER['REQUEST_URI'];
     }
+
+    public static function validateCaptcha(){
+        if (   isset($_POST["recaptcha_challenge_field"])
+            && isset($_POST["recaptcha_response_field"])
+        ){
+            require_once 
+                ROOT . DS . APP_DIR . DS . 'Lib' . DS . 'recaptchalib.php';
+            $privatekey = "6Lc-kNESAAAAALHj2G98OYu4BNam61g-nsQWPiqj";
+            $resp = recaptcha_check_answer (
+                $privatekey,
+                $_SERVER["REMOTE_ADDR"],
+                $_POST["recaptcha_challenge_field"],
+                $_POST["recaptcha_response_field"]
+            );
+            return $resp;
+        }
+    }
 }
 
 ?>

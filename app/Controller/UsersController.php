@@ -57,7 +57,7 @@ class UsersController extends AppController {
  */
 	public function beforeFilter() {
 	    parent::beforeFilter();
-	    $this->Auth->allow('add', 'login'); 
+	    $this->Auth->allow('add', 'login', 'passRecovery'); 
 	}
 
 /**
@@ -189,6 +189,17 @@ class UsersController extends AppController {
             }
         }
 	}
+
+/**
+ * Muestra un form al usuario para que ingrese su correo y cambie su pass
+ *
+ * @param none
+ * @return void
+ */
+    public function passRecovery(){
+        // Verificamos que el usuario no esté logueado
+
+    }
 
 /**
  * Deslogueamos a los usuarios

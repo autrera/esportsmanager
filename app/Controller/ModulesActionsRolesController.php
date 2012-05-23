@@ -49,6 +49,11 @@ class ModulesActionsRolesController extends AppController {
  */
 	public $uses = array('ModulesActionsRole', 'Module', 'Action', 'Role');
 
+    public function beforeFilter(){
+        $this->Auth->deny();
+        $this->set('authUser', $this->Auth->user());
+    }
+
 /**
  * Muestra todos los streams disponibles del usuario
  *

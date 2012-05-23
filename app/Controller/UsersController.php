@@ -57,7 +57,7 @@ class UsersController extends AppController {
  */
 	public function beforeFilter() {
 	    parent::beforeFilter();
-	    $this->Auth->allow('add', 'login', 'passRecovery'); 
+	    $this->Auth->allow('add', 'login', 'requestPasswordReset'); 
 	}
 
 /**
@@ -191,14 +191,22 @@ class UsersController extends AppController {
 	}
 
 /**
- * Muestra un form al usuario para que ingrese su correo y cambie su pass
+ * Muestra un form al usuario para que ingrese su correo y solicite cambio pass
  *
  * @param none
  * @return void
  */
-    public function passRecovery(){
+    public function requestPasswordReset(){
         // Verificamos que el usuario no esté logueado
+        if ($this->Auth->user){
+            $this->redirect(array(
+                'controller' => 'users',
+                'action' => 'view',
+                $this->Auth->user('id')
+            ));
+        } else {
 
+        }
     }
 
 /**

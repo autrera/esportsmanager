@@ -2,7 +2,7 @@
     <div class = "span8">
         <?php echo $this->element('addButton', array(
             'actions' => $actions,
-            'controller' => 'news'
+            'controller' => 'videos'
         )) ?>
         <div class = "page-header">
             <h1>.: Videos</h1>

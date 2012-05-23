@@ -52,7 +52,9 @@ class HomeController extends AppController {
 /**
  * Displays a view
  *
- * @param mixed What page to display
+ * @param none
+ *
+ * @return void
  */
 	public function index() {
 		$featuredNews = $this->News->find('all', array(

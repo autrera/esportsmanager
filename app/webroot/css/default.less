@@ -24,6 +24,17 @@
     );
 }
 
+.btnStyle {
+    .btn;
+    cursor: default;
+    padding: 0px;
+}
+
+.btnStyleInverse {
+    .btnStyle;
+    .btn-inverse;
+}
+
 html {
     background: url('../img/backgrounds/scbg.jpg') no-repeat fixed;
 }
@@ -39,7 +50,7 @@ img {
 
 #header {
     padding-top: 2px;
-    border-bottom: 3px solid #3A87AD;
+    border-bottom: 2px solid #3A87AD;
     background: url('../img/backgrounds/subtle-pattern-1.jpg') repeat;
 }
 
@@ -110,9 +121,10 @@ img {
 .live-streams {
     min-height: 190px;
     position: relative;
-    padding: 4px 8px 0 8px;
+    // padding: 4px 8px 0 8px;
     .border-radius(4px);
-    .glossyBox;
+    // .glossyBox;
+    .btnStyle;
 }
 
 .latest-videos {

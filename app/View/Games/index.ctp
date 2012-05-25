@@ -1,7 +1,4 @@
 <?php
-echo "<pre>";
-print_r($games);
-echo "</pre>";
 ?>
 <div class = "row">
     <div class = "span8">

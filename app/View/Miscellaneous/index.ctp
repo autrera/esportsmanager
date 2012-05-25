@@ -15,11 +15,11 @@
 			'url' => '/roles',
 			'icon' => 'user',
 		),
-		array(
-			'name' => 'Streams',
-			'url' => '/streams',
-			'icon' => 'facetime-video',
-		),
+		// array(
+		// 	'name' => 'Streams',
+		// 	'url' => '/streams',
+		// 	'icon' => 'facetime-video',
+		// ),
 	);
 ?>
 <div class = "row">

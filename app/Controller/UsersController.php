@@ -156,8 +156,9 @@ class UsersController extends AppController {
             $this->invalidParameter();
         }
         $this->set('actions', $this->getAuthorizedActions());
-        $this->set('isOwner', false);
+        $this->set('isOwner', ($this->User->id == $this->Auth->user('id')));
         $this->set('id', $this->User->id);
+        $this->set('loggedUserId', $this->Auth->user('id'));
         $this->set('usuario', $this->User->read(null, $id));
     }
 

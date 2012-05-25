@@ -75,7 +75,7 @@ class GamesController extends AppController {
             if ($this->Game->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'thumbnail',
-                    'fileInputName' => 'upload',
+                    'fileInputName' => 'game_logo',
                     'fileOptional' => false,
                 )
             )){
@@ -126,7 +126,7 @@ class GamesController extends AppController {
             if ($this->Game->saveWithOptionalFile($this->request, $this->Session,
                 array(
                     'fileColumnName' => 'thumbnail',
-                    'fileInputName' => 'upload',
+                    'fileInputName' => 'game_logo',
                 )
             )){
                 $this->redirect(array('action' => 'index'));

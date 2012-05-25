@@ -99,9 +99,13 @@ class AppModel extends Model {
         extract(array_merge($defaults, $optionsArray));
         // Pasamos los datos de la imagen a variables
         extract($request->data[$this->alias][$fileInputName]);
-        // Checamos que haya sido subida
-        if ($this->isUploadedFile(
-            $request->data[$this->alias][$fileInputName])
+        // Checamos que haya sido subida y que sea segura (yeah right!)
+        if (   $this->isUploadedFile(
+                    $request->data[$this->alias][$fileInputName]
+               )
+            && $this->isFileValidType(
+                    $request->data[$this->alias][$fileInputName]
+               )
         ) {
             // Obtenemos extension de la imagen
             $ext = $this->getExtension($name);
@@ -317,6 +321,38 @@ class AppModel extends Model {
             'flash-failure'
         );
         return false;
+    }
+
+    // }}}
+
+    /// {{{ isFileValidType()
+
+    /**
+     * Verifica que el archivo subido sea una imagen segura
+     *
+     * @param Array $params Array de los parametros del archivo
+     *
+     * @return boolean True si el archivo tiene un mime válido, falso de lo
+     *                 contrario
+     */
+    function isFileValidType($params){
+        // El nombre temporal de archivo
+        $file = $params['tmp_name'];
+
+        // Los mime tipes permitidos
+        $whitelist = array(
+            'image/jpeg',
+        );
+
+        // Obtenemos los atributos de la imagen, solo el tipo nos importa
+        list($ancho, $alto, $tipo, $atributos) = getimagesize($file);
+
+        // Verificamos que sea válido
+        if (in_array($tipo, $whitelist)){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // }}}

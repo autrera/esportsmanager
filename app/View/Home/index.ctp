@@ -69,11 +69,17 @@
                 <?php foreach($latestNews as $new): ?>
                 <div class = "news-row">
                     <div class = "news-image pull-left">
-                        <img src = "<?php echo $new['Games']['thumbnail'] ?>" >
+                        <a href = "/news/view/<?php echo $new['News']['slug'] ?>" 
+                            title = "Click to read it">
+                            <img src = "<?php echo $new['Games']['thumbnail'] ?>" >
+                        </a>
                     </div>
                     <div class = "news-title">
                         <h2>
-                            <?php echo $new['News']['title']; ?>
+                            <a href = "/news/view/<?php echo $new['News']['slug'] ?>"
+                                title = "Click to read it">
+                                <?php echo $new['News']['title'] ?>
+                            </a>
                         </h2>
                     </div>
                     <div class = "news-details">

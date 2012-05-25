@@ -28,6 +28,9 @@
     .btn;
     cursor: default;
     padding: 0px;
+    text-align: left;
+    padding: 0 4px;
+    display: block;
 }
 
 .btnStyleInverse {
@@ -36,7 +39,8 @@
 }
 
 html {
-    background: url('../img/backgrounds/scbg.jpg') no-repeat fixed;
+    // background: url('../img/backgrounds/page-bg.jpg') no-repeat fixed;
+    background: #070916 url(../img/backgrounds/eve-bg.jpg) 35% 0px no-repeat fixed
 }
 
 body {
@@ -92,8 +96,7 @@ img {
         }
     }
     .navbar-inner {
-        .glossyBox;
-        #gradient > .vertical(#4F5962, #282D32); 
+        background: #252a2f url('../img/menu-bg.jpg') repeat-x;
         border: 1px solid #646E78;
     }
 }
@@ -101,10 +104,9 @@ img {
 .carousel {
     .border-radius(4px);
     .carousel-control {
-        .glossyBox;
         border: none;
-        background: none;
-        .opacity(100);
+        background: @black;
+        .opacity(50);
     }
     .carousel-caption {
         color: white;
@@ -211,12 +213,11 @@ span.game-logo {
 }
 
 .news-row {
+    .btnStyle;
     padding: 8px;
-    cursor: pointer;
     margin-bottom: 20px;
     position: relative;
     .border-radius(4px);
-    .glossyBox;
     .news-image {
         margin-right: 8px;
         width: 120px;
@@ -240,9 +241,6 @@ span.game-logo {
     }
     .news-content {
         color: @blacky;
-    }
-    &:hover {
-        border: 1px solid darken(@glossyBorderColor, 10%);
     }
     .news-tag {
         height: 120px;

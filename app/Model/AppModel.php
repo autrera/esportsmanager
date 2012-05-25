@@ -119,7 +119,7 @@ class AppModel extends Model {
             if ($request->params['action'] == 'edit'){
                 // Es edición, debemos tomar el archivo previo y eliminarlo
                 $previousFile = $this->read($fileColumnName);
-                $previousFile = $this->getWebrootPath . $previousFile[$this->alias][$fileColumnName];
+                $previousFile = $this->getWebrootPath() . $previousFile[$this->alias][$fileColumnName];
                 // Ya tenemos el archivo, pero lo borraremos sólo si se sube
                 // otro archivo exitosamente
             }

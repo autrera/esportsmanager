@@ -4,7 +4,6 @@
 <div class = "row">
     <div class = "span8 offset2">
         <div class="users form">
-        <?php echo $this->Session->flash('auth'); ?>
         <?php echo $this->Form->create('User', array(
             'class' => 'form-horizontal',
             'inputDefaults' => customFormOptions::getOptionsDefault()

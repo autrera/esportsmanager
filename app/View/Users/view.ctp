@@ -48,6 +48,14 @@
 					<?php endif; ?>
 					<dt>Description: </dt>
 					<dd><?php echo $usuario['Profile']['description']; ?></dd>
+					<dt>Social Sites: </dt>
+					<dd>
+						<?php echo $this->element('UserSocialLinks.ctp', array(
+							'facebook_id'=>$usuario['Profile']['facebook_id'],
+							'twitter_id' =>$usuario['Profile']['twitter_id'],
+							'gplus_id'   =>$usuario['Profile']['gplus_id'],
+						)); ?>
+					</dd>
 				</dl>
 				<?php if ($usuario['User']['id'] == $loggedUserId): ?>
 				<div>

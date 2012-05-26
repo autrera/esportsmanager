@@ -49,7 +49,9 @@
                         )
                     )
                 );
-                echo $this->Form->input('content');
+                echo $this->Form->input('content', array(
+                    'rows' => 40,
+                ));
             ?>
             </fieldset>
             <?php echo $this->Form->end(

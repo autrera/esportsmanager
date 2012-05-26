@@ -24,14 +24,9 @@
 		<?php echo __('CakePHP: the rapid development php framework:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
-    <link href="/css/bootstrap.less" rel="stylesheet/less"> 
+    <LINK href="/css/default.css" rel="stylesheet" type="text/css">
 	<?php
-		// echo $this->Html->css('bootstrap', 'stylesheet/less');
-
-		echo $this->Html->script('less');
-
 		// echo $this->Html->meta('icon');
-
 		echo $scripts_for_layout;
 	?>
 </head>
@@ -153,7 +148,7 @@
                         <div class = "span12 credits">
                             Designed and Developed by <a href = "#">Kugel</a>
                         </div>
-						<?php echo $this->element('sql_dump'); ?>
+						<?php // echo $this->element('sql_dump'); ?>
                     </div>
                 </div>
             </div>

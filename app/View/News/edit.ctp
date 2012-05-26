@@ -50,7 +50,9 @@
                         )
                     )
                 );
-                echo $this->Form->input('content');
+                echo $this->Form->input('content', array(
+                    'rows' => 40,
+                ));
                 echo $this->Form->input('id', array('type' => 'hidden'));
             ?>
             </fieldset>

@@ -72,6 +72,7 @@
 			</div>
 			<div class = "span8">
 				<div class = "row">
+					<?php if (!empty($latestVideos)): ?>
 					<div class = "span4 latest-user-videos">
 						<h2>Latest Videos</h2>
 						<?php foreach ($latestVideos as $video): ?>
@@ -84,6 +85,8 @@
 						</div>
 						<?php endforeach; ?>
 					</div>
+					<?php endif; ?>
+					<?php if (!empty($latestNews)): ?>
 					<div class = "span4 latest-user-news">
 						<h2>Latest News</h2>
 						<?php foreach ($latestNews as $new): ?>
@@ -96,8 +99,8 @@
 						</div>
 						<?php endforeach; ?>
 					</div>
-				</div>	
-				<div class = "row">
+					<?php endif; ?>
+					<?php if (!empty($latestGalleries)): ?>
 					<div class = "span4 latest-user-galleries">
 						<h2>Latest Galleries</h2>
 						<?php foreach ($latestGalleries as $gallery): ?>
@@ -110,6 +113,7 @@
 						</div>
 						<?php endforeach; ?>
 					</div>
+					<?php endif; ?>
 				</div>	
 			</div>
 		</div>

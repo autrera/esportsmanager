@@ -31,6 +31,11 @@
                         )
                     )
                 );
+                echo $this->Form->input('facebook_id');
+                echo $this->Form->input('twitter_id');
+                echo $this->Form->input('gplus_id', array(
+                    'label' => 'Google+ Id'
+                ));
                 echo $this->Form->input('gender', array(
                     'options' => array(
                         'M' => 'M',

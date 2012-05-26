@@ -70,8 +70,7 @@ class AppController extends Controller {
  */
     public function isAuthorized($user) {
         /* Obtenemos los datos con los que vamos a validar */
-        // Retornamos true sólo para develop, hay que remover esto en produccion
-        return true;
+        
         // La acción que se está realizando
         $action_name = $this->request->params['action'];
 

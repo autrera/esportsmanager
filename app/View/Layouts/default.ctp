@@ -31,6 +31,7 @@
 	?>
 </head>
 <body>
+    <div id="fb-root"></div>
 	<?php
         echo $this->Html->script('facebook');
 		echo $this->Html->script('jquery');

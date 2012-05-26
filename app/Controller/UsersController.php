@@ -47,7 +47,7 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $uses = array('User', 'Team', 'Role');
+	public $uses = array('User', 'Team', 'Role', 'Video', 'Gallery', 'News');
 
 /**
  * Permitimos a los usuarios agregarse a si mismos y desloguearse
@@ -155,6 +155,35 @@ class UsersController extends AppController {
         if (!$this->User->exists()) {
             $this->invalidParameter();
         }
+
+        $latestVideos = $this->Video->find('all', array(
+            'conditions' => array(
+                'users_id' => $this->User->id,
+            ),
+            'order' => 'Video.id DESC',
+            'limit' => 5,
+        ));
+
+        $latestNews = $this->News->find('all', array(
+            'conditions' => array(
+                'users_id' => $this->User->id,
+            ),
+            'order' => 'News.id DESC',
+            'limit' => 10,
+        ));
+
+        $latestGalleries = $this->Gallery->find('all', array(
+            'conditions' => array(
+                'users_id' => $this->User->id,
+            ),
+            'order' => 'Gallery.id DESC',
+            'limit' => 2,
+        ));
+
+
+        $this->set('latestVideos', $this->latestVideos);
+        $this->set('latestNews', $this->latestNews);
+        $this->set('latestGalleries', $this->latestGalleries);
         $this->set('actions', $this->getAuthorizedActions());
         $this->set('isOwner', ($this->User->id == $this->Auth->user('id')));
         $this->set('id', $this->User->id);

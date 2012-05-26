@@ -24,9 +24,9 @@
 		<?php echo __('CakePHP: the rapid development php framework:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
-    <LINK href="/css/default.css" rel="stylesheet" type="text/css">
 	<?php
-		// echo $this->Html->meta('icon');
+		echo $this->Html->css('default');
+        // echo $this->Html->meta('icon');
 		echo $scripts_for_layout;
 	?>
 </head>

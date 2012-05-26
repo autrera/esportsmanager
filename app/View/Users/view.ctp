@@ -66,6 +66,53 @@
 				<?php endif; ?>
 			</div>
 		</div>
+		<div class = "row">
+			<div class = "page-header">
+				<h1>From this User</h1>
+			</div>
+			<div class = "span8">
+				<div class = "row">
+					<div class = "span4 latest-user-videos">
+						<h2>Latest Videos</h2>
+						<?php foreach ($latestVideos as $video): ?>
+						<div class = "user-video">
+							<h3>
+								<a href = "/videos/view/<?php echo $video['Video']['slug']; ?>">
+									<?php echo $video['Video']['name']; ?>
+								</a>
+							</h3>
+						</div>
+						<?php endforeach; ?>
+					</div>
+					<div class = "span4 latest-user-news">
+						<h2>Latest News</h2>
+						<?php foreach ($latestNews as $new): ?>
+						<div class = "user-news">
+							<h3>
+								<a href = "/news/view/<?php echo $new['News']['slug']; ?>">
+									<?php echo $video['News']['title']; ?>
+								</a>
+							</h3>
+						</div>
+						<?php endforeach; ?>
+					</div>
+				</div>	
+				<div class = "row">
+					<div class = "span4 latest-user-galleries">
+						<h2>Latest Galleries</h2>
+						<?php foreach ($latestGalleries as $gallery): ?>
+						<div class = "user-gallery">
+							<h3>
+								<a href = "/galleries/view/<?php echo $gallery['Gallery']['id']; ?>">
+									<?php echo $gallery['Gallery']['name']; ?>
+								</a>
+							</h3>
+						</div>
+						<?php endforeach; ?>
+					</div>
+				</div>	
+			</div>
+		</div>
 	</div>
     <?php echo $this->element('sidebar'); ?>
 </div>

@@ -13,16 +13,4 @@
             <div class="fb-like-box" data-href="http://www.facebook.com/teamquetzal" data-width="292" data-show-faces="true" data-stream="true" data-header="true"></div>
         </div>
     </div>
-    <hr>
-    <div class = "row">
-        <div class = "span4 lateral-sponsor">
-            <img src = "/img/sponsors/amd-logo.jpg">
-        </div>
-    </div>
-    <hr>
-    <div class = "row">
-        <div class = "span4 lateral-sponsor">
-            <img src = "/img/sponsors/intel-logo.jpg">
-        </div>
-    </div>
 </div>

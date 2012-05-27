@@ -50,7 +50,7 @@
 					<dd><?php echo $usuario['Profile']['description']; ?></dd>
 					<dt>Social Sites: </dt>
 					<dd>
-						<?php echo $this->element('UserSocialLinks.ctp', array(
+						<?php echo $this->element('UserSocialLinks', array(
 							'facebook_id'=>$usuario['Profile']['facebook_id'],
 							'twitter_id' =>$usuario['Profile']['twitter_id'],
 							'gplus_id'   =>$usuario['Profile']['gplus_id'],
@@ -67,10 +67,10 @@
 			</div>
 		</div>
 		<div class = "row">
-			<div class = "page-header">
-				<h1>From this User</h1>
-			</div>
 			<div class = "span8">
+				<div class = "page-header">
+					<h1>From this User</h1>
+				</div>
 				<div class = "row">
 					<?php if (!empty($latestVideos)): ?>
 					<div class = "span4 latest-user-videos">

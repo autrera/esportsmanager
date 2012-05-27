@@ -27,11 +27,40 @@
                         )
                     )
                 );
-                echo $this->Form->input('facebook_id');
-                echo $this->Form->input('twitter_id');
-                echo $this->Form->input('gplus_id', array(
-                    'label' => 'Google+ Id'
-                ));
+                echo $this->Form->input('facebook_id',
+                    customFormOptions::getOptionsDefault(
+                        __(
+                            'Your account name only. No \'http://www.facebook.com\' required.'
+                        ),
+                        array(
+                            'type' => 'text'
+                        )
+                    )
+                );
+                echo $this->Form->input('twitter_id',
+                    customFormOptions::getOptionsDefault(
+                        __(
+                            'Your account name only. No \'http://www.twitter.com\' required.'
+                        ),
+                        array(
+                            'type' => 'text'
+                        )
+                    )
+                );
+                echo $this->Form->input('gplus_id',
+                    customFormOptions::getOptionsDefault(
+                        __(
+                            'Your account name only. No \'http://plus.google.com\' required.'
+                        ),
+                        array(
+                            'type' => 'text',
+                            'label' => array(
+                                'text' => 'Google +',
+                                'class' => 'control-label',
+                            ),
+                        )
+                    )
+                );
                 echo $this->Form->input('gender', array(
                     'options' => array(
                         'M' => 'M',

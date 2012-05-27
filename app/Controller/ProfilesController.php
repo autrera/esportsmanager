@@ -47,7 +47,7 @@ class ProfilesController extends AppController {
  *
  * @var array
  */
-	public $uses = array('User', 'Avatar', 'Profile', 'Country');
+	public $uses = array('Profile', 'User', 'Avatar', 'Country');
 
 /**
  * Agrega un perfil al usuario

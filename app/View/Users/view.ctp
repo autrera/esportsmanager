@@ -72,9 +72,9 @@
 					<h1>From this User</h1>
 				</div>
 				<div class = "row">
-					<?php if (!empty($latestVideos)): ?>
 					<div class = "span4 latest-user-videos">
 						<h2>Latest Videos</h2>
+						<?php if (!empty($latestVideos)): ?>
 						<?php foreach ($latestVideos as $video): ?>
 						<div class = "user-video">
 							<h3>
@@ -84,11 +84,13 @@
 							</h3>
 						</div>
 						<?php endforeach; ?>
+						<?php else; ?>
+						<p>No videos have been added by this user.</p>
+						<?php endif; ?>
 					</div>
-					<?php endif; ?>
-					<?php if (!empty($latestNews)): ?>
 					<div class = "span4 latest-user-news">
 						<h2>Latest News</h2>
+						<?php if (!empty($latestNews)): ?>
 						<?php foreach ($latestNews as $new): ?>
 						<div class = "user-news">
 							<h3>
@@ -98,11 +100,13 @@
 							</h3>
 						</div>
 						<?php endforeach; ?>
+						<?php else; ?>
+						<p>No news have been added by this user.</p>
+						<?php endif; ?>
 					</div>
-					<?php endif; ?>
-					<?php if (!empty($latestGalleries)): ?>
 					<div class = "span4 latest-user-galleries">
 						<h2>Latest Galleries</h2>
+						<?php if (!empty($latestGalleries)): ?>
 						<?php foreach ($latestGalleries as $gallery): ?>
 						<div class = "user-gallery">
 							<h3>
@@ -112,8 +116,10 @@
 							</h3>
 						</div>
 						<?php endforeach; ?>
+						<?php else; ?>
+						<p>No galleries have been added by this user.</p>
+						<?php endif; ?>
 					</div>
-					<?php endif; ?>
 				</div>	
 			</div>
 		</div>

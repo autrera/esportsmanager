@@ -71,56 +71,62 @@
 				<div class = "page-header">
 					<h1>From this User</h1>
 				</div>
-				<div class = "row">
-					<div class = "span4 latest-user-videos">
-						<h2>Latest Videos</h2>
-						<?php if (!empty($latestVideos)): ?>
-						<?php foreach ($latestVideos as $video): ?>
-						<div class = "user-video">
-							<h3>
-								<a href = "/videos/view/<?php echo $video['Video']['slug']; ?>">
-									<?php echo $video['Video']['name']; ?>
-								</a>
-							</h3>
+				<ul class = "thumbnails">
+					<li class = "span4">
+						<div class = "tuhmbnail latest-user-videos user-activity">
+							<h2>Latest Videos</h2>
+							<?php if (!empty($latestVideos)): ?>
+							<?php foreach ($latestVideos as $video): ?>
+							<div class = "user-video">
+								<h3>
+									<a href = "/videos/view/<?php echo $video['Video']['slug']; ?>">
+										<?php echo $video['Video']['name']; ?>
+									</a>
+								</h3>
+							</div>
+							<?php endforeach; ?>
+							<?php else: ?>
+							<p>No videos have been added by this user.</p>
+							<?php endif; ?>
 						</div>
-						<?php endforeach; ?>
-						<?php else: ?>
-						<p>No videos have been added by this user.</p>
-						<?php endif; ?>
-					</div>
-					<div class = "span4 latest-user-news">
-						<h2>Latest News</h2>
-						<?php if (!empty($latestNews)): ?>
-						<?php foreach ($latestNews as $new): ?>
-						<div class = "user-news">
-							<h3>
-								<a href = "/news/view/<?php echo $new['News']['slug']; ?>">
-									<?php echo $video['News']['title']; ?>
-								</a>
-							</h3>
+					</li>
+					<li class = "span4">
+						<div class = "thumbnail latest-user-news user-activity">
+							<h2>Latest News</h2>
+							<?php if (!empty($latestNews)): ?>
+							<?php foreach ($latestNews as $new): ?>
+							<div class = "user-news">
+								<h3>
+									<a href = "/news/view/<?php echo $new['News']['slug']; ?>">
+										<?php echo $video['News']['title']; ?>
+									</a>
+								</h3>
+							</div>
+							<?php endforeach; ?>
+							<?php else: ?>
+							<p>No news have been added by this user.</p>
+							<?php endif; ?>
 						</div>
-						<?php endforeach; ?>
-						<?php else: ?>
-						<p>No news have been added by this user.</p>
-						<?php endif; ?>
-					</div>
-					<div class = "span4 latest-user-galleries">
-						<h2>Latest Galleries</h2>
-						<?php if (!empty($latestGalleries)): ?>
-						<?php foreach ($latestGalleries as $gallery): ?>
-						<div class = "user-gallery">
-							<h3>
-								<a href = "/galleries/view/<?php echo $gallery['Gallery']['id']; ?>">
-									<?php echo $gallery['Gallery']['name']; ?>
-								</a>
-							</h3>
+					</li>
+					<li class = "span4">
+						<div class = "thumbnail latest-user-galleries user-activity">
+							<h2>Latest Galleries</h2>
+							<?php if (!empty($latestGalleries)): ?>
+							<?php foreach ($latestGalleries as $gallery): ?>
+							<div class = "user-gallery">
+								<h3>
+									<a href = "/galleries/view/<?php echo $gallery['Gallery']['id']; ?>">
+										<?php echo $gallery['Gallery']['name']; ?>
+									</a>
+								</h3>
+							</div>
+							<?php endforeach; ?>
+							<?php else: ?>
+							<p>No galleries have been added by this user.</p>
+							<?php endif; ?>
 						</div>
-						<?php endforeach; ?>
-						<?php else: ?>
-						<p>No galleries have been added by this user.</p>
-						<?php endif; ?>
-					</div>
-				</div>	
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>

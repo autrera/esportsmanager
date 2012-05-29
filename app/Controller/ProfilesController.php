@@ -50,6 +50,17 @@ class ProfilesController extends AppController {
 	public $uses = array('Profile', 'User', 'Avatar', 'Country');
 
 /**
+ * Permitimos a los usuarios agregarse su propio perfil
+ *
+ * @param none
+ * @return void
+ */
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('add'); 
+    }
+
+/**
  * Agrega un perfil al usuario
  *
  * @param mixed What page to display

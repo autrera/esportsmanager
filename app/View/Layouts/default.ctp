@@ -28,7 +28,7 @@
 	</title>
 	<?php
 		echo $this->Html->css('default');
-        // echo $this->Html->meta('icon');
+        echo $this->Html->meta('icon', 'favicon.ico'); 
 		echo $scripts_for_layout;
 	?>
 </head>

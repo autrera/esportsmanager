@@ -21,7 +21,9 @@
 <head>
 	<?php echo $this->Html->charset('ISO-8859-1'); ?>
 	<title>
-		<?php echo __('CakePHP: the rapid development php framework:'); ?>
+		<?php 
+            echo __('Team Quetzal: Mexican Professional Gaming Franchise: '); 
+        ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php

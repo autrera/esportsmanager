@@ -58,11 +58,20 @@
 					</dd>
 				</dl>
 				<?php if ($usuario['User']['id'] == $loggedUserId): ?>
-				<div>
-					<a href = "/profiles/edit/<?php echo $usuario['Profile']['id'] ?>" class = "btn btn-primary btn-mini pull-right">
-						Edit your profile
-					</a>
-				</div>
+					<?php if (! empty($usuario['Profile']['id'])): ?>
+					<div>
+						<a href = "/profiles/edit/<?php echo $usuario['Profile']['id'] ?>" class = "btn btn-warning	pull-right">
+							Edit your profile
+						</a>
+					</div>
+					<?php else: ?>
+					<div>
+						<a href = "/profiles/add" class = "btn btn-primary 
+							btn-mini pull-right">
+							Add a profile
+						</a>
+					</div>
+					<?php endif; ?>
 				<?php endif; ?>
 			</div>
 		</div>

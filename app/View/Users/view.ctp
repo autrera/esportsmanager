@@ -84,7 +84,7 @@
 							</h3>
 						</div>
 						<?php endforeach; ?>
-						<?php else; ?>
+						<?php else: ?>
 						<p>No videos have been added by this user.</p>
 						<?php endif; ?>
 					</div>
@@ -100,7 +100,7 @@
 							</h3>
 						</div>
 						<?php endforeach; ?>
-						<?php else; ?>
+						<?php else: ?>
 						<p>No news have been added by this user.</p>
 						<?php endif; ?>
 					</div>
@@ -116,7 +116,7 @@
 							</h3>
 						</div>
 						<?php endforeach; ?>
-						<?php else; ?>
+						<?php else: ?>
 						<p>No galleries have been added by this user.</p>
 						<?php endif; ?>
 					</div>

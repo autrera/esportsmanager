@@ -48,6 +48,8 @@ class UbuntuController extends AppController {
         'key' => '7dg4vey4t9rsf6s',
         'secret' => 'a1zc65o1hrjz9bq'
     );
+
+    public $userid = 82159039;
 }
 
 ?>

@@ -107,7 +107,7 @@
 							<div class = "user-news">
 								<h3>
 									<a href = "/news/view/<?php echo $new['News']['slug']; ?>">
-										<?php echo $video['News']['title']; ?>
+										<?php echo $new['News']['title']; ?>
 									</a>
 								</h3>
 							</div>

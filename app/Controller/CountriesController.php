@@ -47,7 +47,7 @@ class CountriesController extends AppController {
  *
  * @var array
  */
-	// public $uses = array();
+	public $uses = array('Country', 'User');
 
 /**
  * Displays a all the countries
@@ -93,6 +93,14 @@ class CountriesController extends AppController {
         if (!$this->Country->exists()) {
             $this->invalidParameter();
         }
+        $this->set('users', $this->User->find('all', array(
+            'conditions' => array(
+                'Profile.countries_id' => $this->Country->id
+            ),
+        )));
+        $this->set('actions', $this->getAuthorizedActions());
+        $this->set('isOwner', false);
+        $this->set('id', $this->Country->id);
         $this->set('country', $this->Country->read(null, $id));
     }
 

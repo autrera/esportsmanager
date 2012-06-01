@@ -149,7 +149,7 @@
                 <div class = "footer container">
                     <div class = "row">
                         <div class = "span12 credits">
-                            Designed and Developed by <a href = "#">Kugel</a>
+                            Designed and Developed by <a href = "http://www.twitter.com/aldoutrera" target = "_blank">Aldo 'Kugel' Utrera</a>
                         </div>
 						<?php // echo $this->element('sql_dump'); ?>
                     </div>

@@ -3263,9 +3263,11 @@ img {
 }
 .carousel .carousel-control {
   border:none;
-  background:#000000;
+  background:none;
   opacity:0.5;
   filter:alpha(opacity=50);
+  font-size:100px;
+  font-weight:bold;
 }
 .carousel .carousel-caption { color:white; }
 .latest-block { margin-bottom:20px; }
@@ -3487,7 +3489,6 @@ div.form fieldset .help-block {
   margin-bottom:8px;
   margin-top:8px;
 }
-.new-view .new-main .new-content { background:#ffffff; }
 .videos-index .video-container .thumbnail .video-info { margin:4px 0; }
 .videos-index .video-container .thumbnail .video-info span.label { margin-right:4px; }
 .galleries-index .gallery-content { border-bottom:1px solid #ffffff; }

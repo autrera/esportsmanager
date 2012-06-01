@@ -169,7 +169,7 @@ class UsersController extends AppController {
                 'users_id' => $this->User->id,
             ),
             'order' => 'News.id DESC',
-            'limit' => 10,
+            'limit' => 5,
         ));
 
         $latestGalleries = $this->Gallery->find('all', array(
@@ -181,9 +181,9 @@ class UsersController extends AppController {
         ));
 
 
-        $this->set('latestVideos', $this->latestVideos);
-        $this->set('latestNews', $this->latestNews);
-        $this->set('latestGalleries', $this->latestGalleries);
+        $this->set('latestVideos', $latestVideos);
+        $this->set('latestNews', $latestNews);
+        $this->set('latestGalleries', $latestGalleries);
         $this->set('actions', $this->getAuthorizedActions());
         $this->set('isOwner', ($this->User->id == $this->Auth->user('id')));
         $this->set('id', $this->User->id);

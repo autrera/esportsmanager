@@ -3456,7 +3456,7 @@ span.game-logo img { vertical-align:top; }
 }
 .footer { margin-top:12px; }
 .footer .credits {
-  font-size:10px;
+  font-size:12px;
   text-align:center;
   color:#ffffff;
 }
@@ -3543,3 +3543,8 @@ div.form fieldset .help-block {
 .user-activity:hover, .user-activity:active, .user-activity.active, .user-activity.disabled, .user-activity[disabled] { background-color:#e6e6e6; }
 .user-activity:active, .user-activity.active { background-color:#cccccc \9; }
 .user-activity:first-child { *margin-left:0; }
+.users-index .user-container .thumbnail .user-info span {
+  display:block;
+  margin-top:4px;
+}
+.paises .pais { margin-bottom:8px; }

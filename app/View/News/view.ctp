@@ -46,12 +46,11 @@
                         )); ?>
                     </div>
                     <div class = "new-social">
-                        Twitter - Facebook
+                        <?php echo $this->element('shareBox'); ?>
                     </div>
                     <div class = "new-content">
                         <?php echo $noticia['News']['content']; ?>
                     </div>
-                    <?php echo $this->element('shareBox'); ?>
                 </div>
             </div>
         </div>

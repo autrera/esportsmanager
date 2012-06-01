@@ -106,6 +106,7 @@ class AppModel extends Model {
             && $this->isFileValidType(
                     $request->data[$this->alias][$fileInputName]
                )
+            && $this->isFileValidExtension($this->getExtension($name))
         ) {
             // Obtenemos extension de la imagen
             $ext = $this->getExtension($name);
@@ -359,5 +360,31 @@ class AppModel extends Model {
 
     // }}}
 
+    /// {{{ isFileValidExtension($ext)
+
+    /**
+     * Verifica que el archivo subido tenga una extensión segura
+     *
+     * @param String $ext La extensión del archivo 
+     *
+     * @return boolean True si el archivo tiene una extensión válida, falso de 
+     *                 lo contrario
+     */
+    function isFileValidExtension($ext){
+
+        // Los mime tipes permitidos
+        $whitelist = array(
+            'jpg', 'gif', 'png'
+        );
+
+        // Verificamos que sea válido
+        if (in_array($ext, $whitelist)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // }}}
 
 }

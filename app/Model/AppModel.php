@@ -146,7 +146,7 @@ class AppModel extends Model {
         } else if ($fileOptional) {
             // No se subió la imagen, pero es opcional, así que guardamos
             if ($this->save($request->data)) {
-                $session->setFlash(__('The ' . $this->alias . ' has been saved'), 'flash-success');
+                $session->setFlash(__('The ' . $this->alias . ' has been saved'), 'flash-warning');
                 return true;
             } else {
                 $session->setFlash(__('The ' . $this->alias . ' could not be saved. Please, try again.'), 'flash-failure');
@@ -342,13 +342,15 @@ class AppModel extends Model {
         // Los mime tipes permitidos
         $whitelist = array(
             'image/jpeg',
+            'image/png',
+            'image/gif',
         );
 
         // Obtenemos los atributos de la imagen, solo el tipo nos importa
-        list($ancho, $alto, $tipo, $atributos) = getimagesize($file);
+        $imageData = getimagesize($file);
 
         // Verificamos que sea válido
-        if (in_array($tipo, $whitelist)){
+        if (in_array($imageData['mime'], $whitelist)){
             return true;
         } else {
             return false;

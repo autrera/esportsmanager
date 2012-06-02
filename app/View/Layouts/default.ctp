@@ -22,15 +22,16 @@
 	<?php echo $this->Html->charset('ISO-8859-1'); ?>
 	<title>
 		<?php 
-            echo __('Team Quetzal: Mexican Professional Gaming Franchise: '); 
+            echo __('Team Quetzal - Mexican Professional Gaming Franchise: '); 
         ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
 		echo $this->Html->css('default');
-        echo $this->Html->meta('icon', 'favicon.ico'); 
+        // echo $this->Html->meta('icon', 'favicon.ico'); 
 		echo $scripts_for_layout;
 	?>
+    <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 </head>
 <body>
     <div id="fb-root"></div>

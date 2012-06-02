@@ -3549,3 +3549,7 @@ div.form fieldset .help-block {
   margin-top:4px;
 }
 .paises .pais { margin-bottom:8px; }
+.thumbnails .span1 .thumbnail img {
+  height:50px;
+  width:50px;
+}

@@ -105,14 +105,14 @@
             </div>
         </div>
         <div class = "row">
-            <div class = "span8">
+            <div class = "span8 galleries-home">
                 <div class = "page-header">
                     <h1>.: Latest Galleries</h1>
                 </div>
                 <?php foreach ($latestGalleries as $gallery): ?>
                 <div class = "gallery-content">
                     <h2 class = "gallery-name">
-                        <a href = "/galleries/view/<?php echo $gallery['Gallery']['id']; ?>">
+                        <a href = "/galleries/view/<?php echo $gallery['Gallery']['slug']; ?>">
                             <?php echo $gallery['Gallery']['name'] ?>
                         </a>
                     </h2>
@@ -128,11 +128,6 @@
                                 <a href = "/photos/view/<?php echo $photo['id']; ?>" title = "<?php echo $photo['name']; ?>">
                                     <img src = "<?php echo $photo['url'] ?>" >
                                 </a>
-                                <h5>
-                                    <a href = "/photos/view/<?php echo $photo['id']; ?>">
-                                        <?php echo $photo['name']; ?>
-                                    </a>
-                                </h5>
                             </div>
                         </li>
                         <?php endforeach; ?>

@@ -20,9 +20,8 @@ class utilities
     }
 
     public static function getUrl(){
-        $values = explode('//', $_SERVER['HTTP_REFERER']);
-        $protocol = $values[0];
-        return $protocol. '//' . $_SERVER['HTTP_HOST'] . 
+        $protocol = (isset($_SERVER['HTTPS'])) ? 'https' : 'http';
+        return $protocol. '://' . $_SERVER['HTTP_HOST'] . 
             $_SERVER['REQUEST_URI'];
     }
 

@@ -24,16 +24,11 @@
         					break;
         				}
         			?>
-        			<li class = "span2">
+        			<li class = "span1">
         				<div class = "thumbnail">
     						<a href = "/photos/view/<?php echo $photo['id']; ?>">
 	        					<img src = "<?php echo $photo['url'] ?>" >
 	        				</a>
-        					<h5>
-        						<a href = "/photos/view/<?php echo $photo['id']; ?>">
-	        						<?php echo $photo['name']; ?>
-	        					</a>
-        					</h5>
         				</div>
         			</li>
 	        		<?php endforeach; ?>

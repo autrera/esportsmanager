@@ -21,6 +21,9 @@
 						<?php if (isset($foto['Photo']['name'])): ?>
 						<h2><?php echo $foto['Photo']['name'] ?></h2>
 						<?php endif; ?>
+						<?php if (isset($foto['Photo']['description'])): ?>
+						<p><?php echo $foto['Photo']['description'] ?></p>
+						<?php endif; ?>
 					</li>
 				</ul>
 			</div>

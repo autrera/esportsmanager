@@ -14,6 +14,7 @@
             <?php
                 for ($i = 0; $i < 5; $i++){
                     echo $this->Form->input('Photo.' . $i . '.name');
+                    echo $this->Form->input('Photo.' . $i . '.description');
                     echo $this->Form->input('Photo.' . $i . '.photo', 
                         customFormOptions::getOptionsFile()
                     );

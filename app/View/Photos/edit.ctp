@@ -14,6 +14,7 @@
                 <legend><?php echo __('Edit the Photo'); ?></legend>
             <?php
                 echo $this->Form->input('name');
+                echo $this->Form->input('description');
                 echo $this->Form->input('photo', 
                     customFormOptions::getOptionsFile(
                         __('Leave this alone if you don\'t want to overwrite the photo.')

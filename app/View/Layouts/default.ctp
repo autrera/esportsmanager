@@ -20,6 +20,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php echo $this->Html->charset('ISO-8859-1'); ?>
+    <meta property="og:title" content="Team Quetzal"/> 
+    <meta property="og:type" content="sports_team"/> 
+    <meta property="og:image" content="http://a2.sphotos.ak.fbcdn.net/hphotos-ak-ash4/385529_326799320670213_361217214_n.jpg"/> 
+    <meta property="og:url" content="http://www.teamquetzal.com"/> 
+    <meta property="og:site_name" content="QuetziWeb"/> 
+    <meta property="og:admins" content="110378193995"/> 
 	<title>
 		<?php 
             echo __('Team Quetzal - Mexican Professional Gaming Franchise: '); 

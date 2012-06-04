@@ -50,7 +50,7 @@
 			<?php foreach ($galeria['Photos'] as $photo): ?>
 			<li class = "span1">
 				<div class = "thumbnail">
-					<a href = "/photos/view/<?php echo $photo['id']; ?>">
+					<a rel = "all-the-photos" class = "fancybox" data-fancybox-type="ajax" href = "/photos/view/<?php echo $photo['id']; ?>">
     					<img src = "<?php echo $photo['url'] ?>" >
     				</a>
 				</div>

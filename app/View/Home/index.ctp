@@ -125,7 +125,7 @@
                         ?>
                         <li class = "span1">
                             <div class = "thumbnail">
-                                <a href = "/photos/view/<?php echo $photo['id']; ?>" title = "<?php echo $photo['name']; ?>">
+                                <a rel = "all-the-photos" class = "fancybox" data-fancybox-type="ajax" href = "/photos/view/<?php echo $photo['id']; ?>" title = "<?php echo $photo['name']; ?>">
                                     <img src = "<?php echo $photo['url'] ?>" >
                                 </a>
                             </div>

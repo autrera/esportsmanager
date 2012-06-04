@@ -10,6 +10,13 @@
 
 		$(".fancybox").fancybox();
 
+		$.getJSON(
+			'http://api.justin.tv/api/stream/list.json?channel=nerdgasmtv,darkest_mage,colminigun,angrytestie&jsonp=?',
+			function(a){
+				console.log(a);
+			}
+		);
+
     });
 
 }( window.jQuery );

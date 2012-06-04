@@ -53,7 +53,8 @@ class AppController extends Controller {
             'authorize' => array(
                 'Controller'
             )
-        )
+        ),
+        'RequestHandler',
     );
 
     // Le permitimos a todos ver el listado y un elemento en particular

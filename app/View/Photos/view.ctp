@@ -13,12 +13,14 @@
 				</a>
 			</h1>
 		</div>
-		<div class = "row">
+		<div class = "row photo-content">
 			<div class = "span8">
 				<ul class = "thumbnails">
 					<li class = "thumbnail">
 						<img src = "<?php echo $foto['Photo']['url']; ?>">
+						<?php if (isset($foto['Photo']['name'])): ?>
 						<h2><?php echo $foto['Photo']['name'] ?></h2>
+						<?php endif; ?>
 					</li>
 				</ul>
 			</div>
@@ -46,5 +48,4 @@
 		</div>
         <?php echo $this->element('facebook-comments'); ?>
 	</div>
-    <?php echo $this->element('sidebar'); ?>
 </div>

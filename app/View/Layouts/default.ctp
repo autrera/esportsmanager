@@ -28,6 +28,9 @@
 	</title>
 	<?php
 		echo $this->Html->css('default');
+        echo $this->Html->css('jquery.fancybox');
+        echo $this->Html->css('jquery.fancybox-buttons');
+        echo $this->Html->css('jquery.fancybox-thumbs');
         // echo $this->Html->meta('icon', 'favicon.ico'); 
 		echo $scripts_for_layout;
 	?>
@@ -38,6 +41,10 @@
 	<?php
         echo $this->Html->script('facebook');
 		echo $this->Html->script('jquery');
+        echo $this->Html->script('jquery.fancybox.pack');
+        echo $this->Html->script('jquery.fancybox-buttons');
+        echo $this->Html->script('jquery.fancybox-media');
+        echo $this->Html->script('jquery.fancybox-thumbs');
 		echo $this->Html->script('bootstrap');
         echo $this->Html->script('initializers');
 	?>

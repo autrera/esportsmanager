@@ -11,9 +11,7 @@
             <?php if (! empty($team['Team']['photo'])): ?>
                 <div class = "row team-picture">
                     <div class = "span8">
-                        <a href = "teams/view/<?php echo $team['Team']['id']; ?>">
-                            <img src = "<?php echo $team['Team']['photo'] ?>">
-                        </a>
+                        <img src = "<?php echo $team['Team']['photo'] ?>">
                     </div>
                 </div>
             <?php endif;?>

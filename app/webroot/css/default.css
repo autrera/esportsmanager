@@ -3553,3 +3553,4 @@ div.form fieldset .help-block {
   height:50px;
   width:50px;
 }
+.photo-content img { max-width:600px; }

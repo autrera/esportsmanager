@@ -62,12 +62,25 @@ class StreamsUsersController extends AppController {
  * @param none
  */
     public function index() {
-        $streams = $this->StreamsUser->find('all');
+        // $streams = $this->StreamsUser->find('all');
+        $streams = $this->Stream->find('all');
         echo "<pre>";
         print_r($streams);
         echo "</pre>";
-        // $streamProvider = $this->Stream->find('all');
-        // $this->set('streams', );
+
+        foreach ($streams as $stream){
+            $streamData = $stream['Stream'];
+            $client = $this->createClient($streamData['consumer_key'], 
+                $streamData['consumer_secret']
+            );
+            foreach ($stream['User'] as $user){
+                $response = $client->get($user['StreamsUser']['access_key'], $user['StreamsUser']['access_secret'], 'http://api.justin.tv/api/account/whoami.json');
+                echo "<pre>";
+                print_r(json_decode($response));
+                echo "</pre>";
+            }
+        }
+
     }
 
 /**

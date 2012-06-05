@@ -13,11 +13,11 @@
                 <legend><?php echo __('Add a Stream Provider'); ?></legend>
             <?php
                 echo $this->Form->input('name');
-                echo $this->Form->input('prefix_url',
-                    customFormOptions::getOptionsDefault(
-                        __('This will be preprended to all the videos that belong to this provider, so don\'t mess this up.')
-                    )
-                );
+                echo $this->Form->input('request_token_url');
+                echo $this->Form->input('authorize_url');
+                echo $this->Form->input('access_token_url');
+                echo $this->Form->input('consumer_key');
+                echo $this->Form->input('consumer_secret');
                 echo $this->Form->input('logo', 
                     customFormOptions::getOptionsFile(
                         __('The icon of the stream provider. Size: 36x36 px. Tiny, huh?')

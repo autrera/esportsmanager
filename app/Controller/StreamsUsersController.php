@@ -172,7 +172,7 @@ class StreamsUsersController extends AppController {
 
         $this->autoRender = false;
 
-        if (!$this->Auth->id){
+        if (!$this->Auth->user()){
             $this->Session->setFlash('You need to be logged in, to access this page', 'flash-failure');
         }
         $this->Stream->id = $streamId;
@@ -225,10 +225,6 @@ class StreamsUsersController extends AppController {
         $requestToken = $this->Session->read('request_token');
         $streamData   = $this->Session->read('stream_data');
 
-        echo "<pre>";
-        print_r($accessToken);
-        echo "</pre>";
-
         $client = $this->createClient($streamData['consumer_key'], 
             $streamData['consumer_secret']
         );
@@ -238,34 +234,30 @@ class StreamsUsersController extends AppController {
         );
 
         if ($accessToken) {
-            echo "<pre>";
-            print_r($accessToken);
-            echo "</pre>";
+
             $data = array(
                 'StreamsUser' => array(
-                    'users_id'      => $this->Auth->id,
+                    'users_id'      => $this->Auth->user('id'),
                     'streams_id'    => $streamData['id'],
                     'access_key'    => $accessToken->key,
                     'access_secret' => $accessToken->secret,
                 ),
             );
+
             if ($this->StreamsUser->save($data)) {
                 $this->Session->setFlash(__('Your stream has been saved'),
                     'flash-success'
                 );
-                echo "1";
-                // $this->redirect(array('action' => 'index'));
+                $this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash(__('Your stream could not be saved. Please, try again.'), 'flash-failure'
                 );
-                echo "2";
-                // $this->redirect(array('action' => 'index'));
+                $this->redirect(array('action' => 'index'));
             }
         } else {
             $this->Session->setFlash(__('Unable to retrieve your token. Please, try again.'), 'flash-failure'
             );
-            echo "3";
-            // $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index'));
         }
     }
 

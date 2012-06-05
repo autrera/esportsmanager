@@ -27,7 +27,47 @@ class Stream extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'prefix_url' => array(
+		'request_token_url' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'This field can\'t be empty',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'authorize_url' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'This field can\'t be empty',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'access_token_url' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'This field can\'t be empty',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'consumer_key' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'This field can\'t be empty',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'consumer_secret' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'message' => 'This field can\'t be empty',

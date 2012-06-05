@@ -20,16 +20,6 @@ class StreamsUser extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'identifier' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => 'This field can\'t be empty',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'streams_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -48,7 +38,15 @@ class StreamsUser extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'games_id' => array(
+		'users_id' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'This field can\'t be empty',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 			'numeric' => array(
 				'rule' => array('numeric'),
 				'message' => 'Only numbers are allowed on this field',
@@ -57,6 +55,18 @@ class StreamsUser extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+		),
+		'access_key' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'This field can\'t be empty',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'access_secret' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'message' => 'This field can\'t be empty',

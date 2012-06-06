@@ -118,4 +118,26 @@ class StreamsUser extends AppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * Operaciones a realizar antes de guardar 
+ *
+ * @param none
+ * @return void
+ */
+    public function beforeSave() {
+    	// Buscamos si el usuario ya dió de alta esta cuenta antes
+    	$results = $this->find('all', array(
+    		'conditions' => array(
+    			'identifier' => $this->data[$this->alias]['identifier'],
+    			'streams_id' => $this->data[$this->alias]['streams_id'],
+    		),
+    	));
+    	if (!empty($results)){
+    		return false;
+    	} else {
+    		return true;
+    	}
+    }
+
 }

@@ -53,7 +53,7 @@ class StreamsUsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('startUserAuth', 'recieveUserAuth'); 
+        $this->Auth->allow('startUserAuth', 'recieveUserAuth', 'test'); 
     }
 
 /**
@@ -62,23 +62,25 @@ class StreamsUsersController extends AppController {
  * @param none
  */
     public function index() {
-        // $streams = $this->StreamsUser->find('all');
+        $this->render     = false;
+        $this->autoRender = false;
         $streams = $this->Stream->find('all');
-        echo "<pre>";
-        print_r($streams);
-        echo "</pre>";
-
         foreach ($streams as $stream){
             $streamData = $stream['Stream'];
             $client = $this->createClient($streamData['consumer_key'], 
                 $streamData['consumer_secret']
             );
+            $users = array();
+            $users[] = 'starladder6';
+            $users[] = 'starladder6';
+            $users[] = 'starladder6';
             foreach ($stream['User'] as $user){
-                $response = $client->get($user['StreamsUser']['access_key'], $user['StreamsUser']['access_secret'], 'http://api.justin.tv/api/account/whoami.json');
-                echo "<pre>";
-                print_r(json_decode($response));
-                echo "</pre>";
+                $users[] = $user['StreamsUser']['identifier'];
             }
+            $response = $client->get('', '', 'http://api.justin.tv/api/stream/list.json?channel='.implode(',', $users));
+            echo "<pre>";
+            print_r(json_decode($response));
+            echo "</pre>";
         }
 
     }
@@ -250,14 +252,12 @@ class StreamsUsersController extends AppController {
 
             // Obtenemos información del usuario que nos autorizó
             $response = $client->get($accessToken->key, $accessToken->secret, $streamData['get_user_info_url']);
-            echo "<pre>";
-            print_r(json_decode($response));
-            echo "</pre>";
+            $obj = json_decode($response);
 
             $data = array(
                 'StreamsUser' => array(
                     'identifier'    => 
-                        $response->{$streamData['identifier_field']},
+                        $obj->{$streamData['identifier_field']},
                     'users_id'      => $this->Auth->user('id'),
                     'streams_id'    => $streamData['id'],
                     'access_key'    => $accessToken->key,
@@ -280,6 +280,30 @@ class StreamsUsersController extends AppController {
             );
             $this->redirect(array('action' => 'index'));
         }
+    }
+
+    public function test(){
+        $this->render = false;
+        $this->autoRender = false;
+        $stream = $this->Stream->find('all', array(
+            'conditions' => array(
+                'Stream.id' => 1,
+            ),
+        ));
+
+        echo "<pre>";
+        print_r($stream);
+        $streamData = $stream[0]['Stream'];
+
+        $client = $this->createClient($streamData['consumer_key'], 
+            $streamData['consumer_secret']
+        );
+        $response = $client->get('yLm3qoZFIWVX87oeCUYiA', '0JrDHYeGSbZoip2JK4sMAW9591ifaVA5NgkxBL386ug', 'http://api.justin.tv/api/account/whoami.json');
+        print_r(json_decode($response));
+        $response = $client->get('4kitpP1Ywi7Pz5VbRJHg', 'ZrZd3iDQGdkkbcHkM9Kya3tjntNbtiTqK1tgj84', 'http://api.justin.tv/api/account/whoami.json');
+        print_r(json_decode($response));
+        echo "</pre>";
+
     }
 
     private function createClient($consumerKey, $consumerSecret) {

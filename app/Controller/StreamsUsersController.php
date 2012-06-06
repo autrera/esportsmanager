@@ -57,31 +57,41 @@ class StreamsUsersController extends AppController {
     }
 
 /**
- * Muestra todos los streams disponibles del usuario
+ * Muestra todos los streams disponibles de los usuarios
  *
  * @param none
  */
     public function index() {
-        $this->render     = false;
-        $this->autoRender = false;
+        // Obtenemos los provedores de streaming y sus usuarios
         $streams = $this->Stream->find('all');
+        // En esta variable almacenaremos todo lo que vamos a mandar a la view
+        $data = array();
+        // Por cada provedor de streaming
         foreach ($streams as $stream){
+            // Obtenemos los datos del streaming
             $streamData = $stream['Stream'];
+            // Pasamos los valores a nuestra variable
+            $data[$streamData['name']]['streamData'] = $streamData;
+            // Iniciamos el objeto para realizar las llamadas al API
             $client = $this->createClient($streamData['consumer_key'], 
                 $streamData['consumer_secret']
             );
+            // Datos dummie, para testeo
             $users = array();
             $users[] = 'starladder6';
             $users[] = 'teamquetzal';
             $users[] = 'KungenTV';
+            // Por cada usuario, obtenemos su identificador
             foreach ($stream['User'] as $user){
                 $users[] = $user['StreamsUser']['identifier'];
             }
+            // Hacemos la llamada para obtener el listado de canales
             $response = $client->get('', '', 'http://api.justin.tv/api/stream/list.json?channel='.implode(',', $users));
-            echo "<pre>";
-            print_r(json_decode($response));
-            echo "</pre>";
+            // La respuesta es en JSON, decodificamos y pasamos a la var
+            $data[$streamData['name']]['channels'] = json_decode($response);
         }
+        // Enviamos el array a la vista
+        $this->set('data', $data);
 
     }
 

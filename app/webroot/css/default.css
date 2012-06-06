@@ -3593,8 +3593,17 @@ div.form fieldset .help-block {
   text-align:left;
   padding:0 4px;
   display:block;
+  *zoom:1;
 }
 .live-stream:hover, .live-stream:active, .live-stream.active, .live-stream.disabled, .live-stream[disabled] { background-color:#e6e6e6; }
 .live-stream:active, .live-stream.active { background-color:#cccccc \9; }
 .live-stream:first-child { *margin-left:0; }
-.live-stream .embed-video { margin-right:12px; }
+.live-stream .embed-video {
+  margin-right:12px;
+  margin-bottom:8px;
+}
+.live-stream:before, .live-stream:after {
+  display:table;
+  content:"";
+}
+.live-stream:after { clear:both; }

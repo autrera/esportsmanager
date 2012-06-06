@@ -72,8 +72,8 @@ class StreamsUsersController extends AppController {
             );
             $users = array();
             $users[] = 'starladder6';
-            $users[] = 'starladder6';
-            $users[] = 'starladder6';
+            $users[] = 'teamquetzal';
+            $users[] = 'KungenTV';
             foreach ($stream['User'] as $user){
                 $users[] = $user['StreamsUser']['identifier'];
             }

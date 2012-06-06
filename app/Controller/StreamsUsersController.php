@@ -254,8 +254,11 @@ class StreamsUsersController extends AppController {
             print_r(json_decode($response));
             echo "</pre>";
 
+            return false;
+
             $data = array(
                 'StreamsUser' => array(
+                    'identifier' => $response[$streamData['identifier_field']],
                     'users_id'      => $this->Auth->user('id'),
                     'streams_id'    => $streamData['id'],
                     'access_key'    => $accessToken->key,

@@ -29,6 +29,10 @@ class StreamsUser extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'uniquecombo' => array(
+				'rule' =>'uniqueauth',
+				'message' => 'This account has already been authorized'
+			),
 		),
 		'streams_id' => array(
 			'notempty' => array(
@@ -120,20 +124,21 @@ class StreamsUser extends AppModel {
 	);
 
 /**
- * Operaciones a realizar antes de guardar 
+ * Verificamos que el recurso sea único
  *
  * @param none
  * @return void
  */
-    public function beforeSave() {
+    public function uniqueauth() {
     	// Buscamos si el usuario ya dió de alta esta cuenta antes
-    	$results = $this->find('all', array(
-    		'conditions' => array(
-    			'identifier' => $this->data[$this->alias]['identifier'],
-    			'streams_id' => $this->data[$this->alias]['streams_id'],
-    		),
-    	));
-    	if (!empty($results)){
+        $dato = $this->field('identifier', array(
+            'StreamsUser.identifier' 
+            	=> $this->data['StreamsUser']['identifier'],
+            'StreamsUser.streams_id' 
+	            => $this->data['StreamsUser']['streams_id'],
+        ));
+
+    	if (!empty($dato)){
     		return false;
     	} else {
     		return true;

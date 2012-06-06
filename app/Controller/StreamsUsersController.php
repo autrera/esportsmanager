@@ -248,6 +248,12 @@ class StreamsUsersController extends AppController {
 
         if ($accessToken) {
 
+            // Obtenemos información del usuario que nos autorizó
+            $response = $client->get($accessToken->key, $accessToken->secret, $streamData['get_user_info_url']);
+            echo "<pre>";
+            print_r(json_decode($response));
+            echo "</pre>";
+
             $data = array(
                 'StreamsUser' => array(
                     'users_id'      => $this->Auth->user('id'),

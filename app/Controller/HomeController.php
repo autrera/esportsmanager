@@ -19,6 +19,8 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
+App::import('Vendor', 'OAuth/OAuthClient');
+
 /**
  * Static content controller
  *
@@ -47,7 +49,7 @@ class HomeController extends AppController {
  *
  * @var array
  */
-	public $uses = array('News', 'Video', 'Gallery');
+	public $uses = array('News', 'Video', 'Gallery', 'Stream');
 
 /**
  * Displays a view
@@ -82,13 +84,60 @@ class HomeController extends AppController {
 			'limit' => 2,
 		));
 
+		$liveStreams = $this->getLiveStreams();
+
 		// Seteamos las variables
 		$this->set('featuredNews' , $featuredNews);
 		$this->set('latestVideos', $latestVideos);
 		$this->set('featuredVideo', $featuredVideo);
 		$this->set('latestNews', $latestNews);
+		$this->set('liveStreams', $liveStreams);
 		$this->set('latestGalleries', $latestGalleries);
 
 	}
+
+	// {{{ getLiveStreams()
+
+	/**
+	 * Obtenemos los streams registrados que están en vivo, ordenados por usuarios 
+	 *
+	 * @param none
+	 * @return Array $data Los datos de los streams
+	 */
+	private function getLiveStreams(){
+		$limit = 3; // Limite de streams
+        // Obtenemos los provedores de streaming y sus usuarios
+        $streams = $this->Stream->find('all');
+        // En esta variable almacenaremos todo lo que vamos a mandar a la view
+        $data = array();
+        // Por cada provedor de streaming
+        foreach ($streams as $stream){
+            // Obtenemos los datos del streaming
+            $streamData = $stream['Stream'];
+            // Pasamos los valores a nuestra variable
+            $data[$streamData['name']]['streamData'] = $streamData;
+            // Iniciamos el objeto para realizar las llamadas al API
+            $client = $this->createClient($streamData['consumer_key'], 
+                $streamData['consumer_secret']
+            );
+            // Datos dummie, para testeo
+            $users = array();
+            $users[] = 'IPLLoL';
+            $users[] = 'tsm_theoddone';
+            $users[] = 'KungenTV';
+            // Por cada usuario, obtenemos su identificador
+            foreach ($stream['User'] as $user){
+                $users[] = $user['StreamsUser']['identifier'];
+            }
+            // Hacemos la llamada para obtener el listado de canales
+            $response = $client->get('', '', 'http://api.justin.tv/api/stream/list.json?limit='.$limit.'&channel='.implode(',', $users));
+            // La respuesta es en JSON, decodificamos y pasamos a la var
+            $data[$streamData['name']]['channels'] = json_decode($response);
+        }
+        // Enviamos el array
+        return $data;
+	}
+
+	// }}}
 
 }

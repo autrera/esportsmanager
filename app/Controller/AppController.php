@@ -267,4 +267,8 @@ class AppController extends Controller {
         ));
     }
 
+    protected function createClient($consumerKey, $consumerSecret) {
+        return new OAuthClient($consumerKey, $consumerSecret);
+    }
+
 }

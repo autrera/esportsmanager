@@ -3606,3 +3606,16 @@ div.form fieldset .help-block {
   content:"";
 }
 .live-stream:after { clear:both; }
+.live-streams .nav { margin-bottom:4px; }
+.live-streams .mini-live-stream {
+  margin-bottom:3px;
+  *zoom:1;
+}
+.live-streams .mini-live-stream .label-container { margin-bottom:3px; }
+.live-streams .mini-live-stream .label-container span.label { margin-right:4px; }
+.live-streams .mini-live-stream a { font-weight:bold; }
+.live-streams .mini-live-stream:before, .live-streams .mini-live-stream:after {
+  display:table;
+  content:"";
+}
+.live-streams .mini-live-stream:after { clear:both; }

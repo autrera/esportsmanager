@@ -139,6 +139,12 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="/streamsUsers">
+                                            <i class="icon-facetime-video icon-white"></i>
+                                            Streams
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="/galleries">
                                             <i class = "icon-th icon-white"></i> 
                                             Galleries

@@ -78,8 +78,8 @@ class StreamsUsersController extends AppController {
             );
             // Datos dummie, para testeo
             $users = array();
-            $users[] = 'starladder6';
-            $users[] = 'teamquetzal';
+            $users[] = 'IPLLoL';
+            $users[] = 'tsm_theoddone';
             $users[] = 'KungenTV';
             // Por cada usuario, obtenemos su identificador
             foreach ($stream['User'] as $user){
@@ -92,6 +92,7 @@ class StreamsUsersController extends AppController {
         }
         // Enviamos el array a la vista
         $this->set('data', $data);
+        $this->set('actions', $this->getAuthorizedActions());
 
     }
 

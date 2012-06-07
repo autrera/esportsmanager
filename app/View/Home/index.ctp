@@ -1,4 +1,5 @@
 <?php
+    App::uses('utilities', 'Lib');
 ?>
 <div class = "row">
     <div class = "span8">
@@ -56,6 +57,82 @@
                 </div>
             </li>
         </ul>
+    </div>
+</div>
+<div class = "row">
+    <div class = "span12">
+        <div class = "row">
+            <div class = "span4">
+                <div class = "latest-matches">
+                    <h2>Latest Matches</h2>
+                    <div class = "alert alert-info">
+                        <strong>Coming Soon!</strong>
+                    </div>
+                </div>
+            </div>
+            <div class = "span4">
+                <div class = "latest-blogs">
+                    <h2>Latest Blogs</h2>
+                    <div class = "alert alert-info">
+                        <strong>Coming Soon!</strong>
+                    </div>
+                </div>
+            </div>
+            <div class = "span4">
+                <div class = "live-streams">
+                    <div class = "module-header">
+                        <h2>Live Streams</h2>
+                    </div>
+                    <a class = "view-more btn btn-mini btn-primary"
+                        href = "/streamsUsers" >
+                        More
+                        <i class="icon-chevron-right icon-white"></i>
+                    </a>
+                    <ul class="nav nav-pills">
+                        <?php foreach($liveStreams as $key => $streamProviders): ?>
+                        <li class = "<?php echo ($key == 0)? 'active' : ''; ?>">
+                            <a href = "#stream-<?php echo $streamProviders['streamData']['name']; ?>" data-toggle = "pill">
+                                <?php echo $streamProviders['streamData']['name']; ?>
+                            </a>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php foreach($liveStreams as $key => $streamProviders): ?>
+                    <div id = "stream-<?php echo $streamProviders['streamData']['name']; ?>">
+                        <?php if (count($streamProviders['channels']) > 0): ?>
+                            <?php foreach($streamProviders['channels'] as $channel): ?>
+                                <div class="mini-live-stream">
+                                    <div>
+                                        <a href = "/streamsUsers">
+                                            <?php echo utilities::tokenTruncate(
+                                                    $channel->title,
+                                                    40
+                                                ) 
+                                            ?>
+                                        </a>
+                                        <div class = "label-container">
+                                            <span class="label label-warning">
+                                                <i class="icon-asterisk icon-white"></i>
+                                                <?php echo $channel->meta_game; ?>
+                                            </span>
+                                            <span class="label label-info">
+                                                <i class="icon-user icon-white"></i>
+                                                <?php echo $channel->channel->login; ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                        <div class="alert alert-error">
+                            <strong>Oh snap!.</strong> There are no shows online. Try later!
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <hr>

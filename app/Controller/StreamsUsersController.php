@@ -86,7 +86,7 @@ class StreamsUsersController extends AppController {
                 $users[] = $user['StreamsUser']['identifier'];
             }
             // Hacemos la llamada para obtener el listado de canales
-            $response = $client->get('', '', 'http://api.justin.tv/api/stream/list.json?channel='.implode(',', $users));
+            $response = $client->get('', '', 'http://api.justin.tv/api/stream/list.json?height=100&width=100&channel='.implode(',', $users));
             // La respuesta es en JSON, decodificamos y pasamos a la var
             $data[$streamData['name']]['channels'] = json_decode($response);
         }
@@ -316,10 +316,5 @@ class StreamsUsersController extends AppController {
         echo "</pre>";
 
     }
-
-    private function createClient($consumerKey, $consumerSecret) {
-        return new OAuthClient($consumerKey, $consumerSecret);
-    }
-
 
 }

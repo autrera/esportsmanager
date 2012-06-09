@@ -3607,6 +3607,7 @@ div.form fieldset .help-block {
 }
 .live-stream:after { clear:both; }
 .live-streams .nav { margin-bottom:4px; }
+.live-streams .well { padding:8px; }
 .live-streams .mini-live-stream {
   margin-bottom:3px;
   *zoom:1;

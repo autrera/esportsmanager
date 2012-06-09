@@ -98,7 +98,7 @@
                         <?php endforeach; ?>
                     </ul>
                     <?php foreach($liveStreams as $key => $streamProviders): ?>
-                    <div id = "stream-<?php echo $streamProviders['streamData']['name']; ?>">
+                    <div id = "stream-<?php echo $streamProviders['streamData']['name']; ?>" class = "well">
                         <?php if (count($streamProviders['channels']) > 0): ?>
                             <?php foreach($streamProviders['channels'] as $channel): ?>
                                 <div class="mini-live-stream">
@@ -118,6 +118,10 @@
                                             <span class="label label-info">
                                                 <i class="icon-user icon-white"></i>
                                                 <?php echo $channel->channel->login; ?>
+                                            </span>
+                                            <span class="label label-important">
+                                                <i class="icon-eye-open icon-white"></i>
+                                                <?php echo $channel->channel_count; ?>
                                             </span>
                                         </div>
                                     </div>

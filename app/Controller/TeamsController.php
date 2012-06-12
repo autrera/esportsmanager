@@ -173,7 +173,7 @@ class TeamsController extends AppController {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
-        if ($this->Video->deleteWithFile($id, 'photo', $this->Session)) {
+        if ($this->Team->deleteWithFile($id, 'photo', $this->Session)) {
             $this->redirect(array('action' => 'index'));
         }
     }

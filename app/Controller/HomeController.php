@@ -124,6 +124,7 @@ class HomeController extends AppController {
             $users = array();
             $users[] = 'IPLLoL';
             $users[] = 'tsm_theoddone';
+            $users[] = 'horusstv';
             $users[] = 'KungenTV';
             // Por cada usuario, obtenemos su identificador
             foreach ($stream['User'] as $user){

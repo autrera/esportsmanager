@@ -62,6 +62,7 @@ class StreamsUsersController extends AppController {
  * @param none
  */
     public function index() {
+        $limit = 10; // Limite de streams
         // Obtenemos los provedores de streaming y sus usuarios
         $streams = $this->Stream->find('all');
         // En esta variable almacenaremos todo lo que vamos a mandar a la view
@@ -80,13 +81,14 @@ class StreamsUsersController extends AppController {
             $users = array();
             $users[] = 'IPLLoL';
             $users[] = 'tsm_theoddone';
+            $users[] = 'horusstv';
             $users[] = 'KungenTV';
             // Por cada usuario, obtenemos su identificador
             foreach ($stream['User'] as $user){
                 $users[] = $user['StreamsUser']['identifier'];
             }
             // Hacemos la llamada para obtener el listado de canales
-            $response = $client->get('', '', 'http://api.justin.tv/api/stream/list.json?height=100&width=100&channel='.implode(',', $users));
+            $response = $client->get('', '', 'http://api.justin.tv/api/stream/list.json?limit='.$limit.'&channel='.implode(',', $users));
             // La respuesta es en JSON, decodificamos y pasamos a la var
             $data[$streamData['name']]['channels'] = json_decode($response);
         }

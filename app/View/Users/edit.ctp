@@ -61,7 +61,7 @@
                                 'The team this user will be produly representing.'
                             ),
                             array(
-                                'empty' => 'Choose a Team',
+                                'empty' => 'No Team',
                                 'options' => $teams
                             )
                         )

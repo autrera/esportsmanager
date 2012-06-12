@@ -60,7 +60,7 @@
                 <div class = "row">
                     <div class = "span4 header-logo">
                         <div class = "header-logo">
-                            <h1>Team Quetzal</h1>
+                            <h1>Bienvenidos</h1>
                         </div>
                     </div>
                     <div class = "span4 header-main-sponsor">
@@ -108,6 +108,11 @@
             </div>
         </div>
         <div id = "background">
+            <div class="container">
+                <div class="quetzilogo">
+                    <img src="/img/quetzilogo.png" alt="TeamQuetzal">
+                </div>
+            </div>
             <div id = "main-container-border" class = "container">
                 <div id = "main-container" class = "container">
                     <div class="navbar">

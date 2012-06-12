@@ -3220,7 +3220,7 @@ a.thumbnail:hover {
 .btnStyleInverse:first-child { *margin-left:0; }
 .btnStyleInverse:hover, .btnStyleInverse:active, .btnStyleInverse.active, .btnStyleInverse.disabled, .btnStyleInverse[disabled] { background-color:#222222; }
 .btnStyleInverse:active, .btnStyleInverse.active { background-color:#090909 \9; }
-html { background:#070916 url(../img/backgrounds/eve-bg.jpg) 50% 0px no-repeat fixed; }
+html { background:black url('/img/backgrounds/bg_2.gif') 50% 0 repeat-y; }
 body { background:none; }
 img {
   max-width:100%;
@@ -3236,7 +3236,7 @@ img {
 #background { padding:8px 0; }
 #main-container-border {
   padding:8px 24px 8px 8px;
-  background:#1a1f26;
+  background:#1a1f26 url('/img/backgrounds/blue_overlay.jpg') repeat;
   border:1px solid #343d4b;
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
@@ -3607,7 +3607,10 @@ div.form fieldset .help-block {
 }
 .live-stream:after { clear:both; }
 .live-streams .nav { margin-bottom:4px; }
-.live-streams .well { padding:8px; }
+.live-streams .well {
+  padding:8px;
+  overflow:auto;
+}
 .live-streams .mini-live-stream {
   margin-bottom:3px;
   *zoom:1;

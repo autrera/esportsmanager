@@ -110,8 +110,12 @@
         </div>
         <div id = "background">
             <div class="container">
-                <div class="quetzilogo">
-                    <img src="/img/quetzilogo.png" alt="TeamQuetzal">
+                <div class="row">
+                    <div class="offset4">
+                        <div class="quetzilogo ">
+                            <img src="/img/logo.png" alt="TeamQuetzal">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id = "main-container-border" class = "container">

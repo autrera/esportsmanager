@@ -60,11 +60,12 @@
                 <div class = "row">
                     <div class = "span4 header-logo">
                         <div class = "header-logo">
-                            <h1>Bienvenidos</h1>
+                            &nbsp;
                         </div>
                     </div>
                     <div class = "span4 header-main-sponsor">
                         <div class = "main-sponsor">
+                            &nbsp;
                         </div>
                     </div>
                     <?php if ($authUser): ?>

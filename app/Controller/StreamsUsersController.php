@@ -130,12 +130,37 @@ class StreamsUsersController extends AppController {
  *
  * @param int El id del stream a mostrar
  */
-    public function view($id = null){
-        $this->StreamsUser->id = $id;
+    public function view($streamID, $streamIdentifier){
+        $this->StreamsUser->id = $this->StreamsUser->field('id', array(
+            'streams_id' => $streamID,
+            'identifier' => $streamIdentifier,
+        ));
         if (!$this->StreamsUser->exists()) {
-            $this->invalidParameter();
+            // $this->invalidParameter();
         }
-        $this->set('Stream', $this->StreamsUser->read(null, $id));
+        $stream = $this->StreamsUser->read();
+        $streamData = $stream['Streams'];
+        // Iniciamos el objeto para realizar las llamadas al API
+        $client = $this->createClient($streamData['consumer_key'], 
+            $streamData['consumer_secret']
+        );
+        // Hacemos la llamada para obtener el embebido del canal 
+        $response = $client->get(
+            '', 
+            '', 
+            'http://api.justin.tv/api/channel/embed/' . $streamIdentifier . '?width=610&height=375'
+        );
+        // La respuesta es en JSON, decodificamos y pasamos a la vista
+        $this->set('video', $response['body']);
+
+        // Hacemos la llamada para obtener el embebido del chat 
+        $response = $client->get(
+            '', 
+            '', 
+            'http://api.justin.tv/api/channel/chat_embed/' . $streamIdentifier . '?width=610&height=460'
+        );
+        // La respuesta es en JSON, decodificamos y pasamos a la vista
+        $this->set('chat', $response);
     }
 
 /**

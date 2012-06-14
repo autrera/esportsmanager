@@ -19,26 +19,6 @@
                     </div>
                 </div>
             <?php endif;?>
-            <?php if (! empty($team['Users'])): ?>
-                <div class = "row user-content">
-                    <div class = "span8">
-                        <ul class = "thumbnails">
-                        <?php foreach ($team['Users'] as $player): ?>
-                            <li class = "span1">
-                                <div class = "thumbnail">
-                                    <a href = "/users/view/<?php echo $player['Users']['id'] ?>" rel="popover" 
-                                        data-original-title = "<?php echo $player['Users']['nickname']; ?>" 
-                                        data-content = "<?php echo $player['Profile']['description']; ?>"
-                                    >
-                                        <img src = "<?php echo $player['Profile']['picture'] ?>">
-                                    </a>
-                                </div>
-                            </li>
-                        <?php endforeach; ?>
-                        </ul>
-                    </div>
-                </div>
-            <?php endif; ?>
             </div>
         </div>
         <hr>

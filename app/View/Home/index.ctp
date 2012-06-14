@@ -103,7 +103,7 @@
                             <?php foreach($streamProviders['channels'] as $channel): ?>
                                 <div class="mini-live-stream">
                                     <div>
-                                        <a href = "/streamsUsers">
+                                        <a href = "/streamsUsers/view/<?php echo $streamProviders['streamData']['id']; ?>/<?php echo $channel->channel->login; ?>">
                                             <?php echo utilities::tokenTruncate(
                                                     $channel->title,
                                                     40

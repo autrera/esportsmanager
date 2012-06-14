@@ -139,7 +139,6 @@
         </div>
     </div>
 </div>
-<hr>
 <div class = "row">
     <div class = "span8">
         <div class = "row">

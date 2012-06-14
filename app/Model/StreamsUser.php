@@ -114,13 +114,6 @@ class StreamsUser extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Games' => array(
-			'className' => 'Games',
-			'foreignKey' => 'games_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
 	);
 
 /**

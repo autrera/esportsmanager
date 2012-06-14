@@ -40,7 +40,7 @@
 
 html {
     // background: url('../img/backgrounds/page-bg.jpg') no-repeat fixed;
-    background: black url('/img/backgrounds/quetzibg.jpg') 50% 0 fixed;
+    background: black url('/img/backgrounds/quetzibg.jpg') 50% -40px fixed;
     // background: #070916 url(../img/backgrounds/eve-bg.jpg) 50% 0px no-repeat fixed
 }
 
@@ -55,11 +55,9 @@ img {
 
 #header {
     padding-top: 2px;
+    padding-bottom: 2px;
     border-bottom: 2px solid #3A87AD;
     background: url('/img/backgrounds/subtle-pattern-1.jpg') repeat;
-    position: fixed;
-    z-index: 9;
-    width: 100%;
 }
 
 #background {
@@ -132,6 +130,7 @@ img {
     .border-radius(4px);
     // .glossyBox;
     .btnStyle;
+    margin-bottom: 12px;
 }
 
 .latest-videos {
@@ -514,5 +513,20 @@ div.form {
             font-weight: bold;
         }
         .clearfix();
+    }
+}
+
+/* Estilos de la vista View de los teams */
+
+.teams-index {
+    .team-content {
+        .team-picture {
+            margin-bottom: 12px;
+        }
+        .players-content {
+            .player-content {
+                margin-bottom: 12px;
+            }
+        }
     }
 }

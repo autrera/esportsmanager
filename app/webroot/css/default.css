@@ -3220,7 +3220,7 @@ a.thumbnail:hover {
 .btnStyleInverse:first-child { *margin-left:0; }
 .btnStyleInverse:hover, .btnStyleInverse:active, .btnStyleInverse.active, .btnStyleInverse.disabled, .btnStyleInverse[disabled] { background-color:#222222; }
 .btnStyleInverse:active, .btnStyleInverse.active { background-color:#090909 \9; }
-html { background:black url('/img/backgrounds/quetzibg.jpg') 50% 0 fixed; }
+html { background:black url('/img/backgrounds/quetzibg.jpg') 50% -40px fixed; }
 body { background:none; }
 img {
   max-width:100%;
@@ -3230,11 +3230,9 @@ img {
 }
 #header {
   padding-top:2px;
+  padding-bottom:2px;
   border-bottom:2px solid #3a87ad;
   background:url('/img/backgrounds/subtle-pattern-1.jpg') repeat;
-  position:fixed;
-  z-index:9;
-  width:100%;
 }
 #main-container-border {
   padding:8px 24px 8px 8px;
@@ -3317,6 +3315,7 @@ img {
   text-align:left;
   padding:0 4px;
   display:block;
+  margin-bottom:12px;
 }
 .latest-videos:hover, .latest-videos:active, .latest-videos.active, .latest-videos.disabled, .latest-videos[disabled], .latest-matches:hover, .latest-matches:active, .latest-matches.active, .latest-matches.disabled, .latest-matches[disabled], .latest-blogs:hover, .latest-blogs:active, .latest-blogs.active, .latest-blogs.disabled, .latest-blogs[disabled], .live-streams:hover, .live-streams:active, .live-streams.active, .live-streams.disabled, .live-streams[disabled] { background-color:#e6e6e6; }
 .latest-videos:active, .latest-videos.active, .latest-matches:active, .latest-matches.active, .latest-blogs:active, .latest-blogs.active, .live-streams:active, .live-streams.active { background-color:#cccccc \9; }
@@ -3625,3 +3624,5 @@ div.form fieldset .help-block {
   content:"";
 }
 .live-streams .mini-live-stream:after { clear:both; }
+.teams-index .team-content .team-picture { margin-bottom:12px; }
+.teams-index .team-content .players-content .player-content { margin-bottom:12px; }

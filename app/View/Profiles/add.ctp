@@ -29,7 +29,7 @@
                             'Tell us your long story short'
                         ),
                         array(
-                            'type' => 'text',
+                            'type' => 'textarea',
                             'label' => array(
                                 'text' => 'Biography',
                                 'class' => 'control-label',

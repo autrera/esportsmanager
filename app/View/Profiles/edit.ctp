@@ -19,7 +19,20 @@
                     'minYear' => date('Y') - 100,
                     'maxYear' => date('Y'),
                 ));
-                echo $this->Form->input('description');
+                echo $this->Form->input('description',
+                    customFormOptions::getOptionsDefault(
+                        __(
+                            'Tell us your long story short'
+                        ),
+                        array(
+                            'type' => 'text',
+                            'label' => array(
+                                'text' => 'Biography',
+                                'class' => 'control-label',
+                            ),
+                        )
+                    )
+                );
                 echo $this->Form->input('image', 
                     customFormOptions::getOptionsFile(
                         __(

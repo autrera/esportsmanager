@@ -31,7 +31,7 @@
 		<div class = "row">
 			<div class = "span2">
 				<?php if (! empty($vecinos['prev'])): ?>
-				<a class = "btn btn-primary btn-large" href = "/photos/view/<?php echo $vecinos['prev']['Photo']['id']; ?>">
+				<a class = "fancybox btn btn-primary btn-large" href = "/photos/view/<?php echo $vecinos['prev']['Photo']['id']; ?>" data-fancybox-type="ajax">
 					<i class="icon-chevron-left icon-white"></i> Back
 				</a>
 				<?php else: ?>
@@ -41,7 +41,7 @@
 			<div class = "span4">&nbsp;</div>
 			<div class = "span2">
 				<?php if (! empty($vecinos['next'])): ?>
-				<a class = "btn btn-primary btn-large pull-right" href = "/photos/view/<?php echo $vecinos['next']['Photo']['id']; ?>">
+				<a class = "fancybox btn btn-primary btn-large pull-right" href = "/photos/view/<?php echo $vecinos['next']['Photo']['id']; ?>" data-fancybox-type="ajax">
 					<i class="icon-chevron-right icon-white"></i> Next
 				</a>
 				<?php else: ?>

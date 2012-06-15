@@ -1,5 +1,8 @@
 <?php
 	App::uses('utilities', 'Lib');
+	// echo "<pre>";
+	// print_r($usuario);
+	// echo "</pre>";
 ?>
 <div class = "row">
     <div class = "span8">
@@ -11,25 +14,28 @@
 	    ?>
 		<div class = "row">
 			<div class = "span3">
-				<?php if ($usuario['Profile']['picture']): ?>
-				<img src = "<?php echo $usuario['Profile']['picture']; ?>">
-				<?php endif; ?>
-				&nbsp;
+				<?php echo $this->element('profile-pic', array('profilePic' => $usuario['Profile']['picture'])); ?>
 			</div>
 			<div class = "span5">
 				<dl class = "dl-horizontal">
 					<dt>Nickname: </dt>
 					<dd><?php echo $usuario['User']['nickname']; ?></dd>
+					<?php if ($usuario['Profile']['first_name']): ?>
 					<dt>Name: </dt>
 					<dd><?php echo $usuario['Profile']['first_name']; ?></dd>
+					<?php endif; ?>
+					<?php if ($usuario['Profile']['last_name']): ?>
 					<dt>Last Name: </dt>
 					<dd><?php echo $usuario['Profile']['last_name']; ?></dd>
+					<?php endif; ?>
+					<?php if ($usuario['Profile']['birthdate']): ?>
 					<dt>Birthdate: </dt>
 					<dd>
 						<?php echo utilities::formatDate(
 							$usuario['Profile']['birthdate']
 						); ?>
 					</dd>
+					<?php endif; ?>
 					<dt>Role: </dt>
 					<dd><?php echo $usuario['Roles']['name']; ?></dd>
 					<dt>Member Since: </dt>
@@ -46,8 +52,6 @@
 						</a>
 					</dd>
 					<?php endif; ?>
-					<dt>Description: </dt>
-					<dd><?php echo $usuario['Profile']['description']; ?></dd>
 					<dt>Social Sites: </dt>
 					<dd>
 						<?php echo $this->element('UserSocialLinks', array(
@@ -56,6 +60,10 @@
 							'gplus_id'   =>$usuario['Profile']['gplus_id'],
 						)); ?>
 					</dd>
+					<?php if ($usuario['Profile']['description']): ?>
+					<dt>Biography: </dt>
+					<dd><?php echo $usuario['Profile']['description']; ?></dd>
+					<?php endif; ?>
 				</dl>
 				<?php if ($usuario['User']['id'] == $loggedUserId): ?>
 					<?php if (! empty($usuario['Profile']['id'])): ?>

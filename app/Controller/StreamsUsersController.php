@@ -161,6 +161,12 @@ class StreamsUsersController extends AppController {
         );
         // La respuesta es en JSON, decodificamos y pasamos a la vista
         $this->set('chat', $response);
+
+        $this->set('actions', $this->getAuthorizedActions());
+        $this->set('isOwner', $this->StreamsUser->isOwnedBy(
+            $this->StreamsUser->id, $this->Auth->user('id')
+        ));
+        $this->set('id', $this->StreamsUser->id);
     }
 
 /**

@@ -47,7 +47,7 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $uses = array('User', 'Team', 'Role', 'Video', 'Gallery', 'News');
+	public $uses = array('User', 'Team', 'Role', 'Video', 'Gallery', 'News', 'Profile');
 
 /**
  * Permitimos a los usuarios agregarse a si mismos y desloguearse
@@ -180,14 +180,21 @@ class UsersController extends AppController {
             'limit' => 2,
         ));
 
+        $this->Profile->id = $this->Profile->field('id', array(
+            'Profile.users_id' => $this->User->id,
+        ));
+
 
         $this->set('latestVideos', $latestVideos);
         $this->set('latestNews', $latestNews);
         $this->set('latestGalleries', $latestGalleries);
         $this->set('actions', $this->getAuthorizedActions());
+        $this->set('profileActions', $this->getAuthorizedActions('Profiles'));
         $this->set('isOwner', ($this->User->id == $this->Auth->user('id')));
+        $this->set('isProfileOwner', $this->Profile->isOwnedBy(
+            $this->Profile->id, $this->Auth->user('id')
+        ));
         $this->set('id', $this->User->id);
-        $this->set('loggedUserId', $this->Auth->user('id'));
         $this->set('usuario', $this->User->read(null, $id));
     }
 

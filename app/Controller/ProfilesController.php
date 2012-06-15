@@ -50,26 +50,22 @@ class ProfilesController extends AppController {
 	public $uses = array('Profile', 'User', 'Avatar', 'Country');
 
 /**
- * Permitimos a los usuarios agregarse su propio perfil
- *
- * @param none
- * @return void
- */
-    public function beforeFilter() {
-        parent::beforeFilter();
-        $this->Auth->allow('add'); 
-    }
-
-/**
  * Agrega un perfil al usuario
  *
  * @param mixed What page to display
  */
-	public function add() {
+	public function add($userId) {
+        $this->User->id = $userId;
+
+        // Verificamos que el recurso exista
+        if (!$this->User->exists()) {
+            $this->invalidParameter();
+        }
+
         // Consultamos si el usuario tiene ya un perfil
         $datos = $this->Profile->find('first', array(
             'conditions' => array(
-                'Profile.users_id' => $this->Auth->user('id')
+                'Profile.users_id' => $this->User->id
             ) 
         ));
         // Checamos que no tenga un perfil
@@ -77,7 +73,7 @@ class ProfilesController extends AppController {
             $this->set('countries', $this->Country->find('list'));
     		if ($this->request->is('post')) {
                 $this->Profile->create();
-                $this->request->data['Profile']['users_id'] = $this->Auth->user('id');
+                $this->request->data['Profile']['users_id'] = $this->User->id;
                 if ($this->Profile->saveWithOptionalFile(
                     $this->request, $this->Session, array(
                         'fileColumnName' => 'picture',
@@ -87,14 +83,9 @@ class ProfilesController extends AppController {
                     $this->redirect(array(
                         'controller' => 'users',
                         'action' => 'view',
-                        $this->Auth->user('id')
+                        $this->User->id
                     ));
                 } else {
-                    $this->redirect(array(
-                        'controller' => 'users',
-                        'action' => 'edit',
-                        $this->Auth->user('id')
-                    ));
                 }
             }
         } else {
@@ -103,7 +94,7 @@ class ProfilesController extends AppController {
             $this->redirect(array(
                 'controller' => 'users',
                 'action' => 'view',
-                $this->Auth->user('id')
+                $this->User->id
             ));
         }
 	}
@@ -138,14 +129,9 @@ class ProfilesController extends AppController {
                 $this->redirect(array(
                     'controller' => 'users',
                     'action' => 'view',
-                    $this->Auth->user('id')
+                    $id
                 ));
             } else {
-                $this->redirect(array(
-                    'controller' => 'users',
-                    'action' => 'edit',
-                    $this->Auth->user('id')
-                ));
             }
         }
     }

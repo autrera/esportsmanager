@@ -1,9 +1,7 @@
 <?php
 	App::uses('utilities', 'Lib');
-	// echo "<pre>";
-	// print_r($usuario);
-	// echo "</pre>";
 ?>
+
 <div class = "row">
     <div class = "span8">
 	    <?php

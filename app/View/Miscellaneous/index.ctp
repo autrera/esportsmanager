@@ -1,6 +1,11 @@
 <?php
 	$secciones = array(
 		array(
+			'name' => 'Users',
+			'url' => '/users',
+			'icon' => 'user',
+		),
+		array(
 			'name' => 'Countries',
 			'url' => '/countries',
 			'icon' => 'flag',
@@ -13,7 +18,7 @@
 		array(
 			'name' => 'Roles',
 			'url' => '/roles',
-			'icon' => 'user',
+			'icon' => 'book',
 		),
 		// array(
 		// 	'name' => 'Streams',

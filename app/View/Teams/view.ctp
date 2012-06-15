@@ -27,33 +27,20 @@
                         <?php foreach ($team['Users'] as $usuario): ?>
                         <div class = "row player-content">
                             <div class = "span2 offset1">
-                                <?php if ($usuario['Profile']['picture']): ?>
-                                <img src = "<?php echo $usuario['Profile']['picture']; ?>">
-                                <?php endif; ?>
-                                &nbsp;
+                                <?php echo $this->element('profile-pic', array('profilePic' => $usuario['Profile']['picture'])); ?>
                             </div>
                             <div class = "span5">
                                 <dl class = "dl-horizontal">
                                     <dt>Nickname: </dt>
-                                    <dd><?php echo $usuario['Users']['nickname']; ?></dd>
+                                    <dd><?php echo $usuario['User']['nickname']; ?></dd>
+                                    <?php if ($usuario['Profile']['first_name']): ?>
                                     <dt>Name: </dt>
                                     <dd><?php echo $usuario['Profile']['first_name']; ?></dd>
+                                    <?php endif; ?>
+                                    <?php if ($usuario['Profile']['last_name']): ?>
                                     <dt>Last Name: </dt>
                                     <dd><?php echo $usuario['Profile']['last_name']; ?></dd>
-                                    <dt>Birthdate: </dt>
-                                    <dd>
-                                        <?php echo utilities::formatDate(
-                                            $usuario['Profile']['birthdate']
-                                        ); ?>
-                                    </dd>
-                                    <dt>Member Since: </dt>
-                                    <dd>
-                                        <?php echo utilities::formatDate(
-                                            $usuario['Users']['created']
-                                        ); ?>
-                                    </dd>
-                                    <dt>Description: </dt>
-                                    <dd><?php echo $usuario['Profile']['description']; ?></dd>
+                                    <?php endif; ?>
                                     <dt>Social Sites: </dt>
                                     <dd>
                                         <?php echo $this->element('UserSocialLinks', array(
@@ -62,6 +49,10 @@
                                             'gplus_id'   =>$usuario['Profile']['gplus_id'],
                                         )); ?>
                                     </dd>
+                                    <?php if ($usuario['Profile']['description']): ?>
+                                    <dt>Biography: </dt>
+                                    <dd><?php echo $usuario['Profile']['description']; ?></dd>
+                                    <?php endif; ?>
                                 </dl>
                             </div>
                         </div>

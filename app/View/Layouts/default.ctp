@@ -41,6 +41,7 @@
 		echo $scripts_for_layout;
 	?>
     <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+    <?php echo $this->Html->script('analytics'); ?>
 </head>
 <body>
     <div id="fb-root"></div>
@@ -58,7 +59,7 @@
         <div id = "header">
             <div class = "container">
                 <div class = "row">
-                    <div class = "span4 header-logo">
+<!--                     <div class = "span4 header-logo">
                         <div class = "header-logo">
                             &nbsp;
                         </div>
@@ -68,8 +69,9 @@
                             &nbsp;
                         </div>
                     </div>
+ -->                    
                     <?php if ($authUser): ?>
-                    <div class = "span4">
+                    <div class = "span12">
                         <div class = "pull-right">
                             <h2>
                                 Welcome! 

@@ -78,7 +78,11 @@ class AppModel extends Model {
  * @param $elemento El elemento a verificar
  */
     public function isOwnedBy($elemento, $user) {
-        return $this->field('id', array('id' => $elemento, 'users_id' => $user)) === $elemento;
+        if ($elemento && $user){
+            return $this->field('id', array('id' => $elemento, 'users_id' => $user)) === $elemento;
+        } else {
+            return false;
+        }
     }
 
 /**

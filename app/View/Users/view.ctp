@@ -65,20 +65,30 @@
 					<dd><?php echo $usuario['Profile']['description']; ?></dd>
 					<?php endif; ?>
 				</dl>
-				<?php if ($usuario['User']['id'] == $loggedUserId): ?>
+				<?php if (   $isProfileOwner 
+						  || in_array('add', $profileActions) 
+						  || in_array('edit', $profileActions)
+					  ): 
+				?>
 					<?php if (! empty($usuario['Profile']['id'])): ?>
-					<div>
-						<a href = "/profiles/edit/<?php echo $usuario['Profile']['id'] ?>" class = "btn btn-warning	pull-right">
-							Edit your profile
-						</a>
-					</div>
+						<?php if (   $isProfileOwner 
+								  || in_array('edit', $profileActions)): 
+						?>
+						<div>
+							<a href = "/profiles/edit/<?php echo $usuario['Profile']['id'] ?>" class = "btn btn-warning	pull-right">
+								Edit this profile
+							</a>
+						</div>
+						<?php endif; ?>
 					<?php else: ?>
-					<div>
-						<a href = "/profiles/add" class = "btn btn-primary 
-							btn-mini pull-right">
-							Add a profile
-						</a>
-					</div>
+						<?php if (in_array('add', $profileActions)): ?>
+						<div>
+							<a href = "/profiles/add/<?php echo $id; ?>" class = "btn btn-primary 
+								btn-mini pull-right">
+								Add a profile
+							</a>
+						</div>
+						<?php endif; ?>
 					<?php endif; ?>
 				<?php endif; ?>
 			</div>

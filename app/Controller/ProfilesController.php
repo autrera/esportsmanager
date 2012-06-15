@@ -113,6 +113,11 @@ class ProfilesController extends AppController {
             $this->invalidParameter();
         }
 
+        // Obtenemos el id del usuario
+        $userId = $this->Profile->field('users_id', array(
+            'Profile.id' => $this->Profile->id
+        ));
+
         // Seteamos los paises para llenar el select
         $this->set('countries', $this->Country->find('list'));
         // Si la petición es get, buscamos en la base y lo enviamos
@@ -129,7 +134,7 @@ class ProfilesController extends AppController {
                 $this->redirect(array(
                     'controller' => 'users',
                     'action' => 'view',
-                    $id
+                    $userId
                 ));
             } else {
             }

@@ -1,10 +1,11 @@
 <div class = "row">
     <div class = "span8">
-<?php
-        // echo "<pre>";
-        // print_r($stream);
-        // echo "</pre>";
-?>
+	    <?php
+	        echo $this->element('indexActionsTop', array(
+	            'actions' => $actions,
+	            'isOwner' => $isOwner,
+	        ));
+	    ?>
 		<div class="row">
 			<div class="span8">
 				<?php echo $video; ?>

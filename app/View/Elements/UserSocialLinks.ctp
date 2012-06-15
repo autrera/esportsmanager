@@ -1,7 +1,6 @@
 <?php
 ?>
 <div class = "user-social-links">
-	&nbsp;
 	<?php
 		if ($facebook_id){
 			echo $this->element('socialLink', array(
@@ -22,4 +21,5 @@
 			));
 		}
 	?>
+	&nbsp;
 </div>

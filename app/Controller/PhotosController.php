@@ -100,7 +100,6 @@ class PhotosController extends AppController {
                             } else {
                                 $this->Session->setFlash(__('The photo has been saved but the image could not, upload the image again'), 'flash-warning');
                             }
-                            $this->redirect(array('action' => 'index'));
                         } else {
                             $this->Session->setFlash(__('The photo could not be saved. Please, try again.'), 'flash-failure');
                         }
@@ -109,6 +108,7 @@ class PhotosController extends AppController {
                         $this->Session->setFlash(__('There was an error trying to upload the file, please try again'), 'flash-failure');
                     }
                 }
+                $this->redirect(array('action' => 'index'));
             }
         }
 	}

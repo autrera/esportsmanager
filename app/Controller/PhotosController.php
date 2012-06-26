@@ -65,6 +65,47 @@ class PhotosController extends AppController {
         if ($this->Auth->user('id')){
             // Checamos que venga de un post
     		if ($this->request->is('post')) {
+                error_reporting(E_ALL | E_STRICT);
+
+                App::uses('UploadHandler', 'Lib');
+
+                $upload_handler = new UploadHandler(array(
+                    'upload_dir' => $this->Photo->getWebrootPath() 
+                        . '/uploads/photos/',
+                    'upload_url' => 'http://localhost:90/uploads/photos/',
+                ));
+
+                header('Pragma: no-cache');
+                header('Cache-Control: no-store, no-cache, must-revalidate');
+                header('Content-Disposition: inline; filename="files.json"');
+                header('X-Content-Type-Options: nosniff');
+                header('Access-Control-Allow-Origin: *');
+                header('Access-Control-Allow-Methods: OPTIONS, HEAD, GET, POST, PUT, DELETE');
+                header('Access-Control-Allow-Headers: X-File-Name, X-File-Type, X-File-Size');
+
+                switch ($_SERVER['REQUEST_METHOD']) {
+                    case 'OPTIONS':
+                        break;
+                    case 'HEAD':
+                    case 'GET':
+                        $upload_handler->get();
+                        break;
+                    case 'POST':
+                        if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
+                            $upload_handler->delete();
+                        } else {
+                            $upload_handler->post();
+                        }
+                        break;
+                    case 'DELETE':
+                        $upload_handler->delete();
+                        break;
+                    default:
+                        header('HTTP/1.1 405 Method Not Allowed');
+                }
+
+                $this->redirect(array('action' => 'index'));
+
                 // Seteamos la galeria a la que se estará agregando la photo
                 $this->request->data['galleries_id'] = $id;
                 // Seteamos el usuario que está haciendo el guardado

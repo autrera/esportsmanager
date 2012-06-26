@@ -1,12 +1,6 @@
 <?php
     App::uses('customFormOptions', 'Lib');
 ?>
-<!-- Bootstrap CSS Toolkit styles -->
-<link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap.min.css">
-<!-- Generic page styles -->
-<link rel="stylesheet" href="/css/style.css">
-<!-- Bootstrap styles for responsive website layout, supporting different screen sizes -->
-<link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap-responsive.min.css">
 <!-- Bootstrap CSS fixes for IE6 -->
 <!--[if lt IE 7]><link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap-ie6.min.css"><![endif]-->
 <!-- Bootstrap Image Gallery styles -->
@@ -16,10 +10,10 @@
 <!-- Shim to make HTML5 elements usable in older Internet Explorer versions -->
 <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <div class = "row">
-    <div class = "span8 offset2">
+    <div class = "span12">
         <div class="photos form">
             <!-- The file upload form used as target for the file upload widget -->
-            <form id="fileupload" action="server/php/" method="POST" enctype="multipart/form-data">
+            <form id="fileupload" action="" method="POST" enctype="multipart/form-data">
                 <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                 <div class="row fileupload-buttonbar">
                     <div class="span7">
@@ -131,9 +125,6 @@
 <script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>
 <!-- The Canvas to Blob plugin is included for image resizing functionality -->
 <script src="http://blueimp.github.com/JavaScript-Canvas-to-Blob/canvas-to-blob.min.js"></script>
-<!-- Bootstrap JS and Bootstrap Image Gallery are not required, but included for the demo -->
-<script src="http://blueimp.github.com/cdn/js/bootstrap.min.js"></script>
-<script src="http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js"></script>
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
 <script src="/js/jquery.iframe-transport.js"></script>
 <!-- The basic File Upload plugin -->

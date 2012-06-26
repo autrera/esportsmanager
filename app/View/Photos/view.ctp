@@ -17,11 +17,11 @@
 			<div class = "span8">
 				<ul class = "thumbnails">
 					<li class = "thumbnail">
-						<img src = "<?php echo $foto['Photo']['url']; ?>">
-						<?php if (isset($foto['Photo']['name'])): ?>
+						<img src = "/files/view/<?php echo 'photos/' . $foto['Photo']['id'] . '/610'; ?>">
+						<?php if (!empty($foto['Photo']['name'])): ?>
 						<h2><?php echo $foto['Photo']['name'] ?></h2>
 						<?php endif; ?>
-						<?php if (isset($foto['Photo']['description'])): ?>
+						<?php if (!empty($foto['Photo']['description'])): ?>
 						<p><?php echo $foto['Photo']['description'] ?></p>
 						<?php endif; ?>
 					</li>

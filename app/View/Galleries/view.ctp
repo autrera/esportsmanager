@@ -51,7 +51,7 @@
 			<li class = "span1">
 				<div class = "thumbnail">
 					<a class = "fancybox" data-fancybox-type="ajax" href = "/photos/view/<?php echo $photo['id']; ?>">
-    					<img src = "<?php echo $photo['url'] ?>" >
+    					<img src = "/files/view/<?php echo 'photos/' . $photo['id'] . '/50'; ?>" >
     				</a>
 				</div>
 			</li>

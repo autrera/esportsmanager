@@ -47,7 +47,7 @@ class PhotosController extends AppController {
  *
  * @var array
  */
-	// public $uses = array('User', 'Avatar', 'Profile', 'Country');
+	public $uses = array('Photo', 'Gallery');
 
 /**
  * Agrega una galeria
@@ -63,8 +63,17 @@ class PhotosController extends AppController {
 
         // Checamos que esté logueado
         if ($this->Auth->user('id')){
+            $this->Gallery->id = $id;
+            // Verificamos que el recurso exista
+            if (!$this->Gallery->exists()) {
+                $this->invalidParameter();
+            }
             // Checamos que venga de un post
     		if ($this->request->is('post')) {
+                // Deshabilitamos el rendereo de la vista
+                $this->render = false;
+
+                // Habilitamos el reporte de errores
                 error_reporting(E_ALL | E_STRICT);
 
                 App::uses('UploadHandler', 'Lib');
@@ -72,7 +81,7 @@ class PhotosController extends AppController {
                 $upload_handler = new UploadHandler(array(
                     'upload_dir' => $this->Photo->getWebrootPath() 
                         . '/uploads/photos/',
-                    'upload_url' => 'http://localhost:90/uploads/photos/',
+                    'upload_url' => '/uploads/photos/',
                 ));
 
                 header('Pragma: no-cache');
@@ -94,7 +103,7 @@ class PhotosController extends AppController {
                         if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
                             $upload_handler->delete();
                         } else {
-                            $upload_handler->post();
+                            $info = $upload_handler->post();
                         }
                         break;
                     case 'DELETE':
@@ -104,52 +113,20 @@ class PhotosController extends AppController {
                         header('HTTP/1.1 405 Method Not Allowed');
                 }
 
-                $this->redirect(array('action' => 'index'));
-
                 // Seteamos la galeria a la que se estará agregando la photo
                 $this->request->data['galleries_id'] = $id;
                 // Seteamos el usuario que está haciendo el guardado
                 $this->request->data['users_id'] = $this->Auth->user('id');
-                // Formateamos el request data
-                $this->request->data = $this->Photo->formatearMultiUpload(
-                    $this->request->data
-                );
-                foreach ($this->request->data as $row){
-                    $this->Photo->create();
-                    // Pasamos los datos de la imagen a variables
-                    extract($row['Photo']['photo']);
-                    // Checamos que haya sido subida
-                    if ($this->Photo->isUploadedFile(
-                        $row['Photo']['photo'])
-                    ) {
-                        // Obtenemos extension de la imagen
-                        $ext = $this->Photo->getExtension($name);
-                        // Creamos un nuevo nombre unico para el archivo
-                        $newName = uniqid() . '.' . $ext;
-                        // Seteamos la ruta del archivo
-                        $fileURL    = $this->Photo->getStorageURL() . $newName;
-                        $fileFolder = $this->Photo->getWebrootPath(). $fileURL;
-                        // Cambiamos el array de data, el campo thumbnail
-                        // es un varchar en la BD, no podemos dejar el tipo
-                        // file, seteamos la ruta de donde quedó el fichero
-                        $row['Photo']['url'] = $fileURL;
-                        // Guardamos
-                        if ($this->Photo->save($row)) {
-                            // Movemos el archivo a su carpeta final
-                            if (move_uploaded_file($tmp_name, $fileFolder)){
-                                $this->Session->setFlash(__('The photo has been saved'), 'flash-success');
-                            } else {
-                                $this->Session->setFlash(__('The photo has been saved but the image could not, upload the image again'), 'flash-warning');
-                            }
-                        } else {
-                            $this->Session->setFlash(__('The photo could not be saved. Please, try again.'), 'flash-failure');
-                        }
-                    } else {
-                        // No se subió la imagen
-                        $this->Session->setFlash(__('There was an error trying to upload the file, please try again'), 'flash-failure');
-                    }
-                }
-                $this->redirect(array('action' => 'index'));
+                // Seteamos la url del archivo subido
+                $this->request->data['url'] = $info[0]->url;
+                // Resetamos
+                $this->Photo->create();
+                // Guardamos
+                $this->Photo->save($this->request->data);
+            } else {
+                $this->set('galeria', $this->Gallery->field('name', array(
+                    'Gallery.id' => $id
+                )));
             }
         }
 	}

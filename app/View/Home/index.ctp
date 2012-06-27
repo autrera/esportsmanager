@@ -196,17 +196,17 @@
                             <?php echo $gallery['Gallery']['name'] ?>
                         </a>
                     </h2>
-                    <ul class ="thumbnails">
+                    <ul>
                         <?php foreach($gallery['Photos'] as $key => $photo): ?>
                         <?php
-                            if ($key == 8){
+                            if ($key == 12){
                                 break;
                             }
                         ?>
-                        <li class = "span1">
-                            <div class = "thumbnail">
+                        <li class = "enlarger">
+                            <div>
                                 <a class = "fancybox" data-fancybox-type="ajax" href = "/photos/view/<?php echo $photo['id']; ?>" title = "<?php echo $photo['name']; ?>">
-                                    <img src = "/files/view/<?php echo 'photos/' . $photo['id'] . '/50'; ?>" >
+                                    <img src = "/files/view/<?php echo 'photos/' . $photo['id'] . '/120'; ?>" >
                                 </a>
                             </div>
                         </li>

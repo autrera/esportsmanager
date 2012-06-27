@@ -243,7 +243,7 @@ class UploadHandler
         // Remove path information and dots around the filename, to prevent uploading
         // into different directories or replacing hidden system files.
         // Also remove control characters and spaces (\x00..\x20) around the filename:
-        $file_name = trim(basename(stripslashes($name)), ".\x00..\x20");
+        $file_name = trim(basename(stripslashes(uniqid())), ".\x00..\x20");
         // Add missing file extension for known image types:
         if (strpos($file_name, '.') === false &&
             preg_match('/^image\/(gif|jpe?g|png)/', $type, $matches)) {
@@ -414,6 +414,7 @@ class UploadHandler
             header('Content-type: text/plain');
         }
         echo $json;
+        return $info;
     }
 
     public function delete() {

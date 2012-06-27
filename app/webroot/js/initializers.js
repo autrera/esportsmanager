@@ -8,7 +8,14 @@
 
         $("a[rel=popover]").popover();
 
-		$(".fancybox").fancybox();
+		$(".fancybox").fancybox({
+			autoSize: false,
+			height: '90%',
+			width: 640,
+			afterShow: function(){
+				this.resize();
+			}
+		});
 
     });
 

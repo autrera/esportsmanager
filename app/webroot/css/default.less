@@ -409,6 +409,54 @@ div.form {
     }
 }
 
+.galleries-index,
+.galleries-home {
+    .gallery-content {
+        ul {
+            list-style: none;
+            margin: 0;
+            display: block;
+            li {
+                display: inline;
+                float: left;
+                div {
+                    display: inline-block;
+                    position: relative;
+                    height: 60px;
+                    width: 100px;
+                    img {
+                        height: 60px;
+                        width: 100px;
+                        position: absolute;
+                        z-index: 998;
+                        left: 0px;
+                        top: 0px;
+                        overflow: hidden;
+                        .border-radius(0px); 
+                        &:hover {
+                            z-index: 999;
+                            height: 80px;
+                            min-width: 120px;
+                            left: -10px;
+                            top: -10px;
+                            overflow: hidden;
+                            border-color: rgba(82,168,236,.8);
+                            outline: 0;
+                            outline: thin dotted \9; /* IE6-9 */
+                            .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.8)");
+                        }
+                    }
+                }
+            }
+        }
+        .clearfix();
+        .gallery-name {
+        }
+        .thumbnails {
+        }
+    }
+}
+
 /* Estilos de los comentarios del facebook */
 
 .fb-comments {

@@ -3432,7 +3432,6 @@ span.game-logo img { vertical-align:top; }
   background:#000000 url('../img/news/cs-tag.jpg') no-repeat;
 }
 .thumbnail { background:white; }
-.thumbnail iframe { max-height:210px; }
 .module-header h3 {
   color:#3d3d3d;
   text-shadow:#ffffff 1px 1px 0px;

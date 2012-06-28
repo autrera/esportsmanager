@@ -203,10 +203,10 @@
                                 break;
                             }
                         ?>
-                        <li class = "enlarger">
+                        <li>
                             <div>
                                 <a class = "fancybox" data-fancybox-type="ajax" href = "/photos/view/<?php echo $photo['id']; ?>" title = "<?php echo $photo['name']; ?>">
-                                    <img src = "/files/view/<?php echo 'photos/' . $photo['id'] . '/120'; ?>" >
+                                    <img class = "enlarger" src = "/files/view/<?php echo 'photos/' . $photo['id'] . '/120'; ?>" >
                                 </a>
                             </div>
                         </li>

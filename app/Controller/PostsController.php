@@ -55,7 +55,10 @@ class PostsController extends AppController {
  * @param none
  */
 	public function index() {
-		$this->set('posts', $this->Post->find('all'));
+		$this->set('posts', $this->Post->find('all', array(
+            'order' => 'Post.id DESC'
+        )));
+        $this->set('actions', $this->getAuthorizedActions());
 	}
 
 /**
@@ -67,11 +70,17 @@ class PostsController extends AppController {
 		if ($this->request->is('post')) {
             $this->Post->create();
             $this->request->data['Post']['users_id'] = $this->Auth->user('id');
+            // Seteamos el slug
+            $this->request->data['Post']['slug'] = Inflector::slug(
+                $this->request->data['Post']['title']
+            );
 			if ($this->Post->save($this->request->data)) {
-                $this->Session->setFlash(__('The post has been saved'));
+                $this->Session->setFlash(__('The post has been saved'),
+                    'flash-success'
+                );
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The post could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The post could not be saved. Please, try again.'), 'flash-failure');
             }
         }
 	}
@@ -81,12 +90,52 @@ class PostsController extends AppController {
  *
  * @param int El id del post a mostrar
  */
-    public function view($id = null){
-        $this->Post = $id;
+    public function view($slug){
+        $post = $this->Post->find('first', array(
+            'conditions' => array(
+                'slug' => $slug
+            )
+        ));
+
+        $this->Post->id = $post['Post']['id'];
+
+        // Verificamos que el recurso exista
         if (!$this->Post->exists()) {
-            throw new NotFoundException(__('Invalid post'));
+            $this->invalidParameter();
         }
-        $this->set('post', $this->Post->read(null, $id));
+        
+        $this->set('actions', $this->getAuthorizedActions());
+        $this->set('isOwner', $this->Post->isOwnedBy(
+            $this->Post->id, $this->Auth->user('id')
+        ));
+
+        // Buscamos el perfil del usario
+        $this->set('profile',
+            $this->Profile->find('first', array(
+                'conditions' => array(
+                    'users_id' => $post['Users']['id']
+                )
+            ))
+        );
+
+        $this->set('id', $this->Post->id);
+        $this->set('post', $post);
     }
+
+/**
+ * Elimina el post
+ *
+ * @param int El id del post a eliminar
+ */
+    public function delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Post->delete($id)) {
+            $this->Session->setFlash('The post with id: ' . $id . ' has been deleted.', 'flash-success');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
+
 
 }

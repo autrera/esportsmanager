@@ -1,5 +1,5 @@
 <div class = "row">
-    <div class = "span8">
+    <div class = "span8 galleries-home">
 	<?php
         if (! empty($actions) || $isOwner){
             echo '<div class = "well userActions">';
@@ -41,22 +41,24 @@
             echo "</div>";
         }
 	?>
-        <div class = "page-header">
-            <h1>
-                <?php echo $galeria['Gallery']['name'] ?>
-            </h1>
+        <div class="gallery-content">
+            <div class = "page-header">
+                <h1>
+                    <?php echo $galeria['Gallery']['name'] ?>
+                </h1>
+            </div>
+    		<ul>
+    			<?php foreach ($galeria['Photos'] as $photo): ?>
+    			<li>
+    				<div>
+    					<a class = "fancybox" data-fancybox-type="ajax" href = "/photos/view/<?php echo $photo['id']; ?>">
+        					<img class = "enlarger" src = "/files/view/<?php echo 'photos/' . $photo['id'] . '/120'; ?>" >
+        				</a>
+    				</div>
+    			</li>
+        		<?php endforeach; ?>
+    		</ul>
         </div>
-		<ul class ="thumbnails">
-			<?php foreach ($galeria['Photos'] as $photo): ?>
-			<li class = "span1">
-				<div class = "thumbnail">
-					<a class = "fancybox" data-fancybox-type="ajax" href = "/photos/view/<?php echo $photo['id']; ?>">
-    					<img src = "/files/view/<?php echo 'photos/' . $photo['id'] . '/50'; ?>" >
-    				</a>
-				</div>
-			</li>
-    		<?php endforeach; ?>
-		</ul>
     </div>
     <?php echo $this->element('sidebar'); ?>
 </div>

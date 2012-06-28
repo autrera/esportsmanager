@@ -15,19 +15,17 @@
 	        			<?php echo $gallery['Gallery']['name'] ?>
 	        		</a>
         		</h2>
-        		<ul class ="thumbnails">
-        			<?php $contador = 0; ?>
-        			<?php foreach ($gallery['Photos'] as $photo): ?>
+        		<ul>
+        			<?php foreach ($gallery['Photos'] as $key => $photo): ?>
         			<?php
-        				$contador++;
-        				if ($contador == 5){
+        				if ($key == 12){
         					break;
         				}
         			?>
-        			<li class = "span1">
-        				<div class = "thumbnail">
+        			<li>
+        				<div>
     						<a class = "fancybox" data-fancybox-type="ajax" href = "/photos/view/<?php echo $photo['id']; ?>">
-	        					<img src = "/files/view/<?php echo 'photos/' . $photo['id'] . '/50'; ?>" >
+	        					<img class = "enlarger" src = "/files/view/<?php echo 'photos/' . $photo['id'] . '/120'; ?>" >
 	        				</a>
         				</div>
         			</li>

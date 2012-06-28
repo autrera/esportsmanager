@@ -3521,12 +3521,6 @@ div.form fieldset .help-block {
   border-radius:0px;
 }
 .galleries-index .gallery-content ul li div img:hover, .galleries-home .gallery-content ul li div img:hover {
-  z-index:999;
-  height:80px;
-  min-width:120px;
-  left:-10px;
-  top:-10px;
-  overflow:hidden;
   border-color:rgba(82,168,236,0.8);
   outline:0;
   outline:thin dotted \9;

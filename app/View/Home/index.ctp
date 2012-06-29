@@ -72,10 +72,38 @@
             </div>
             <div class = "span4">
                 <div class = "latest-blogs">
-                    <h2>Latest Blogs</h2>
-                    <div class = "alert alert-info">
-                        <strong>Coming Soon!</strong>
+                    <div class = "module-header">
+                        <h2>Latest Blogs</h2>
                     </div>
+                    <a class = "view-more btn btn-mini btn-primary"
+                        href = "/streamsUsers" >
+                        More
+                        <i class="icon-chevron-right icon-white"></i>
+                    </a>
+                    <ul class="latest-blogs-wrapper">
+                        <?php foreach($latestPosts as $post): ?>
+                        <li class="blog">
+                            <h4 class="title">
+                                <a href="/posts/view/<?php echo $post['Post']['slug']; ?>">
+                                    <?php echo utilities::tokenTruncate($post['Post']['title'], 50); ?>
+                                </a>
+                            </h4>
+                            <div class="info">
+                                <?php echo $this->element('userLink', array(
+                                    'nickname' => $post['Users']['nickname'],
+                                    'user_id' => $post['Users']['id'],
+                                )); ?>
+                                <?php echo $this->element('timeStampLabel', array(
+                                    'timestamp' => $post['Post']['created'],
+                                    'format' => 'd/m/Y - H:i'
+                                )); ?>
+                                <?php echo $this->element('viewsLabel', array(
+                                    'views' => $post['Post']['counter'],
+                                )); ?>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
                 </div>
             </div>
             <div class = "span4">

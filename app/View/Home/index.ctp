@@ -10,7 +10,7 @@
                 <?php $active = ($key == 0)? 'active' : ''; ?>
                 <div class="<?php echo $active; ?> item">
                     <a href = "/news/view/<?php echo $new['News']['slug']; ?>">
-                        <img src = "<?php echo $new['News']['banner']; ?>" >
+                        <img src = "/files/view/<?php echo 'news/' . $new['News']['id'] . '/620/banner'; ?>" >
                     </a>
                     <div class = "carousel-caption">
                         <h2><?php echo $new['News']['title']; ?></h2>
@@ -151,7 +151,7 @@
                     <div class = "news-image pull-left">
                         <a href = "/news/view/<?php echo $new['News']['slug'] ?>" 
                             title = "Click to read it">
-                            <img src = "<?php echo $new['Games']['thumbnail'] ?>" >
+                            <img src = "/files/view/<?php echo 'games/' . $new['Games']['id'] . '/120/thumbnail'; ?>" >
                         </a>
                     </div>
                     <div class = "news-title">

@@ -47,7 +47,7 @@ class PostsController extends AppController {
  *
  * @var array
  */
-	// public $uses = array();
+	public $uses = array('Post', 'Profile');
 
 /**
  * Displays a all the posts
@@ -120,6 +120,44 @@ class PostsController extends AppController {
 
         $this->set('id', $this->Post->id);
         $this->set('post', $post);
+    }
+
+/**
+ * Edita el post
+ *
+ * @param int El id del post a editar
+ */
+    public function edit($id = null) {
+        // Seteamos le id de las news
+        $this->Post->id = $id;
+        // Verificamos que el recurso exista
+        if (!$this->Post->exists()) {
+            $this->invalidParameter();
+        }
+        // Si la petición es get, buscamos en la base y lo enviamos
+        if ($this->request->is('get')) {
+            $this->request->data = $this->Post->read();
+        } else {
+            // Seteamos el slug
+            $this->request->data['Post']['slug'] = Inflector::slug(
+                $this->request->data['Post']['title']
+            );
+            // Intentamos guardar el registro
+            if ($this->Post->save($this->request->data)) {
+                // Guardado exitoso
+                $this->Session->setFlash(
+                    'Your post have been updated.',
+                    'flash-success'
+                );
+                $this->redirect(array('action' => 'index'));
+            } else {
+                // Guardado fallido
+                $this->Session->setFlash(
+                    'Unable to update your post.',
+                    'flash-failure'
+                );
+            }
+        }
     }
 
 /**

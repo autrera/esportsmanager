@@ -3666,3 +3666,9 @@ div.form fieldset .help-block {
 .live-streams .mini-live-stream:after { clear:both; }
 .teams-index .team-content .team-picture { margin-bottom:12px; }
 .teams-index .team-content .players-content .player-content { margin-bottom:12px; }
+.posts-container .post-wrapper .post-content {
+  margin:10px 0;
+  border-left:5px solid #dddddd;
+  padding-left:10px;
+}
+.post-view .post-main .post-social { margin:8px 0; }

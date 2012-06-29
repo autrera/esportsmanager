@@ -76,7 +76,7 @@
                         <h2>Latest Blogs</h2>
                     </div>
                     <a class = "view-more btn btn-mini btn-primary"
-                        href = "/streamsUsers" >
+                        href = "/posts" >
                         More
                         <i class="icon-chevron-right icon-white"></i>
                     </a>

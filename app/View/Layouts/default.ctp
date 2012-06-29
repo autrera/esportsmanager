@@ -145,6 +145,12 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="/posts">
+                                            <i class="icon-align-justify icon-white"></i> 
+                                            Posts
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="/videos">
                                             <i class="icon-film icon-white"></i> 
                                             Videos

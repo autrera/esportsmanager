@@ -58,10 +58,10 @@ class FilesController extends AppController {
  *
  * @param int El id del Perfil a mostrar
  */
-    public function view($table, $fileId, $width){
+    public function view($table, $fileId, $width, $field = 'url'){
         $class = Inflector::classify($table);
         $this->uses = array($class);
-        $path = $this->{$class}->field('url', array(
+        $path = $this->{$class}->field($field, array(
             $class.'.id' => $fileId
         ));
         $file = resize($path, array(

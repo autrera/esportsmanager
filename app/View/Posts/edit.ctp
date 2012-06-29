@@ -1,8 +1,12 @@
 <?php
     App::uses('customFormOptions', 'Lib');
+    // Agregamos los archivos para el editor de texto
+    echo $this->Html->css('bootstrap-wysihtml5');
+	echo $this->Html->script('wysihtml5');
+    echo $this->Html->script('bootstrap-wysihtml5');
 ?>
 <div class = "row">
-    <div class = "span8 offset2">
+    <div class = "span10 offset1">
 		<div class="posts form">
 			<?php echo $this->Form->create('Post', array(
 	            'class' => 'form-horizontal',
@@ -25,6 +29,10 @@
                     )
 		        );
 		    ?>
+		        <script type="text/javascript">
+		        	// Iniciamos el editor de texto
+					$('#PostContent').wysihtml5();
+				</script>
 		    </fieldset>
             <?php echo $this->Form->end(
                 customFormOptions::getOptionsBtnSubmit('Update')

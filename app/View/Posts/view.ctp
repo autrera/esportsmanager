@@ -33,6 +33,9 @@
                             'timestamp' => $post['Post']['created'],
                             'format' => 'd/m/Y - H:i'
                         )); ?>
+                        <?php echo $this->element('viewsLabel', array(
+                            'views' => $post['Post']['counter'],
+                        )); ?>
                     </div>
                     <div class = "post-social">
                         <?php echo $this->element('shareBox'); ?>

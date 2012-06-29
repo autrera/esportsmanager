@@ -27,6 +27,9 @@
                         'timestamp' => $post['Post']['created'],
                         'format' => 'd/m/Y - H:i'
                     )); ?>
+                    <?php echo $this->element('viewsLabel', array(
+                        'views' => $post['Post']['counter'],
+                    )); ?>
 	    		</div>
 	    		<div class="post-content">
 	    			<p><?php echo utilities::tokenTruncate($post['Post']['content'], 100); ?></p>

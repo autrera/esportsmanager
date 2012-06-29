@@ -98,6 +98,24 @@
 				</div>
 				<ul class = "thumbnails">
 					<li class = "span4">
+						<div class = "tuhmbnail latest-user-posts user-activity">
+							<h2>Latest Posts</h2>
+							<?php if (!empty($latestPosts)): ?>
+							<?php foreach ($latestPosts as $post): ?>
+							<div class = "user-post">
+								<h4>
+									<a href = "/posts/view/<?php echo $post['Post']['slug']; ?>">
+										<?php echo utilities::tokenTruncate($post['Post']['title'], 50); ?>
+									</a>
+								</h4>
+							</div>
+							<?php endforeach; ?>
+							<?php else: ?>
+							<p>No posts have been added by this user.</p>
+							<?php endif; ?>
+						</div>
+					</li>
+					<li class = "span4">
 						<div class = "tuhmbnail latest-user-videos user-activity">
 							<h2>Latest Videos</h2>
 							<?php if (!empty($latestVideos)): ?>

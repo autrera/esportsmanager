@@ -49,7 +49,7 @@ class HomeController extends AppController {
  *
  * @var array
  */
-	public $uses = array('News', 'Video', 'Gallery', 'Stream');
+	public $uses = array('News', 'Video', 'Gallery', 'Stream', 'Post');
 
 /**
  * Displays a view
@@ -64,6 +64,11 @@ class HomeController extends AppController {
 				'News.featured' => '1'
 			),
 			'order' => 'News.id DESC',
+			'limit' => 5,
+		));
+
+		$latestPosts = $this->Post->find('all', array(
+			'order' => 'Post.id DESC',
 			'limit' => 5,
 		));
 
@@ -88,6 +93,7 @@ class HomeController extends AppController {
 
 		// Seteamos las variables
 		$this->set('featuredNews' , $featuredNews);
+		$this->set('latestPosts', $latestPosts);
 		$this->set('latestVideos', $latestVideos);
 		$this->set('featuredVideo', $featuredVideo);
 		$this->set('latestNews', $latestNews);

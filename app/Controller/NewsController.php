@@ -87,7 +87,7 @@ class NewsController extends AppController {
         // Verificamos que el request sea un post
 		if ($this->request->is('post')) {
             $this->News->create();
-            // Seteamos el id del usuario, serÃ¡ dueÃ±o de la new
+            // Seteamos el id del usuario, será dueño de la new
             $this->request->data['News']['users_id'] = $this->Auth->user('id');
             // Seteamos el slug
             $this->request->data['News']['slug'] = Inflector::slug(
@@ -161,7 +161,7 @@ class NewsController extends AppController {
             $this->invalidParameter();
         }
         
-        // Si la peticiÃ³n es get, buscamos en la base y lo enviamos
+        // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {
             $this->request->data = $this->News->read();
         } else {

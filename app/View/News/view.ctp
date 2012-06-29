@@ -28,7 +28,7 @@
                     <?php if (!empty ($noticia['News']['banner'])): ?>
                     <div class = "row">
                         <div class = "span6">
-                            <img src = "<?php echo $noticia['News']['banner'] ?>" >
+                            <img src = "/files/view/<?php echo 'news/' . $noticia['News']['id'] . '/460/banner'; ?>" >
                         </div>
                     </div>
                     <?php endif; ?>

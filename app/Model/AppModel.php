@@ -391,4 +391,14 @@ class AppModel extends Model {
 
     // }}}
 
+    // {{{ increaseCounter()
+
+    public function increaseCounter(){
+        $counter = $this->field('counter');
+        $counter++;
+        $this->saveField('counter', $counter);
+    }
+
+    // }}}
+
 }

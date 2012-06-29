@@ -47,7 +47,7 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $uses = array('User', 'Team', 'Role', 'Video', 'Gallery', 'News', 'Profile');
+	public $uses = array('User', 'Team', 'Role', 'Video', 'Gallery', 'News', 'Profile', 'Post');
 
 /**
  * Permitimos a los usuarios agregarse a si mismos y desloguearse
@@ -156,6 +156,14 @@ class UsersController extends AppController {
             $this->invalidParameter();
         }
 
+        $latestPosts = $this->Post->find('all', array(
+            'conditions' => array(
+                'users_id' => $this->User->id,
+            ),
+            'order' => 'Post.id DESC',
+            'limit' => 5,
+        ));
+
         $latestVideos = $this->Video->find('all', array(
             'conditions' => array(
                 'users_id' => $this->User->id,
@@ -185,6 +193,7 @@ class UsersController extends AppController {
         ));
 
 
+        $this->set('latestPosts', $latestPosts);
         $this->set('latestVideos', $latestVideos);
         $this->set('latestNews', $latestNews);
         $this->set('latestGalleries', $latestGalleries);

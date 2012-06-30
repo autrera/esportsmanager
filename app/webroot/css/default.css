@@ -3228,6 +3228,11 @@ img {
   -moz-border-radius:4px;
   border-radius:4px;
 }
+span.label a {
+  text-decoration:none;
+  color:#ffffff;
+}
+blockquote { border-color:#dddddd; }
 #header {
   padding-top:2px;
   padding-bottom:2px;
@@ -3270,6 +3275,14 @@ img {
   font-weight:bold;
 }
 .carousel .carousel-caption { color:white; }
+.carousel .carousel-inner .item img {
+  height:336px;
+  min-height:336px;
+  max-height:336px;
+  width:620px;
+  min-width:620px;
+  max-width:620px;
+}
 .latest-block { margin-bottom:20px; }
 .latest-videos, .latest-matches, .latest-blogs, .live-streams {
   min-height:190px;
@@ -3421,7 +3434,10 @@ span.game-logo img { vertical-align:top; }
 }
 .news-row .news-details { margin-bottom:4px; }
 .news-row .news-details span { margin-right:8px; }
-.news-row .news-content { color:#3d3d3d; }
+.news-row .news-content {
+  color:#3d3d3d;
+  text-align:justify;
+}
 .news-row .news-tag {
   height:120px;
   width:30px;
@@ -3489,6 +3505,7 @@ div.form fieldset .help-block {
   margin-bottom:8px;
   margin-top:8px;
 }
+.new-view .new-main .new-content { text-align:justify; }
 .videos-index .video-container .thumbnail .video-info { margin:4px 0; }
 .videos-index .video-container .thumbnail .video-info span.label { margin-right:4px; }
 .galleries-index .gallery-content { border-bottom:1px solid #ffffff; }
@@ -3658,7 +3675,6 @@ div.form fieldset .help-block {
 }
 .live-streams .mini-live-stream .label-container { margin-bottom:3px; }
 .live-streams .mini-live-stream .label-container span.label { margin-right:4px; }
-.live-streams .mini-live-stream a { font-weight:bold; }
 .live-streams .mini-live-stream:before, .live-streams .mini-live-stream:after {
   display:table;
   content:"";
@@ -3682,5 +3698,6 @@ div.form fieldset .help-block {
 .latest-blogs .latest-blogs-wrapper .blog {
   display:inline;
   float:left;
+  margin-bottom:8px;
 }
 .latest-blogs .latest-blogs-wrapper .blog .info span.label { margin-right:4px; }

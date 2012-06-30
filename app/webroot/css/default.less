@@ -53,6 +53,15 @@ img {
     .border-radius(4px);
 }
 
+span.label a {
+    text-decoration: none;
+    color: @white;
+}
+
+blockquote {
+    border-color: #DDD;
+}
+
 #header {
     padding-top: 2px;
     padding-bottom: 2px;
@@ -113,6 +122,18 @@ img {
     }
     .carousel-caption {
         color: white;
+    }
+    .carousel-inner {
+        .item {
+            img {
+                height: 336px;
+                min-height: 336px;
+                max-height: 336px;
+                width: 620px;
+                min-width: 620px;
+                max-width: 620px;
+            }
+        }
     }
 }
 
@@ -245,6 +266,7 @@ span.game-logo {
     }
     .news-content {
         color: @blacky;
+        text-align: justify;
     }
     .news-tag {
         height: 120px;
@@ -363,6 +385,7 @@ div.form {
         }
         .new-content {
             // background: @white;
+            text-align: justify;
         }
     }
 }
@@ -554,7 +577,6 @@ div.form {
             }
         }
         a {
-            font-weight: bold;
         }
         .clearfix();
     }
@@ -623,6 +645,7 @@ div.form {
         .blog {
             display: inline;
             float: left;
+            margin-bottom: 8px;
             .title {
             }
             .info {

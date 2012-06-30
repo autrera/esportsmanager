@@ -50,6 +50,22 @@ class NewsController extends AppController {
 	public $uses = array('News', 'Game', 'Profile');
 
 /**
+ * Code to run after actions are ran and rendered
+ *
+ */
+    public function afterFilter() {
+        // Si la acción solicitada es 'view'
+        if ($this->request->params['action'] == 'view') {
+            // Obtenemos el id del post en base a su slug
+            $this->News->id = $this->News->field('id', array(
+                'News.slug' => $this->passedArgs[0]
+            ));
+            // Incrementamos el contador de vistas de la noticia
+            $this->News->increaseCounter();
+        }
+    }
+
+/**
  * Displays a all the posts
  *
  * @param none

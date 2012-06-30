@@ -83,11 +83,11 @@
                     <ul class="latest-blogs-wrapper">
                         <?php foreach($latestPosts as $post): ?>
                         <li class="blog">
-                            <h4 class="title">
+                            <div class="title">
                                 <a href="/posts/view/<?php echo $post['Post']['slug']; ?>">
-                                    <?php echo utilities::tokenTruncate($post['Post']['title'], 50); ?>
+                                    <?php echo utilities::tokenTruncate($post['Post']['title'], 40); ?>
                                 </a>
-                            </h4>
+                            </div>
                             <div class="info">
                                 <?php echo $this->element('userLink', array(
                                     'nickname' => $post['Users']['nickname'],
@@ -201,6 +201,9 @@
                                 'user_id'  => $new['Users']['id'],
                             )); 
                         ?>
+                        <?php echo $this->element('viewsLabel', array(
+                            'views' => $new['News']['counter'],
+                        )); ?>
                     </div>
                     <div class = "news-content">
                         <p>

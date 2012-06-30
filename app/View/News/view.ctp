@@ -44,6 +44,9 @@
                             'timestamp' => $noticia['News']['created'],
                             'format' => 'd/m/Y - H:i'
                         )); ?>
+                        <?php echo $this->element('viewsLabel', array(
+                            'views' => $noticia['News']['counter'],
+                        )); ?>
                     </div>
                     <div class = "new-social">
                         <?php echo $this->element('shareBox'); ?>

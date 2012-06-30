@@ -43,6 +43,10 @@
                         'user_id'  => $new['Users']['id'],
                     )); 
                 ?>
+                <?php echo $this->element('viewsLabel', array(
+                    'views' => $new['News']['counter'],
+                )); ?>
+
             </div>
             <div class = "news-content">
                 <p>

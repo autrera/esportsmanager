@@ -14,7 +14,10 @@ class utilities
         $last_part = 0;
         for (; $last_part < $parts_count; ++$last_part) {
             $length += strlen($parts[$last_part]);
-            if ($length > $your_desired_width) { break; }
+            if ($length > $your_desired_width) {
+                $parts[$last_part] .= '...'; 
+                break; 
+            }
         }
         return implode(array_slice($parts, 0, $last_part));
     }

@@ -3220,6 +3220,10 @@ a.thumbnail:hover {
 .btnStyleInverse:first-child { *margin-left:0; }
 .btnStyleInverse:hover, .btnStyleInverse:active, .btnStyleInverse.active, .btnStyleInverse.disabled, .btnStyleInverse[disabled] { background-color:#222222; }
 .btnStyleInverse:active, .btnStyleInverse.active { background-color:#090909 \9; }
+.spanBlock {
+  display:block;
+  margin-top:4px;
+}
 html { background:black url('/img/backgrounds/quetzibg.jpg') 50% -40px fixed; }
 body { background:none; }
 img {
@@ -3499,7 +3503,10 @@ div.form fieldset .help-block {
 .page-header { border-bottom:1px solid #ffffff; }
 .well.userActions .btn { margin-right:10px; }
 .author-block .author-picture { margin-bottom:8px; }
-.author-block .author-info span.label { margin-right:4px; }
+.author-block .author-info span {
+  display:block;
+  margin-top:4px;
+}
 .new-view .new-main .new-details span { margin-right:6px; }
 .new-view .new-main .new-social {
   margin-bottom:8px;
@@ -3508,6 +3515,10 @@ div.form fieldset .help-block {
 .new-view .new-main .new-content { text-align:justify; }
 .videos-index .video-container .thumbnail .video-info { margin:4px 0; }
 .videos-index .video-container .thumbnail .video-info span.label { margin-right:4px; }
+.video-view .video-author .author-info span {
+  display:block;
+  margin-top:4px;
+}
 .galleries-index .gallery-content { border-bottom:1px solid #ffffff; }
 .galleries-index .gallery-content, .galleries-home .gallery-content { *zoom:1; }
 .galleries-index .gallery-content ul, .galleries-home .gallery-content ul {

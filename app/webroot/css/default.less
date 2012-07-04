@@ -38,6 +38,14 @@
     .btn-inverse;
 }
 
+/* Mixin de los spans que deben ser mostrados como tipo block */
+
+.spanBlock {
+    display: block;
+    margin-top: 4px;
+}
+
+
 html {
     // background: url('../img/backgrounds/page-bg.jpg') no-repeat fixed;
     background: black url('/img/backgrounds/quetzibg.jpg') 50% -40px fixed;
@@ -362,8 +370,8 @@ div.form {
         margin-bottom: 8px;
     }
     .author-info {
-        span.label {
-            margin-right: 4px;
+        span {
+            .spanBlock;
         }
     }
 }
@@ -416,6 +424,9 @@ div.form {
         .author-picture {
         }
         .author-info {
+            span {
+                .spanBlock;
+            }
         }
     }
 }
@@ -507,8 +518,7 @@ div.form {
         .thumbnail {
             .user-info {
                 span {
-                    display: block;
-                    margin-top: 4px;
+                    .spanBlock;
                 }
             }
         }

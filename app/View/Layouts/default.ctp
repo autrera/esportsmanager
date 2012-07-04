@@ -1,4 +1,6 @@
 <?php
+    App::uses('utilities', 'Lib');
+    $url = utilities::getUrl();
 /**
  *
  * PHP 5
@@ -20,12 +22,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php echo $this->Html->charset('ISO-8859-1'); ?>
-    <meta property="og:title" content="Team Quetzal"/> 
+    <meta property="og:title" content="<?php echo $fb_title_for_layout; ?>"/> 
+    <meta property="og:description" content="<?php echo $fb_description_for_layout; ?>"/> 
     <meta property="og:type" content="sports_team"/> 
-    <meta property="og:image" content="http://a2.sphotos.ak.fbcdn.net/hphotos-ak-ash4/385529_326799320670213_361217214_n.jpg"/> 
-    <meta property="og:url" content="http://www.teamquetzal.com"/> 
+    <meta property="og:image" content="<?php echo $fb_image_for_layout; ?>"/> 
+    <meta property="og:url" content="<?php echo $url; ?>"/> 
     <meta property="og:site_name" content="QuetziWeb"/> 
-    <meta property="og:admins" content="110378193995"/> 
 	<title>
 		<?php 
             echo __('Team Quetzal - Mexican Professional Gaming Franchise: '); 
@@ -91,7 +93,7 @@
                     </div>
                     <?php else: ?>
                     <div class = "cont-login-header span4 pull-right">
-                        <div class = "pull-right">
+                        <div class = " btn-group pull-right">
                             <a href = "/users/login"
                                 class = "btn btn-primary"
                             >
@@ -122,61 +124,39 @@
             </div>
             <div id = "main-container-border" class = "container">
                 <div id = "main-container" class = "container">
-                    <div class="navbar">
-                        <div class="navbar-inner">
-                            <div class="container">
-                                <ul class = "nav">
-                                    <li>
-                                        <a href="/">
-                                            <i class="icon-home icon-white"></i> 
-                                            Home
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/teams">
-                                            <i class="icon-home icon-white"></i> 
-                                            Teams
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/news">
-                                            <i class="icon-folder-open icon-white"></i> 
-                                            News
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/posts">
-                                            <i class="icon-align-justify icon-white"></i> 
-                                            Posts
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/videos">
-                                            <i class="icon-film icon-white"></i> 
-                                            Videos
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/streamsUsers">
-                                            <i class="icon-facetime-video icon-white"></i>
-                                            Streams
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/galleries">
-                                            <i class = "icon-th icon-white"></i> 
-                                            Galleries
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/miscellaneous">
-                                            <i class = "icon-cog icon-white"></i> 
-                                            Misc
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="btn-group menubar">
+                        <a href="/" class = "btn btn-large">
+                            <i class="icon-home"></i> 
+                            Home
+                        </a>
+                        <a href="/teams" class = "btn btn-large">
+                            <i class="icon-user"></i> 
+                            Teams
+                        </a>
+                        <a href="/news" class = "btn btn-large">
+                            <i class="icon-folder-open"></i> 
+                            News
+                        </a>
+                        <a href="/posts" class = "btn btn-large">
+                            <i class="icon-align-justify"></i> 
+                            Posts
+                        </a>
+                        <a href="/videos" class = "btn btn-large">
+                            <i class="icon-film"></i> 
+                            Videos
+                        </a>
+                        <a href="/streamsUsers" class = "btn btn-large">
+                            <i class="icon-facetime-video"></i> 
+                            Streams
+                        </a>
+                        <a href="/galleries" class = "btn btn-large">
+                            <i class="icon-th"></i> 
+                            Galleries
+                        </a>
+                        <a href="/miscellaneous" class = "btn btn-large">
+                            <i class="icon-cog"></i> 
+                            Misc
+                        </a>
                     </div>
 
 					<?php echo $this->Session->flash(); ?>

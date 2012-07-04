@@ -1,3 +1,6 @@
+<?php
+    App::uses('utilities', 'Lib');
+?>
 <div class = "row">
     <div class = "span8">
 <?php
@@ -5,6 +8,8 @@
             'actions' => $actions,
             'isOwner' => $isOwner,
         ));
+        $this->set('fb_title_for_layout', $noticia['News']['title']);
+        $this->set('fb_description_for_layout', utilities::tokenTruncate($noticia['News']['description'], 150));
 ?>
         <div class = "row">
             <div class = "new-view">

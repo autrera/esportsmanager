@@ -8,8 +8,12 @@
             'actions' => $actions,
             'isOwner' => $isOwner,
         ));
-        $this->set('fb_title_for_layout', $post['Post']['title']);
-        $this->set('fb_description_for_layout', utilities::tokenTruncate($post['Post']['content'], 150));
+        $this->set('fb_title_for_layout', 
+            strip_tags($post['Post']['title'])
+        );
+        $this->set('fb_description_for_layout', 
+            strip_tags(utilities::tokenTruncate($post['Post']['content'], 150))
+        );
 ?>
         <div class = "row">
             <div class = "post-view">

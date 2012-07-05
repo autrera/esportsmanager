@@ -8,8 +8,14 @@
             'actions' => $actions,
             'isOwner' => $isOwner,
         ));
-        $this->set('fb_title_for_layout', $noticia['News']['title']);
-        $this->set('fb_description_for_layout', utilities::tokenTruncate($noticia['News']['description'], 150));
+        $this->set('fb_title_for_layout', 
+            strip_tags($noticia['News']['title'])
+        ));
+        $this->set('fb_description_for_layout', 
+            strip_tags(utilities::tokenTruncate(
+                $noticia['News']['description'], 150
+            ))
+        );
 ?>
         <div class = "row">
             <div class = "new-view">

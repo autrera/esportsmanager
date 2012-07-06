@@ -10,7 +10,7 @@
         ));
         $this->set('fb_title_for_layout', 
             strip_tags($noticia['News']['title'])
-        ));
+        );
         $this->set('fb_description_for_layout', 
             strip_tags(utilities::tokenTruncate(
                 $noticia['News']['description'], 150
@@ -53,9 +53,12 @@
                         <h1><?php echo $noticia['News']['title'] ?></h1>
                     </div>
                     <div class = "new-details">
-                        <span class="label label-inverse">
-                            <i class="icon-asterisk icon-white"></i>
-                            <?php echo $noticia['Games']['name'] ?>
+                        <span>
+                            <a href="/games/view/<?php echo $noticia['Games']['id']; ?>">
+                                <strong>
+                                    <?php echo $noticia['Games']['name'] ?>
+                                </strong>
+                            </a>
                         </span>
                         <?php echo $this->element('timeStampLabel', array(
                             'timestamp' => $noticia['News']['created'],

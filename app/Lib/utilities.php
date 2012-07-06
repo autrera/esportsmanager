@@ -15,7 +15,7 @@ class utilities
         for (; $last_part < $parts_count; ++$last_part) {
             $length += strlen($parts[$last_part]);
             if ($length > $your_desired_width) {
-                $parts[$last_part] .= '...'; 
+                $parts[$last_part-1] .= '...'; 
                 break; 
             }
         }

@@ -10,7 +10,13 @@
             <div class = "post-view">
                 <div class = "span2 author-block">
                     <div class = "author-picture">
-                        <img src = "<?php echo $profile['Profile']['picture']; ?>" >
+                        <?php
+                            echo $this->element('profile-pic', array(
+                                'profilePic' => $profile['Profile']['picture'],
+                                'profileId'  => $profile['Profile']['id'],
+                                'size' => 140,
+                            ));
+                        ?>
                     </div>
                     <div class = "author-info">
                         <?php 

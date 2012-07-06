@@ -14,7 +14,8 @@
     //     )
     // );
 ?>
-<span class="label label-warning">
+<span>
+    From 
     <a href="/countries/view/<?php echo $country['id']; ?>">
         <img src="<?php echo $country['flag']; ?>">
         <?php echo $country['name']; ?>

@@ -3438,7 +3438,11 @@ span.game-logo img { vertical-align:top; }
   font-style:italic;
 }
 .news-row .news-details { margin-bottom:4px; }
-.news-row .news-details span { margin-right:8px; }
+.news-row .news-details span {
+  margin-right:4px;
+  font-size:12px;
+}
+.news-row .news-details span small { font-style:italic; }
 .news-row .news-content {
   color:#3d3d3d;
   text-align:justify;
@@ -3508,7 +3512,11 @@ div.form fieldset .help-block {
   display:block;
   margin-top:4px;
 }
-.new-view .new-main .new-details span { margin-right:6px; }
+.new-view .new-main .new-details span {
+  margin-right:4px;
+  font-size:12px;
+}
+.new-view .new-main .new-details span small { font-style:italic; }
 .new-view .new-main .new-social {
   margin-bottom:8px;
   margin-top:8px;
@@ -3694,14 +3702,22 @@ div.form fieldset .help-block {
 .live-streams .mini-live-stream:after { clear:both; }
 .teams-index .team-content .team-picture { margin-bottom:12px; }
 .teams-index .team-content .players-content .player-content { margin-bottom:12px; }
-.posts-container .post-wrapper .post-info span.label { margin-right:4px; }
+.posts-container .post-wrapper .post-info span {
+  margin-right:4px;
+  font-size:12px;
+}
+.posts-container .post-wrapper .post-info span small { font-style:italic; }
 .posts-container .post-wrapper .post-content {
   margin:10px 0;
   border-left:5px solid #dddddd;
   padding-left:10px;
   text-align:justify;
 }
-.post-view .post-main .post-details span.label { margin-right:4px; }
+.post-view .post-main .post-details span {
+  margin-right:4px;
+  font-size:12px;
+}
+.post-view .post-main .post-details span small { font-style:italic; }
 .post-view .post-main .post-social { margin:8px 0; }
 .post-view .post-main .post-content { text-align:justify; }
 .latest-blogs .latest-blogs-wrapper {
@@ -3712,9 +3728,14 @@ div.form fieldset .help-block {
 .latest-blogs .latest-blogs-wrapper .blog {
   display:inline;
   float:left;
-  margin-bottom:8px;
+  margin-bottom:6px;
 }
-.latest-blogs .latest-blogs-wrapper .blog .info span.label { margin-right:4px; }
+.latest-blogs .latest-blogs-wrapper .blog .title { font-weight:bold; }
+.latest-blogs .latest-blogs-wrapper .blog .info span {
+  font-size:12px;
+  margin-right:4px;
+}
+.latest-blogs .latest-blogs-wrapper .blog .info span small { font-style:italic; }
 .rss-feed { margin-bottom:8px; }
 .rss-feed a {
   display:block;

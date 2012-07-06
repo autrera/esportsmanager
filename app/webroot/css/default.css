@@ -3715,3 +3715,8 @@ div.form fieldset .help-block {
   margin-bottom:8px;
 }
 .latest-blogs .latest-blogs-wrapper .blog .info span.label { margin-right:4px; }
+.rss-feed { margin-bottom:8px; }
+.rss-feed a {
+  display:block;
+  margin:0 auto;
+}

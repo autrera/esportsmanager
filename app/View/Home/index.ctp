@@ -46,12 +46,11 @@
                     <h3><?php echo $featuredVideo['Video']['name']; ?></h3>
                     <div class = "caption">
                         <?php foreach($latestVideos as $video): ?>
-                        <h4>
-                            <i class="icon-play"></i>
-                            <a href = "/videos/view/<?php echo $video['Video']['slug']; ?>">
-                                <?php echo $video['Video']['name']; ?>
-                            </a>
-                        </h4>
+                        <div>
+                        <i class="icon-play"></i>
+                        <a href = "/videos/view/<?php echo $video['Video']['slug']; ?>">
+                            <?php echo $video['Video']['name']; ?>
+                        </a>
                         <?php endforeach; ?>
                     </div>
                 </div>

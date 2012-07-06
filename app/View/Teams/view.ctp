@@ -1,8 +1,5 @@
 <?php
     App::uses('utilities', 'Lib');
-    // echo "<pre>";
-    // print_r($team);
-    // echo "</pre>";
 ?>
 <div class = "row">
     <div class = "span8">
@@ -27,7 +24,13 @@
                         <?php foreach ($team['Users'] as $usuario): ?>
                         <div class = "row player-content">
                             <div class = "span2 offset1">
-                                <?php echo $this->element('profile-pic', array('profilePic' => $usuario['Profile']['picture'])); ?>
+                            <?php
+                                echo $this->element('profile-pic', array(
+                                    'profilePic' => $usuario['Profile']['picture'],
+                                    'profileId'  => $usuario['Profile']['id'],
+                                    'size' => 140,
+                                ));
+                            ?>
                             </div>
                             <div class = "span5">
                                 <dl class = "dl-horizontal">

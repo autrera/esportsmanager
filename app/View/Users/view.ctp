@@ -12,7 +12,13 @@
 	    ?>
 		<div class = "row">
 			<div class = "span3">
-				<?php echo $this->element('profile-pic', array('profilePic' => $usuario['Profile']['picture'])); ?>
+				<?php
+                    echo $this->element('profile-pic', array(
+                        'profilePic' => $usuario['Profile']['picture'],
+                        'profileId'  => $usuario['Profile']['id'],
+                        'size' => 220,
+                    ));
+                ?>
 			</div>
 			<div class = "span5">
 				<dl class = "dl-horizontal">

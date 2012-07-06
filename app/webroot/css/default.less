@@ -24,6 +24,13 @@
     );
 }
 
+.glowEffect {
+    border-color: rgba(82,168,236,.8);
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.8)");
+}
+
 .btnStyle {
     .btn;
     cursor: default;
@@ -37,6 +44,14 @@
     .btnStyle;
     .btn-inverse;
 }
+
+/* Mixin de los spans que deben ser mostrados como tipo block */
+
+.spanBlock {
+    display: block;
+    margin-top: 4px;
+}
+
 
 html {
     // background: url('../img/backgrounds/page-bg.jpg') no-repeat fixed;
@@ -90,6 +105,16 @@ blockquote {
     .border-radius(4px);
 }
 
+/* Estilos de la barra de menú */
+
+.menubar {
+    margin-bottom: 10px;
+    a.btn {
+        &:hover {
+        }
+    }
+}
+
 .navbar {
     .nav {
         li {
@@ -126,12 +151,6 @@ blockquote {
     .carousel-inner {
         .item {
             img {
-                height: 336px;
-                min-height: 336px;
-                max-height: 336px;
-                width: 620px;
-                min-width: 620px;
-                max-width: 620px;
             }
         }
     }
@@ -362,8 +381,8 @@ div.form {
         margin-bottom: 8px;
     }
     .author-info {
-        span.label {
-            margin-right: 4px;
+        span {
+            .spanBlock;
         }
     }
 }
@@ -416,6 +435,9 @@ div.form {
         .author-picture {
         }
         .author-info {
+            span {
+                .spanBlock;
+            }
         }
     }
 }
@@ -462,10 +484,7 @@ div.form {
                             // min-width: 120px;
                             // left: -10px;
                             // top: -10px;
-                            border-color: rgba(82,168,236,.8);
-                            outline: 0;
-                            outline: thin dotted \9; /* IE6-9 */
-                            .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.8)");
+                            .glowEffect;
                         }
                     }
                 }
@@ -507,8 +526,7 @@ div.form {
         .thumbnail {
             .user-info {
                 span {
-                    display: block;
-                    margin-top: 4px;
+                    .spanBlock;
                 }
             }
         }
@@ -612,6 +630,7 @@ div.form {
             margin: 10px 0;
             border-left: 5px solid #DDD;
             padding-left: 10px;
+            text-align: justify;
         }
     }
 }
@@ -631,6 +650,7 @@ div.form {
             margin: 8px 0;
         }
         .post-content {
+            text-align: justify;
         }
     }
 }

@@ -4,7 +4,7 @@
 ?>
 <div class = "share-box">
 	<span>
-		<div class="fb-like" data-href="<?php echo $url; ?>" data-send="true" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+		<div class="fb-like" data-href="<?php echo $url; ?>" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
 	</span>
 
 	<span>

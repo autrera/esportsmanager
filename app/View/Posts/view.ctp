@@ -1,3 +1,6 @@
+<?php
+    App::uses('utilities', 'Lib');
+?>
 <div class = "row">
     <div class = "span8">
 <?php
@@ -5,6 +8,12 @@
             'actions' => $actions,
             'isOwner' => $isOwner,
         ));
+        $this->set('fb_title_for_layout', 
+            strip_tags($post['Post']['title'])
+        );
+        $this->set('fb_description_for_layout', 
+            strip_tags(utilities::tokenTruncate($post['Post']['content'], 150))
+        );
 ?>
         <div class = "row">
             <div class = "post-view">

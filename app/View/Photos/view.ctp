@@ -7,7 +7,7 @@
         ));
         $this->set('fb_title_for_layout', 
             strip_tags($foto['Galleries']['name'])
-        ));
+        );
         $this->set('fb_description_for_layout', 
             strip_tags(__('Fotos de la Galería: ' 
             	. $foto['Galleries']['name'])

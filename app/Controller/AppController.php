@@ -61,10 +61,12 @@ class AppController extends Controller {
     public function beforeFilter() {
         $this->Auth->allow('index', 'view');
         $this->set('authUser', $this->Auth->user());
+        // Seteamos las variables para el open graph de Facebook
         $this->set('fb_title_for_layout', 
             'Team Quetzal - Mexican Professional Gaming Franchise');
         $this->set('fb_description_for_layout', '');
         $this->set('fb_image_for_layout', 'http://profile.ak.fbcdn.net/hprofile-ak-snc4/50410_311288632221282_31910832_n.jpg');
+        $this->set('fb_url_for_layout', Router::url(null, true));
     }
 
 /**

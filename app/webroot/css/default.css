@@ -3232,7 +3232,7 @@ a.thumbnail:hover {
   display:block;
   margin-top:4px;
 }
-html { background:black url('/img/backgrounds/quetzibg.jpg') 50% -40px fixed; }
+html { background:black url('/img/backgrounds/diablo1.jpg') 50% 0px no-repeat fixed; }
 body { background:none; }
 img {
   max-width:100%;
@@ -3474,7 +3474,6 @@ span.game-logo img { vertical-align:top; }
   display:block;
   margin:0 auto;
 }
-.sponsor { background:#000000; }
 .lateral-sponsor {
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
@@ -3738,6 +3737,14 @@ div.form fieldset .help-block {
 .latest-blogs .latest-blogs-wrapper .blog .info span small { font-style:italic; }
 .rss-feed { margin-bottom:8px; }
 .rss-feed a {
+  display:block;
+  margin:0 auto;
+}
+.sponsors .sponsor {
+  margin-top:6px;
+  margin-bottom:6px;
+}
+.sponsors .sponsor .logo-sponsor img {
   display:block;
   margin:0 auto;
 }

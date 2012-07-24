@@ -69,7 +69,7 @@ class HomeController extends AppController {
 
 		$latestPosts = $this->Post->find('all', array(
 			'order' => 'Post.id DESC',
-			'limit' => 5,
+			'limit' => 3,
 		));
 
 		$latestVideos = $this->Video->find('all', array(

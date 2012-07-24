@@ -1,6 +1,4 @@
 <?php
-    App::uses('utilities', 'Lib');
-    $url = utilities::getUrl();
 /**
  *
  * PHP 5
@@ -26,7 +24,7 @@
     <meta property="og:description" content="<?php echo $fb_description_for_layout; ?>"/> 
     <meta property="og:type" content="sports_team"/> 
     <meta property="og:image" content="<?php echo $fb_image_for_layout; ?>"/> 
-    <meta property="og:url" content="<?php echo $url; ?>"/> 
+    <meta property="og:url" content="<?php echo $fb_url_for_layout; ?>"/> 
     <meta property="og:site_name" content="QuetziWeb"/> 
 	<title>
 		<?php 

@@ -1,6 +1,6 @@
 <?php
 ?>
-<span class="label label-important">
-    <i class="icon-eye-open icon-white"></i>
+<span>
     <?php echo $views; ?>
+     views
 </span>

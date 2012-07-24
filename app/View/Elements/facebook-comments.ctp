@@ -1,6 +1,5 @@
 <?php
-    App::uses('utilities', 'Lib');
-    $url = utilities::getUrl();
+    $url = Router::url(null, true);
 ?>
 <div class = "row">
     <div class = "span8">

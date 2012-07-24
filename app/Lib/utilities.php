@@ -22,12 +22,6 @@ class utilities
         return implode(array_slice($parts, 0, $last_part));
     }
 
-    public static function getUrl(){
-        $protocol = (isset($_SERVER['HTTPS'])) ? 'https' : 'http';
-        return $protocol. '://' . $_SERVER['HTTP_HOST'] . 
-            $_SERVER['REQUEST_URI'];
-    }
-
     public static function validateCaptcha(){
         if (   isset($_POST["recaptcha_challenge_field"])
             && isset($_POST["recaptcha_response_field"])

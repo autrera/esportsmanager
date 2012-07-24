@@ -14,9 +14,9 @@
     //     )
     // );
 ?>
-<span class="label label-info">
+<span>
+    by 
     <a href="/users/view/<?php echo $user_id; ?>">
-        <i class="icon-user icon-white"></i>
         <?php echo $nickname; ?>
     </a>
 </span>

@@ -27,16 +27,10 @@
                 </h2>
             </div>
             <div class = "news-details">
-                <span class="label label-inverse">
-                    <i class="icon-asterisk icon-white"></i>
-                    <?php echo $new['Games']['name'] ?>
-                </span>
-                <span class="label label-inverse">
-                    <i class="icon-calendar icon-white"></i>
-                    <?php 
-                        echo utilities::formatDate($new['News']['created']); 
-                    ?>
-                </span>
+                <?php echo $this->element('timeStampLabel', array(
+                    'timestamp' => $new['News']['created'],
+                    'format' => 'd/m/Y'
+                )); ?>
                 <?php 
                     echo $this->element('userLink', array(
                         'nickname' => $new['Users']['nickname'],

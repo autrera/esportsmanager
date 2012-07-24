@@ -94,10 +94,7 @@
                                 )); ?>
                                 <?php echo $this->element('timeStampLabel', array(
                                     'timestamp' => $post['Post']['created'],
-                                    'format' => 'd/m/Y - H:i'
-                                )); ?>
-                                <?php echo $this->element('viewsLabel', array(
-                                    'views' => $post['Post']['counter'],
+                                    'format' => 'd/m/Y'
                                 )); ?>
                             </div>
                         </li>

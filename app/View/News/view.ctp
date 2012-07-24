@@ -53,9 +53,12 @@
                         <h1><?php echo $noticia['News']['title'] ?></h1>
                     </div>
                     <div class = "new-details">
-                        <span class="label label-inverse">
-                            <i class="icon-asterisk icon-white"></i>
-                            <?php echo $noticia['Games']['name'] ?>
+                        <span>
+                            <a href="/games/view/<?php echo $noticia['Games']['id']; ?>">
+                                <strong>
+                                    <?php echo $noticia['Games']['name'] ?>
+                                </strong>
+                            </a>
                         </span>
                         <?php echo $this->element('timeStampLabel', array(
                             'timestamp' => $noticia['News']['created'],

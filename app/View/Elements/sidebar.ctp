@@ -7,20 +7,10 @@
             </a>
         </div>
     </div>
-    <div class="row">
-        <div class="span4 sponsors">
-            <h1>Patrocinadores</h1>
-            <div class="sponsor">
-                <div class = "logo-sponsor">
-                    <img src="/img/sponsors/logoconrojo.gif" alt="Kingston">
-                </div>
-            </div>
-        </div>
-    </div>
     <div class = "row">
         <div class = "span4">
             <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-            <script language = "javascript" type = "text/javascript" 
+            <script language = "javascript" type = "text/javascript"
                 src = "/js/twitter.js" >
             </script>
         </div>

@@ -59,13 +59,18 @@ class HomeController extends AppController {
  * @return void
  */
 	public function index() {
-		$featuredNews = $this->News->find('all', array(
-			'conditions' => array(
-				'News.featured' => '1'
-			),
-			'order' => 'News.id DESC',
-			'limit' => 5,
-		));
+        Cache::write('something', 'Aldo');
+        echo Cache::read('something');
+        if (Cache::read('featuredNews')) {
+    		$featuredNews = $this->News->find('all', array(
+    			'conditions' => array(
+    				'News.featured' => '1'
+    			),
+    			'order' => 'News.id DESC',
+    			'limit' => 5,
+    		));
+            Cache::write('featuredNews', $featuredNews);
+        }
 
 		$latestPosts = $this->Post->find('all', array(
 			'order' => 'Post.id DESC',
@@ -92,7 +97,7 @@ class HomeController extends AppController {
 		$liveStreams = $this->getLiveStreams();
 
 		// Seteamos las variables
-		$this->set('featuredNews' , $featuredNews);
+		$this->set('featuredNews' , Cache::read('featuredNews'));
 		$this->set('latestPosts', $latestPosts);
 		$this->set('latestVideos', $latestVideos);
 		$this->set('featuredVideo', $featuredVideo);
@@ -105,7 +110,7 @@ class HomeController extends AppController {
 	// {{{ getLiveStreams()
 
 	/**
-	 * Obtenemos los streams registrados que están en vivo, ordenados por usuarios 
+	 * Obtenemos los streams registrados que están en vivo, ordenados por usuarios
 	 *
 	 * @param none
 	 * @return Array $data Los datos de los streams
@@ -123,7 +128,7 @@ class HomeController extends AppController {
             // Pasamos los valores a nuestra variable
             $data[$streamData['name']]['streamData'] = $streamData;
             // Iniciamos el objeto para realizar las llamadas al API
-            $client = $this->createClient($streamData['consumer_key'], 
+            $client = $this->createClient($streamData['consumer_key'],
                 $streamData['consumer_secret']
             );
             // Datos dummie, para testeo

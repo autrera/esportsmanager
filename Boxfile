@@ -1,0 +1,19 @@
+global:
+  env:
+web1:
+  shared_writable_dirs:
+    - /storage/cache
+    - /storage/database
+    - /storage/logs
+    - /storage/sessions
+    - /storage/views
+    - /storage/work
+  document_root: /app/webroot
+  php_version: 5.3.8
+  php_extensions:
+    - pdo_mysql
+    - mcrypt
+    - eaccelerator
+  after_deploy:
+    - "rm -f storage/cache/*"
+    - "rm -f storage/views/*"

@@ -15,6 +15,7 @@ web1:
     - mcrypt
     - eaccelerator
     - mbstring
+    - redis
   after_deploy:
     - "rm -f app/tmp/cache/persistent/*"
     - "rm -f app/tmp/cache/views/*"

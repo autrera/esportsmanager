@@ -1,4 +1,7 @@
-/app/tmp
+/app/tmp/cache/*
+/app/tmp/logs/*
+/app/tmp/sessions/*
+/app/tmp/tests/*
 /app/webroot/uploads/avatars/
 /app/webroot/uploads/countries/
 /app/webroot/uploads/games/

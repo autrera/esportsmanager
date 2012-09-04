@@ -13,5 +13,4 @@ web1:
     - eaccelerator
     - mbstring
   after_deploy:
-    - "rm -f storage/cache/*"
-    - "rm -f storage/views/*"
+    - "rm -f app/tmp/cache/*"

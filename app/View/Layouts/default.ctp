@@ -20,15 +20,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php echo $this->Html->charset('ISO-8859-1'); ?>
-    <meta property="og:title" content="<?php echo $fb_title_for_layout; ?>"/> 
-    <meta property="og:description" content="<?php echo $fb_description_for_layout; ?>"/> 
-    <meta property="og:type" content="sports_team"/> 
-    <meta property="og:image" content="<?php echo $fb_image_for_layout; ?>"/> 
-    <meta property="og:url" content="<?php echo $fb_url_for_layout; ?>"/> 
-    <meta property="og:site_name" content="QuetziWeb"/> 
+    <meta property="og:title" content="<?php echo $fb_title_for_layout; ?>"/>
+    <meta property="og:description" content="<?php echo $fb_description_for_layout; ?>"/>
+    <meta property="og:type" content="sports_team"/>
+    <meta property="og:image" content="<?php echo $fb_image_for_layout; ?>"/>
+    <meta property="og:url" content="<?php echo $fb_url_for_layout; ?>"/>
+    <meta property="og:site_name" content="QuetziWeb"/>
 	<title>
-		<?php 
-            echo __('Team Quetzal - Mexican Professional Gaming Franchise: '); 
+		<?php
+            echo __('Team Quetzal - Mexican Professional Gaming Franchise: ');
         ?>
 		<?php echo $title_for_layout; ?>
 	</title>
@@ -37,52 +37,30 @@
         echo $this->Html->css('jquery.fancybox');
         echo $this->Html->css('jquery.fancybox-buttons');
         echo $this->Html->css('jquery.fancybox-thumbs');
-        // echo $this->Html->meta('icon', 'favicon.ico'); 
+        // echo $this->Html->meta('icon', 'favicon.ico');
 		echo $scripts_for_layout;
 	?>
     <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
     <?php echo $this->Html->script('analytics'); ?>
 </head>
 <body>
-    <div id="fb-root"></div>
-	<?php
-        echo $this->Html->script('facebook');
-		echo $this->Html->script('jquery');
-        echo $this->Html->script('jquery.fancybox.pack');
-        echo $this->Html->script('jquery.fancybox-buttons');
-        echo $this->Html->script('jquery.fancybox-media');
-        echo $this->Html->script('jquery.fancybox-thumbs');
-		echo $this->Html->script('bootstrap');
-        echo $this->Html->script('initializers');
-	?>
 	<div id="container">
         <div id = "header">
             <div class = "container">
                 <div class = "row">
-<!--                     <div class = "span4 header-logo">
-                        <div class = "header-logo">
-                            &nbsp;
-                        </div>
-                    </div>
-                    <div class = "span4 header-main-sponsor">
-                        <div class = "main-sponsor">
-                            &nbsp;
-                        </div>
-                    </div>
- -->                    
                     <?php if ($authUser): ?>
                     <div class = "span12">
                         <div class = "pull-right">
                             <h2>
-                                Welcome! 
+                                Welcome!
                                 <strong>
                                     <?php echo $authUser['nickname']; ?>
                                 </strong>
                                 <small>
-                                    <a href = "/users/view/<?php echo $authUser['id']; ?>" 
+                                    <a href = "/users/view/<?php echo $authUser['id']; ?>"
                                        class = "btn btn-primary btn-mini"
                                     >Panel</a>
-                                    <a href = "/users/logout" 
+                                    <a href = "/users/logout"
                                        class = "btn btn-danger btn-mini"
                                     >Logout</a>
                                 </small>
@@ -124,35 +102,35 @@
                 <div id = "main-container" class = "container">
                     <div class="btn-group menubar">
                         <a href="/" class = "btn btn-large">
-                            <i class="icon-home"></i> 
+                            <i class="icon-home"></i>
                             Home
                         </a>
                         <a href="/teams" class = "btn btn-large">
-                            <i class="icon-user"></i> 
+                            <i class="icon-user"></i>
                             Teams
                         </a>
                         <a href="/news" class = "btn btn-large">
-                            <i class="icon-folder-open"></i> 
+                            <i class="icon-folder-open"></i>
                             News
                         </a>
                         <a href="/posts" class = "btn btn-large">
-                            <i class="icon-align-justify"></i> 
+                            <i class="icon-align-justify"></i>
                             Posts
                         </a>
                         <a href="/videos" class = "btn btn-large">
-                            <i class="icon-film"></i> 
+                            <i class="icon-film"></i>
                             Videos
                         </a>
                         <a href="/streamsUsers" class = "btn btn-large">
-                            <i class="icon-facetime-video"></i> 
+                            <i class="icon-facetime-video"></i>
                             Streams
                         </a>
                         <a href="/galleries" class = "btn btn-large">
-                            <i class="icon-th"></i> 
+                            <i class="icon-th"></i>
                             Galleries
                         </a>
                         <a href="/miscellaneous" class = "btn btn-large">
-                            <i class="icon-cog"></i> 
+                            <i class="icon-cog"></i>
                             Misc
                         </a>
                     </div>
@@ -173,5 +151,16 @@
             </div>
         </div>
 	</div>
+    <div id="fb-root"></div>
+    <?php
+        echo $this->Html->script('facebook');
+        echo $this->Html->script('jquery');
+        echo $this->Html->script('jquery.fancybox.pack');
+        echo $this->Html->script('jquery.fancybox-buttons');
+        echo $this->Html->script('jquery.fancybox-media');
+        echo $this->Html->script('jquery.fancybox-thumbs');
+        echo $this->Html->script('bootstrap');
+        echo $this->Html->script('initializers');
+    ?>
 </body>
 </html>

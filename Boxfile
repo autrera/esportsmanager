@@ -3,6 +3,7 @@ web1:
   shared_writable_dirs:
     - app/tmp/logs
     - app/tmp/cache
+    - app/tmp/cache/*
     - app/tmp/sessions
     - app/tmp/tests
   document_root: /app/webroot

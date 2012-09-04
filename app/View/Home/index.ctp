@@ -35,7 +35,7 @@
             <li class = "span4">
                 <div class = "latest-videos">
                     <div class="module-header">
-                        <h2>Latest Videos</h2>
+                        <h4>Latest Videos</h4>
                     </div>
                     <a class = "view-more btn btn-mini btn-primary"
                         href = "/videos" >
@@ -43,7 +43,7 @@
                         <i class="icon-chevron-right icon-white"></i>
                     </a>
                     <iframe width="290" height="190" src="<?php echo $featuredVideo['Video']['url'] ; ?>" frameborder="0" allowfullscreen></iframe>
-                    <h3><?php echo $featuredVideo['Video']['name']; ?></h3>
+                    <h5><?php echo $featuredVideo['Video']['name']; ?></h5>
                     <div class = "caption">
                         <?php foreach($latestVideos as $video): ?>
                         <div>
@@ -131,7 +131,7 @@
                                             <?php echo utilities::tokenTruncate(
                                                     $channel->title,
                                                     40
-                                                ) 
+                                                )
                                             ?>
                                         </a>
                                         <div class = "label-container">
@@ -173,7 +173,7 @@
                 <?php foreach($latestNews as $new): ?>
                 <div class = "news-row">
                     <div class = "news-image pull-left">
-                        <a href = "/news/view/<?php echo $new['News']['slug'] ?>" 
+                        <a href = "/news/view/<?php echo $new['News']['slug'] ?>"
                             title = "Click to read it">
                             <img src = "/files/view/<?php echo 'games/' . $new['Games']['id'] . '/120/thumbnail'; ?>" >
                         </a>
@@ -195,7 +195,7 @@
                             echo $this->element('userLink', array(
                                 'nickname' => $new['Users']['nickname'],
                                 'user_id'  => $new['Users']['id'],
-                            )); 
+                            ));
                         ?>
                         <?php echo $this->element('viewsLabel', array(
                             'views' => $new['News']['counter'],

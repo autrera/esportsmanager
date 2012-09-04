@@ -1,19 +1,17 @@
-global:
-  env:
 web1:
+  name: demetra
   shared_writable_dirs:
-    - /storage/cache
-    - /storage/database
-    - /storage/logs
-    - /storage/sessions
-    - /storage/views
-    - /storage/work
+    - app/tmp/logs
+    - app/tmp/cache
+    - app/tmp/sessions
+    - app/tmp/tests
   document_root: /app/webroot
   php_version: 5.3.8
   php_extensions:
     - pdo_mysql
     - mcrypt
     - eaccelerator
+    - mbstring
   after_deploy:
     - "rm -f storage/cache/*"
     - "rm -f storage/views/*"

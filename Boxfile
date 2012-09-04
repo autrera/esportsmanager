@@ -3,7 +3,9 @@ web1:
   shared_writable_dirs:
     - app/tmp/logs
     - app/tmp/cache
-    - app/tmp/cache/*
+    - app/tmp/cache/persistent
+    - app/tmp/cache/views
+    - app/tmp/cache/models
     - app/tmp/sessions
     - app/tmp/tests
   document_root: /app/webroot
@@ -14,4 +16,6 @@ web1:
     - eaccelerator
     - mbstring
   after_deploy:
-    - "rm -f app/tmp/cache/*"
+    - "rm -f app/tmp/cache/persistent/*"
+    - "rm -f app/tmp/cache/views/*"
+    - "rm -f app/tmp/cache/models/*"

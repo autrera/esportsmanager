@@ -24,7 +24,10 @@
  */
 
 // Setup a 'default' cache configuration for use in the application.
-Cache::config('default', array('engine' => 'Redis'));
+Cache::config('default', array(
+    'engine' => 'Redis',
+    'server' => 'tunnel.pagodabox.com'
+));
 
 /**
  * The settings below can be used to set additional paths to models, views and controllers.

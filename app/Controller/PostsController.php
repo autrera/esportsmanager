@@ -71,9 +71,12 @@ class PostsController extends AppController {
  * @param none
  */
 	public function index() {
-		$this->set('posts', $this->Post->find('all', array(
-            'order' => 'Post.id DESC'
-        )));
+        if (! $posts = Cache::read('posts')) {
+            Cache::write('posts', $posts = $this->Post->find('all', array(
+                'order' => 'Post.id DESC'
+            )));
+        }
+		$this->set('posts', $posts);
         $this->set('actions', $this->getAuthorizedActions());
 	}
 
@@ -91,6 +94,7 @@ class PostsController extends AppController {
                 $this->request->data['Post']['title']
             );
 			if ($this->Post->save($this->request->data)) {
+                Cache::delete('posts');
                 $this->Session->setFlash(__('The post has been saved'),
                     'flash-success'
                 );
@@ -119,7 +123,7 @@ class PostsController extends AppController {
         if (!$this->Post->exists()) {
             $this->invalidParameter();
         }
-        
+
         $this->set('actions', $this->getAuthorizedActions());
         $this->set('isOwner', $this->Post->isOwnedBy(
             $this->Post->id, $this->Auth->user('id')
@@ -161,6 +165,7 @@ class PostsController extends AppController {
             // Intentamos guardar el registro
             if ($this->Post->save($this->request->data)) {
                 // Guardado exitoso
+                Cache::delete('posts');
                 $this->Session->setFlash(
                     'Your post have been updated.',
                     'flash-success'
@@ -186,6 +191,7 @@ class PostsController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->Post->delete($id)) {
+            Cache::delete('posts');
             $this->Session->setFlash('The post with id: ' . $id . ' has been deleted.', 'flash-success');
             $this->redirect(array('action' => 'index'));
         }

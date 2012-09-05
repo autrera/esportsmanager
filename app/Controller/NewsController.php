@@ -73,8 +73,8 @@ class NewsController extends AppController {
 	public function index() {
         $this->set('actions', $this->getAuthorizedActions());
         // Seteamos las news a mostrar
-        $this->set('news', 
-            $this->News->find('all', array(
+        if (! $news = Cache::read('news')) {
+            Cache::write('news', $news = $this->News->find('all', array(
                 'fields' => array(
                     'Users.*', 'Profiles.*', 'News.*', 'Games.*'
                 ),
@@ -87,8 +87,9 @@ class NewsController extends AppController {
                     )
                 ),
                 'order' => 'News.id DESC'
-            )
-        ));
+            )));
+        }
+        $this->set('news', $news);
 	}
 
 /**
@@ -116,6 +117,7 @@ class NewsController extends AppController {
                     'fileInputName' => 'image'
                 )
             )){
+                Cache::delete('news');
                 $this->redirect(array('action' => 'index'));
             }
         }
@@ -176,7 +178,7 @@ class NewsController extends AppController {
         if (!$this->News->exists()) {
             $this->invalidParameter();
         }
-        
+
         // Si la petición es get, buscamos en la base y lo enviamos
         if ($this->request->is('get')) {
             $this->request->data = $this->News->read();
@@ -192,6 +194,7 @@ class NewsController extends AppController {
                     'fileInputName' => 'image'
                 )
             )){
+                Cache::delete('news');
                 $this->redirect(array('action' => 'index'));
             }
             // if ($this->News->save($this->request->data)) {
@@ -221,6 +224,7 @@ class NewsController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->News->deleteWithFile($id, 'banner', $this->Session)) {
+            Cache::delete('news');
             $this->redirect(array('action' => 'index'));
         }
     }

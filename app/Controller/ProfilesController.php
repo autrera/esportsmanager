@@ -66,7 +66,7 @@ class ProfilesController extends AppController {
         $datos = $this->Profile->find('first', array(
             'conditions' => array(
                 'Profile.users_id' => $this->User->id
-            ) 
+            )
         ));
         // Checamos que no tenga un perfil
         if (empty($datos['Profile']['id'])){

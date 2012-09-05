@@ -57,7 +57,7 @@ class UsersController extends AppController {
  */
 	public function beforeFilter() {
 	    parent::beforeFilter();
-	    $this->Auth->allow('add', 'login', 'requestPasswordReset', 'logout'); 
+	    $this->Auth->allow('add', 'login', 'requestPasswordReset', 'logout');
 	}
 
 /**
@@ -66,7 +66,10 @@ class UsersController extends AppController {
  * @param none
  */
     public function index() {
-        $this->set('users', $this->User->find('all'));
+        if (! $users = Cache::read('users')) {
+            Cache::write('users', $users = $this->User->find('all'));
+        }
+        $this->set('users', $users);
     }
 
 /**
@@ -81,6 +84,7 @@ class UsersController extends AppController {
             if ($captcha->is_valid){
                 $this->User->create();
     			if ($this->User->save($this->request->data)) {
+                    Cache::delete('users');
                     $this->Session->setFlash(__('The user has been saved'),
                         'flash-success'
                     );
@@ -92,7 +96,7 @@ class UsersController extends AppController {
             } else {
                 if ($captcha->error){
                     $this->Session->setFlash(
-                        __($captcha->error.'. Please, try again.'), 
+                        __($captcha->error.'. Please, try again.'),
                         'flash-failure'
                     );
                 }
@@ -113,10 +117,10 @@ class UsersController extends AppController {
         if (!$this->User->exists()) {
             $this->invalidParameter();
         }
-        
+
         // Seteamos las acciones permitidas de este usurio
         $this->set('actions', $this->getAuthorizedActions());
-        
+
         // Seteamos los posibles roles del usuario
         $this->set('roles', $this->Role->find('list'));
 
@@ -130,6 +134,7 @@ class UsersController extends AppController {
             // Intentamos guardar el registro
             if ($this->User->save($this->request->data)) {
                 // Guardado exitoso
+                Cache::delete('users');
                 $this->Session->setFlash(
                     'The user have been updated.',
                     'flash-success'

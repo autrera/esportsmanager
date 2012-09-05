@@ -81,6 +81,7 @@ class CountriesController extends AppController {
                     'fileInputName' => 'icon',
                 )
             )){
+                Cache::delete('countries');
                 $this->redirect(array('action' => 'index'));
             }
         }
@@ -98,17 +99,13 @@ class CountriesController extends AppController {
             $this->invalidParameter();
         }
 
-        if (! $users = Cache::read('users')) {
-            Cache::write('users', $users = $this->User->find('all', array(
-                'conditions' => array(
-                    'Profile.countries_id' => $this->Country->id
-                ),
-            )));
-        }
+        $users = $this->User->find('all', array(
+            'conditions' => array(
+                'Profile.countries_id' => $this->Country->id
+            ),
+        ));
 
-        if (! $country = Cache::read('country')) {
-            Cache::write('country', $country = $this->Country->read(null, $id));
-        }
+        $country = $this->Country->read(null, $id);
 
         $this->set('users', $users);
         $this->set('actions', $this->getAuthorizedActions());
@@ -142,6 +139,7 @@ class CountriesController extends AppController {
                     'fileInputName' => 'icon',
                 )
             )){
+                Cache::delete('countries');
                 $this->redirect(array('action' => 'index'));
             }
         }
@@ -157,6 +155,7 @@ class CountriesController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->Country->deleteWithFile($id, 'flag', $this->Session)) {
+            Cache::delete('countries');
             $this->redirect(array('action' => 'index'));
         }
     }

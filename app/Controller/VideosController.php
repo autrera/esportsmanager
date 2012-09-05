@@ -55,9 +55,12 @@ class VideosController extends AppController {
  * @param none
  */
 	public function index() {
-        $this->set('videos', $this->Video->find('all', array(
-            'order' => 'Video.id DESC'
-        )));
+        if (! $videos = Cache::read('videos')) {
+            Cache::write('videos', $videos = $this->Video->find('all', array(
+                'order' => 'Video.id DESC'
+            )));
+        }
+        $this->set('videos', $videos);
         $this->set('actions', $this->getAuthorizedActions());
 	}
 
@@ -69,13 +72,14 @@ class VideosController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
             $this->Video->create();
-            $this->request->data['Video']['users_id'] 
+            $this->request->data['Video']['users_id']
                 = $this->Auth->user('id');
             // Seteamos el slug
             $this->request->data['Video']['slug'] = Inflector::slug(
                 $this->request->data['Video']['name']
             );
 			if ($this->Video->save($this->request->data)) {
+                Cache::delete('videos');
                 $this->Session->setFlash(__('The post has been saved'),
                     'flash-success'
                 );
@@ -104,7 +108,7 @@ class VideosController extends AppController {
         if (!$this->Video->exists()) {
             $this->invalidParameter();
         }
-        
+
         $this->set('actions', $this->getAuthorizedActions());
         $this->set('isOwner', $this->Video->isOwnedBy(
             $this->Video->id, $this->Auth->user('id')
@@ -146,6 +150,7 @@ class VideosController extends AppController {
             // Intentamos guardar el registro
             if ($this->Video->save($this->request->data)) {
                 // Guardado exitoso
+                Cache::delete('videos');
                 $this->Session->setFlash(
                     'Your video have been updated.',
                     'flash-success'
@@ -171,6 +176,7 @@ class VideosController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->Video->delete($id)) {
+            Cache::delete('videos');
             $this->Session->setFlash('The video with id: ' . $id . ' has been deleted.', 'flash-success');
             $this->redirect(array('action' => 'index'));
         }

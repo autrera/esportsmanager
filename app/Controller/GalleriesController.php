@@ -66,6 +66,7 @@ class GalleriesController extends AppController {
             );
             // Guardamos
 			if ($this->Gallery->save($this->request->data)) {
+                Cache::delete('galleries');
                 $this->Session->setFlash(__('The gallery has been saved'),
                     'flash-success'
                 );
@@ -114,9 +115,12 @@ class GalleriesController extends AppController {
  * @param none
  */
     public function index() {
-        $this->set('galleries', $this->Gallery->find('all', array(
-            'order' => 'Gallery.id DESC'
-        )));
+        if (! $galleries = Cache::read('galleries')) {
+            Cache::write('galleries', $galleries = $this->Gallery->find('all', array(
+                'order' => 'Gallery.id DESC'
+            )));
+        }
+        $this->set('galleries', $galleries);
         $this->set('actions', $this->getAuthorizedActions());
     }
 
@@ -145,6 +149,7 @@ class GalleriesController extends AppController {
             // Intentamos guardar el registro
             if ($this->Gallery->save($this->request->data)) {
                 // Guardado exitoso
+                Cache::delete('galleries');
                 $this->Session->setFlash(
                     'Your gallery have been updated.',
                     'flash-sucess'
@@ -170,6 +175,7 @@ class GalleriesController extends AppController {
             throw new MethodNotAllowedException();
         }
         if ($this->Gallery->delete($id)) {
+            Cache::delete('galleries');
             $this->Session->setFlash('The gallery with id: ' . $id . ' has been deleted.', 'flash-sucess');
             $this->redirect(array('action' => 'index'));
         }

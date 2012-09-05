@@ -55,7 +55,10 @@ class CountriesController extends AppController {
  * @param none
  */
     public function index() {
-        $this->set('countries', $this->Country->find('all'));
+        if (! $countries = Cache::read('countries')) {
+            Cache::write('countries', $countries = $this->Country->find('all'));
+        }
+        $this->set('countries', $countries);
         $this->set('actions', $this->getAuthorizedActions());
     }
 
@@ -72,7 +75,7 @@ class CountriesController extends AppController {
         // Verificamos que sea un envio por POST
 		if ($this->request->is('post')) {
             $this->Country->create();
-            if ($this->Country->saveWithOptionalFile($this->request, 
+            if ($this->Country->saveWithOptionalFile($this->request,
                 $this->Session, array(
                     'fileColumnName' => 'flag',
                     'fileInputName' => 'icon',
@@ -90,18 +93,28 @@ class CountriesController extends AppController {
  */
     public function view($id = null){
         $this->Country->id = $id;
+
         if (!$this->Country->exists()) {
             $this->invalidParameter();
         }
-        $this->set('users', $this->User->find('all', array(
-            'conditions' => array(
-                'Profile.countries_id' => $this->Country->id
-            ),
-        )));
+
+        if (! $users = Cache::read('users')) {
+            Cache::write('users', $users = $this->User->find('all', array(
+                'conditions' => array(
+                    'Profile.countries_id' => $this->Country->id
+                ),
+            )));
+        }
+
+        if (! $country = Cache::read('country')) {
+            Cache::write('country', $country = $this->Country->read(null, $id));
+        }
+
+        $this->set('users', $users);
         $this->set('actions', $this->getAuthorizedActions());
         $this->set('isOwner', false);
         $this->set('id', $this->Country->id);
-        $this->set('country', $this->Country->read(null, $id));
+        $this->set('country', $country);
     }
 
 /**
@@ -123,7 +136,7 @@ class CountriesController extends AppController {
             $this->request->data = $this->Country->read();
         } else {
             // Intentamos guardar el registro
-            if ($this->Country->saveWithOptionalFile($this->request, 
+            if ($this->Country->saveWithOptionalFile($this->request,
                 $this->Session, array(
                     'fileColumnName' => 'flag',
                     'fileInputName' => 'icon',

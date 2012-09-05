@@ -13,7 +13,7 @@
             >
                 <?php if ($data['Country']['flag']): ?>
                 <span>
-                    <img src = "<?php echo $data['Country']['flag']; ?>" >
+                    <?php echo $this->element('responsiveImg', array('url' => $data['Country']['flag'])); ?>
                 </span>
                 <?php endif; ?>
                 <?php echo $data['Country']['name']; ?>

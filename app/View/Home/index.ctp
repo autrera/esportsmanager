@@ -10,7 +10,7 @@
                 <?php $active = ($key == 0)? 'active' : ''; ?>
                 <div class="<?php echo $active; ?> item">
                     <a href = "/news/view/<?php echo $new['News']['slug']; ?>">
-                        <img src = "/files/view/<?php echo 'news/' . $new['News']['id'] . '/620/banner'; ?>" >
+                        <?php echo $this->element('responsiveImg', array('url' => $new['News']['banner'])); ?>
                     </a>
                     <div class = "carousel-caption">
                         <h2><?php echo $new['News']['title']; ?></h2>
@@ -175,7 +175,7 @@
                     <div class = "news-image pull-left">
                         <a href = "/news/view/<?php echo $new['News']['slug'] ?>"
                             title = "Click to read it">
-                            <img src = "/files/view/<?php echo 'games/' . $new['Games']['id'] . '/120/thumbnail'; ?>" >
+                            <?php echo $this->element('responsiveImg', array('url' => $new['Games']['thumbnail'])); ?>
                         </a>
                     </div>
                     <div class = "news-title">
@@ -232,11 +232,12 @@
                         ?>
                         <li>
                             <div>
-                                <!--
                                 <a class = "fancybox" data-fancybox-type="ajax" href = "/photos/view/<?php echo $photo['id']; ?>" title = "<?php echo $photo['name']; ?>">
-                                    <img class = "enlarger" src = "/files/view/<?php echo 'photos/' . $photo['id'] . '/120'; ?>" >
+                                    <?php echo $this->element('responsiveImg', array(
+                                        'url' => $photo['url'],
+                                        'class' => 'enlarger'
+                                    )); ?>
                                 </a>
-                                -->
                             </div>
                         </li>
                         <?php endforeach; ?>

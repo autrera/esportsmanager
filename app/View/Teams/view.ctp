@@ -14,7 +14,7 @@
             <?php if (! empty($team['Team']['photo'])): ?>
                 <div class = "row team-picture">
                     <div class = "span8">
-                        <img src = "<?php echo $team['Team']['photo'] ?>">
+                        <?php echo $this->element('responsiveImg', array('url' => $team['Team']['photo'])); ?>
                     </div>
                 </div>
             <?php endif;?>

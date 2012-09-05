@@ -13,9 +13,9 @@
     <?php foreach ($news as $new): ?>
         <div class = "news-row">
             <div class = "news-image pull-left">
-                <a href = "/news/view/<?php echo $new['News']['slug'] ?>" 
+                <a href = "/news/view/<?php echo $new['News']['slug'] ?>"
                     title = "Click to read it">
-                    <img src = "<?php echo $new['Games']['thumbnail'] ?>" >
+                    <?php echo $this->element('responsiveImg', array('url' => $new['Games']['thumbnail'])); ?>
                 </a>
             </div>
             <div class = "news-title">
@@ -31,11 +31,11 @@
                     'timestamp' => $new['News']['created'],
                     'format' => 'd/m/Y'
                 )); ?>
-                <?php 
+                <?php
                     echo $this->element('userLink', array(
                         'nickname' => $new['Users']['nickname'],
                         'user_id'  => $new['Users']['id'],
-                    )); 
+                    ));
                 ?>
                 <?php echo $this->element('viewsLabel', array(
                     'views' => $new['News']['counter'],

@@ -8,10 +8,10 @@
             'actions' => $actions,
             'isOwner' => $isOwner,
         ));
-        $this->set('fb_title_for_layout', 
+        $this->set('fb_title_for_layout',
             strip_tags($noticia['News']['title'])
         );
-        $this->set('fb_description_for_layout', 
+        $this->set('fb_description_for_layout',
             strip_tags(utilities::tokenTruncate(
                 $noticia['News']['description'], 150
             ))
@@ -30,11 +30,11 @@
                         ?>
                     </div>
                     <div class = "author-info">
-                        <?php 
+                        <?php
                             echo $this->element('userLink', array(
                                 'nickname' => $noticia['Users']['nickname'],
                                 'user_id'  => $noticia['Users']['id'],
-                            )); 
+                            ));
                             echo $this->element('userNation', array(
                                 'country' => $profile['Countries']
                             ));
@@ -45,7 +45,7 @@
                     <?php if (!empty ($noticia['News']['banner'])): ?>
                     <div class = "row">
                         <div class = "span6">
-                            <img src = "/files/view/<?php echo 'news/' . $noticia['News']['id'] . '/460/banner'; ?>" >
+                            <?php echo $this->element('responsiveImg', array('url' => $noticia['News']['banner'])); ?>
                         </div>
                     </div>
                     <?php endif; ?>

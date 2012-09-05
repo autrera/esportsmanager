@@ -18,7 +18,7 @@
                         <?php echo $game['Game']['name'] ?>
 	                    </a>
                     </h2>
-                	<img src = "<?php echo $game['Game']['thumbnail']; ?>">
+                    <?php echo $this->element('responsiveImg', array('url' => $game['Game']['thumbnail'])); ?>
                 </div>
             </li>
             <?php endforeach; ?>

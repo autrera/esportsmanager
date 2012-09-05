@@ -14,7 +14,7 @@
                 <div class = "row team-picture">
                     <div class = "span8">
                         <a href = "teams/view/<?php echo $team['Team']['id']; ?>">
-                            <img src = "<?php echo $team['Team']['photo'] ?>">
+                            <?php echo $this->element('responsiveImg', array('url' => $team['Team']['photo'])); ?>
                         </a>
                     </div>
                 </div>

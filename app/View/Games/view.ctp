@@ -13,7 +13,7 @@
 		        <ul class="thumbnails games-index">
 		            <li class="span4 game-container">
 		                <div class="thumbnail">
-		                	<img src = "<?php echo $game['Game']['thumbnail']; ?>">
+                            <?php echo $this->element('responsiveImg', array('url' => $game['Game']['thumbnail'])); ?>
 		                    <h2 class = "game-title">
 		                        <?php echo $game['Game']['name'] ?>
 		                    </h2>

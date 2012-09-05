@@ -5,11 +5,11 @@
             'actions' => $actions,
             'isOwner' => $isOwner,
         ));
-        $this->set('fb_title_for_layout', 
+        $this->set('fb_title_for_layout',
             strip_tags($foto['Galleries']['name'])
         );
-        $this->set('fb_description_for_layout', 
-            strip_tags(__('Fotos de la Galería: ' 
+        $this->set('fb_description_for_layout',
+            strip_tags(__('Fotos de la Galería: '
             	. $foto['Galleries']['name'])
             )
         );
@@ -25,7 +25,7 @@
 			<div class = "span8">
 				<ul class = "thumbnails">
 					<li class = "thumbnail">
-						<img src = "/files/view/<?php echo 'photos/' . $foto['Photo']['id'] . '/610'; ?>">
+                        <?php echo $this->element('responsiveImg', array('url' => $foto['Photo']['url'])); ?>
 						<?php if (!empty($foto['Photo']['name'])): ?>
 						<h2><?php echo $foto['Photo']['name'] ?></h2>
 						<?php endif; ?>

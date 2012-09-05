@@ -25,7 +25,7 @@
         			<li>
         				<div>
     						<a class = "fancybox" data-fancybox-type="ajax" href = "/photos/view/<?php echo $photo['id']; ?>">
-	        					<img class = "enlarger" src = "/files/view/<?php echo 'photos/' . $photo['id'] . '/120'; ?>" >
+                                <?php echo $this->element('responsiveImg', array('url' => $photo['url'], 'class' => 'enlarger')); ?>
 	        				</a>
         				</div>
         			</li>

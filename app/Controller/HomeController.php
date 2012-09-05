@@ -59,67 +59,62 @@ class HomeController extends AppController {
  * @return void
  */
 	public function index() {
-        if (! Cache::read('featuredNews')) {
-    		$featuredNews = $this->News->find('all', array(
+        if (! $featuredNews = Cache::read('featuredNews')) {
+    		Cache::write('featuredNews', $featuredNews = $this->News->find('all', array(
     			'conditions' => array(
     				'News.featured' => '1'
     			),
     			'order' => 'News.id DESC',
     			'limit' => 5,
-    		));
-            Cache::write('featuredNews', $featuredNews);
+    		)));
         }
 
-        if (! Cache::read('latestPosts')) {
-            $latestPosts = $this->Post->find('all', array(
+        if (! $latestPosts = Cache::read('latestPosts')) {
+            Cache::write('latestPosts', $latestPosts = $this->Post->find('all', array(
                 'order' => 'Post.id DESC',
                 'limit' => 3,
-            ));
-            Cache::write('latestPosts', $latestPosts);
+            )));
         }
 
-        if (! Cache::read('latestVideos')) {
-            $latestVideos = $this->Video->find('all', array(
+        if (! $latestVideos = Cache::read('latestVideos')) {
+            Cache::write('latestVideos', $latestVideos = $this->Video->find('all', array(
                 'order' => 'Video.id DESC',
                 'limit' => 5,
-            ));
-            Cache::write('latestVideos', $latestVideos);
+            )));
         }
 
-        if (! Cache::read('featuredVideo')) {
-            $featuredVideo = array_shift(Cache::read('latestVideos'));
-            Cache::write('featuredVideo', $featuredVideo);
+        if (! $featuredVideo = Cache::read('featuredVideo')) {
+            Cache::write('featuredVideo',
+                $featuredVideo = array_shift($latestVideos)
+            );
         }
 
-        if (! Cache::read('latestNews')) {
-            $latestNews = $this->News->find('all', array(
+        if (! $latestNews = Cache::read('latestNews')) {
+            Cache::write('latestNews', $latestNews = $this->News->find('all', array(
                 'order' => 'News.id DESC',
                 'limit' => 10,
-            ));
-            Cache::write('latestNews', $latestNews);
+            )));
         }
 
-        if (! Cache::read('latestGalleries')) {
-            $latestGalleries = $this->Gallery->find('all', array(
+        if (! $latestGalleries = Cache::read('latestGalleries')) {
+            Cache::write('latestGalleries', $latestGalleries = $this->Gallery->find('all', array(
                 'order' => 'Gallery.id DESC',
                 'limit' => 2,
-            ));
-            Cache::write('latestGalleries', $latestGalleries);
+            )));
         }
 
-        if (! Cache::read('liveStreams')) {
-            $liveStreams = $this->getLiveStreams();
-            Cache::write('liveStreams', $liveStreams);
+        if (! $liveStreams = Cache::read('liveStreams')) {
+            Cache::write('liveStreams', $liveStreams = $this->getLiveStreams());
         }
 
 		// Seteamos las variables
-		$this->set('featuredNews' ,   Cache::read('featuredNews'));
-		$this->set('latestPosts',     Cache::read('latestPosts'));
-		$this->set('latestVideos',    Cache::read('latestVideos'));
-		$this->set('featuredVideo',   Cache::read('featuredVideo'));
-		$this->set('latestNews',      Cache::read('latestNews'));
-		$this->set('liveStreams',     Cache::read('liveStreams'));
-		$this->set('latestGalleries', Cache::read('latestGalleries'));
+		$this->set('featuredNews' ,   $featuredNews);
+		$this->set('latestPosts',     $latestPosts);
+		$this->set('latestVideos',    $latestVideos);
+		$this->set('featuredVideo',   $featuredVideo);
+		$this->set('latestNews',      $latestNews);
+		$this->set('liveStreams',     $liveStreams);
+		$this->set('latestGalleries', $latestGalleries);
 
 	}
 

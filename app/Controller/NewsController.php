@@ -118,6 +118,8 @@ class NewsController extends AppController {
                 )
             )){
                 Cache::delete('news');
+                Cache::delete('featuredNews');
+                Cache::delete('latestNews');
                 $this->redirect(array('action' => 'index'));
             }
         }
@@ -195,6 +197,8 @@ class NewsController extends AppController {
                 )
             )){
                 Cache::delete('news');
+                Cache::delete('featuredNews');
+                Cache::delete('latestNews');
                 $this->redirect(array('action' => 'index'));
             }
             // if ($this->News->save($this->request->data)) {
@@ -225,6 +229,8 @@ class NewsController extends AppController {
         }
         if ($this->News->deleteWithFile($id, 'banner', $this->Session)) {
             Cache::delete('news');
+            Cache::delete('featuredNews');
+            Cache::delete('latestNews');
             $this->redirect(array('action' => 'index'));
         }
     }

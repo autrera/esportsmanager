@@ -95,6 +95,7 @@ class PostsController extends AppController {
             );
 			if ($this->Post->save($this->request->data)) {
                 Cache::delete('posts');
+                Cache::delete('latestPosts');
                 $this->Session->setFlash(__('The post has been saved'),
                     'flash-success'
                 );
@@ -166,6 +167,7 @@ class PostsController extends AppController {
             if ($this->Post->save($this->request->data)) {
                 // Guardado exitoso
                 Cache::delete('posts');
+                Cache::delete('latestPosts');
                 $this->Session->setFlash(
                     'Your post have been updated.',
                     'flash-success'
@@ -192,6 +194,7 @@ class PostsController extends AppController {
         }
         if ($this->Post->delete($id)) {
             Cache::delete('posts');
+            Cache::delete('latestPosts');
             $this->Session->setFlash('The post with id: ' . $id . ' has been deleted.', 'flash-success');
             $this->redirect(array('action' => 'index'));
         }

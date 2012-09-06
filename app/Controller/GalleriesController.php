@@ -67,6 +67,7 @@ class GalleriesController extends AppController {
             // Guardamos
 			if ($this->Gallery->save($this->request->data)) {
                 Cache::delete('galleries');
+                Cache::delete('latestGalleries');
                 $this->Session->setFlash(__('The gallery has been saved'),
                     'flash-success'
                 );
@@ -150,6 +151,7 @@ class GalleriesController extends AppController {
             if ($this->Gallery->save($this->request->data)) {
                 // Guardado exitoso
                 Cache::delete('galleries');
+                Cache::delete('latestGalleries');
                 $this->Session->setFlash(
                     'Your gallery have been updated.',
                     'flash-sucess'
@@ -176,6 +178,7 @@ class GalleriesController extends AppController {
         }
         if ($this->Gallery->delete($id)) {
             Cache::delete('galleries');
+            Cache::delete('latestGalleries');
             $this->Session->setFlash('The gallery with id: ' . $id . ' has been deleted.', 'flash-sucess');
             $this->redirect(array('action' => 'index'));
         }

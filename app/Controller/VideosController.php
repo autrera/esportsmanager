@@ -80,6 +80,8 @@ class VideosController extends AppController {
             );
 			if ($this->Video->save($this->request->data)) {
                 Cache::delete('videos');
+                Cache::delete('latestVideos');
+                Cache::delete('featuredVideo');
                 $this->Session->setFlash(__('The post has been saved'),
                     'flash-success'
                 );
@@ -151,6 +153,8 @@ class VideosController extends AppController {
             if ($this->Video->save($this->request->data)) {
                 // Guardado exitoso
                 Cache::delete('videos');
+                Cache::delete('latestVideos');
+                Cache::delete('featuredVideo');
                 $this->Session->setFlash(
                     'Your video have been updated.',
                     'flash-success'
@@ -177,6 +181,8 @@ class VideosController extends AppController {
         }
         if ($this->Video->delete($id)) {
             Cache::delete('videos');
+            Cache::delete('latestVideos');
+            Cache::delete('featuredVideo');
             $this->Session->setFlash('The video with id: ' . $id . ' has been deleted.', 'flash-success');
             $this->redirect(array('action' => 'index'));
         }

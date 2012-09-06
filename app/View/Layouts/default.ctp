@@ -152,12 +152,6 @@
         </div>
 	</div>
     <div id="fb-root"></div>
-    <?php
-        // echo $this->Html->script('jquery.fancybox.pack');
-        // echo $this->Html->script('jquery.fancybox-buttons');
-        // echo $this->Html->script('jquery.fancybox-media');
-        // echo $this->Html->script('jquery.fancybox-thumbs');
-    ?>
     <script type="text/javascript" src="/js/require-jquery.min.js" data-main="/js/mainrequire.js"></script>
 </body>
 </html>

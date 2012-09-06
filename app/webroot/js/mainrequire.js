@@ -1,7 +1,7 @@
 require([
     "jquery",
     // "bootstrap.min",
-    "lazyload.min"
+    "lazyload"
     // "jquery.fancybox.pack",
     // "jquery.fancybox-buttons",
     // "jquery.fancybox-media",
@@ -9,7 +9,7 @@ require([
 ], function($) {
     $(function() {
 
-        $("img.lazy").lazyload();
+        console.log('Todo cargado');
 
         // $('.carousel').carousel({
         // });

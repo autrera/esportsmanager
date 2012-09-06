@@ -3,6 +3,36 @@
 ?>
 <div class = "row">
     <div class = "span8">
+        <div class="row">
+        <?php foreach ($featuredNews as $key => $new): ?>
+            <div class="span4 featuredNew">
+                <div class="row">
+                    <div class="span4">
+                        <?php echo $this->element('responsiveImg', array('url' => $new['News']['banner'])); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span4">
+                        <p>
+                            <i class="icon-user"></i>
+                            <?php echo $new['Users']['nickname']; ?>
+                        </p>
+                    </div>
+                </div>
+                <div class="new-caption">
+                    <h4>
+                        <a href="/news/view/<?php echo $new['News']['slug']; ?>">
+                            <?php echo $new['News']['title'];?>
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        <?php if ($key == 1): ?>
+        </div>
+        <div class="row">
+        <?php endif; ?>
+        <?php endforeach; ?>
+        </div>
         <div id="myCarousel" class="carousel">
             <!-- Carousel items -->
             <div class="carousel-inner">
@@ -30,49 +60,41 @@
             </a>
         </div>
     </div>
-    <div class = "span4">
-        <ul class = "thumbnails">
-            <li class = "span4">
-                <div class = "latest-videos">
-                    <div class="module-header">
-                        <h4>Latest Videos</h4>
-                    </div>
-                    <a class = "view-more btn btn-mini btn-primary"
-                        href = "/videos" >
-                        More
-                        <i class="icon-chevron-right icon-white"></i>
-                    </a>
-                    <iframe width="290" height="190" src="<?php echo $featuredVideo['Video']['url'] ; ?>" frameborder="0" allowfullscreen></iframe>
-                    <h5><?php echo $featuredVideo['Video']['name']; ?></h5>
-                    <div class = "caption">
-                        <?php foreach($latestVideos as $video): ?>
-                        <div>
-                        <i class="icon-play"></i>
-                        <a href = "/videos/view/<?php echo $video['Video']['slug']; ?>">
-                            <?php echo $video['Video']['name']; ?>
-                        </a>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
 </div>
 <div class = "row">
     <div class = "span12">
         <div class = "row">
             <div class = "span4">
-                <div class = "latest-matches">
-                    <h2>Latest Matches</h2>
-                    <div class = "alert alert-info">
-                        <strong>Coming Soon!</strong>
-                    </div>
-                </div>
+                <ul class = "thumbnails">
+                    <li class = "span4">
+                        <div class = "latest-videos">
+                            <div class="module-header">
+                                <h4>Latest Videos</h4>
+                            </div>
+                            <a class = "view-more btn btn-mini btn-primary"
+                                href = "/videos" >
+                                More
+                                <i class="icon-chevron-right icon-white"></i>
+                            </a>
+                            <iframe width="290" height="190" src="<?php echo $featuredVideo['Video']['url'] ; ?>" frameborder="0" allowfullscreen></iframe>
+                            <h5><?php echo $featuredVideo['Video']['name']; ?></h5>
+                            <div class = "caption">
+                                <?php foreach($latestVideos as $video): ?>
+                                <div>
+                                <i class="icon-play"></i>
+                                <a href = "/videos/view/<?php echo $video['Video']['slug']; ?>">
+                                    <?php echo $video['Video']['name']; ?>
+                                </a>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class = "span4">
                 <div class = "latest-blogs">
                     <div class = "module-header">
-                        <h2>Latest Blogs</h2>
+                        <h4>Latest Blogs</h4>
                     </div>
                     <a class = "view-more btn btn-mini btn-primary"
                         href = "/posts" >
@@ -105,7 +127,7 @@
             <div class = "span4">
                 <div class = "live-streams">
                     <div class = "module-header">
-                        <h2>Live Streams</h2>
+                        <h4>Live Streams</h4>
                     </div>
                     <a class = "view-more btn btn-mini btn-primary"
                         href = "/streamsUsers" >

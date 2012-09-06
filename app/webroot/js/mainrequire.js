@@ -1,4 +1,12 @@
-require(["jquery", "bootstrap.min", "facebook"], function($) {
+require([
+    "jquery",
+    "bootstrap.min",
+    "facebook",
+    "jquery.fancybox.pack",
+    "jquery.fancybox-buttons",
+    "jquery.fancybox-media",
+    "jquery.fancybox-thumbs"
+], function($) {
     $(function() {
 
         $('.carousel').carousel({

@@ -1,4 +1,4 @@
-require(["jquery", "bootstrap"], function($) {
+require(["jquery", "bootstrap.min", "facebook"], function($) {
     $(function() {
 
         $('.carousel').carousel({

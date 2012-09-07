@@ -11,6 +11,23 @@ require([
 
         console.log('Todo cargado');
 
+        $.ajax({
+            url: '/tweets/',
+            type: 'GET',
+            complete: function(xhr, textStatus) {
+                //called when complete
+            },
+            success: function(data, textStatus, xhr) {
+                //called when successful
+                console.log(data);
+                $('.tweets div').html(data);
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                //called when there is an error
+            }
+        });
+
+
         // $('.carousel').carousel({
         // });
 

@@ -65,7 +65,7 @@ class HomeController extends AppController {
     				'News.featured' => '1'
     			),
     			'order' => 'News.id DESC',
-    			'limit' => 4,
+    			'limit' => 5,
     		)));
         }
 

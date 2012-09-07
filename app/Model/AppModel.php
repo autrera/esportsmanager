@@ -38,7 +38,7 @@ class AppModel extends Model {
  * @param none
  * @return void
  */
-    public function beforeSave() {
+    public function beforeSave($options = Array()) {
         if (isset($this->data[$this->alias]['created'])) {
             $this->data[$this->alias]['created'] = date('c');
         }
@@ -90,7 +90,7 @@ class AppModel extends Model {
  *
  *
  */
-    public function saveWithOptionalFile($request, $session, 
+    public function saveWithOptionalFile($request, $session,
         $optionsArray = array()
     ){
         // Seteamos los defaults
@@ -163,7 +163,7 @@ class AppModel extends Model {
         }
     }
 
-    public function saveWithFiles($request, $session, 
+    public function saveWithFiles($request, $session,
         $optionsArray = array()
     ){
         // Seteamos los defaults
@@ -263,7 +263,7 @@ class AppModel extends Model {
     // {{{ getStorageDir()
 
     /**
-     * Retornamos el path explicito hacia nuestro webroot 
+     * Retornamos el path explicito hacia nuestro webroot
      *
      * @param none
      * @return String El path a la carpeta de webroot
@@ -307,22 +307,22 @@ class AppModel extends Model {
             if ($this->delete($id)){
                 if (is_file($filePath)){
                     unlink($filePath);
-                    $session->setFlash('The resource and file were deleted', 
+                    $session->setFlash('The resource and file were deleted',
                         'flash-success'
                     );
                     return true;
                 }
-                $session->setFlash('The delete, was successful', 
+                $session->setFlash('The delete, was successful',
                     'flash-success'
                 );
                 return true;
             }
-            $session->setFlash('Unable to delete the resource', 
+            $session->setFlash('Unable to delete the resource',
                 'flash-failure'
             );
             return false;
         }
-        $session->setFlash('Unable to find the resource to delete.', 
+        $session->setFlash('Unable to find the resource to delete.',
             'flash-failure'
         );
         return false;
@@ -369,9 +369,9 @@ class AppModel extends Model {
     /**
      * Verifica que el archivo subido tenga una extensión segura
      *
-     * @param String $ext La extensión del archivo 
+     * @param String $ext La extensión del archivo
      *
-     * @return boolean True si el archivo tiene una extensión válida, falso de 
+     * @return boolean True si el archivo tiene una extensión válida, falso de
      *                 lo contrario
      */
     function isFileValidExtension($ext){

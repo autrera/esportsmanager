@@ -112,17 +112,8 @@
                         More
                         <i class="icon-chevron-right icon-white"></i>
                     </a>
-                    <ul class="nav nav-pills">
-                        <?php foreach($liveStreams as $key => $streamProviders): ?>
-                        <li class = "<?php echo ($key == 0)? 'active' : ''; ?>">
-                            <a href = "#stream-<?php echo $streamProviders['streamData']['name']; ?>" data-toggle = "pill">
-                                <?php echo $streamProviders['streamData']['name']; ?>
-                            </a>
-                        </li>
-                        <?php endforeach; ?>
-                    </ul>
                     <?php foreach($liveStreams as $key => $streamProviders): ?>
-                    <div id = "stream-<?php echo $streamProviders['streamData']['name']; ?>" class = "well">
+                    <div id = "stream-<?php echo $streamProviders['streamData']['name']; ?>">
                         <?php if (count($streamProviders['channels']) > 0): ?>
                             <?php foreach($streamProviders['channels'] as $channel): ?>
                                 <div class="mini-live-stream">

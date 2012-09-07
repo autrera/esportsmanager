@@ -14,7 +14,15 @@ class Footprint
         $attrs['href'] = self::fileFootPrint($file);
         $attrs['rel']  = 'stylesheet';
         $attrs['type'] = 'text/css';
-        return self::file('stylesheet', $attrs);
+        return self::file('link', $attrs);
+    }
+
+    public static function icon($file, $attrs = array())
+    {
+        $attrs['href'] = self::fileFootPrint($file);
+        $attrs['rel']  = 'shortcut icon';
+        $attrs['type'] = 'image/x-icon';
+        return self::file('link', $attrs);
     }
 
     protected static function file($type, $attrs = array())
@@ -28,7 +36,7 @@ class Footprint
                 $html = '<script '.$attr_string.'></script>';
                 break;
 
-            case 'stylesheet':
+            case 'link':
                 $html = '<link '.$attr_string.'>';
                 break;
 
@@ -42,7 +50,8 @@ class Footprint
     protected static function fileFootPrint($file)
     {
         $parts = explode('.', $file);
-        $file = $parts[0].'.'.filemtime(ROOT.DS.APP_DIR.DS.WEBROOT_DIR.$file).'.'.$parts[1];
+        $extension = array_pop($parts);
+        $file = implode('.', $parts).'.'.filemtime(ROOT.DS.APP_DIR.DS.WEBROOT_DIR.$file).'.'.$extension;
         return $file;
     }
 }

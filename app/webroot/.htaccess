@@ -1,3 +1,74 @@
+# Apache configuration file
+# http://httpd.apache.org/docs/2.2/mod/quickreference.html
+
+# Note: ".htaccess" files are an overhead for each request. This logic should
+# be placed in your Apache config whenever possible.
+# http://httpd.apache.org/docs/2.2/howto/htaccess.html
+
+ExpiresActive On
+ExpiresDefault A0
+
+# 1 YEAR - doesn't change often
+<FilesMatch "\.(css|js|jpg|jpeg|png)$">
+ExpiresDefault A29030400
+Header set Cache-Control "max-age=29030400, public"
+</FilesMatch>
+
+# NEVER CACHE - notice the extra directives
+<FilesMatch "\.(html|htm|php|cgi|pl)$">
+Header set Cache-Control "max-age=0, private, no-store, no-cache, must-revalidate"
+</FilesMatch>
+
+# ----------------------------------------------------------------------
+# Gzip compression
+# ----------------------------------------------------------------------
+
+<IfModule mod_deflate.c>
+
+    # Force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
+    <IfModule mod_setenvif.c>
+        <IfModule mod_headers.c>
+            SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+            RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+        </IfModule>
+    </IfModule>
+
+    # Compress all output labeled with one of the following MIME-types
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE application/atom+xml \
+                                  application/javascript \
+                                  application/json \
+                                  application/rss+xml \
+                                  application/vnd.ms-fontobject \
+                                  application/x-font-ttf \
+                                  application/xhtml+xml \
+                                  application/xml \
+                                  font/opentype \
+                                  image/svg+xml \
+                                  image/x-icon \
+                                  text/css \
+                                  text/html \
+                                  text/plain \
+                                  text/x-component \
+                                  text/xml
+    </IfModule>
+
+</IfModule>
+
+# ----------------------------------------------------------------------
+# ETag removal
+# ----------------------------------------------------------------------
+
+# FileETag None is not enough for every server.
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+
+# Since we're sending far-future expires, we don't need ETags for
+# static content.
+#   developer.yahoo.com/performance/rules.html#etags
+FileETag None
+
 # ----------------------------------------------------------------------
 # Built-in filename-based cache busting
 # ----------------------------------------------------------------------

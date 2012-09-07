@@ -5922,6 +5922,7 @@ div.form fieldset .help-block {
 }
 .live-streams .mini-live-stream {
   margin-bottom: 3px;
+  overflow: hidden;
   *zoom: 1;
 }
 .live-streams .mini-live-stream .label-container {

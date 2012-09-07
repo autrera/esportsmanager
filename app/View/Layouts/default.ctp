@@ -15,6 +15,8 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+
+App::import('Lib', 'Footprint');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -33,13 +35,13 @@
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
-		echo $this->Html->css('default');
+        echo Footprint::css('/css/default.css');
+        echo Footprint::icon('/favicon.ico');
         echo $this->Html->css('jquery.fancybox');
         echo $this->Html->css('jquery.fancybox-buttons');
         echo $this->Html->css('jquery.fancybox-thumbs');
 		echo $scripts_for_layout;
 	?>
-    <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
     <?php echo $this->Html->script('analytics'); ?>
 </head>
 <body>
@@ -151,6 +153,6 @@
         </div>
 	</div>
     <div id="fb-root"></div>
-    <script type="text/javascript" src="/js/require-jquery.min.js" data-main="/js/mainrequire.js"></script>
+    <?php echo Footprint::script('/js/require-jquery.min.js', array('data-main' => '/js/mainrequire.js')); ?>
 </body>
 </html>

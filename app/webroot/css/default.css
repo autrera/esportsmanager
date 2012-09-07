@@ -5056,7 +5056,7 @@ blockquote {
   padding-top: 2px;
   padding-bottom: 2px;
   border-bottom: 2px solid #3A87AD;
-  background: url('/img/backgrounds/subtle-pattern-1.jpg') repeat;
+  background: url('/img/backgrounds/dust.png') repeat;
 }
 #main-container-border {
   padding: 8px 24px 8px 8px;
@@ -5071,7 +5071,7 @@ blockquote {
 }
 #main-container {
   padding: 8px 8px 8px 8px;
-  background: url('/img/backgrounds/subtle-pattern-1.jpg') repeat;
+  background: url('/img/backgrounds/dust.png') repeat;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;

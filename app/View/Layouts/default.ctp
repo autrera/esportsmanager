@@ -37,7 +37,6 @@
         echo $this->Html->css('jquery.fancybox');
         echo $this->Html->css('jquery.fancybox-buttons');
         echo $this->Html->css('jquery.fancybox-thumbs');
-        // echo $this->Html->meta('icon', 'favicon.ico');
 		echo $scripts_for_layout;
 	?>
     <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
@@ -51,7 +50,7 @@
                     <?php if ($authUser): ?>
                     <div class = "span12">
                         <div class = "pull-right">
-                            <h2>
+                            <h5>
                                 Welcome!
                                 <strong>
                                     <?php echo $authUser['nickname']; ?>
@@ -64,7 +63,7 @@
                                        class = "btn btn-danger btn-mini"
                                     >Logout</a>
                                 </small>
-                            </h2>
+                            </h5>
                         </div>
                     </div>
                     <?php else: ?>

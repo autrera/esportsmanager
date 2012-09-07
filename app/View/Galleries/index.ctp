@@ -5,16 +5,16 @@
             'controller' => 'galleries'
         )) ?>
         <div class = "page-header">
-            <h1>.: Galleries</h1>
+            <h3>.: Galleries</h3>
         </div>
         <div class = "galleries-index">
         <?php foreach ($galleries as $gallery): ?>
         	<div class = "gallery-content">
-        		<h2 class = "gallery-name">
+        		<h4 class = "gallery-name">
         			<a href = "/galleries/view/<?php echo $gallery['Gallery']['slug']; ?>">
 	        			<?php echo $gallery['Gallery']['name'] ?>
 	        		</a>
-        		</h2>
+        		</h4>
         		<ul>
         			<?php foreach ($gallery['Photos'] as $key => $photo): ?>
         			<?php

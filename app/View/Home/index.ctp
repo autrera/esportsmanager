@@ -61,6 +61,14 @@
 <div class = "row">
     <div class = "span12">
         <div class = "row">
+            <div class="span4">
+                <div class="latest-matches">
+                    <div class="module-header">
+                        <h4>Latest Matches</h4>
+                    </div>
+                    <div class="alert alert-info">Coming Soon!</div>
+                </div>
+            </div>
             <div class = "span4">
                 <div class = "latest-blogs">
                     <div class = "module-header">

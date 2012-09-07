@@ -10,7 +10,7 @@
             'controller' => 'streamsUsers'
         )) ?>
 		<div class = "page-header">
-			<h1>Live Streams</h1>
+			<h3>Live Streams</h3>
 		</div>
 		<ul class="nav nav-pills">
 			<?php foreach($data as $key => $streamProviders): ?>
@@ -29,11 +29,11 @@
 						<div class = "pull-left embed-video">
 							<?php echo $channel
 								->channel
-								->embed_code; 
+								->embed_code;
 							?>
 						</div>
 						<div>
-							<h2><?php echo $channel->title; ?></h2>
+							<h4><?php echo $channel->title; ?></h4>
 							<div class = "label-container">
 								<span class="label label-info">
 									<i class="icon-asterisk icon-white"></i>

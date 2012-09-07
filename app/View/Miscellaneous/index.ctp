@@ -32,7 +32,7 @@
 		<div class = "row">
 			<div class = "span8">
 				<div class = "page-header">
-					<h1>.: Misc</h1>
+					<h3>.: Misc</h3>
 				</div>
 			</div>
 		</div>

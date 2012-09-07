@@ -8,16 +8,16 @@
             'controller' => 'posts'
         )) ?>
         <div class="page-header">
-            <h1>.: Posts <small>people sharing rants and joy</small></h1>
+            <h3>.: Posts <small>people sharing rants and joy</small></h3>
         </div>
 	    <?php foreach ($posts as $post): ?>
 	    <div class = "posts-container">
 	    	<div class="post-wrapper">
-	    		<h2 class="post-title">
+	    		<h4 class="post-title">
 	    			<a href="/posts/view/<?php echo $post['Post']['slug']; ?>">
 		    			<?php echo $post['Post']['title']; ?>
 	    			</a>
-	    		</h2>
+	    		</h4>
 	    		<div class="post-info">
                     <?php echo $this->element('userLink', array(
                         'nickname' => $post['Users']['nickname'],

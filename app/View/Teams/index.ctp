@@ -5,7 +5,7 @@
             'controller' => 'teams'
         )) ?>
         <div class = "page-header">
-            <h1>.: Teams <small>Our beloved players</small></h1>
+            <h3>.: Teams <small>Our beloved players</small></h3>
         </div>
         <?php foreach ($teams as $team): ?>
         <div class = "teams-index">

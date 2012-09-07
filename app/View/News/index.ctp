@@ -8,7 +8,7 @@
             'controller' => 'news'
         )) ?>
         <div class="page-header">
-            <h1>.: News <small>enjoyable and accurate info</small></h1>
+            <h3>.: News <small>enjoyable and accurate info</small></h3>
         </div>
     <?php foreach ($news as $new): ?>
         <div class = "news-row">
@@ -19,12 +19,12 @@
                 </a>
             </div>
             <div class = "news-title">
-                <h2>
+                <h4>
                     <a href = "/news/view/<?php echo $new['News']['slug'] ?>"
                         title = "Click to read it">
                         <?php echo $new['News']['title'] ?>
                     </a>
-                </h2>
+                </h4>
             </div>
             <div class = "news-details">
                 <?php echo $this->element('timeStampLabel', array(

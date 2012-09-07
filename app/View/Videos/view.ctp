@@ -18,11 +18,11 @@
                     ?>
                 </div>
                 <div class = "author-info">
-                    <?php 
+                    <?php
                         echo $this->element('userLink', array(
                             'nickname' => $video['Users']['nickname'],
                             'user_id'  => $video['Users']['id'],
-                        )); 
+                        ));
                         echo $this->element('userNation', array(
                             'country' => $profile['Countries']
                         ));
@@ -34,12 +34,12 @@
 		            <li class="span6 video-container">
 		                <div class="thumbnail">
 		                    <iframe width="100%" height="300" src="<?php echo $video['Video']['url']; ?>" frameborder="0" allowfullscreen=""></iframe>
-		                    <h2 class = "video-title">
-		                        <a href = "/videos/view/<?php echo 
+		                    <h4 class = "video-title">
+		                        <a href = "/videos/view/<?php echo
 		                            $video['Video']['slug']; ?>">
 		                            <?php echo $video['Video']['name'] ?>
 		                        </a>
-		                    </h2>
+		                    </h4>
 		                    <div class = "video-info">
 		                        <?php echo $this->element('timeStampLabel', array(
 		                            'timestamp' => $video['Video']['created'],

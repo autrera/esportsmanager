@@ -50,7 +50,7 @@
                     </div>
                     <?php endif; ?>
                     <div class = "page-header new-title">
-                        <h1><?php echo $noticia['News']['title'] ?></h1>
+                        <h3><?php echo $noticia['News']['title'] ?></h3>
                     </div>
                     <div class = "new-details">
                         <span>

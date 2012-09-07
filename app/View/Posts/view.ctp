@@ -8,10 +8,10 @@
             'actions' => $actions,
             'isOwner' => $isOwner,
         ));
-        $this->set('fb_title_for_layout', 
+        $this->set('fb_title_for_layout',
             strip_tags($post['Post']['title'])
         );
-        $this->set('fb_description_for_layout', 
+        $this->set('fb_description_for_layout',
             strip_tags(utilities::tokenTruncate($post['Post']['content'], 150))
         );
 ?>
@@ -28,11 +28,11 @@
                         ?>
                     </div>
                     <div class = "author-info">
-                        <?php 
+                        <?php
                             echo $this->element('userLink', array(
                                 'nickname' => $post['Users']['nickname'],
                                 'user_id'  => $post['Users']['id'],
-                            )); 
+                            ));
                             echo $this->element('userNation', array(
                                 'country' => $profile['Countries']
                             ));
@@ -41,7 +41,7 @@
                 </div>
                 <div class = "span6 post-main">
                     <div class = "page-header new-title">
-                        <h1><?php echo $post['Post']['title'] ?></h1>
+                        <h3><?php echo $post['Post']['title'] ?></h3>
                     </div>
                     <div class = "post-details">
                         <?php echo $this->element('timeStampLabel', array(

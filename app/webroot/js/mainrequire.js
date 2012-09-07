@@ -1,15 +1,14 @@
 require([
     "jquery",
-    // "bootstrap.min",
-    "lazyload"
+    "bootstrap",
+    "lazyload",
+    "fancybox"
     // "jquery.fancybox.pack",
     // "jquery.fancybox-buttons",
     // "jquery.fancybox-media",
     // "jquery.fancybox-thumbs"
 ], function($) {
     $(function() {
-
-        console.log('Todo cargado');
 
         $.ajax({
             url: '/tweets/',
@@ -26,12 +25,6 @@ require([
                 //called when there is an error
             }
         });
-
-
-        // $('.carousel').carousel({
-        // });
-
-        // $("a[rel=popover]").popover();
 
         // $(".fancybox").fancybox({
         //     autoSize: false,

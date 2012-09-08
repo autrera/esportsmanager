@@ -1,4 +1,5 @@
 define([
+    "jquery",
     "jquery.fancybox.pack",
     "jquery.fancybox-buttons",
     "jquery.fancybox-media",

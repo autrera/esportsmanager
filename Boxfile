@@ -8,7 +8,15 @@ web1:
     - app/tmp/cache/models
     - app/tmp/sessions
     - app/tmp/tests
-    - app/webroot/uploads/*
+    - app/webroot/uploads/
+    - app/webroot/uploads/avatars
+    - app/webroot/uploads/countries
+    - app/webroot/uploads/games
+    - app/webroot/uploads/news
+    - app/webroot/uploads/photos
+    - app/webroot/uploads/profiles
+    - app/webroot/uploads/streams
+    - app/webroot/uploads/teams
   document_root: app/webroot
   php_version: 5.3.8
   php_extensions:

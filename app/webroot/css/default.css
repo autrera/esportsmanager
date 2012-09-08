@@ -5080,16 +5080,6 @@ blockquote {
 .menubar {
   margin-bottom: 10px;
 }
-.navbar .nav li a {
-  color: #e0e0e0;
-}
-.navbar .nav li ul.dropdown-menu li a {
-  color: #3d3d3d;
-}
-.navbar .navbar-inner {
-  background: #252a2f url('/img/menu-bg.jpg') repeat-x;
-  border: 1px solid #646E78;
-}
 .carousel {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;

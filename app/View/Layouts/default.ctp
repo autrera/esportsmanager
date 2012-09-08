@@ -101,41 +101,60 @@ App::import('Lib', 'Footprint');
             </div>
             <div id = "main-container-border" class = "container">
                 <div id = "main-container" class = "container">
-                    <div class="btn-group menubar">
-                        <a href="/" class = "btn btn-large">
-                            <i class="icon-home"></i>
-                            Home
-                        </a>
-                        <a href="/teams" class = "btn btn-large">
-                            <i class="icon-user"></i>
-                            Teams
-                        </a>
-                        <a href="/news" class = "btn btn-large">
-                            <i class="icon-folder-open"></i>
-                            News
-                        </a>
-                        <a href="/posts" class = "btn btn-large">
-                            <i class="icon-align-justify"></i>
-                            Posts
-                        </a>
-                        <a href="/videos" class = "btn btn-large">
-                            <i class="icon-film"></i>
-                            Videos
-                        </a>
-                        <a href="/streamsUsers" class = "btn btn-large">
-                            <i class="icon-facetime-video"></i>
-                            Streams
-                        </a>
-                        <a href="/galleries" class = "btn btn-large">
-                            <i class="icon-th"></i>
-                            Galleries
-                        </a>
-                        <a href="/miscellaneous" class = "btn btn-large">
-                            <i class="icon-cog"></i>
-                            Misc
-                        </a>
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <ul class="nav">
+                                <li>
+                                    <a href="/">
+                                        <i class="icon-home"></i>
+                                        Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/teams">
+                                        <i class="icon-user"></i>
+                                        Teams
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/news">
+                                        <i class="icon-folder-open"></i>
+                                        News
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/posts">
+                                        <i class="icon-align-justify"></i>
+                                        Posts
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/videos">
+                                        <i class="icon-film"></i>
+                                        Videos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/streamsUsers">
+                                        <i class="icon-facetime-video"></i>
+                                        Streams
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/galleries">
+                                        <i class="icon-th"></i>
+                                        Galleries
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/miscellaneous">
+                                        <i class="icon-cog"></i>
+                                        Misc
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-
 					<?php echo $this->Session->flash(); ?>
 
 					<?php echo $content_for_layout; ?>

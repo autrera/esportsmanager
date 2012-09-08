@@ -173,5 +173,6 @@ App::import('Lib', 'Footprint');
 	</div>
     <div id="fb-root"></div>
     <?php echo Footprint::script('/js/require-jquery.min.js', array('data-main' => '/js/mainrequire.js')); ?>
+    <script type='text/javascript' src='http://www.resrc.it/responsive.js'></script>
 </body>
 </html>

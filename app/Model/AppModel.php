@@ -138,6 +138,18 @@ class AppModel extends Model {
                 if (move_uploaded_file($tmp_name, $fileFolder)){
                     // Archivo nuevo subido con éxito, borramos el anterior
                     $this->eraseFile($previousFile);
+                    // Resizeamos la imagen
+                    include("../Lib/resize.php");
+                    $resizeObj = new resize($fileFolder);
+                    if ($resizeObj -> resizeImage(620, 350, 'crop')) {
+                        if ($resizeObj -> saveImage($fileFolder, 100)){
+                            $session->setFlash(__('The ' . $this->alias . ' has been saved'), 'flash-success');
+                            return true;
+                        } else {
+                            $session->setFlash(__('The ' . $this->alias . ' has been saved but the uploaded file could not be resized, upload the image again'), 'flash-warning');
+                            return true;
+                        }
+                    }
                     $session->setFlash(__('The ' . $this->alias . ' has been saved'), 'flash-success');
                     return true;
                 } else {

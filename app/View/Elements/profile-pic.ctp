@@ -1,6 +1,6 @@
 <?php
     if (is_file($_SERVER['DOCUMENT_ROOT'] . $profilePic)){
-    	$picImage = '/files/view/profiles/' . $profileId . '/' . $size . '/picture';
+    	$picImage = $profilePic;
     } else {
     	$picImage = '/img/anonymous-user-gravatar.png';
     }

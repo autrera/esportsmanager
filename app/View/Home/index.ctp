@@ -10,7 +10,7 @@
                 <?php $active = ($key == 0)? 'active' : ''; ?>
                 <div class="<?php echo $active; ?> item">
                     <a href = "/news/view/<?php echo $new['News']['slug']; ?>">
-                        <?php echo $this->element('responsiveImg', array('url' => $new['News']['banner'])); ?>
+                        <img src="http://app-us.resrc.it/<?php echo FULL_BASE_URL.$new['News']['banner']; ?>" alt="">
                     </a>
                     <div class = "carousel-caption">
                         <h2><?php echo $new['News']['title']; ?></h2>

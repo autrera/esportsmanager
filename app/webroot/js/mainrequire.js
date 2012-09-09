@@ -3,6 +3,7 @@ require([
     'bootstrap',
     'lazyload',
     'fancybox',
+    'facebook',
     'tweets'
 ], function($) {
     $(function() {

@@ -69,14 +69,14 @@
 					<dd><?php echo $usuario['Profile']['description']; ?></dd>
 					<?php endif; ?>
 				</dl>
-				<?php if (   $isProfileOwner 
-						  || in_array('add', $profileActions) 
+				<?php if (   $isProfileOwner
+						  || in_array('add', $profileActions)
 						  || in_array('edit', $profileActions)
-					  ): 
+					  ):
 				?>
 					<?php if (! empty($usuario['Profile']['id'])): ?>
-						<?php if (   $isProfileOwner 
-								  || in_array('edit', $profileActions)): 
+						<?php if (   $isProfileOwner
+								  || in_array('edit', $profileActions)):
 						?>
 						<div>
 							<a href = "/profiles/edit/<?php echo $usuario['Profile']['id'] ?>" class = "btn btn-warning	pull-right">
@@ -87,7 +87,7 @@
 					<?php else: ?>
 						<?php if (in_array('add', $profileActions)): ?>
 						<div>
-							<a href = "/profiles/add/<?php echo $id; ?>" class = "btn btn-primary 
+							<a href = "/profiles/add/<?php echo $id; ?>" class = "btn btn-primary
 								btn-mini pull-right">
 								Add a profile
 							</a>
@@ -100,20 +100,20 @@
 		<div class = "row">
 			<div class = "span8">
 				<div class = "page-header">
-					<h1>From this User</h1>
+					<h3>From this User</h3>
 				</div>
 				<ul class = "thumbnails">
 					<li class = "span4">
 						<div class = "tuhmbnail latest-user-posts user-activity">
-							<h2>Latest Posts</h2>
+							<h4>Latest Posts</h4>
 							<?php if (!empty($latestPosts)): ?>
 							<?php foreach ($latestPosts as $post): ?>
 							<div class = "user-post">
-								<h4>
+								<h5>
 									<a href = "/posts/view/<?php echo $post['Post']['slug']; ?>">
 										<?php echo utilities::tokenTruncate($post['Post']['title'], 50); ?>
 									</a>
-								</h4>
+								</h5>
 							</div>
 							<?php endforeach; ?>
 							<?php else: ?>
@@ -123,15 +123,15 @@
 					</li>
 					<li class = "span4">
 						<div class = "tuhmbnail latest-user-videos user-activity">
-							<h2>Latest Videos</h2>
+							<h4>Latest Videos</h4>
 							<?php if (!empty($latestVideos)): ?>
 							<?php foreach ($latestVideos as $video): ?>
 							<div class = "user-video">
-								<h3>
+								<h5>
 									<a href = "/videos/view/<?php echo $video['Video']['slug']; ?>">
 										<?php echo $video['Video']['name']; ?>
 									</a>
-								</h3>
+								</h5>
 							</div>
 							<?php endforeach; ?>
 							<?php else: ?>
@@ -141,15 +141,15 @@
 					</li>
 					<li class = "span4">
 						<div class = "thumbnail latest-user-news user-activity">
-							<h2>Latest News</h2>
+							<h4>Latest News</h4>
 							<?php if (!empty($latestNews)): ?>
 							<?php foreach ($latestNews as $new): ?>
 							<div class = "user-news">
-								<h3>
+								<h5>
 									<a href = "/news/view/<?php echo $new['News']['slug']; ?>">
 										<?php echo $new['News']['title']; ?>
 									</a>
-								</h3>
+								</h5>
 							</div>
 							<?php endforeach; ?>
 							<?php else: ?>
@@ -159,15 +159,15 @@
 					</li>
 					<li class = "span4">
 						<div class = "thumbnail latest-user-galleries user-activity">
-							<h2>Latest Galleries</h2>
+							<h4>Latest Galleries</h4>
 							<?php if (!empty($latestGalleries)): ?>
 							<?php foreach ($latestGalleries as $gallery): ?>
 							<div class = "user-gallery">
-								<h3>
+								<h5>
 									<a href = "/galleries/view/<?php echo $gallery['Gallery']['id']; ?>">
 										<?php echo $gallery['Gallery']['name']; ?>
 									</a>
-								</h3>
+								</h5>
 							</div>
 							<?php endforeach; ?>
 							<?php else: ?>

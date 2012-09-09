@@ -1,4 +1,4 @@
-<div class = "span4">
+<div class = "spana4 sidebar">
     <div class="row">
         <div class="span4">
             <a href="http://feeds.feedburner.com/teamquetzal" class="btn btn-warning rss-link">

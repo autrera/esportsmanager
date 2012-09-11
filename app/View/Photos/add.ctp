@@ -1,5 +1,7 @@
 <?php
     App::uses('customFormOptions', 'Lib');
+
+    $this->assign('scripts', '');
 ?>
 <!-- Bootstrap CSS fixes for IE6 -->
 <!--[if lt IE 7]><link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap-ie6.min.css"><![endif]-->

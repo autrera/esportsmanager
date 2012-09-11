@@ -78,10 +78,21 @@ class PhotosController extends AppController {
 
                 App::uses('UploadHandler', 'Lib');
 
+                $uploadDir = $this->Photo->getWebrootPath().'/uploads/photos/';
+                $uploadUrl = '/uploads/photos';
+
                 $upload_handler = new UploadHandler(array(
-                    'upload_dir' => $this->Photo->getWebrootPath() 
-                        . '/uploads/photos/',
-                    'upload_url' => '/uploads/photos/',
+                    'upload_dir' => $uploadDir,
+                    'upload_url' => $uploadUrl,
+                    'image_versions' => array(
+                        'resized' => array(
+                            'upload_dir' => $uploadDir,
+                            'upload_url' => $uploadUrl,
+                            'max_width' => 620,
+                            'max_height' => 500,
+                            'jpeg_quality' => 85
+                        ),
+                    ),
                 ));
 
                 header('Pragma: no-cache');
@@ -150,7 +161,7 @@ class PhotosController extends AppController {
         ));
 
         $neighbors = $this->Photo->find('neighbors', array(
-            'field' => 'id', 
+            'field' => 'id',
             'value' => $this->Photo->id,
             'galleries_id' => $foto['Photo']['galleries_id']
         ));

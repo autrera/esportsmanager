@@ -34,9 +34,9 @@ App::import('Lib', 'Footprint');
         ?>
 		<?php echo $title_for_layout; ?>
 	</title>
+        <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	<?php
         echo Footprint::css('/css/default.css');
-        echo Footprint::icon('/favicon.ico');
         echo $this->Html->css('jquery.fancybox');
         echo $this->Html->css('jquery.fancybox-buttons');
         echo $this->Html->css('jquery.fancybox-thumbs');

@@ -50,15 +50,9 @@ App::import('Lib', 'Footprint');
             <div class = "container">
                 <div class = "row">
                     <div class="span7 header-sponsors">
-                        <a href="#">
-                            <img src="/img/sponsors/kingston.png" alt="Kingstone" />
-                        </a>
-                        <a href="#">
-                            <img src="/img/sponsors/ea.png" alt="Electronic Arts" />
-                        </a>
-                        <a href="#">
-                            <img src="/img/sponsors/origin.png" alt="Origin" />
-                        </a>
+                        <a href="#"><img src="/img/sponsors/kingston.png" alt="Kingstone" /></a>
+                        <a href="#"><img src="/img/sponsors/ea.png" alt="Electronic Arts" /></a>
+                        <a href="#"><img src="/img/sponsors/origin.png" alt="Origin" /></a>
                     </div>
                     <?php if ($authUser): ?>
                     <div class = "span5">

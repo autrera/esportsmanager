@@ -135,6 +135,7 @@ class PhotosController extends AppController {
                 // Guardamos
                 $this->Photo->save($this->request->data);
             } else {
+                $this->layout = 'default_no_jquery';
                 $this->set('galeria', $this->Gallery->field('name', array(
                     'Gallery.id' => $id
                 )));

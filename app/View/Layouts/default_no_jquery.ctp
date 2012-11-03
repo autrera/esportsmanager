@@ -49,13 +49,8 @@ App::import('Lib', 'Footprint');
         <div id = "header">
             <div class = "container">
                 <div class = "row">
-                    <div class="span6">
-                        <img src="/img/sponsors/kingston.png" alt="Kingstone" />
-                        <img src="/img/sponsors/ea.png" alt="Electronic Arts" />
-                        <img src="/img/sponsors/origin.png" alt="Origin" />
-                    </div>
                     <?php if ($authUser): ?>
-                    <div class = "span6">
+                    <div class = "span12">
                         <div class = "pull-right">
                             <h5>
                                 Welcome!
@@ -74,7 +69,7 @@ App::import('Lib', 'Footprint');
                         </div>
                     </div>
                     <?php else: ?>
-                    <div class = "cont-login-header span6 pull-right">
+                    <div class = "cont-login-header span4 pull-right">
                         <div class = " btn-group pull-right">
                             <a href = "/users/login"
                                 class = "btn btn-primary"
@@ -176,8 +171,5 @@ App::import('Lib', 'Footprint');
             </div>
         </div>
 	</div>
-    <div id="fb-root"></div>
-    <?php echo Footprint::script('/js/require-jquery.min.js', array('data-main' => '/js/mainrequire.js')); ?>
-    <script type='text/javascript' src='http://www.resrc.it/responsive.js'></script>
 </body>
 </html>

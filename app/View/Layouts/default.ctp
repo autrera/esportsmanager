@@ -49,8 +49,13 @@ App::import('Lib', 'Footprint');
         <div id = "header">
             <div class = "container">
                 <div class = "row">
+                    <div class="span6">
+                        <img src="/img/sponsors/kingston.png" alt="Kingstone" />
+                        <img src="/img/sponsors/ea.png" alt="Electronic Arts" />
+                        <img src="/img/sponsors/origin.png" alt="Origin" />
+                    </div>
                     <?php if ($authUser): ?>
-                    <div class = "span12">
+                    <div class = "span6">
                         <div class = "pull-right">
                             <h5>
                                 Welcome!
@@ -69,7 +74,7 @@ App::import('Lib', 'Footprint');
                         </div>
                     </div>
                     <?php else: ?>
-                    <div class = "cont-login-header span4 pull-right">
+                    <div class = "cont-login-header span6 pull-right">
                         <div class = " btn-group pull-right">
                             <a href = "/users/login"
                                 class = "btn btn-primary"

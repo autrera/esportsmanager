@@ -3,13 +3,13 @@
 
   define(['jquery'], function($) {
     $(function() {
-      $.ajax({
-        url: '/tweets/',
-        type: 'GET',
-        success: function(data, textStatus, xhr) {
-          $('.tweets div').html(data);
-        }
-      });
+      // $.ajax({
+      //   url: '/tweets/',
+      //   type: 'GET',
+      //   success: function(data, textStatus, xhr) {
+      //     $('.tweets div').html(data);
+      //   }
+      // });
     });
   });
 

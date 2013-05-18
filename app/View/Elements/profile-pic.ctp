@@ -7,6 +7,6 @@
 ?>
 <img
     class="lazy resrc"
-    src="http://app-us.resrc.it/<?php echo FULL_BASE_URL; ?>/img/grey.jpg"
-    data-original="http://app-us.resrc.it/<?php echo FULL_BASE_URL.$picImage; ?>"
+    src="<?php echo FULL_BASE_URL; ?>/img/grey.jpg"
+    data-original="<?php echo FULL_BASE_URL.$picImage; ?>"
     alt="">

@@ -6,7 +6,7 @@
     }
 ?>
 <img
-    class="lazy resrc"
+    class="lazy"
     src="<?php echo FULL_BASE_URL; ?>/img/grey.jpg"
     data-original="<?php echo FULL_BASE_URL.$picImage; ?>"
     alt="">

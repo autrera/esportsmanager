@@ -1,13 +1,8 @@
-<?php
-    // echo "<pre>";
-    // print_r($tweets);
-    // echo "</pre>";
-?>
 <a href="http://twitter.com/teamquetzal" class="btn btn-info twitter-link" target="_blank">
     <img src="/img/social/Twitter.png" alt="Twitter">
     Siguenos
 </a>
-<!-- <div class="popover bottom">
+<div class="popover bottom">
     <div class="arrow"></div>
     <h3 class="popover-title">.:Latest Tweets</h3>
     <div class="popover-content">
@@ -21,4 +16,4 @@
         <?php endforeach; ?>
     </div>
 </div>
- -->
+
